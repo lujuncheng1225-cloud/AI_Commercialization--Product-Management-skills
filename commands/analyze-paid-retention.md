@@ -31,3 +31,6 @@ outputs:
 - 区分续费问题和使用深度问题。
 - 实验要优先针对高价值分群。
 
+## Sample Output / 样例输出
+
+- `examples/analyze-paid-retention-sample.md`

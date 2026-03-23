@@ -31,3 +31,6 @@ outputs:
 - 不要同时改 onboarding、价格和升级页。
 - 每个实验都要绑定一个决策规则。
 
+## Sample Output / 样例输出
+
+- `examples/improve-trial-to-paid-sample.md`

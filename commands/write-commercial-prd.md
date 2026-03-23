@@ -29,3 +29,7 @@ outputs:
 - 明确具体漏斗阶段或收入问题。
 - PRD 必须绑定 baseline 和 target。
 - 写清 rollout 风险和 guardrail。
+
+## Sample Output / 样例输出
+
+- `examples/write-commercial-prd-sample.md`

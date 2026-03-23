@@ -32,3 +32,7 @@ outputs:
 - 不要跳过失败模式。
 - 低置信度输出必须有 fallback。
 - 区分 demo 效果和上线质量。
+
+## Sample Output / 样例输出
+
+- `examples/shape-ai-feature-sample.md`

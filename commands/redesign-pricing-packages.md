@@ -30,3 +30,6 @@ outputs:
 - 避免功能分层和价值指标逻辑冲突。
 - rollout 前要有 guardrails。
 
+## Sample Output / 样例输出
+
+- `examples/redesign-pricing-packages-sample.md`
