@@ -1,5 +1,5 @@
-name: Bug report
-description: Report a bug in a skill, command, script, or repo workflow.
+name: Bug 反馈
+description: 报告 skill、command、脚本或仓库流程中的问题。
 title: "[Bug]: "
 labels:
   - bug
@@ -7,22 +7,21 @@ body:
   - type: textarea
     id: summary
     attributes:
-      label: Summary
-      description: What broke?
+      label: 问题概述
+      description: 哪里出问题了？
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Expected behavior
-      description: What should have happened?
+      label: 预期行为
+      description: 原本应该发生什么？
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
-      label: Reproduction
-      description: Prompt, file, script, or steps to reproduce.
+      label: 复现方式
+      description: 提供 prompt、文件、脚本或复现步骤。
     validations:
       required: true
-

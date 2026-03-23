@@ -1,78 +1,69 @@
 ---
 name: pricing-packaging-brief
-description: Define or revise pricing and packaging with target segment, value metric, plan structure, and tradeoffs. Use when a commercial product needs a clearer monetization design.
+description: 定义或调整定价与套餐结构，明确目标客户、价值指标、套餐层级与取舍。适用于商业化设计或改版场景。
 type: component
 best_for:
-  - "Designing SaaS pricing and packaging"
-  - "Reworking plans and feature gates"
-  - "Connecting value delivery to monetization"
+  - "设计 SaaS 定价和套餐"
+  - "重做 plan 结构"
+  - "把产品价值和商业模式连起来"
 scenarios:
-  - "Help me redesign our free, pro, and team plans"
-  - "We need a pricing brief for an AI add-on"
+  - "重做 free、pro、team 套餐"
+  - "为 AI 增值包写一份 pricing brief"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a pricing and packaging brief that connects product value, target segment, and commercial structure.
+把产品价值、目标客群和商业结构整理成一份定价与套餐简报。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：定义或调整定价与套餐结构。
-- 适用：SaaS 价格改版、功能分层、AI 增值包设计。
-- 输出：目标客户、价值指标、套餐层级、取舍和风险。
+一个 pricing brief 至少说明：
 
-## Key Concepts
-
-### A Strong Pricing Brief Covers
-
-1. target segment
+1. 目标客户
 2. value metric
 3. plan tiers
 4. packaging logic
 5. upgrade path
-6. risks and tradeoffs
+6. 风险与取舍
 
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## Pricing and Packaging Brief
 
 ### Target Segment
-[Who this design is for]
+[目标客群]
 
 ### Value Metric
-[Seat, usage, projects, revenue managed, etc.]
+[按座席 / 按使用量 / 按项目数等]
 
 ### Plan Structure
-- [Plan]
-- [Plan]
+- [套餐]
 
 ### Packaging Logic
-[Why each feature sits in each tier]
+[为什么这样分层]
 
 ### Risks
-- [Risk]
+- [风险]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Charge on monthly active workspaces because that is where collaborative value is realized."
+- “按 monthly active workspaces 收费，因为协作价值主要在 workspace 层面体现。”
 
-Bad:
+差：
 
-- "Put popular features in the top plan and see what happens."
+- “把热门功能都塞到高价档，看看会不会有人买。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- pricing on a weak value metric
-- overcomplicating tiers
-- hiding upgrade logic from users
+- value metric 选得很弱
+- 套餐太复杂
+- 升级逻辑对用户不透明
 
-## References
+## References / 关联项
 
 - `../revenue-metrics-scorecard/SKILL.md`
 - `../commercial-prd/SKILL.md`

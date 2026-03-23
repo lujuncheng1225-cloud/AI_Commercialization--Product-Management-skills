@@ -1,85 +1,73 @@
 ---
 name: problem-statement
-description: Frame a clear customer or business problem with evidence, target user, and impact. Use when moving from vague pain points to a decision-ready problem definition.
+description: 定义清晰的客户问题或业务问题。适用于从模糊痛点走向可决策问题定义的场景。
 type: component
 best_for:
-  - "Writing a concise product problem statement"
-  - "Turning scattered research into a clear problem definition"
-  - "Aligning stakeholders on what problem matters"
+  - "写问题定义"
+  - "把零散调研整理成一个明确问题"
+  - "统一团队对问题的口径"
 scenarios:
-  - "Users drop during onboarding and I need to define the real problem"
-  - "I have customer notes and need a crisp problem statement before writing a PRD"
+  - "用户在 onboarding 流失，我需要先定义真实问题"
+  - "写 PRD 前先把问题说清楚"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a structured problem statement that names who is affected, what is happening, why it matters, and what evidence supports the claim.
+把“哪里不对劲”整理成一个结构化问题定义，说明谁受影响、发生了什么、为什么重要、证据是什么。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：把模糊痛点整理成清晰的问题定义。
-- 适用：准备写 PRD、做立项讨论、需要统一问题口径时。
-- 输出：用户是谁、问题是什么、为什么重要、证据和紧迫性。
+一个好的问题定义要回答：
 
-## Key Concepts
+1. 谁遇到了这个问题
+2. 问题具体是什么
+3. 为什么痛
+4. 有什么证据
+5. 为什么现在要处理
 
-### A Good Problem Statement Answers
+## Application / 用法
 
-1. Who has the problem?
-2. What is the problem?
-3. Why is it painful?
-4. What evidence shows it is real?
-5. Why now?
-
-### What This Is Not
-
-- Not a solution pitch
-- Not a full PRD
-- Not a list of symptoms without a core problem
-
-## Application
-
-Use this structure:
+推荐结构：
 
 ```markdown
 ## Problem Statement
 
 ### Target User
-[Who experiences the problem]
+[谁有这个问题]
 
 ### Problem
-[What is happening]
+[问题是什么]
 
 ### Why It Matters
-- [User impact]
-- [Business impact]
+- [用户影响]
+- [业务影响]
 
 ### Evidence
-- [Interview or qualitative signal]
-- [Quantitative signal]
-- [Observed behavior or support pattern]
+- [定性证据]
+- [定量证据]
 
 ### Why Now
-[Urgency, opportunity, or strategic reason]
+[为什么现在值得做]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-"New team admins abandon setup in the first day because the initial workspace configuration feels high effort and low guidance, which delays time-to-value and suppresses trial-to-paid conversion."
+- “新团队管理员在首次配置阶段流失，因为初始设置成本高且没有引导，导致无法快速到达价值时刻，压低试用转付费。”
 
-Bad:
+差：
 
-"Onboarding is bad and users do not like it."
+- “Onboarding 很差，用户不喜欢。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- Naming a solution instead of a problem
-- Omitting evidence
-- Writing at too high a level to be actionable
+- 把解决方案写成问题
+- 没有证据
+- 写得太泛，无法指导后续工作
 
-## References
+## References / 关联项
 
 - `../prd-development/SKILL.md`
 - `../workshop-facilitation/SKILL.md`
+

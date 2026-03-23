@@ -1,83 +1,69 @@
 ---
 name: experiment-brief
-description: Design a lightweight product experiment with hypothesis, audience, success criteria, and next-step decisions. Use when testing a risky assumption before committing broader investment.
+description: 设计一个轻量实验，明确假设、受众、方法、成功标准和决策规则。适用于先验证关键假设再决定是否投入的场景。
 type: component
 best_for:
-  - "Testing a product hypothesis quickly"
-  - "Designing a validation experiment before full build"
-  - "Clarifying what signal would change the decision"
+  - "快速验证产品假设"
+  - "设计 build 前实验"
+  - "明确什么信号会改变决策"
 scenarios:
-  - "Create a quick test for whether users want AI-generated release notes"
-  - "Design an experiment to validate onboarding guidance demand"
+  - "验证用户是否想要 AI 自动发布说明"
+  - "设计一个 onboarding 引导实验"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a concise experiment brief that makes the hypothesis, signal, and decision rule explicit.
+把“先试试”变成一个真正可判断去留的实验。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：把验证实验设计成可判断去留的简报。
-- 适用：不想先大做特做，想先验证关键假设时。
-- 输出：假设、受众、方法、成功阈值、决策规则。
+每个好实验都应说明：
 
-## Key Concepts
+1. 假设
+2. 受众
+3. 方法
+4. 成功信号
+5. 决策规则
 
-### Every Good Experiment Brief Defines
-
-1. Hypothesis
-2. Audience
-3. Test method
-4. Success signal
-5. Decision rule
-
-### What This Is Not
-
-- Not a general research plan
-- Not a launch plan
-- Not a metric list without a decision threshold
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## Experiment Brief
 
 ### Hypothesis
-[What you believe]
+[假设]
 
 ### Audience
-[Who to test with]
+[受众]
 
 ### Method
-[Prototype, concierge test, fake door, survey, interview, etc.]
+[方法]
 
 ### Success Criteria
-- [Signal]
-- [Threshold]
+- [信号]
 
 ### Decision Rule
-[What you will do if the signal is weak, mixed, or strong]
+[强、中、弱信号下怎么处理]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "If at least 30 percent of PMs who view the fake-door entry click through and 5 agree to a follow-up concierge test, we will invest in a prototype."
+- “如果 fake door 点击率超过 30%，且有 5 个用户愿意进入 concierge test，就继续做原型。”
 
-Bad:
+差：
 
-- "Let's test it and see what happens."
+- “先测一下看感觉。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- Testing too many assumptions at once
-- Using vanity engagement instead of decision signals
-- Running an experiment without a next-step rule
+- 一次测太多假设
+- 用 vanity metric
+- 没有明确决策规则
 
-## References
+## References / 关联项
 
 - `../problem-statement/SKILL.md`
 - `../ai-feature-brief/SKILL.md`
+

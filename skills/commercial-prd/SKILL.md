@@ -1,75 +1,66 @@
 ---
 name: commercial-prd
-description: Build a PRD for a monetization, pricing, packaging, onboarding, or conversion initiative. Use when a commercial product change needs a decision-ready product document.
+description: 为定价、套餐、转化、升级、留存等商业化项目写 PRD。适用于商业化产品改动需要成文对齐的场景。
 type: workflow
 best_for:
-  - "Writing a commercial initiative PRD"
-  - "Structuring monetization or conversion changes"
-  - "Aligning teams on pricing or growth work"
+  - "写商业化项目 PRD"
+  - "整理 monetization 或 conversion 项目"
+  - "对齐 pricing 或 growth 方案"
 scenarios:
-  - "Create a PRD for a self-serve upgrade redesign"
-  - "Write a PRD for a pricing and plan restructuring project"
+  - "为自助升级流程改版写 PRD"
+  - "为 pricing 重构项目写一份 PRD"
 estimated_time: "60-120 min"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Guide the creation of a PRD for commercial product work such as pricing, packaging, onboarding, upgrade, and retention initiatives.
+把商业化相关的项目整理成结构化 PRD，便于跨团队协作和 rollout。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：为商业化相关改动写一份结构化 PRD。
-- 适用：定价、套餐、转化、升级、留存类项目。
-- 输出：问题、指标、方案、商业影响、风险和范围。
+商业化 PRD 额外要说明：
 
-## Key Concepts
-
-### Commercial PRDs Need Extra Clarity On
-
-- target segment
+- 目标客群
 - monetization logic
-- affected funnel stage
-- revenue and retention impact
+- 影响的 funnel stage
+- revenue 和 retention 影响
 
-## Application
+## Application / 用法
 
-### Phase 1: Problem and Segment
+### Phase 1 / 问题和客群
 
-- identify the commercial problem
-- define the segment most affected
+- 定义商业问题
+- 明确受影响分群
 
-### Phase 2: Metric Baseline
+### Phase 2 / 指标 baseline
 
-- define the baseline and target
-- use `../revenue-metrics-scorecard/SKILL.md`
+- 用 `../revenue-metrics-scorecard/SKILL.md`
 
-### Phase 3: Solution and Tradeoffs
+### Phase 3 / 方案和取舍
 
-- define the proposed change
-- clarify pricing, onboarding, or packaging tradeoffs
+- 明确 pricing、packaging、onboarding 或 upgrade 取舍
 
-### Phase 4: Risks and Rollout
+### Phase 4 / 风险和 rollout
 
-- identify rollout risks
-- define guardrails and rollout stages
+- 说明 rollout 风险、guardrails 和节奏
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- A PRD for upgrade conversion that names the segment, baseline conversion, success target, and packaging logic.
+- 一份明确写出目标分群、baseline conversion、success target 和 pricing logic 的 PRD。
 
-Bad:
+差：
 
-- A growth PRD that says "improve conversion" without a funnel stage or commercial hypothesis.
+- “提升转化”但没有说明哪一段漏斗、也没有商业假设的 PRD。
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- writing a generic feature PRD for a commercial problem
-- omitting pricing or segment tradeoffs
-- missing rollout guardrails
+- 用通用 feature PRD 写商业化问题
+- 不写 pricing 或分群取舍
+- 忽略 rollout guardrails
 
-## References
+## References / 关联项
 
 - `../pricing-packaging-brief/SKILL.md`
 - `../revenue-metrics-scorecard/SKILL.md`

@@ -1,84 +1,78 @@
 ---
 name: model-selection-advisor
-description: Choose a model strategy based on task shape, latency, cost, reliability, and risk tolerance. Use when an AI feature needs a practical model choice or routing approach.
+description: 根据任务类型、时延、成本、稳定性和风险容忍度选择模型策略。适用于决定单模型、路由或 fallback 方案的场景。
 type: interactive
 best_for:
-  - "Choosing a model for a product feature"
-  - "Balancing quality, latency, and cost"
-  - "Deciding whether routing or fallback is needed"
+  - "选模型方案"
+  - "平衡质量、时延和成本"
+  - "决定是否需要路由和 fallback"
 scenarios:
-  - "Help me choose a model for AI meeting note summaries"
-  - "Do we need one model or a routed strategy for PM workflows?"
+  - "为 AI 会议纪要功能选模型"
+  - "我们该用单模型还是路由策略"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Recommend a model selection strategy that fits the product context instead of choosing based on hype, benchmark screenshots, or one-off demos.
+推荐一个和产品目标匹配的模型策略，而不是凭 hype 或 demo 效果拍脑袋。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：根据任务、时延、成本和风险来选模型策略。
-- 适用：不知道该用单模型、路由还是带 fallback 的组合时。
-- 输出：推荐策略、原因、运营约束和下一步验证事项。
+模型选择通常取决于：
 
-## Key Concepts
+- 任务复杂度
+- latency 容忍度
+- 成本约束
+- 质量门槛
+- 出错代价
 
-### Model Choice Depends On
+## Application / 用法
 
-- task complexity
-- latency tolerance
-- budget
-- quality bar
-- risk if the output is wrong
+最多问 5 个短问题：
 
-## Application
+1. 模型要完成什么任务
+2. 错误输出的代价多高
+3. 可接受时延是多少
+4. 成本约束是什么
+5. 是否需要路由或 fallback
 
-Ask up to 5 short questions:
-
-1. What job is the model doing?
-2. How wrong can the output be before it causes harm?
-3. What latency is acceptable?
-4. What cost constraints matter?
-5. Do you need a single model or routing with fallback?
-
-Then output:
+输出：
 
 ```markdown
 ## Model Strategy Recommendation
 
 ### Recommended Approach
-[Single model, routed stack, fallback path, or hybrid]
+[单模型 / 路由 / fallback / hybrid]
 
 ### Why It Fits
-- [Reason]
-- [Reason]
+- [原因]
 
 ### Operational Notes
-- [Latency]
-- [Cost]
-- [Reliability]
+- [时延]
+- [成本]
+- [稳定性]
 
 ### What To Validate Next
-- [Open question]
+- [下一步验证项]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Use a stronger primary model for synthesis, but route short classification tasks to a faster cheaper model."
+- “复杂总结用强模型，短分类任务路由到更快更便宜的模型。”
 
-Bad:
+差：
 
-- "Use the biggest model available for everything."
+- “所有任务都用最大的模型。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- optimizing only for demo quality
-- ignoring cost at scale
-- forgetting fallback behavior
+- 只看 demo 效果
+- 忽略规模化成本
+- 忘记 fallback
 
-## References
+## References / 关联项
 
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-feature-brief/SKILL.md`
+

@@ -1,73 +1,63 @@
 ---
 name: north-star-metric
-description: Define a north star metric with guardrails and usage logic. Use when a product team needs one primary outcome metric without losing sight of quality and risk.
+description: 定义一个北极星指标及其 guardrail。适用于团队需要一个主要结果指标而不是一堆松散 KPI 的场景。
 type: component
 best_for:
-  - "Defining a product north star metric"
-  - "Clarifying primary outcome versus guardrail metrics"
-  - "Aligning teams on what good looks like"
+  - "定义北极星指标"
+  - "区分主指标和守护指标"
+  - "统一团队对价值的理解"
 scenarios:
-  - "Help me define the north star metric for an AI research assistant"
-  - "We have too many KPIs and need one primary outcome"
+  - "为 AI 研究助手定义北极星指标"
+  - "我们 KPI 太多，需要一个主指标"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a clear north star metric definition that helps a team align on the primary value outcome while protecting against harmful optimization.
+定义一个真正代表用户价值的核心指标，并补上 guardrails，避免错误优化。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：定义一个真正代表用户价值的核心指标。
-- 适用：团队 KPI 太多、方向分散、需要一个主目标时。
-- 输出：北极星指标、为什么代表价值、守护指标和复盘方式。
+好的北极星指标应该：
 
-## Key Concepts
+- 体现用户价值
+- 可被产品工作影响
+- 不容易被刷
+- 配套 guardrails
 
-### A Good North Star Metric
-
-- captures delivered user value
-- can be influenced by product work
-- is not easily gamed
-- is paired with guardrails
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## North Star Metric
 
 ### Primary Metric
-[Metric and definition]
+[主指标]
 
 ### Why It Represents Value
-[Why this metric matters]
+[为什么代表价值]
 
 ### Guardrails
-- [Quality guardrail]
-- [Trust or business guardrail]
+- [守护指标]
 
 ### Review Logic
-- [How often it is reviewed]
-- [Who owns it]
+- [如何复盘]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Weekly accepted AI-generated outputs per active PM" with edit-rate and trust complaints as guardrails.
+- “每周被 PM 接受的 AI 生成输出数”，同时用 edit rate 和信任投诉做 guardrails。
 
-Bad:
+差：
 
-- "Number of prompts sent to the AI."
+- “用户发送了多少 prompt。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- choosing a vanity metric
-- skipping guardrails
-- defining a metric the team cannot influence
+- 选 vanity metric
+- 没有守护指标
+- 团队根本无法影响这个指标
 
-## References
+## References / 关联项
 
 - `../ai-launch-checklist/SKILL.md`

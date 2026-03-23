@@ -1,30 +1,9 @@
 # AI Product Management Skills
 
-这是一个给产品经理和 AI agent 用的可复用 PM 技能库。
+主 README 已经改成中文版本。
 
-它现在覆盖两条主线：
+推荐直接看：
 
-- `AI PM`：AI 功能定义、评估、风险、上线
-- `商业化 PM`：定价、转化、留存、增长、收入指标
-
-## 仓库结构
-
-- `skills/`：单个技能
-- `commands/`：多技能串联工作流
-- `docs/`：使用说明、构建说明、发布节奏
-- `scripts/`：检索和 catalog 生成脚本
-- `catalog/`：自动生成的技能索引
-
-## 建议起步顺序
-
-1. 读 `START_HERE.md` 或 `START_HERE.zh-CN.md`
-2. 先跑一个技能，不要一开始就跑复杂工作流
-3. 给足上下文：目标用户、业务指标、时间范围、约束
-
-## 适合处理的主题
-
-- 问题定义和 PRD
-- AI 功能设计与上线准备
-- 商业化漏斗诊断
-- 定价与套餐设计
-- 收入指标和增长实验
+- [README.md](/Users/yancheng/Documents/AI%20Product%20Management/README.md)
+- [START_HERE.md](/Users/yancheng/Documents/AI%20Product%20Management/START_HERE.md)
+- [Using PM Skills with Codex.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/Using%20PM%20Skills%20with%20Codex.md)

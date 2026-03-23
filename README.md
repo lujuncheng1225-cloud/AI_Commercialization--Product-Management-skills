@@ -1,78 +1,59 @@
 # AI Product Management Skills
 
-Reusable PM skills for human product managers and AI agents.
+一个给产品经理和 AI agent 使用的可复用 PM 技能库。
 
-Chinese docs:
+当前覆盖两条主线：
 
-- `README.zh-CN.md`
-- `START_HERE.zh-CN.md`
-- `docs/Using PM Skills with Codex.zh-CN.md`
+- `AI PM`：AI 功能定义、评估、风险、模型策略、上线准备
+- `Commercial PM`：定价、转化漏斗、留存、增长实验、收入指标、商业化 PRD
 
-This repo covers two lanes:
+## Structure / 结构
 
-- `AI PM`: feature shaping, evaluation, launch, model strategy
-- `Commercial PM`: pricing, funnel, retention, revenue, growth
+- `skills/`：单个技能
+- `commands/`：多技能工作流
+- `docs/`：使用和维护文档
+- `scripts/`：检索和 catalog 脚本
+- `catalog/`：自动生成索引
 
-Core structure:
+## Featured Skills / 代表技能
 
-- `skills/` contains reusable PM skills
-- `commands/` contains multi-skill workflows
-- `docs/` contains onboarding and operating guides
-- `scripts/` contains lightweight discovery helpers
-- `catalog/` is reserved for generated indexes
+- `problem-statement`：问题定义
+- `prd-development`：通用 PRD 工作流
+- `ai-feature-brief`：AI 功能定义
+- `llm-evaluation-plan`：AI 评估方案
+- `pricing-packaging-brief`：定价与套餐设计
+- `conversion-funnel-diagnostic`：转化漏斗诊断
+- `retention-levers-review`：留存杠杆分析
+- `revenue-metrics-scorecard`：商业化指标看板
 
-## Featured Skills
+## First Run / 快速开始
 
-- `problem-statement` - component skill for framing a customer or business problem
-- `prd-development` - workflow skill for building a PRD from context to requirements
-- `ai-feature-brief` - component skill for defining an AI feature clearly
-- `llm-evaluation-plan` - component skill for AI quality planning
-- `pricing-packaging-brief` - component skill for monetization design
-- `conversion-funnel-diagnostic` - component skill for finding funnel leaks
-- `growth-experiment-design` - component skill for growth tests
-- `retention-levers-review` - component skill for retention analysis
-- `revenue-metrics-scorecard` - component skill for commercial health metrics
-
-## First Run
-
-Read `START_HERE.md`, then try one of these:
+先看 [START_HERE.md](/Users/yancheng/Documents/AI%20Product%20Management/START_HERE.md)，然后直接跑一个 skill 或 command。
 
 ```text
-Using skills/problem-statement/SKILL.md, help me frame the problem of low activation for new B2B users. Ask up to 3 clarifying questions first.
+Using skills/problem-statement/SKILL.md，帮我定义新 B2B 用户激活低的问题。先问不超过 3 个澄清问题，再输出 markdown。
 ```
 
 ```text
-Using skills/prioritization-advisor/SKILL.md, help me choose a prioritization framework for 20 roadmap requests and one quarter of capacity.
+Run commands/shape-ai-feature.md for this request: 为产品团队设计一个 AI 会议纪要功能，自动提取 action items 和 decisions。
 ```
 
 ```text
-Run commands/write-prd.md for this request: onboarding redesign for first-time AI product managers.
+Run commands/commercial-growth-review.md for this request: 诊断我们 self-serve SaaS 从激活到付费的转化掉点。
 ```
 
 ```text
-Run commands/shape-ai-feature.md for this request: AI meeting notes that extract action items and decision summaries for product teams.
+Run commands/write-commercial-prd.md for this request: 重做升级流程并重新设计 pro 套餐包装。
 ```
 
-```text
-Run commands/prepare-ai-launch.md for this request: launch an AI writing assistant for PM weekly updates.
-```
-
-```text
-Run commands/commercial-growth-review.md for this request: diagnose trial-to-paid drop-off in our self-serve SaaS funnel.
-```
-
-```text
-Run commands/write-commercial-prd.md for this request: redesign upgrade flow and plan packaging for our pro tier.
-```
-
-## Principles
+## Principles / 原则
 
 - Outcome over output
 - Evidence over opinion
 - Reusable workflows over one-off prompts
 - Clear triggers over vague descriptions
 
-Generate indexes with:
+生成索引：
 
 ```bash
 python3 scripts/generate-catalog.py

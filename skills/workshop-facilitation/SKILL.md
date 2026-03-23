@@ -1,88 +1,70 @@
 ---
 name: workshop-facilitation
-description: Guide a product management session with clear questions, progress markers, and structured outputs. Use when a PM task needs a guided conversation before drafting or recommending.
+description: 用结构化提问来引导产品管理会话。适用于需求模糊、背景很乱、需要先澄清再产出的场景。
 type: interactive
 best_for:
-  - "Clarifying ambiguous PM requests"
-  - "Running a guided session before artifact creation"
-  - "Structuring stakeholder or product conversations"
+  - "澄清模糊 PM 需求"
+  - "在写文档前先做引导式会话"
+  - "组织复杂的产品讨论"
 scenarios:
-  - "I have a messy problem statement and need to get clear before writing a PRD"
-  - "Help me facilitate a prioritization session with limited context"
+  - "我有一堆零散背景，先帮我理清问题再写 PRD"
+  - "先帮我把决策会话跑顺，再给建议"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Guide PM work through a structured conversation before producing an output.
+在正式产出之前，用结构化对话把问题、约束、假设和目标收束清楚。
 
-This skill is the interaction protocol for facilitation-heavy PM skills. It is designed to reduce context dumping, keep the session focused, and improve output quality.
+## Key Concepts / 核心概念
 
-## Chinese Summary
+### Entry Modes / 进入方式
 
-- 用途：在正式产出之前，先把模糊需求收束成可执行会话。
-- 适用：需求不清、背景很乱、需要分步引导时。
-- 输出：澄清后的上下文、假设、下一步产出方向。
+- Guided：一轮一个问题
+- Context dump：先接收一大段背景，再补关键缺口
+- Best guess：在信息不足时基于假设快速推进
 
-## Key Concepts
+### Facilitation Rules / 引导规则
 
-### Entry Modes
+- 开始前先说明目标和方式
+- 一轮只问一个高价值问题
+- 问题尽量具体、口语化
+- 在起草前先回显已知信息和假设
 
-- Guided: ask one question at a time
-- Context dump: accept a block of context, then summarize gaps
-- Best guess: proceed quickly with explicit assumptions
+## Application / 用法
 
-### Facilitation Rules
+### Opening Pattern / 开场模式
 
-- Start by naming the mode and expected outcome
-- Ask one question per turn when in guided mode
-- Keep questions concrete and plain-language
-- Reflect back key assumptions before drafting
-- Use numbered options when a user is choosing among paths
+1. 说明这次会话想产出什么
+2. 说明会怎么问
+3. 缺关键信息时，优先补核心上下文
 
-## Application
+### Progress Pattern / 进度模式
 
-### Opening Pattern
-
-Start with:
-
-1. The likely outcome to be produced
-2. The entry mode options
-3. A request for missing context if needed
-
-### Progress Pattern
-
-Use simple labels such as:
+可以用简单进度标签：
 
 - Context 1/4
 - Decision 2/3
 - Drafting
 
-### Closing Pattern
+## Examples / 示例
 
-Before final output:
+好：
 
-1. Summarize the current understanding
-2. State assumptions
-3. Confirm constraints if any are still uncertain
+- “我会先问 4 个短问题，最后给一个主建议和一个备选方案。”
 
-## Examples
+差：
 
-Good:
+- “请把所有背景、文档、目标、用户、路线图、历史都发给我。”
 
-- "We are choosing a prioritization framework. I will ask 4 short questions, then recommend one method and one fallback."
+## Common Pitfalls / 常见误区
 
-Bad:
+- 一开始就问太多问题
+- 到最后才暴露关键假设
+- 问题过于抽象
 
-- "Tell me everything about your product, users, roadmap, stakeholders, and strategy."
+## References / 关联项
 
-## Common Pitfalls
-
-- Asking too many questions before narrowing the task
-- Hiding assumptions until the end
-- Using abstract consulting language instead of direct prompts
-
-## References
-
+- `../problem-statement/SKILL.md`
 - `../prioritization-advisor/SKILL.md`
 - `../prd-development/SKILL.md`
-- `../problem-statement/SKILL.md`
+

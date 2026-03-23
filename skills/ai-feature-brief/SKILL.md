@@ -1,94 +1,74 @@
 ---
 name: ai-feature-brief
-description: Define an AI feature with clear user job, inputs, outputs, quality bar, and fallback behavior. Use when turning an LLM idea into a scoped product concept.
+description: 定义一个 AI 功能的用户任务、输入、输出、质量标准和 fallback。适用于把模糊 AI 点子整理成可讨论方案的场景。
 type: component
 best_for:
-  - "Shaping an AI feature before writing a full PRD"
-  - "Clarifying what an AI capability should actually do"
-  - "Reducing vague AI feature ideas"
+  - "定义 AI 功能"
+  - "在写完整 PRD 前先把 AI 能力说清楚"
+  - "减少模糊的 AI 想法"
 scenarios:
-  - "Define an AI summarization feature for customer interview notes"
-  - "Turn an AI copilot idea into a scoped product brief"
+  - "定义一个 AI 访谈总结功能"
+  - "把 AI copilot 点子整理成产品 brief"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a concise feature brief for an AI-powered capability before the team commits to build.
+在团队真正投入开发前，先把 AI 功能定义清楚。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：在写完整 PRD 前，先把 AI 功能定义清楚。
-- 适用：只有一个 AI 点子，还没明确输入、输出和质量标准时。
-- 输出：用户任务、触发点、输入、输出、质量门槛、回退策略。
+一个 AI feature brief 至少要说明：
 
-## Key Concepts
+1. 用户要完成什么任务
+2. 什么时候触发
+3. 输入是什么
+4. 输出是什么
+5. 什么叫“足够好”
+6. 失败模式是什么
+7. fallback 怎么处理
 
-### An AI Feature Brief Should Clarify
-
-1. User job to be done
-2. Trigger or entry point
-3. Inputs the model needs
-4. Outputs the product should return
-5. Quality bar for a useful result
-6. Failure modes
-7. Fallback or recovery behavior
-
-### What This Is Not
-
-- Not a model architecture decision document
-- Not a vague brainstorm about AI possibilities
-- Not a substitute for evaluation planning
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## AI Feature Brief
 
 ### User Job
-[What the user is trying to get done]
+[用户任务]
 
 ### Trigger
-[When the feature is invoked]
+[触发点]
 
 ### Inputs
-- [Required input]
-- [Optional context]
+- [输入]
 
 ### Outputs
-- [Primary output]
-- [Secondary output]
+- [输出]
 
 ### Quality Bar
-- [What makes the result useful]
-- [What failure looks like]
+- [什么算好]
 
 ### Fallback Behavior
-- [What happens when confidence is low or output is weak]
-
-### Open Product Questions
-- [What still needs validation]
+- [低置信度时怎么办]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Summarize an interview transcript into pains, workarounds, and opportunity themes, with source snippets and confidence notes."
+- “把访谈逐字稿总结成 pains、workarounds 和 opportunity themes，并附原文片段。”
 
-Bad:
+差：
 
-- "Use AI to make research easier."
+- “用 AI 让调研更容易。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- Treating a model capability as the user value
-- Ignoring fallback behavior
-- Defining outputs without a quality bar
+- 把模型能力当成用户价值
+- 没有 fallback
+- 没有质量门槛
 
-## References
+## References / 关联项
 
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-risk-review/SKILL.md`
-- `../problem-statement/SKILL.md`
+

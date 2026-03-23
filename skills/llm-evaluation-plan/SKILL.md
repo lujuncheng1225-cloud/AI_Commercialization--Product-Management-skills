@@ -1,97 +1,73 @@
 ---
 name: llm-evaluation-plan
-description: Define how an AI feature will be evaluated offline and online with representative tasks, metrics, and failure thresholds. Use when an LLM feature needs a quality plan before launch.
+description: 为 AI 功能定义离线与线上评估方案，包括样本、指标和阻断阈值。适用于上线前需要明确质量标准的场景。
 type: component
 best_for:
-  - "Designing evaluation for an AI product feature"
-  - "Turning subjective quality concerns into measurable checks"
-  - "Defining launch criteria for an LLM feature"
+  - "为 AI 功能设计评估方案"
+  - "把主观质量讨论变成可测方案"
+  - "定义 LLM 功能上线门槛"
 scenarios:
-  - "Create an evaluation plan for an AI meeting notes feature"
-  - "How should we assess the quality of an AI support draft assistant?"
+  - "为 AI 会议纪要做评估方案"
+  - "怎么评估 AI 支持助手的质量"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Build a practical evaluation plan for an AI feature so quality can be discussed with evidence instead of opinion.
+用一套可执行的评估方案，把“这个 AI 好不好”从感觉题变成证据题。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：给 AI 功能制定上线前后的评估方案。
-- 适用：团队担心“效果好不好”但还没有清晰衡量方式时。
-- 输出：离线样本集、指标、阻断阈值、线上监控信号。
+- Offline evaluation：上线前用代表性样本测
+- Online evaluation：上线后看真实行为和纠错信号
 
-## Key Concepts
+常见维度：
 
-### Evaluation Needs Two Layers
-
-- Offline evaluation: representative examples and scoring before launch
-- Online evaluation: production behavior after release
-
-### Common Evaluation Dimensions
-
-- accuracy
-- completeness
+- 准确性
+- 完整性
 - groundedness
 - latency
-- user acceptance
-- recovery from bad outputs
+- 用户接受度
+- 出错恢复能力
 
-### What This Is Not
-
-- Not a purely technical benchmark
-- Not a vague statement like "we will test quality"
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## Evaluation Plan
 
 ### Feature
-[Feature name]
-
-### Primary Job To Evaluate
-[What the feature must do well]
+[功能]
 
 ### Offline Test Set
-- [Representative scenario 1]
-- [Representative scenario 2]
-- [Representative scenario 3]
+- [样本场景]
 
 ### Metrics
-- [Metric]
-- [Metric]
+- [指标]
 
 ### Failure Thresholds
-- [What outcome blocks launch]
+- [什么情况不能上线]
 
 ### Online Signals
-- [Acceptance or usage signal]
-- [Quality or correction signal]
-
-### Review Cadence
-- [Who reviews and how often]
+- [线上信号]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Score 50 representative meeting transcripts for action-item extraction precision, hallucinated decisions, and edit rate."
+- “抽 50 份代表性会议记录，评估 action-item 抽取准确率、幻觉率和最终 edit rate。”
 
-Bad:
+差：
 
-- "Ask a few people if the AI feels good."
+- “找几个人试一下感觉好不好。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- Evaluating on toy examples
-- Measuring only latency and not usefulness
-- Launching without a blocking threshold
+- 用玩具样本评估
+- 只看速度不看 usefulness
+- 没有 blocking threshold
 
-## References
+## References / 关联项
 
 - `../ai-feature-brief/SKILL.md`
 - `../ai-risk-review/SKILL.md`
+

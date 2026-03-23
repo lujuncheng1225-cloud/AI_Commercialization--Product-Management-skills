@@ -1,92 +1,76 @@
 ---
 name: ai-feature-shaping
-description: Shape an AI product initiative from problem to feature brief, evaluation plan, and risk review. Use when an AI idea needs product definition before roadmap commitment.
+description: 把一个 AI 产品想法整理成问题定义、功能定义、评估方案和风险评审。适用于 roadmap 前的产品定义场景。
 type: workflow
 best_for:
-  - "Turning an AI idea into a decision-ready concept"
-  - "Preparing an AI initiative for roadmap discussion"
-  - "Structuring cross-functional AI product definition work"
+  - "把 AI 点子整理成可决策方案"
+  - "roadmap 前做 AI 功能定义"
+  - "组织跨团队 AI 产品讨论"
 scenarios:
-  - "Shape an AI copilot concept before putting it on the roadmap"
-  - "Turn a vague AI assistant request into a scoped initiative"
+  - "把一个 AI copilot 想法整理成产品方案"
+  - "在立项前先把 AI 功能定义清楚"
 estimated_time: "45-90 min"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Guide a PM through the minimum product work needed to shape an AI initiative responsibly.
+把一个模糊的 AI 想法整理成能做决策、能进 roadmap 讨论的产品定义。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：把一个 AI 想法整理成能进 roadmap 讨论的产品定义。
-- 适用：还停留在概念阶段，但已经需要进入产品决策时。
-- 输出：问题定义、功能定义、评估方案、风险评审和建议动作。
+这条 workflow 产出四个核心结果：
 
-## Key Concepts
+1. 问题定义
+2. 功能定义
+3. 评估方案
+4. 风险评审
 
-### This Workflow Produces
+## Application / 用法
 
-1. problem clarity
-2. feature definition
-3. evaluation plan
-4. risk review
+### Phase 1 / 问题定义
 
-### This Workflow Avoids
+- 用 `../problem-statement/SKILL.md`
 
-- jumping from idea to roadmap commitment
-- demo-driven planning
-- treating model output quality as somebody else's problem
+### Phase 2 / 功能定义
 
-## Application
+- 用 `../ai-feature-brief/SKILL.md`
 
-### Phase 1: Problem Framing
+### Phase 3 / 评估方案
 
-- Use `../problem-statement/SKILL.md`
-- Confirm the user problem and expected value
+- 用 `../llm-evaluation-plan/SKILL.md`
 
-### Phase 2: Feature Definition
+### Phase 4 / 风险评审
 
-- Use `../ai-feature-brief/SKILL.md`
-- Define trigger, input, output, quality bar, and fallback
+- 用 `../ai-risk-review/SKILL.md`
 
-### Phase 3: Evaluation Planning
+### Phase 5 / 建议动作
 
-- Use `../llm-evaluation-plan/SKILL.md`
-- Define offline examples, online signals, and block-release thresholds
-
-### Phase 4: Risk Review
-
-- Use `../ai-risk-review/SKILL.md`
-- Surface launch blockers and monitoring needs
-
-### Phase 5: Recommendation
-
-Return one of:
+输出以下之一：
 
 - proceed to PRD
 - run an experiment first
-- hold until a major risk is reduced
+- hold until risk is reduced
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- An AI feature concept that explains why it matters, how good is good enough, and what happens when the model is wrong.
+- 一个同时说明了价值、质量门槛和出错处理方式的 AI 功能定义。
 
-Bad:
+差：
 
-- A roadmap request that says "add AI assistant" with no problem, no evaluation, and no fallback.
+- “加个 AI 助手”这种没有问题、没有评估、没有 fallback 的请求。
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- Confusing demo usefulness with production readiness
-- Skipping evaluation planning
-- Forgetting recovery behavior for bad outputs
+- demo 导向而不是产品导向
+- 跳过评估
+- 忽略 bad output 时怎么办
 
-## References
+## References / 关联项
 
-- `../workshop-facilitation/SKILL.md`
 - `../problem-statement/SKILL.md`
 - `../ai-feature-brief/SKILL.md`
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-risk-review/SKILL.md`
+

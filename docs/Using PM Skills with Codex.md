@@ -1,38 +1,32 @@
 # Using PM Skills with Codex
 
-Codex can work directly from the files in this repository.
+你可以直接让 Codex 读取这个仓库里的文件来工作。
 
-Chinese companion:
+## 基本模式
 
-- `Using PM Skills with Codex.zh-CN.md`
+明确指定某个 skill 或 command 文件，然后说明工作方式。
 
-## Basic Pattern
-
-Point Codex at a specific skill file and tell it how to operate.
-
-Example:
+例如：
 
 ```text
-Using skills/problem-statement/SKILL.md, help me frame the problem of low activation for new users. Ask up to 3 clarifying questions first, then produce the final output in markdown.
+Using skills/problem-statement/SKILL.md，帮我定义新用户激活率低的问题。先问不超过 3 个澄清问题，再用 markdown 输出结果。
 ```
 
-## Skill Types
+## Skill 类型
 
-- `component`: generates one artifact
-- `interactive`: asks adaptive questions and then recommends
-- `workflow`: breaks a larger PM task into phases
+- `component`：产出一个东西
+- `interactive`：先提问再推荐
+- `workflow`：分阶段完成一类 PM 工作
 
-## Commands
+## Command 用法
 
-Commands are thin workflow wrappers.
-
-Example:
+如果你不想一个 skill 一个 skill 地调用，可以直接跑 command：
 
 ```text
-Run commands/write-prd.md for this request: create a PRD for improving onboarding completion.
+Run commands/write-prd.md for this request: 为 onboarding completion 提升写一份 PRD。
 ```
 
-## Recommended Prompt Pattern
+## 推荐提示结构
 
 ```text
 Using skills/<skill-name>/SKILL.md:
@@ -42,8 +36,8 @@ Using skills/<skill-name>/SKILL.md:
 4. End with assumptions, risks, and next steps.
 ```
 
-## Troubleshooting
+## 常见问题
 
-- If output is generic, provide product stage, segment, KPI, timeline, and constraints.
-- If the structure drifts, instruct Codex to follow the skill sections exactly.
-- If the task is large, run one phase at a time instead of asking for everything in a single pass.
+- 输出太泛：补充产品阶段、用户分群、KPI、时间范围和约束
+- 结构跑偏：明确要求按 skill 的章节来输出
+- 任务太大：先跑一阶段，不要一次要全部

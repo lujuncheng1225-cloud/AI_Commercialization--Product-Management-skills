@@ -1,73 +1,64 @@
 ---
 name: retention-levers-review
-description: Review retention drivers, drop-off patterns, and intervention ideas across habit, collaboration, value recurrence, and lifecycle design. Use when a product keeps acquiring users but struggles to retain them.
+description: 分析留存驱动、流失模式和干预杠杆。适用于产品能获客但复用率和持续留存不足的场景。
 type: component
 best_for:
-  - "Reviewing retention problems"
-  - "Analyzing why usage does not repeat"
-  - "Identifying retention intervention ideas"
+  - "分析留存问题"
+  - "理解为什么用户不回来"
+  - "找留存干预点"
 scenarios:
-  - "Users activate once but do not come back"
-  - "We need a retention review for our team collaboration product"
+  - "用户激活一次后不再回来"
+  - "评审团队协作产品的留存问题"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Review retention through the product behaviors and value loops that make usage repeat.
+从重复价值、使用频率和工作流嵌入程度去分析留存。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：分析为什么用户不持续回来，留存杠杆在哪。
-- 适用：激活后不复用、团队型产品黏性不够、价值频率低。
-- 输出：留存驱动、掉线模式、杠杆点和干预建议。
+留存往往取决于：
 
-## Key Concepts
+- repeat value 的速度
+- 协作或网络效应
+- habit loop 强度
+- lifecycle 触达设计
 
-### Retention Often Depends On
-
-- time to repeat value
-- team or network effects
-- habit loop strength
-- lifecycle messaging
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## Retention Review
 
 ### Current Pattern
-[What retention looks like]
+[当前留存模式]
 
 ### Likely Levers
-- [Lever]
-- [Lever]
+- [杠杆]
 
 ### Risks or Friction
-- [Issue]
+- [摩擦]
 
 ### Recommended Interventions
-- [Action]
+- [干预建议]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "The product delivers value once, but there is no recurring trigger that brings the user back into the workflow."
+- “产品只在首次使用时提供价值，但没有形成任何 recurring trigger 把用户带回日常 workflow。”
 
-Bad:
+差：
 
-- "Retention is weak because users are busy."
+- “用户流失是因为大家都太忙了。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- treating retention as only a CRM problem
-- ignoring collaborative or repeated-use mechanics
-- recommending re-engagement before fixing repeat value
+- 把留存只当 CRM 问题
+- 忽略协作或复用机制
+- 在核心价值没修好前先做召回
 
-## References
+## References / 关联项
 
 - `../growth-experiment-design/SKILL.md`
 - `../north-star-metric/SKILL.md`

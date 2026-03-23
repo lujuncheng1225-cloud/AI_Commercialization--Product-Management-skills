@@ -1,74 +1,66 @@
 ---
 name: growth-experiment-design
-description: Design a growth experiment with target metric, hypothesis, change, audience, and decision rule. Use when a commercial product needs disciplined testing instead of random optimization.
+description: 设计增长实验，明确目标指标、假设、改动、受众和决策规则。适用于商业化产品做转化或留存优化测试的场景。
 type: component
 best_for:
-  - "Designing growth experiments"
-  - "Testing conversion or retention changes"
-  - "Making commercial optimization more evidence-based"
+  - "设计增长实验"
+  - "测试转化或留存改动"
+  - "让商业化优化更 evidence-based"
 scenarios:
-  - "Design an experiment to improve trial-to-paid conversion"
-  - "Create a retention test for inactive teams"
+  - "设计一个 trial-to-paid 转化实验"
+  - "为 inactive teams 设计一个留存实验"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a growth experiment brief that ties one change to one measurable decision.
+把增长实验设计成“一个改动、一个主指标、一个决策”。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：设计增长实验，而不是泛泛地“优化一下”。
-- 适用：转化、留存、升级、定价验证等问题。
-- 输出：目标指标、假设、实验改动、受众、决策规则。
+好实验通常：
 
-## Key Concepts
+- 尽量隔离一个主变量
+- 只盯一个 primary metric
+- 事先写清决策规则
 
-### Good Growth Experiments
-
-- isolate one main variable
-- target one primary metric
-- define a decision rule in advance
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## Growth Experiment
 
 ### Objective
-[What metric you want to move]
+[目标指标]
 
 ### Hypothesis
-[Why the change should work]
+[假设]
 
 ### Change
-[What will change]
+[改动]
 
 ### Audience
-[Who sees it]
+[受众]
 
 ### Decision Rule
-[What signal means continue, stop, or iterate]
+[继续 / 停止 / 迭代 的规则]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Test a guided activation checklist on new team admins and continue only if setup completion improves by at least 10 percent."
+- “给新 team admin 加 checklist，只有当 setup completion 提升至少 10% 才继续扩量。”
 
-Bad:
+差：
 
-- "Try a few ideas and pick whichever feels promising."
+- “先试几个增长点子看看。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- changing too many variables
-- using a vague success metric
-- ignoring sample size or duration logic
+- 一次改太多变量
+- 成功标准太模糊
+- 忽略样本量和时长
 
-## References
+## References / 关联项
 
 - `../conversion-funnel-diagnostic/SKILL.md`
 - `../retention-levers-review/SKILL.md`

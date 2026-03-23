@@ -1,5 +1,5 @@
-name: Repo improvement
-description: Propose an improvement to docs, commands, scripts, or repo operations.
+name: 仓库改进
+description: 提议改进 docs、commands、scripts 或仓库协作方式。
 title: "[Feature]: "
 labels:
   - enhancement
@@ -7,15 +7,14 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What is missing or weak today?
+      label: 问题
+      description: 现在缺什么，或者哪里不够好？
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed change
-      description: What would improve it?
+      label: 改进建议
+      description: 你希望怎么改？
     validations:
       required: true
-

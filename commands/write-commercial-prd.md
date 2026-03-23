@@ -1,32 +1,31 @@
 ---
 name: write-commercial-prd
-description: Create a commercial PRD by chaining funnel diagnosis, pricing logic, metrics, and rollout planning.
-argument-hint: "<commercial initiative>"
+description: 通过漏斗诊断、定价逻辑、指标和 rollout 规划来生成商业化 PRD。
+argument-hint: "<商业化项目>"
 uses:
   - conversion-funnel-diagnostic
   - pricing-packaging-brief
   - revenue-metrics-scorecard
   - commercial-prd
 outputs:
-  - Commercial PRD
-  - Baseline and target metrics
-  - Pricing or conversion assumptions
+  - 商业化 PRD
+  - baseline 和 target 指标
+  - 定价或转化假设
 ---
 
 # /write-commercial-prd
 
-Generate a PRD for a monetization, conversion, onboarding, or packaging initiative.
+为商业化、转化、onboarding 或套餐改版类项目生成 PRD。
 
-## Workflow
+## Workflow / 流程
 
-1. Use `conversion-funnel-diagnostic` to define the main commercial problem.
-2. Use `pricing-packaging-brief` if monetization structure is involved.
-3. Use `revenue-metrics-scorecard` to define baseline and target metrics.
-4. Use `commercial-prd` to write the full document.
+1. 用 `conversion-funnel-diagnostic` 定义商业问题。
+2. 涉及定价或套餐时，用 `pricing-packaging-brief`。
+3. 用 `revenue-metrics-scorecard` 定义 baseline 和 target。
+4. 用 `commercial-prd` 生成完整 PRD。
 
-## Checkpoints
+## Checkpoints / 检查点
 
-- Name the exact funnel stage or revenue problem.
-- Tie the PRD to baseline and target metrics.
-- Include rollout risks and guardrails.
-
+- 明确具体漏斗阶段或收入问题。
+- PRD 必须绑定 baseline 和 target。
+- 写清 rollout 风险和 guardrail。

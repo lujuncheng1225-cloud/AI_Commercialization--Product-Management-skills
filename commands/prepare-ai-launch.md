@@ -1,32 +1,31 @@
 ---
 name: prepare-ai-launch
-description: Prepare an AI feature for launch by chaining evaluation planning, risk review, and launch checklist work.
-argument-hint: "<AI feature or launch candidate>"
+description: 通过评估方案、风险评审和上线清单来准备 AI 功能上线。
+argument-hint: "<AI 功能或候选上线项>"
 uses:
   - llm-evaluation-plan
   - ai-risk-review
   - ai-launch-checklist
 outputs:
-  - Evaluation plan
-  - Risk review
-  - Launch checklist
-  - Go/no-go questions
+  - 评估方案
+  - 风险评审
+  - 上线清单
+  - go/no-go 问题
 ---
 
 # /prepare-ai-launch
 
-Prepare an AI feature for a more disciplined launch review.
+为 AI 功能做更严谨的上线前检查。
 
-## Workflow
+## Workflow / 流程
 
-1. Define or refine evaluation coverage with `llm-evaluation-plan`.
-2. Review quality, trust, and misuse risks with `ai-risk-review`.
-3. Review operational readiness with `ai-launch-checklist`.
-4. End with a go, no-go, or launch-with-guards recommendation.
+1. 用 `llm-evaluation-plan` 定义或补齐评估覆盖面。
+2. 用 `ai-risk-review` 看质量、信任和滥用风险。
+3. 用 `ai-launch-checklist` 检查运营准备度。
+4. 给出 go、no-go 或带保护上线的建议。
 
-## Checkpoints
+## Checkpoints / 检查点
 
-- Blocking risks should be called out explicitly.
-- Low-confidence behavior needs a recovery path.
-- Monitoring should exist before broad rollout.
-
+- 阻断风险要明确写出来。
+- 低置信度输出必须有恢复路径。
+- 大范围放量前必须先有监控。

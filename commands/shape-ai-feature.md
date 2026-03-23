@@ -1,7 +1,7 @@
 ---
 name: shape-ai-feature
-description: Shape an AI product initiative by chaining problem framing, feature definition, evaluation, and risk review.
-argument-hint: "<AI initiative or feature idea>"
+description: 通过问题定义、功能定义、评估和风险评审来整理 AI 产品项目。
+argument-hint: "<AI 项目或功能想法>"
 uses:
   - workshop-facilitation
   - problem-statement
@@ -9,27 +9,26 @@ uses:
   - llm-evaluation-plan
   - ai-risk-review
 outputs:
-  - AI feature brief
-  - Evaluation plan
-  - Risk review
-  - Launch readiness questions
+  - AI 功能 brief
+  - 评估方案
+  - 风险评审
+  - 上线准备问题
 ---
 
 # /shape-ai-feature
 
-Turn an AI feature idea into a decision-ready product concept.
+把一个 AI 功能点子整理成能做决策的产品定义。
 
-## Workflow
+## Workflow / 流程
 
-1. Use `workshop-facilitation` to clarify the problem and operating context.
-2. Use `problem-statement` to define the user and business pain.
-3. Use `ai-feature-brief` to shape the experience, inputs, outputs, and fallback behavior.
-4. Use `llm-evaluation-plan` to define how quality will be measured.
-5. Use `ai-risk-review` to surface launch risks and mitigation steps.
+1. 用 `workshop-facilitation` 澄清问题和场景。
+2. 用 `problem-statement` 定义用户痛点和业务痛点。
+3. 用 `ai-feature-brief` 明确体验、输入、输出和 fallback。
+4. 用 `llm-evaluation-plan` 定义质量如何衡量。
+5. 用 `ai-risk-review` 列出上线风险和缓解动作。
 
-## Checkpoints
+## Checkpoints / 检查点
 
-- Do not skip failure mode thinking.
-- Define a fallback path for low-confidence outputs.
-- Separate demo quality from launch quality.
-
+- 不要跳过失败模式。
+- 低置信度输出必须有 fallback。
+- 区分 demo 效果和上线质量。

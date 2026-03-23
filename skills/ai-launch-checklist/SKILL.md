@@ -1,83 +1,76 @@
 ---
 name: ai-launch-checklist
-description: Review AI launch readiness across quality, fallback behavior, monitoring, support, and rollback. Use before exposing an AI feature to broader real users.
+description: 检查 AI 功能的质量、fallback、监控、支持和回滚准备度。适用于 AI 功能面向真实用户放量前的上线审查场景。
 type: component
 best_for:
-  - "Preparing an AI feature for launch"
-  - "Running a go or no-go review"
-  - "Checking operational readiness beyond the demo"
+  - "AI 上线前检查"
+  - "go/no-go 评审"
+  - "检查 demo 之外的运营准备度"
 scenarios:
-  - "Create a launch checklist for an AI writing assistant"
-  - "Review launch readiness for AI-generated summaries"
+  - "为 AI 写作助手做上线清单"
+  - "审查 AI 总结功能的上线准备度"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a practical launch readiness checklist for AI features so teams review operations, monitoring, and recovery behavior before release.
+在 AI 功能上线前，系统性检查质量、运营和恢复能力是否到位。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：在 AI 功能上线前做一轮系统化 readiness 检查。
-- 适用：从 demo 走向真实用户、准备灰度或全量发布时。
-- 输出：质量、监控、运维、回滚等检查项和 go/no-go 建议。
-
-## Key Concepts
-
-### Launch Readiness Should Cover
+上线准备至少覆盖：
 
 - evaluation coverage
 - fallback behavior
 - trust and disclosure
 - monitoring
 - support handling
-- rollback or kill switch path
+- rollback path
 
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## AI Launch Checklist
 
 ### Quality
-- [Check]
+- [检查项]
 
 ### User Experience
-- [Check]
+- [检查项]
 
 ### Monitoring
-- [Check]
+- [检查项]
 
 ### Operations
-- [Check]
+- [检查项]
 
 ### Rollback
-- [Check]
+- [检查项]
 ```
 
-Then state:
+最后给出：
 
 - ready now
 - ready with guards
 - not ready yet
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Monitoring includes edit rate, explicit negative feedback, and escalation from low-confidence outputs."
+- “监控里包含 edit rate、明确负反馈和低置信度输出升级率。”
 
-Bad:
+差：
 
-- "The demo worked, so launch should be fine."
+- “demo 看起来不错，所以可以上线。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- treating launch as only a model quality question
-- skipping rollback planning
-- forgetting support and incident ownership
+- 把上线只看成模型质量问题
+- 没有回滚计划
+- 忽略 support ownership
 
-## References
+## References / 关联项
 
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-risk-review/SKILL.md`
+

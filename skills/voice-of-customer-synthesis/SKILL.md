@@ -1,74 +1,65 @@
 ---
 name: voice-of-customer-synthesis
-description: Synthesize customer notes, calls, tickets, or feedback into clear themes, signals, and product implications. Use when raw VOC input needs structured PM interpretation.
+description: 把访谈、工单、反馈和用户笔记整理成主题、信号和产品含义。适用于 VOC 原始材料需要结构化归纳的场景。
 type: component
 best_for:
-  - "Summarizing raw customer feedback"
-  - "Turning notes into themes and product implications"
-  - "Preparing discovery synthesis"
+  - "归纳用户反馈"
+  - "把原始访谈整理成主题"
+  - "做 discovery synthesis"
 scenarios:
-  - "Synthesize 20 discovery interviews into patterns"
-  - "Turn support tickets into recurring pain themes"
+  - "把 20 份访谈整理成主题"
+  - "把 support tickets 提炼成 recurring pain"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Turn messy customer input into an actionable synthesis for product decisions.
+把杂乱的 VOC 输入整理成支持产品决策的结构化总结。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：把访谈、工单、反馈等 VOC 材料整理成可行动结论。
-- 适用：你手里有一堆原始用户资料，但还没有提炼出主题时。
-- 输出：主题、证据、模式、以及对产品的含义。
+好的 VOC synthesis 要区分：
 
-## Key Concepts
+- observation
+- recurring pattern
+- inferred cause
+- product implication
 
-### Good VOC Synthesis Separates
-
-- observations
-- recurring patterns
-- inferred causes
-- product implications
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## VOC Synthesis
 
 ### Inputs Reviewed
-[What sources were used]
+[材料来源]
 
 ### Recurring Themes
-- [Theme]
-- [Theme]
+- [主题]
 
 ### Supporting Signals
-- [Quote or evidence]
-- [Behavior or pattern]
+- [证据]
 
 ### Product Implications
-- [What the team should consider]
+- [产品含义]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Users do not ask for AI summarization directly; they ask to avoid rereading long notes before planning."
+- “用户并不是直接要 AI 总结，他们其实是在抱怨重新通读长记录的成本太高。”
 
-Bad:
+差：
 
-- "Customers want AI because AI is popular."
+- “客户都想要 AI，因为 AI 很火。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- mixing observations with recommendations
-- overweighting one loud customer
-- losing the original evidence
+- 把观察和建议混在一起
+- 过度放大单个大客户声音
+- 丢失原始证据
 
-## References
+## References / 关联项
 
 - `../problem-statement/SKILL.md`
 - `../experiment-brief/SKILL.md`
+

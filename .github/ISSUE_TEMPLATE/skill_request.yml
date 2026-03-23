@@ -1,5 +1,5 @@
-name: Skill request
-description: Propose a new PM skill for the library.
+name: Skill 请求
+description: 为仓库提议一个新的 PM skill。
 title: "[Skill]: "
 labels:
   - skill-request
@@ -7,21 +7,20 @@ body:
   - type: input
     id: skill_name
     attributes:
-      label: Proposed skill name
+      label: 建议的 skill 名称
     validations:
       required: true
   - type: textarea
     id: trigger
     attributes:
-      label: Trigger
-      description: When should this skill be used?
+      label: 触发场景
+      description: 这个 skill 应该在什么情况下使用？
     validations:
       required: true
   - type: textarea
     id: outcome
     attributes:
-      label: Intended output
-      description: What should this skill produce or decide?
+      label: 目标输出
+      description: 这个 skill 应该产出什么，或者帮助做什么决策？
     validations:
       required: true
-

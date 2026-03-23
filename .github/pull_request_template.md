@@ -1,19 +1,18 @@
-## What changed
+## 改了什么
 
 - 
 
-## Why it changed
+## 为什么改
 
 - 
 
-## Checks
+## 检查项
 
-- [ ] Metadata is trigger-oriented
-- [ ] Examples are concrete
-- [ ] Pitfalls are included
-- [ ] Related docs or catalog were updated if needed
+- [ ] Metadata 仍然是 trigger-oriented
+- [ ] 示例足够具体
+- [ ] 包含常见误区
+- [ ] 如果需要，相关 docs 或 catalog 已更新
 
-## Notes for reviewers
+## 给 reviewer 的备注
 
 - 
-

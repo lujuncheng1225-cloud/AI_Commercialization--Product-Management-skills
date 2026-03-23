@@ -5,41 +5,41 @@ Generated from `commands`.
 ## commercial-growth-review
 
 - Path: `commands/commercial-growth-review.md`
-- Description: Review a commercial product problem by chaining funnel diagnosis, retention analysis, metrics, and growth experiments.
+- Description: 通过漏斗诊断、留存分析、指标审视和增长实验来审查商业化问题。
 - Uses: conversion-funnel-diagnostic, retention-levers-review, revenue-metrics-scorecard, growth-experiment-design
-- Outputs: Funnel diagnosis, Retention review, Revenue metric view, Experiment ideas
+- Outputs: 漏斗诊断, 留存评审, 商业指标视图, 实验建议
 
 ## prepare-ai-launch
 
 - Path: `commands/prepare-ai-launch.md`
-- Description: Prepare an AI feature for launch by chaining evaluation planning, risk review, and launch checklist work.
+- Description: 通过评估方案、风险评审和上线清单来准备 AI 功能上线。
 - Uses: llm-evaluation-plan, ai-risk-review, ai-launch-checklist
-- Outputs: Evaluation plan, Risk review, Launch checklist, Go/no-go questions
+- Outputs: 评估方案, 风险评审, 上线清单, go/no-go 问题
 
 ## prioritize
 
 - Path: `commands/prioritize.md`
-- Description: Diagnose prioritization context and recommend a fitting framework with next steps.
+- Description: 诊断优先级上下文并推荐合适框架与下一步动作。
 - Uses: workshop-facilitation, prioritization-advisor
-- Outputs: Recommended framework, Why it fits, Implementation guidance
+- Outputs: 推荐框架, 适配原因, 落地建议
 
 ## shape-ai-feature
 
 - Path: `commands/shape-ai-feature.md`
-- Description: Shape an AI product initiative by chaining problem framing, feature definition, evaluation, and risk review.
+- Description: 通过问题定义、功能定义、评估和风险评审来整理 AI 产品项目。
 - Uses: workshop-facilitation, problem-statement, ai-feature-brief, llm-evaluation-plan, ai-risk-review
-- Outputs: AI feature brief, Evaluation plan, Risk review, Launch readiness questions
+- Outputs: AI 功能 brief, 评估方案, 风险评审, 上线准备问题
 
 ## write-commercial-prd
 
 - Path: `commands/write-commercial-prd.md`
-- Description: Create a commercial PRD by chaining funnel diagnosis, pricing logic, metrics, and rollout planning.
+- Description: 通过漏斗诊断、定价逻辑、指标和 rollout 规划来生成商业化 PRD。
 - Uses: conversion-funnel-diagnostic, pricing-packaging-brief, revenue-metrics-scorecard, commercial-prd
-- Outputs: Commercial PRD, Baseline and target metrics, Pricing or conversion assumptions
+- Outputs: 商业化 PRD, baseline 和 target 指标, 定价或转化假设
 
 ## write-prd
 
 - Path: `commands/write-prd.md`
-- Description: Create a PRD by chaining problem framing, personas, requirements, and first-pass stories.
+- Description: 通过问题定义、需求整理和初步故事拆解来生成 PRD。
 - Uses: workshop-facilitation, problem-statement, prd-development
-- Outputs: Structured PRD, Success metrics, Scope boundaries
+- Outputs: 结构化 PRD, 成功指标, 范围边界

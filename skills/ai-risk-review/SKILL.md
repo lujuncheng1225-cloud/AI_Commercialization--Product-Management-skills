@@ -1,80 +1,64 @@
 ---
 name: ai-risk-review
-description: Review an AI feature for quality, trust, operational, and misuse risks with concrete mitigations. Use before launch or before committing to a broader implementation.
+description: 评审 AI 功能的质量、信任、运营、滥用和策略风险，并给出缓解动作。适用于上线前或大范围扩量前的风险审查。
 type: component
 best_for:
-  - "Reviewing AI launch risks"
-  - "Surfacing trust and quality failure modes"
-  - "Turning vague safety concerns into concrete checks"
+  - "AI 上线风险评审"
+  - "把抽象担忧变成具体检查项"
+  - "梳理 AI 功能失败模式"
 scenarios:
-  - "Review the risks of an AI assistant that drafts customer emails"
-  - "What risks should we assess before launching AI-generated summaries?"
+  - "评审 AI 邮件草稿助手的风险"
+  - "上线 AI 总结功能前需要一份风险表"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a practical risk review for an AI feature that helps product, design, engineering, and leadership decide whether the launch conditions are strong enough.
+系统性审查 AI 功能的关键风险，帮助团队判断是否具备上线条件。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：系统性审查 AI 功能的质量、信任、运营和滥用风险。
-- 适用：上线前评审、范围扩大前评审、领导层要风险说明时。
-- 输出：风险表、缓解动作、监控指标、上线阻断项。
+常见风险面：
 
-## Key Concepts
+- 质量风险
+- 信任风险
+- 运营风险
+- 滥用风险
+- 法务或政策风险
 
-### Risk Areas
-
-- quality risk
-- trust risk
-- operational risk
-- misuse risk
-- legal or policy risk
-
-### Good Risk Reviews Include
-
-- the failure mode
-- who is harmed
-- how likely it is
-- how severe it is
-- what mitigation exists
-- what signal should be monitored
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## AI Risk Review
 
 | Risk | Failure Mode | Impacted User | Severity | Likelihood | Mitigation | Monitoring |
 |------|--------------|---------------|----------|------------|------------|------------|
-| [Risk] | [Failure] | [User] | [H/M/L] | [H/M/L] | [Action] | [Signal] |
+| [风险] | [失败模式] | [受影响用户] | [高/中/低] | [高/中/低] | [缓解动作] | [监控信号] |
 ```
 
-Then summarize:
+最后补：
 
-- top launch blockers
-- acceptable risks with mitigation
+- top blockers
+- acceptable risks
 - unresolved questions
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "Low-confidence action-item extraction may invent commitments, causing teams to act on decisions that were never made."
+- “低置信度 action-item 抽取可能凭空捏造承诺，导致团队按照不存在的决定执行。”
 
-Bad:
+差：
 
-- "AI could be risky."
+- “AI 可能有风险。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- Listing risks without mitigations
-- Ignoring misuse or overreliance risk
-- Treating all risks as equally important
+- 只列风险不写缓解
+- 忽略滥用和过度依赖
+- 把所有风险看成一样严重
 
-## References
+## References / 关联项
 
 - `../ai-feature-brief/SKILL.md`
 - `../llm-evaluation-plan/SKILL.md`
+

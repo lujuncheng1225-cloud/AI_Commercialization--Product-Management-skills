@@ -1,91 +1,74 @@
 ---
 name: prioritization-advisor
-description: Choose a prioritization framework based on product stage, team context, and data quality. Use when deciding between RICE, ICE, value-effort, weighted scoring, or a simpler alternative.
+description: 根据产品阶段、团队环境和数据条件推荐优先级方法。适用于 RICE、ICE、value-effort 等方法选择场景。
 type: interactive
 best_for:
-  - "Choosing a prioritization framework"
-  - "Reducing debate about backlog or roadmap decisions"
-  - "Matching a scoring model to the team's maturity"
+  - "选择优先级框架"
+  - "减少 backlog 排序争论"
+  - "给团队匹配合适的打分方法"
 scenarios:
-  - "We have too many requests and no consistent way to rank them"
-  - "Help me choose between RICE and value-effort"
+  - "我们有很多需求，但不知道该怎么排优先级"
+  - "帮我在 RICE 和 value-effort 之间做选择"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Recommend a prioritization approach that fits the current context instead of applying one framework by default.
+根据上下文推荐最适合的优先级方法，而不是默认套一个流行框架。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：根据阶段、团队和数据情况，推荐合适的优先级方法。
-- 适用：RICE、ICE、value-effort 不知道该选哪个时。
-- 输出：推荐框架、原因、适用边界、落地步骤。
+- RICE：适合有一定数据基础
+- ICE：适合快速轻量判断
+- Value-Effort：适合快速做取舍
+- Weighted Scoring：适合多方对齐
 
-## Key Concepts
+## Application / 用法
 
-### Framework Fit Matters
+最多问 4 个短问题：
 
-- RICE works best when you have usable data
-- ICE works when you need a lighter-weight heuristic
-- Value-effort works when tradeoffs need to be visual and fast
-- Weighted scoring works when multiple stakeholders need transparent criteria
+1. 产品处在什么阶段
+2. 团队和利益相关方环境如何
+3. 当前主要卡在哪类优先级问题
+4. 数据基础如何
 
-### Anti-Patterns
-
-- Treating one framework as universally correct
-- Using precision theater when the inputs are weak
-- Confusing strategy selection with backlog ordering
-
-## Application
-
-Ask up to 4 short questions:
-
-1. What stage is the product in?
-2. What is the team or stakeholder context?
-3. What is the main prioritization problem?
-4. How much data is available?
-
-Then output:
+输出结构：
 
 ```markdown
-# Prioritization Recommendation
+## Prioritization Recommendation
 
-## Recommended Framework
-[Framework]
+### Recommended Framework
+[推荐框架]
 
-## Why It Fits
-- [Reason 1]
-- [Reason 2]
-- [Reason 3]
+### Why It Fits
+- [原因]
 
-## When Not To Use It
-- [Limitation]
+### When Not To Use It
+- [限制]
 
-## How To Implement
-1. [Step]
-2. [Step]
-3. [Step]
+### How To Implement
+1. [步骤]
 
-## Fallback Option
-[Alternative framework and why]
+### Fallback Option
+[备选框架]
 ```
 
-## Examples
+## Examples / 示例
 
-Good recommendation pattern:
+好：
 
-- "Use value-effort for the next planning cycle because your data is limited, stakeholders need visibility, and the team needs a simple tradeoff tool now."
+- “你们数据有限、利益相关方多、需要快速可视化取舍，因此更适合 value-effort 而不是 RICE。”
 
-Bad recommendation pattern:
+差：
 
-- "Use RICE because serious product teams use RICE."
+- “专业团队都用 RICE。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- Overfitting to one executive preference
-- Recommending data-heavy models without reliable inputs
-- Returning a framework name without implementation advice
+- 数据不足却推荐复杂框架
+- 把战略取舍和 backlog 排序混在一起
+- 只报框架名，不说落地方法
 
-## References
+## References / 关联项
 
 - `../workshop-facilitation/SKILL.md`
+

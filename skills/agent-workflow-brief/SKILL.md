@@ -1,78 +1,70 @@
 ---
 name: agent-workflow-brief
-description: Define an agentic workflow with inputs, tools, decision boundaries, handoffs, and human review points. Use when turning an AI automation idea into a safe productized workflow.
+description: 定义 agent 工作流的输入、工具、边界、人工审核点和失败约束。适用于把 AI 自动化思路整理成产品化工作流的场景。
 type: component
 best_for:
-  - "Designing an agent workflow"
-  - "Clarifying tool use and human checkpoints"
-  - "Preventing vague copilot or agent definitions"
+  - "设计 agent 工作流"
+  - "明确 AI 自动化的边界"
+  - "定义人工审核点"
 scenarios:
-  - "Define an agent workflow that drafts PRDs from discovery notes"
-  - "Scope a PM copilot that uses docs, tickets, and analytics"
+  - "定义一个从 discovery notes 生成 PRD 的 agent workflow"
+  - "给 PM copilot 设计工具访问和审核点"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a workflow brief for an agentic feature so the team knows what the system can do, what it cannot do, and where humans must stay in the loop.
+把“做个 agent”这种模糊想法整理成可执行、可约束的工作流定义。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：定义 agent 工作流的边界、工具和人工介入点。
-- 适用：想把 AI 自动化做成产品功能，而不是随便丢一个 copilot 概念时。
-- 输出：触发方式、工具访问、允许动作、人工审核点和失败边界。
+每个 agent workflow 都要说明：
 
-## Key Concepts
-
-### Every Agent Workflow Needs
-
-- starting trigger
-- accessible tools or context
+- trigger
+- inputs and tools
 - allowed actions
 - blocked actions
 - human review points
 - success and failure criteria
 
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## Agent Workflow Brief
 
 ### Trigger
-[How the workflow begins]
+[怎么开始]
 
 ### Inputs and Tools
-- [Input]
-- [Tool or data source]
+- [输入/工具]
 
 ### Allowed Actions
-- [Action]
+- [允许动作]
 
 ### Human Review Points
-- [Checkpoint]
+- [人工审核点]
 
 ### Failure Boundaries
-- [What the agent must not do]
+- [不能做什么]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "The agent drafts a PRD, but a PM must approve success metrics and scope before anything is shared."
+- “agent 可以先起草 PRD，但 success metrics 和 scope 必须由 PM 审核后才能共享。”
 
-Bad:
+差：
 
-- "The agent handles product management automatically."
+- “让 agent 自动做产品管理。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- letting the workflow boundary stay vague
-- skipping human approval points
-- giving tool access without action limits
+- 边界太模糊
+- 没有人工审核
+- 给了工具访问但没写动作限制
 
-## References
+## References / 关联项
 
 - `../ai-risk-review/SKILL.md`
 - `../ai-feature-brief/SKILL.md`
+

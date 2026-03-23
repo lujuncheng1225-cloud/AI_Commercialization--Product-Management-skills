@@ -1,22 +1,16 @@
 # Start Here
 
-This repository is a starter kit for PM skills.
+这是这个仓库的中文主入口。
 
-Chinese companion:
+如果你只记住三件事：
 
-- `START_HERE.zh-CN.md`
+1. 先选一个 skill 或 command
+2. 给一个真实业务问题
+3. 先让 agent 问澄清问题，再开始产出
 
-If you only remember three things:
+## 从哪里开始
 
-1. Pick one skill.
-2. Give it a real business problem.
-3. Ask for clarifying questions before drafting.
-
-## Where to Begin
-
-### I need a PM artifact
-
-Use:
+### 我需要一个 PM 产物
 
 - `skills/problem-statement/SKILL.md`
 - `skills/prd-development/SKILL.md`
@@ -25,66 +19,48 @@ Use:
 - `skills/revenue-metrics-scorecard/SKILL.md`
 - `skills/llm-evaluation-plan/SKILL.md`
 
-### I need help making a decision
-
-Use:
+### 我需要一个判断或诊断
 
 - `skills/prioritization-advisor/SKILL.md`
+- `skills/model-selection-advisor/SKILL.md`
 - `skills/ai-risk-review/SKILL.md`
 - `skills/conversion-funnel-diagnostic/SKILL.md`
 - `skills/retention-levers-review/SKILL.md`
 
-### I need a structured guided session
+### 我需要一条完整工作流
 
-Use:
-
-- `skills/workshop-facilitation/SKILL.md`
-
-### I need commercial or growth analysis
-
-Use:
-
+- `commands/write-prd.md`
+- `commands/shape-ai-feature.md`
+- `commands/prepare-ai-launch.md`
 - `commands/commercial-growth-review.md`
-- `skills/growth-experiment-design/SKILL.md`
+- `commands/write-commercial-prd.md`
 
-## Suggested Prompts
+## 推荐用法
 
 ```text
-Using skills/problem-statement/SKILL.md, frame the problem behind declining trial-to-paid conversion. Ask clarifying questions first, then produce a concise markdown output.
+Using skills/problem-statement/SKILL.md，帮我定义试用到付费转化下降的问题。先问澄清问题，再给出 markdown 输出。
 ```
 
 ```text
-Using skills/prd-development/SKILL.md, create a PRD for a team inbox redesign. Follow the skill sections exactly and end with assumptions, risks, and next steps.
+Run commands/shape-ai-feature.md for this request: 为 PM 团队设计一个 AI copilot，帮他们把访谈记录整理成 insight。
 ```
 
 ```text
-Run commands/prioritize.md for this request: too many stakeholder requests, no clear scoring model, limited engineering capacity.
+Run commands/commercial-growth-review.md for this request: 诊断为什么激活用户没有转成付费。
 ```
 
-```text
-Run commands/shape-ai-feature.md for this request: build an AI copilot for PMs to turn interview notes into opportunity themes.
-```
+## 仓库里的组织方式
 
-```text
-Run commands/prepare-ai-launch.md for this request: launch an AI writing assistant for PM weekly updates.
-```
+- `component`：做好一个产物
+- `interactive`：通过提问来判断和推荐
+- `workflow`：把一类 PM 工作拆成多阶段
+- `command`：把多个 skill 串起来变成复用流程
 
-```text
-Run commands/commercial-growth-review.md for this request: diagnose why activated users are not converting to paid plans.
-```
-
-## Operating Pattern
-
-- Component skills create one artifact well.
-- Interactive skills diagnose and recommend.
-- Workflow skills orchestrate multi-step PM work.
-- Commands chain several skills into one repeatable path.
-
-## Helpful Commands
+## 常用脚本
 
 ```bash
 bash ./scripts/find-a-skill.sh --list-all
-bash ./scripts/find-a-skill.sh --keyword evaluation
+bash ./scripts/find-a-skill.sh --keyword pricing
 bash ./scripts/find-a-command.sh --list-all
 python3 ./scripts/generate-catalog.py
 ```

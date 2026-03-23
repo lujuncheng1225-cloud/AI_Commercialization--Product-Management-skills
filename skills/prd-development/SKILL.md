@@ -1,109 +1,82 @@
 ---
 name: prd-development
-description: Build a structured PRD that connects problem, users, solution, success metrics, and scope boundaries. Use when turning discovery notes or scattered decisions into a document an engineering team can work from.
+description: 构建一份从问题、用户、方案到成功指标和范围边界都清楚的 PRD。适用于把零散背景整理成工程团队可执行文档的场景。
 type: workflow
 best_for:
-  - "Writing a complete PRD from scratch"
-  - "Turning discovery outputs into a structured document"
-  - "Aligning product, design, and engineering on a major initiative"
+  - "从零写完整 PRD"
+  - "把调研结果整理成文档"
+  - "对齐产品、设计、工程"
 scenarios:
-  - "I need a PRD for an onboarding redesign"
-  - "I have discovery notes and need a decision-ready PRD"
+  - "我要为 onboarding 改版写一份 PRD"
+  - "我有很多 discovery 笔记，需要整理成 PRD"
 estimated_time: "60-120 min"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Guide product managers through a practical PRD workflow that keeps the document tied to user problems and measurable outcomes.
+把问题定义、用户、方案、成功指标和范围边界整理成一份可执行 PRD。
 
-This is not a waterfall specification. It is a structured working document.
+## Key Concepts / 核心概念
 
-## Chinese Summary
+一份强 PRD 通常包含：
 
-- 用途：把零散发现、讨论和决策整理成可执行的 PRD。
-- 适用：中大型功能、跨团队协作、需要书面 source of truth 时。
-- 输出：从问题、用户、方案到指标、范围、风险的一整套 PRD。
-
-## Key Concepts
-
-### A Strong PRD Covers
-
-1. Executive summary
-2. Problem statement
-3. Target users
-4. Strategic context
-5. Solution overview
-6. Success metrics
+1. Executive Summary
+2. Problem Statement
+3. Target Users
+4. Strategic Context
+5. Solution Overview
+6. Success Metrics
 7. Requirements
-8. Out of scope
-9. Risks and dependencies
-10. Open questions
+8. Out of Scope
+9. Risks and Dependencies
+10. Open Questions
 
-### When To Use It
+## Application / 用法
 
-- Major features
-- Cross-functional alignment
-- Ambiguous initiatives that need a source of truth
+### Phase 1 / 问题澄清
 
-### When Not To Use It
+- 用 `../problem-statement/SKILL.md`
 
-- Small bug fixes
-- Trivial UI tweaks
-- Work that already has complete alignment and can go straight to stories
+### Phase 2 / 用户与业务背景
 
-## Application
+- 说明目标用户、业务目标、为什么现在做
 
-Use `template.md` as the working structure.
+### Phase 3 / 方案定义
 
-### Phase 1: Clarify the Problem
+- 说明核心方案、关键流程、约束与取舍
 
-- Use `../problem-statement/SKILL.md`
-- Confirm target user, pain, evidence, and urgency
+### Phase 4 / 成功定义
 
-### Phase 2: Define the User and Context
+- 明确 primary metric 和 supporting metrics
 
-- Name primary user segments
-- Clarify business goal and why now
+### Phase 5 / 需求与范围
 
-### Phase 3: Shape the Solution
+- 写 must-have requirements
+- 写 out of scope
 
-- Describe the proposed approach
-- Name key flows, constraints, and tradeoffs
+### Phase 6 / 风险收尾
 
-### Phase 4: Define Success
+- 写风险、依赖和开放问题
 
-- Choose one primary metric
-- Add supporting metrics and targets
+## Examples / 示例
 
-### Phase 5: Write Requirements
+好：
 
-- Draft requirements clearly
-- Separate must-haves from future ideas
-- Name what is out of scope
+- 一份把问题、用户、指标、范围和风险都连起来的 PRD。
 
-### Phase 6: Final Review
+差：
 
-- Check internal consistency
-- List risks, dependencies, and open questions
+- 一份只有功能列表、没有问题和成功标准的“伪 PRD”。
 
-## Examples
+## Common Pitfalls / 常见误区
 
-Good:
+- 方案写得比问题还快
+- 没有成功指标
+- scope 不受控
 
-- A PRD that ties onboarding redesign to activation, identifies the target segment, names the success metric, and calls out excluded scope.
-
-Bad:
-
-- A PRD that is really a feature list with no evidence, no tradeoffs, and no success definition.
-
-## Common Pitfalls
-
-- Writing solution details before clarifying the problem
-- Missing success metrics
-- Letting scope expand without an out-of-scope section
-
-## References
+## References / 关联项
 
 - `template.md`
 - `../problem-statement/SKILL.md`
 - `../workshop-facilitation/SKILL.md`
+

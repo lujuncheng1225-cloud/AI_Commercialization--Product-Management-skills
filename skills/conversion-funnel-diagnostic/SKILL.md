@@ -1,72 +1,63 @@
 ---
 name: conversion-funnel-diagnostic
-description: Diagnose a conversion funnel by identifying stages, leaks, likely causes, and next investigation steps. Use when a commercial product has acquisition, activation, or paid conversion problems.
+description: 诊断转化漏斗的阶段、掉点、可能原因和下一步核查方向。适用于获客、激活或付费转化出问题的场景。
 type: component
 best_for:
-  - "Diagnosing conversion drop-offs"
-  - "Understanding where a funnel is leaking"
-  - "Turning funnel data into hypotheses"
+  - "诊断转化掉点"
+  - "找出漏斗里最主要的 leak"
+  - "把漏斗数据转成可验证假设"
 scenarios:
-  - "Why are users reaching activation but not converting to paid?"
-  - "Help me diagnose onboarding funnel drop-off"
+  - "用户激活了但没转付费，问题在哪"
+  - "帮我诊断 onboarding funnel 掉点"
 ---
 
-## Purpose
+## Purpose / 用途
 
-Create a structured diagnosis of a conversion funnel problem before rushing into changes.
+在盲目改漏斗之前，先结构化找出主要流失点和最可能的原因。
 
-## Chinese Summary
+## Key Concepts / 核心概念
 
-- 用途：定位转化漏斗的主要流失点和可能原因。
-- 适用：获客、激活、试用转付费等漏斗问题。
-- 输出：漏斗阶段、主要掉点、原因假设、下一步检查点。
+漏斗诊断要区分：
 
-## Key Concepts
+- 漏在哪里
+- 是流量质量、产品问题、定价问题还是信息传达问题
+- 还缺什么证据
 
-### A Funnel Diagnosis Should Distinguish
-
-- where the leak is
-- whether it is a traffic quality, product, pricing, or messaging issue
-- what evidence is missing
-
-## Application
-
-Use this structure:
+## Application / 用法
 
 ```markdown
 ## Funnel Diagnostic
 
 ### Funnel Stages
-- [Stage]
+- [阶段]
 
 ### Largest Drop-Off
-[Where leakage is strongest]
+[最大掉点]
 
 ### Likely Causes
-- [Cause]
-- [Cause]
+- [原因]
 
 ### Evidence Needed Next
-- [Data or research]
+- [下一步要看的数据或研究]
 ```
 
-## Examples
+## Examples / 示例
 
-Good:
+好：
 
-- "The primary leak is between initial value moment and upgrade prompt, suggesting packaging or perceived value, not top-of-funnel traffic quality."
+- “主要漏点发生在价值时刻之后到 upgrade prompt 之前，更像感知价值或套餐设计问题，而不是流量质量问题。”
 
-Bad:
+差：
 
-- "Conversion is low, so we need better marketing."
+- “转化低，所以营销不行。”
 
-## Common Pitfalls
+## Common Pitfalls / 常见误区
 
-- collapsing all funnel problems into onboarding
-- skipping segment-level analysis
-- prescribing experiments before locating the leak
+- 把所有漏斗问题都归到 onboarding
+- 不看分群
+- 还没定位 leak 就开始设计实验
 
-## References
+## References / 关联项
 
 - `../growth-experiment-design/SKILL.md`
 - `../revenue-metrics-scorecard/SKILL.md`

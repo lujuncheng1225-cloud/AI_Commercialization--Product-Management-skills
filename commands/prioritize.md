@@ -1,29 +1,28 @@
 ---
 name: prioritize
-description: Diagnose prioritization context and recommend a fitting framework with next steps.
-argument-hint: "<backlog or decision context>"
+description: 诊断优先级上下文并推荐合适框架与下一步动作。
+argument-hint: "<backlog 或决策背景>"
 uses:
   - workshop-facilitation
   - prioritization-advisor
 outputs:
-  - Recommended framework
-  - Why it fits
-  - Implementation guidance
+  - 推荐框架
+  - 适配原因
+  - 落地建议
 ---
 
 # /prioritize
 
-Recommend a prioritization method that matches product stage, team context, and data quality.
+推荐一个和产品阶段、团队环境、数据质量匹配的优先级方法。
 
-## Workflow
+## Workflow / 流程
 
-1. Use `workshop-facilitation` if the request is vague or overloaded.
-2. Run `prioritization-advisor` to gather adaptive context.
-3. Return one recommended framework and one fallback option.
+1. 如果需求很模糊，先用 `workshop-facilitation`。
+2. 用 `prioritization-advisor` 收集上下文。
+3. 返回一个主推荐框架和一个备选框架。
 
-## Checkpoints
+## Checkpoints / 检查点
 
-- Do not recommend a complex framework without enough data.
-- Separate strategic tradeoffs from backlog scoring.
-- Show when not to use the recommendation.
-
+- 数据不足时不要推荐复杂框架。
+- 区分战略取舍和 backlog 打分。
+- 说明什么时候不该用这个推荐。
