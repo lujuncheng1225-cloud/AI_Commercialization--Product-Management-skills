@@ -67,5 +67,7 @@ Run commands/commercial-strategy-review.md for this request: 评审我们下一�
 bash ./scripts/find-a-skill.sh --list-all
 bash ./scripts/find-a-skill.sh --keyword pricing
 bash ./scripts/find-a-command.sh --list-all
+python3 ./scripts/validate-library.py
+python3 ./scripts/check-style-consistency.py
 python3 ./scripts/generate-catalog.py
 ```
