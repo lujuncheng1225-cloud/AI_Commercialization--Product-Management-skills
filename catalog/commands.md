@@ -2,6 +2,13 @@
 
 Generated from `commands`.
 
+## commercial-growth-review
+
+- Path: `commands/commercial-growth-review.md`
+- Description: Review a commercial product problem by chaining funnel diagnosis, retention analysis, metrics, and growth experiments.
+- Uses: conversion-funnel-diagnostic, retention-levers-review, revenue-metrics-scorecard, growth-experiment-design
+- Outputs: Funnel diagnosis, Retention review, Revenue metric view, Experiment ideas
+
 ## prepare-ai-launch
 
 - Path: `commands/prepare-ai-launch.md`
@@ -22,6 +29,13 @@ Generated from `commands`.
 - Description: Shape an AI product initiative by chaining problem framing, feature definition, evaluation, and risk review.
 - Uses: workshop-facilitation, problem-statement, ai-feature-brief, llm-evaluation-plan, ai-risk-review
 - Outputs: AI feature brief, Evaluation plan, Risk review, Launch readiness questions
+
+## write-commercial-prd
+
+- Path: `commands/write-commercial-prd.md`
+- Description: Create a commercial PRD by chaining funnel diagnosis, pricing logic, metrics, and rollout planning.
+- Uses: conversion-funnel-diagnostic, pricing-packaging-brief, revenue-metrics-scorecard, commercial-prd
+- Outputs: Commercial PRD, Baseline and target metrics, Pricing or conversion assumptions
 
 ## write-prd
 

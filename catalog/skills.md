@@ -42,6 +42,22 @@ Generated from `skills`.
 - Best for: Reviewing AI launch risks, Surfacing trust and quality failure modes, Turning vague safety concerns into concrete checks
 - Example: Review the risks of an AI assistant that drafts customer emails
 
+## commercial-prd
+
+- Path: `skills/commercial-prd/SKILL.md`
+- Type: `workflow`
+- Description: Build a PRD for a monetization, pricing, packaging, onboarding, or conversion initiative. Use when a commercial product change needs a decision-ready product document.
+- Best for: Writing a commercial initiative PRD, Structuring monetization or conversion changes, Aligning teams on pricing or growth work
+- Example: Create a PRD for a self-serve upgrade redesign
+
+## conversion-funnel-diagnostic
+
+- Path: `skills/conversion-funnel-diagnostic/SKILL.md`
+- Type: `component`
+- Description: Diagnose a conversion funnel by identifying stages, leaks, likely causes, and next investigation steps. Use when a commercial product has acquisition, activation, or paid conversion problems.
+- Best for: Diagnosing conversion drop-offs, Understanding where a funnel is leaking, Turning funnel data into hypotheses
+- Example: Why are users reaching activation but not converting to paid?
+
 ## experiment-brief
 
 - Path: `skills/experiment-brief/SKILL.md`
@@ -49,6 +65,14 @@ Generated from `skills`.
 - Description: Design a lightweight product experiment with hypothesis, audience, success criteria, and next-step decisions. Use when testing a risky assumption before committing broader investment.
 - Best for: Testing a product hypothesis quickly, Designing a validation experiment before full build, Clarifying what signal would change the decision
 - Example: Create a quick test for whether users want AI-generated release notes
+
+## growth-experiment-design
+
+- Path: `skills/growth-experiment-design/SKILL.md`
+- Type: `component`
+- Description: Design a growth experiment with target metric, hypothesis, change, audience, and decision rule. Use when a commercial product needs disciplined testing instead of random optimization.
+- Best for: Designing growth experiments, Testing conversion or retention changes, Making commercial optimization more evidence-based
+- Example: Design an experiment to improve trial-to-paid conversion
 
 ## llm-evaluation-plan
 
@@ -82,6 +106,14 @@ Generated from `skills`.
 - Best for: Writing a complete PRD from scratch, Turning discovery outputs into a structured document, Aligning product, design, and engineering on a major initiative
 - Example: I need a PRD for an onboarding redesign
 
+## pricing-packaging-brief
+
+- Path: `skills/pricing-packaging-brief/SKILL.md`
+- Type: `component`
+- Description: Define or revise pricing and packaging with target segment, value metric, plan structure, and tradeoffs. Use when a commercial product needs a clearer monetization design.
+- Best for: Designing SaaS pricing and packaging, Reworking plans and feature gates, Connecting value delivery to monetization
+- Example: Help me redesign our free, pro, and team plans
+
 ## prioritization-advisor
 
 - Path: `skills/prioritization-advisor/SKILL.md`
@@ -97,6 +129,22 @@ Generated from `skills`.
 - Description: Frame a clear customer or business problem with evidence, target user, and impact. Use when moving from vague pain points to a decision-ready problem definition.
 - Best for: Writing a concise product problem statement, Turning scattered research into a clear problem definition, Aligning stakeholders on what problem matters
 - Example: Users drop during onboarding and I need to define the real problem
+
+## retention-levers-review
+
+- Path: `skills/retention-levers-review/SKILL.md`
+- Type: `component`
+- Description: Review retention drivers, drop-off patterns, and intervention ideas across habit, collaboration, value recurrence, and lifecycle design. Use when a product keeps acquiring users but struggles to retain them.
+- Best for: Reviewing retention problems, Analyzing why usage does not repeat, Identifying retention intervention ideas
+- Example: Users activate once but do not come back
+
+## revenue-metrics-scorecard
+
+- Path: `skills/revenue-metrics-scorecard/SKILL.md`
+- Type: `component`
+- Description: Define a commercial scorecard with revenue, conversion, retention, and guardrail metrics. Use when a product team needs a concise business-health view for decisions and reviews.
+- Best for: Building a commercial KPI scorecard, Defining revenue and conversion metrics, Aligning teams on business-health measures
+- Example: Create a revenue scorecard for our self-serve SaaS product
 
 ## voice-of-customer-synthesis
 

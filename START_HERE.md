@@ -21,6 +21,8 @@ Use:
 - `skills/problem-statement/SKILL.md`
 - `skills/prd-development/SKILL.md`
 - `skills/ai-feature-brief/SKILL.md`
+- `skills/pricing-packaging-brief/SKILL.md`
+- `skills/revenue-metrics-scorecard/SKILL.md`
 - `skills/llm-evaluation-plan/SKILL.md`
 
 ### I need help making a decision
@@ -29,12 +31,21 @@ Use:
 
 - `skills/prioritization-advisor/SKILL.md`
 - `skills/ai-risk-review/SKILL.md`
+- `skills/conversion-funnel-diagnostic/SKILL.md`
+- `skills/retention-levers-review/SKILL.md`
 
 ### I need a structured guided session
 
 Use:
 
 - `skills/workshop-facilitation/SKILL.md`
+
+### I need commercial or growth analysis
+
+Use:
+
+- `commands/commercial-growth-review.md`
+- `skills/growth-experiment-design/SKILL.md`
 
 ## Suggested Prompts
 
@@ -56,6 +67,10 @@ Run commands/shape-ai-feature.md for this request: build an AI copilot for PMs t
 
 ```text
 Run commands/prepare-ai-launch.md for this request: launch an AI writing assistant for PM weekly updates.
+```
+
+```text
+Run commands/commercial-growth-review.md for this request: diagnose why activated users are not converting to paid plans.
 ```
 
 ## Operating Pattern

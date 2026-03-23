@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Add AI PM starter skills and workflows
+- Add commercial PM starter skills and workflows
 - Add bilingual entry docs
 - Add issue templates, roadmap, and release scaffolding
 
@@ -10,4 +11,3 @@
 
 - Initialize starter repository
 - Add core PM skill skeleton
-

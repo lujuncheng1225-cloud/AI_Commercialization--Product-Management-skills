@@ -3,6 +3,7 @@
 ## Now
 
 - Expand core AI PM skills
+- Expand commercial and growth PM skills
 - Tighten command workflows
 - Improve bilingual coverage
 - Add more generated catalog outputs
@@ -18,4 +19,3 @@
 - Add test fixtures for skill examples
 - Add release automation helpers
 - Add contribution scoring for skill quality
-

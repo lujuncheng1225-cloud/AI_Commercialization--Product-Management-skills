@@ -1,6 +1,6 @@
 # AI Product Management Skills
 
-Battle-tested product management skills for human PMs and AI agents.
+Reusable PM skills for human product managers and AI agents.
 
 Chinese docs:
 
@@ -8,12 +8,12 @@ Chinese docs:
 - `START_HERE.zh-CN.md`
 - `docs/Using PM Skills with Codex.zh-CN.md`
 
-This repository is designed to do two things at once:
+This repo covers two lanes:
 
-1. Help you produce stronger PM outputs with reusable skill files.
-2. Help you learn the reasoning behind the frameworks, not just generate artifacts.
+- `AI PM`: feature shaping, evaluation, launch, model strategy
+- `Commercial PM`: pricing, funnel, retention, revenue, growth
 
-The structure is intentionally simple:
+Core structure:
 
 - `skills/` contains reusable PM skills
 - `commands/` contains multi-skill workflows
@@ -21,22 +21,17 @@ The structure is intentionally simple:
 - `scripts/` contains lightweight discovery helpers
 - `catalog/` is reserved for generated indexes
 
-## Starter Skills
+## Featured Skills
 
 - `problem-statement` - component skill for framing a customer or business problem
-- `prioritization-advisor` - interactive skill for choosing a prioritization approach
 - `prd-development` - workflow skill for building a PRD from context to requirements
-- `workshop-facilitation` - interaction protocol for guided PM sessions
 - `ai-feature-brief` - component skill for defining an AI feature clearly
-- `llm-evaluation-plan` - component skill for planning offline and online evaluation
-- `experiment-brief` - component skill for designing quick validation experiments
-- `ai-risk-review` - component skill for reviewing AI-specific product risks
-- `ai-feature-shaping` - workflow skill for shaping an AI initiative end to end
-- `north-star-metric` - component skill for defining one core outcome metric and guardrails
-- `voice-of-customer-synthesis` - component skill for turning raw user inputs into themes
-- `agent-workflow-brief` - component skill for defining an agentic workflow with boundaries
-- `model-selection-advisor` - interactive skill for choosing a model strategy
-- `ai-launch-checklist` - component skill for pre-launch readiness review
+- `llm-evaluation-plan` - component skill for AI quality planning
+- `pricing-packaging-brief` - component skill for monetization design
+- `conversion-funnel-diagnostic` - component skill for finding funnel leaks
+- `growth-experiment-design` - component skill for growth tests
+- `retention-levers-review` - component skill for retention analysis
+- `revenue-metrics-scorecard` - component skill for commercial health metrics
 
 ## First Run
 
@@ -62,17 +57,20 @@ Run commands/shape-ai-feature.md for this request: AI meeting notes that extract
 Run commands/prepare-ai-launch.md for this request: launch an AI writing assistant for PM weekly updates.
 ```
 
-## Design Principles
+```text
+Run commands/commercial-growth-review.md for this request: diagnose trial-to-paid drop-off in our self-serve SaaS funnel.
+```
+
+```text
+Run commands/write-commercial-prd.md for this request: redesign upgrade flow and plan packaging for our pro tier.
+```
+
+## Principles
 
 - Outcome over output
 - Evidence over opinion
 - Reusable workflows over one-off prompts
-- Coaching over black-box generation
 - Clear triggers over vague descriptions
-
-## Status
-
-This is a starter skeleton modeled after skill-driven PM repositories. Extend it by adding new skills under `skills/<skill-name>/SKILL.md`.
 
 Generate indexes with:
 
