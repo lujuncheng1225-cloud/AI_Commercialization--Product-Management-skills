@@ -2,12 +2,26 @@
 
 Generated from `commands`.
 
+## analyze-paid-retention
+
+- Path: `commands/analyze-paid-retention.md`
+- Description: 通过留存分析、收入指标和增长实验来审视付费留存与复购问题。
+- Uses: retention-levers-review, revenue-metrics-scorecard, voice-of-customer-synthesis, growth-experiment-design
+- Outputs: 留存诊断, VOC 线索, 商业指标判断, 干预实验
+
 ## commercial-growth-review
 
 - Path: `commands/commercial-growth-review.md`
 - Description: 通过漏斗诊断、留存分析、指标审视和增长实验来审查商业化问题。
 - Uses: conversion-funnel-diagnostic, retention-levers-review, revenue-metrics-scorecard, growth-experiment-design
 - Outputs: 漏斗诊断, 留存评审, 商业指标视图, 实验建议
+
+## improve-trial-to-paid
+
+- Path: `commands/improve-trial-to-paid.md`
+- Description: 通过漏斗诊断、定价审视、指标分析和增长实验来提升试用转付费。
+- Uses: conversion-funnel-diagnostic, pricing-packaging-brief, revenue-metrics-scorecard, growth-experiment-design
+- Outputs: 转化诊断, 定价/包装假设, 指标判断, 实验计划
 
 ## prepare-ai-launch
 
@@ -22,6 +36,13 @@ Generated from `commands`.
 - Description: 诊断优先级上下文并推荐合适框架与下一步动作。
 - Uses: workshop-facilitation, prioritization-advisor
 - Outputs: 推荐框架, 适配原因, 落地建议
+
+## redesign-pricing-packages
+
+- Path: `commands/redesign-pricing-packages.md`
+- Description: 通过价值指标、套餐结构、商业指标和 PRD 规划来重做定价与套餐。
+- Uses: pricing-packaging-brief, revenue-metrics-scorecard, conversion-funnel-diagnostic, commercial-prd
+- Outputs: 定价与套餐方案, 指标影响假设, 商业化 PRD
 
 ## shape-ai-feature
 

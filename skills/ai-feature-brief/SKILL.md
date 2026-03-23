@@ -69,6 +69,6 @@ scenarios:
 
 ## References / 关联项
 
+- `template.md`
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-risk-review/SKILL.md`
-

@@ -63,6 +63,7 @@ scenarios:
 
 ## References / 关联项
 
+- `template.md`
 - `../north-star-metric/SKILL.md`
 - `../conversion-funnel-diagnostic/SKILL.md`
 - `../commercial-prd/SKILL.md`

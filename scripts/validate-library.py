@@ -1,0 +1,135 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import re
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent.parent
+SKILLS_DIR = ROOT / "skills"
+COMMANDS_DIR = ROOT / "commands"
+
+REQUIRED_SKILL_FIELDS = {"name", "description", "type"}
+REQUIRED_COMMAND_FIELDS = {"name", "description", "uses", "outputs"}
+VALID_TYPES = {"component", "interactive", "workflow"}
+REFERENCE_PATTERN = re.compile(r"`(\.\./[^`]+)`")
+
+
+def parse_frontmatter(path: Path) -> dict[str, object]:
+    text = path.read_text(encoding="utf-8")
+    if not text.startswith("---\n"):
+        return {}
+
+    lines = text.splitlines()
+    data: dict[str, object] = {}
+    key: str | None = None
+
+    for line in lines[1:]:
+        if line == "---":
+            break
+        if line.startswith("  - ") and key:
+            data.setdefault(key, [])
+            assert isinstance(data[key], list)
+            data[key].append(line[4:].strip().strip('"'))
+            continue
+        if ": " in line and not line.startswith("  "):
+            key, value = line.split(": ", 1)
+            data[key] = value.strip().strip('"')
+            continue
+        if line.endswith(":") and not line.startswith("  "):
+            key = line[:-1]
+            data[key] = []
+
+    return data
+
+
+def find_frontmatter_end(text: str) -> int:
+    if not text.startswith("---\n"):
+        return 0
+    parts = text.split("---\n", 2)
+    if len(parts) < 3:
+        return 0
+    return len(parts[0]) + len("---\n") + len(parts[1]) + len("---\n")
+
+
+def validate_skill(path: Path, names: set[str], errors: list[str]) -> None:
+    meta = parse_frontmatter(path)
+    if not meta:
+        errors.append(f"{path}: missing or invalid frontmatter")
+        return
+
+    missing = REQUIRED_SKILL_FIELDS - meta.keys()
+    if missing:
+        errors.append(f"{path}: missing required fields: {', '.join(sorted(missing))}")
+
+    name = meta.get("name")
+    if isinstance(name, str):
+        if name in names:
+            errors.append(f"{path}: duplicate skill name '{name}'")
+        names.add(name)
+
+    skill_type = meta.get("type")
+    if isinstance(skill_type, str) and skill_type not in VALID_TYPES:
+        errors.append(f"{path}: invalid type '{skill_type}'")
+
+    text = path.read_text(encoding="utf-8")
+    body = text[find_frontmatter_end(text):]
+    for ref in REFERENCE_PATTERN.findall(body):
+        ref_path = (path.parent / ref).resolve()
+        if not ref_path.exists():
+            errors.append(f"{path}: missing reference target {ref}")
+
+
+def validate_command(path: Path, skill_names: set[str], errors: list[str]) -> None:
+    meta = parse_frontmatter(path)
+    if not meta:
+        errors.append(f"{path}: missing or invalid frontmatter")
+        return
+
+    missing = REQUIRED_COMMAND_FIELDS - meta.keys()
+    if missing:
+        errors.append(f"{path}: missing required fields: {', '.join(sorted(missing))}")
+
+    uses = meta.get("uses", [])
+    if not isinstance(uses, list) or not uses:
+        errors.append(f"{path}: uses must be a non-empty list")
+    else:
+        for skill in uses:
+            if skill not in skill_names:
+                errors.append(f"{path}: unknown skill in uses: {skill}")
+
+
+def collect_skill_files() -> list[Path]:
+    return sorted(SKILLS_DIR.rglob("SKILL.md"))
+
+
+def collect_command_files() -> list[Path]:
+    return sorted(COMMANDS_DIR.glob("*.md"))
+
+
+def main() -> int:
+    errors: list[str] = []
+    skill_names: set[str] = set()
+    skill_files = collect_skill_files()
+    command_files = collect_command_files()
+
+    for skill_file in skill_files:
+        validate_skill(skill_file, skill_names, errors)
+
+    for command_file in command_files:
+        validate_command(command_file, skill_names, errors)
+
+    if errors:
+        print("Validation failed:")
+        for error in errors:
+            print(f"- {error}")
+        return 1
+
+    print(f"Validated {len(skill_files)} skills and {len(command_files)} commands.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+

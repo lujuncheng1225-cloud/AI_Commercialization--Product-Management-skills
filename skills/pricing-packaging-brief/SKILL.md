@@ -65,6 +65,6 @@ scenarios:
 
 ## References / 关联项
 
+- `template.md`
 - `../revenue-metrics-scorecard/SKILL.md`
 - `../commercial-prd/SKILL.md`
-

@@ -68,6 +68,6 @@ scenarios:
 
 ## References / 关联项
 
+- `template.md`
 - `../ai-feature-brief/SKILL.md`
 - `../ai-risk-review/SKILL.md`
-
