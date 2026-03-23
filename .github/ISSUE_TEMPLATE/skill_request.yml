@@ -1,0 +1,27 @@
+name: Skill request
+description: Propose a new PM skill for the library.
+title: "[Skill]: "
+labels:
+  - skill-request
+body:
+  - type: input
+    id: skill_name
+    attributes:
+      label: Proposed skill name
+    validations:
+      required: true
+  - type: textarea
+    id: trigger
+    attributes:
+      label: Trigger
+      description: When should this skill be used?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Intended output
+      description: What should this skill produce or decide?
+    validations:
+      required: true
+

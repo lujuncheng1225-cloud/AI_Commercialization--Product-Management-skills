@@ -15,6 +15,12 @@ scenarios:
 
 Create a concise feature brief for an AI-powered capability before the team commits to build.
 
+## Chinese Summary
+
+- 用途：在写完整 PRD 前，先把 AI 功能定义清楚。
+- 适用：只有一个 AI 点子，还没明确输入、输出和质量标准时。
+- 输出：用户任务、触发点、输入、输出、质量门槛、回退策略。
+
 ## Key Concepts
 
 ### An AI Feature Brief Should Clarify
@@ -86,4 +92,3 @@ Bad:
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-risk-review/SKILL.md`
 - `../problem-statement/SKILL.md`
-

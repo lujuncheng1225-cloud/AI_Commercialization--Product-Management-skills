@@ -15,6 +15,12 @@ scenarios:
 
 Create a practical risk review for an AI feature that helps product, design, engineering, and leadership decide whether the launch conditions are strong enough.
 
+## Chinese Summary
+
+- 用途：系统性审查 AI 功能的质量、信任、运营和滥用风险。
+- 适用：上线前评审、范围扩大前评审、领导层要风险说明时。
+- 输出：风险表、缓解动作、监控指标、上线阻断项。
+
 ## Key Concepts
 
 ### Risk Areas
@@ -72,4 +78,3 @@ Bad:
 
 - `../ai-feature-brief/SKILL.md`
 - `../llm-evaluation-plan/SKILL.md`
-

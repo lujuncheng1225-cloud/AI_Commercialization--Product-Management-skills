@@ -2,6 +2,10 @@
 
 Use this repository to encode repeatable PM thinking into reusable skill files.
 
+Chinese quick template:
+
+- `PM Skills Template CN.md`
+
 ## Skill Anatomy
 
 Each skill should contain:
@@ -89,4 +93,3 @@ If the feature relies on an LLM or another probabilistic system, build these int
 1. Add more component skills before adding more workflows.
 2. Add one command only after at least two related skills exist.
 3. Add a reference file only when the core `SKILL.md` becomes crowded.
-

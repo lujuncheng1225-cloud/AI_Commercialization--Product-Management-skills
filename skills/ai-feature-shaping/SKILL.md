@@ -16,6 +16,12 @@ estimated_time: "45-90 min"
 
 Guide a PM through the minimum product work needed to shape an AI initiative responsibly.
 
+## Chinese Summary
+
+- 用途：把一个 AI 想法整理成能进 roadmap 讨论的产品定义。
+- 适用：还停留在概念阶段，但已经需要进入产品决策时。
+- 输出：问题定义、功能定义、评估方案、风险评审和建议动作。
+
 ## Key Concepts
 
 ### This Workflow Produces
@@ -84,4 +90,3 @@ Bad:
 - `../ai-feature-brief/SKILL.md`
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-risk-review/SKILL.md`
-

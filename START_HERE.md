@@ -2,6 +2,10 @@
 
 This repository is a starter kit for PM skills.
 
+Chinese companion:
+
+- `START_HERE.zh-CN.md`
+
 If you only remember three things:
 
 1. Pick one skill.
@@ -48,6 +52,10 @@ Run commands/prioritize.md for this request: too many stakeholder requests, no c
 
 ```text
 Run commands/shape-ai-feature.md for this request: build an AI copilot for PMs to turn interview notes into opportunity themes.
+```
+
+```text
+Run commands/prepare-ai-launch.md for this request: launch an AI writing assistant for PM weekly updates.
 ```
 
 ## Operating Pattern

@@ -15,6 +15,12 @@ scenarios:
 
 Create a concise experiment brief that makes the hypothesis, signal, and decision rule explicit.
 
+## Chinese Summary
+
+- 用途：把验证实验设计成可判断去留的简报。
+- 适用：不想先大做特做，想先验证关键假设时。
+- 输出：假设、受众、方法、成功阈值、决策规则。
+
 ## Key Concepts
 
 ### Every Good Experiment Brief Defines
@@ -75,4 +81,3 @@ Bad:
 
 - `../problem-statement/SKILL.md`
 - `../ai-feature-brief/SKILL.md`
-

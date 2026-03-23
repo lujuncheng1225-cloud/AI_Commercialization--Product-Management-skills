@@ -2,6 +2,10 @@
 
 Codex can work directly from the files in this repository.
 
+Chinese companion:
+
+- `Using PM Skills with Codex.zh-CN.md`
+
 ## Basic Pattern
 
 Point Codex at a specific skill file and tell it how to operate.
@@ -43,4 +47,3 @@ Using skills/<skill-name>/SKILL.md:
 - If output is generic, provide product stage, segment, KPI, timeline, and constraints.
 - If the structure drifts, instruct Codex to follow the skill sections exactly.
 - If the task is large, run one phase at a time instead of asking for everything in a single pass.
-

@@ -17,6 +17,12 @@ Guide PM work through a structured conversation before producing an output.
 
 This skill is the interaction protocol for facilitation-heavy PM skills. It is designed to reduce context dumping, keep the session focused, and improve output quality.
 
+## Chinese Summary
+
+- 用途：在正式产出之前，先把模糊需求收束成可执行会话。
+- 适用：需求不清、背景很乱、需要分步引导时。
+- 输出：澄清后的上下文、假设、下一步产出方向。
+
 ## Key Concepts
 
 ### Entry Modes
@@ -80,4 +86,3 @@ Bad:
 - `../prioritization-advisor/SKILL.md`
 - `../prd-development/SKILL.md`
 - `../problem-statement/SKILL.md`
-

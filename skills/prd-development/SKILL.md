@@ -18,6 +18,12 @@ Guide product managers through a practical PRD workflow that keeps the document 
 
 This is not a waterfall specification. It is a structured working document.
 
+## Chinese Summary
+
+- 用途：把零散发现、讨论和决策整理成可执行的 PRD。
+- 适用：中大型功能、跨团队协作、需要书面 source of truth 时。
+- 输出：从问题、用户、方案到指标、范围、风险的一整套 PRD。
+
 ## Key Concepts
 
 ### A Strong PRD Covers
@@ -101,4 +107,3 @@ Bad:
 - `template.md`
 - `../problem-statement/SKILL.md`
 - `../workshop-facilitation/SKILL.md`
-

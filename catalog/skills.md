@@ -2,6 +2,14 @@
 
 Generated from `skills`.
 
+## agent-workflow-brief
+
+- Path: `skills/agent-workflow-brief/SKILL.md`
+- Type: `component`
+- Description: Define an agentic workflow with inputs, tools, decision boundaries, handoffs, and human review points. Use when turning an AI automation idea into a safe productized workflow.
+- Best for: Designing an agent workflow, Clarifying tool use and human checkpoints, Preventing vague copilot or agent definitions
+- Example: Define an agent workflow that drafts PRDs from discovery notes
+
 ## ai-feature-brief
 
 - Path: `skills/ai-feature-brief/SKILL.md`
@@ -17,6 +25,14 @@ Generated from `skills`.
 - Description: Shape an AI product initiative from problem to feature brief, evaluation plan, and risk review. Use when an AI idea needs product definition before roadmap commitment.
 - Best for: Turning an AI idea into a decision-ready concept, Preparing an AI initiative for roadmap discussion, Structuring cross-functional AI product definition work
 - Example: Shape an AI copilot concept before putting it on the roadmap
+
+## ai-launch-checklist
+
+- Path: `skills/ai-launch-checklist/SKILL.md`
+- Type: `component`
+- Description: Review AI launch readiness across quality, fallback behavior, monitoring, support, and rollback. Use before exposing an AI feature to broader real users.
+- Best for: Preparing an AI feature for launch, Running a go or no-go review, Checking operational readiness beyond the demo
+- Example: Create a launch checklist for an AI writing assistant
 
 ## ai-risk-review
 
@@ -42,6 +58,22 @@ Generated from `skills`.
 - Best for: Designing evaluation for an AI product feature, Turning subjective quality concerns into measurable checks, Defining launch criteria for an LLM feature
 - Example: Create an evaluation plan for an AI meeting notes feature
 
+## model-selection-advisor
+
+- Path: `skills/model-selection-advisor/SKILL.md`
+- Type: `interactive`
+- Description: Choose a model strategy based on task shape, latency, cost, reliability, and risk tolerance. Use when an AI feature needs a practical model choice or routing approach.
+- Best for: Choosing a model for a product feature, Balancing quality, latency, and cost, Deciding whether routing or fallback is needed
+- Example: Help me choose a model for AI meeting note summaries
+
+## north-star-metric
+
+- Path: `skills/north-star-metric/SKILL.md`
+- Type: `component`
+- Description: Define a north star metric with guardrails and usage logic. Use when a product team needs one primary outcome metric without losing sight of quality and risk.
+- Best for: Defining a product north star metric, Clarifying primary outcome versus guardrail metrics, Aligning teams on what good looks like
+- Example: Help me define the north star metric for an AI research assistant
+
 ## prd-development
 
 - Path: `skills/prd-development/SKILL.md`
@@ -65,6 +97,14 @@ Generated from `skills`.
 - Description: Frame a clear customer or business problem with evidence, target user, and impact. Use when moving from vague pain points to a decision-ready problem definition.
 - Best for: Writing a concise product problem statement, Turning scattered research into a clear problem definition, Aligning stakeholders on what problem matters
 - Example: Users drop during onboarding and I need to define the real problem
+
+## voice-of-customer-synthesis
+
+- Path: `skills/voice-of-customer-synthesis/SKILL.md`
+- Type: `component`
+- Description: Synthesize customer notes, calls, tickets, or feedback into clear themes, signals, and product implications. Use when raw VOC input needs structured PM interpretation.
+- Best for: Summarizing raw customer feedback, Turning notes into themes and product implications, Preparing discovery synthesis
+- Example: Synthesize 20 discovery interviews into patterns
 
 ## workshop-facilitation
 

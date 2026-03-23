@@ -15,6 +15,12 @@ scenarios:
 
 Build a practical evaluation plan for an AI feature so quality can be discussed with evidence instead of opinion.
 
+## Chinese Summary
+
+- 用途：给 AI 功能制定上线前后的评估方案。
+- 适用：团队担心“效果好不好”但还没有清晰衡量方式时。
+- 输出：离线样本集、指标、阻断阈值、线上监控信号。
+
 ## Key Concepts
 
 ### Evaluation Needs Two Layers
@@ -89,4 +95,3 @@ Bad:
 
 - `../ai-feature-brief/SKILL.md`
 - `../ai-risk-review/SKILL.md`
-

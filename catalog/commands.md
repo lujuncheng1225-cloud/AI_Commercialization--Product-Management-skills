@@ -2,6 +2,13 @@
 
 Generated from `commands`.
 
+## prepare-ai-launch
+
+- Path: `commands/prepare-ai-launch.md`
+- Description: Prepare an AI feature for launch by chaining evaluation planning, risk review, and launch checklist work.
+- Uses: llm-evaluation-plan, ai-risk-review, ai-launch-checklist
+- Outputs: Evaluation plan, Risk review, Launch checklist, Go/no-go questions
+
 ## prioritize
 
 - Path: `commands/prioritize.md`

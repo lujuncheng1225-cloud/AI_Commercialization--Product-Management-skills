@@ -1,0 +1,21 @@
+name: Repo improvement
+description: Propose an improvement to docs, commands, scripts, or repo operations.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is missing or weak today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What would improve it?
+    validations:
+      required: true
+

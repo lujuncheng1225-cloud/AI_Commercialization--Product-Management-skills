@@ -15,6 +15,12 @@ scenarios:
 
 Create a structured problem statement that names who is affected, what is happening, why it matters, and what evidence supports the claim.
 
+## Chinese Summary
+
+- 用途：把模糊痛点整理成清晰的问题定义。
+- 适用：准备写 PRD、做立项讨论、需要统一问题口径时。
+- 输出：用户是谁、问题是什么、为什么重要、证据和紧迫性。
+
 ## Key Concepts
 
 ### A Good Problem Statement Answers
@@ -77,4 +83,3 @@ Bad:
 
 - `../prd-development/SKILL.md`
 - `../workshop-facilitation/SKILL.md`
-

@@ -15,6 +15,12 @@ scenarios:
 
 Recommend a prioritization approach that fits the current context instead of applying one framework by default.
 
+## Chinese Summary
+
+- 用途：根据阶段、团队和数据情况，推荐合适的优先级方法。
+- 适用：RICE、ICE、value-effort 不知道该选哪个时。
+- 输出：推荐框架、原因、适用边界、落地步骤。
+
 ## Key Concepts
 
 ### Framework Fit Matters
@@ -83,4 +89,3 @@ Bad recommendation pattern:
 ## References
 
 - `../workshop-facilitation/SKILL.md`
-
