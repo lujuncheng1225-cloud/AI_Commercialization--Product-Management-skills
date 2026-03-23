@@ -19,8 +19,10 @@ SKILL_REQUIRED_HEADERS = [
 ]
 
 COMMAND_REQUIRED_HEADERS = [
+    "## Input Contract / 输入协议",
     "## Workflow / 流程",
     "## Checkpoints / 检查点",
+    "## Decision Output / 决策出口",
 ]
 
 

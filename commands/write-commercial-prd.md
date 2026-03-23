@@ -17,6 +17,17 @@ outputs:
 
 为商业化、转化、onboarding 或套餐改版类项目生成 PRD。
 
+## Input Contract / 输入协议
+
+建议至少提供：
+
+- 商业化目标
+- 当前指标 baseline
+- 目标分群
+- 当前套餐/漏斗情况
+- 主要商业问题
+- 时间范围和 rollout 约束
+
 ## Workflow / 流程
 
 1. 用 `conversion-funnel-diagnostic` 定义商业问题。
@@ -29,6 +40,17 @@ outputs:
 - 明确具体漏斗阶段或收入问题。
 - PRD 必须绑定 baseline 和 target。
 - 写清 rollout 风险和 guardrail。
+
+## Decision Output / 决策出口
+
+最后必须收敛到以下之一：
+
+- `继续推进到 PRD`
+- `先做实验`
+- `补数据后再判断`
+- `暂缓`
+
+并说明为什么现在适合直接立 PRD，还是应该先做实验。
 
 ## Sample Output / 样例输出
 

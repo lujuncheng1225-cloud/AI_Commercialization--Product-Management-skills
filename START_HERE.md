@@ -32,6 +32,7 @@
 - `commands/write-prd.md`
 - `commands/shape-ai-feature.md`
 - `commands/prepare-ai-launch.md`
+- `commands/commercial-strategy-review.md`
 - `commands/commercial-growth-review.md`
 - `commands/write-commercial-prd.md`
 
@@ -47,6 +48,10 @@ Run commands/shape-ai-feature.md for this request: 为 PM 团队设计一个 AI 
 
 ```text
 Run commands/commercial-growth-review.md for this request: 诊断为什么激活用户没有转成付费。
+```
+
+```text
+Run commands/commercial-strategy-review.md for this request: 评审我们下一个季度的商业化增长策略。
 ```
 
 ## 仓库里的组织方式

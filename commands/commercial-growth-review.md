@@ -18,6 +18,17 @@ outputs:
 
 用增长和商业化视角审视一个产品问题。
 
+## Input Contract / 输入协议
+
+建议至少提供：
+
+- 产品和商业模式
+- 当前关键收入指标
+- 主要增长问题
+- 已知漏斗数据
+- 当前价格或套餐
+- 时间范围和限制
+
 ## Workflow / 流程
 
 1. 用 `conversion-funnel-diagnostic` 找出主要掉点。
@@ -30,3 +41,18 @@ outputs:
 - 区分获客问题和留存问题。
 - 每个实验只绑定一个主指标和一个决策。
 - 不要同时改价格、onboarding 和文案。
+
+## Decision Output / 决策出口
+
+最后必须收敛到以下之一：
+
+- `继续推进到 PRD`
+- `先做实验`
+- `补数据后再判断`
+- `暂缓`
+
+并说明主要依据和下一步。
+
+## Sample Output / 样例输出
+
+- `examples/commercial-strategy-review-sample.md`

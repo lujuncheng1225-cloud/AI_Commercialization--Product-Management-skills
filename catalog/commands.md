@@ -16,6 +16,13 @@ Generated from `commands`.
 - Uses: conversion-funnel-diagnostic, retention-levers-review, revenue-metrics-scorecard, growth-experiment-design
 - Outputs: 漏斗诊断, 留存评审, 商业指标视图, 实验建议
 
+## commercial-strategy-review
+
+- Path: `commands/commercial-strategy-review.md`
+- Description: 通过指标、漏斗、定价、留存和实验设计来完成一次完整的商业化策略评审。
+- Uses: revenue-metrics-scorecard, conversion-funnel-diagnostic, pricing-packaging-brief, retention-levers-review, growth-experiment-design, commercial-prd
+- Outputs: 商业化诊断, 核心策略判断, 实验优先级, 执行文档方向
+
 ## improve-trial-to-paid
 
 - Path: `commands/improve-trial-to-paid.md`

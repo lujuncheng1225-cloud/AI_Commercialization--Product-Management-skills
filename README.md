@@ -46,6 +46,10 @@ Run commands/commercial-growth-review.md for this request: 诊断我们 self-ser
 Run commands/write-commercial-prd.md for this request: 重做升级流程并重新设计 pro 套餐包装。
 ```
 
+```text
+Run commands/commercial-strategy-review.md for this request: 评审 MVLAND 下一阶段怎么提升商业化收入。
+```
+
 ## Principles / 原则
 
 - Outcome over output
