@@ -21,6 +21,11 @@ The structure is intentionally simple:
 - `prioritization-advisor` - interactive skill for choosing a prioritization approach
 - `prd-development` - workflow skill for building a PRD from context to requirements
 - `workshop-facilitation` - interaction protocol for guided PM sessions
+- `ai-feature-brief` - component skill for defining an AI feature clearly
+- `llm-evaluation-plan` - component skill for planning offline and online evaluation
+- `experiment-brief` - component skill for designing quick validation experiments
+- `ai-risk-review` - component skill for reviewing AI-specific product risks
+- `ai-feature-shaping` - workflow skill for shaping an AI initiative end to end
 
 ## First Run
 
@@ -38,6 +43,10 @@ Using skills/prioritization-advisor/SKILL.md, help me choose a prioritization fr
 Run commands/write-prd.md for this request: onboarding redesign for first-time AI product managers.
 ```
 
+```text
+Run commands/shape-ai-feature.md for this request: AI meeting notes that extract action items and decision summaries for product teams.
+```
+
 ## Design Principles
 
 - Outcome over output
@@ -50,3 +59,8 @@ Run commands/write-prd.md for this request: onboarding redesign for first-time A
 
 This is a starter skeleton modeled after skill-driven PM repositories. Extend it by adding new skills under `skills/<skill-name>/SKILL.md`.
 
+Generate indexes with:
+
+```bash
+python3 scripts/generate-catalog.py
+```

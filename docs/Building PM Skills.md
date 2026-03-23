@@ -61,6 +61,20 @@ Examples:
 - PRD development
 - roadmap planning
 - discovery process
+- AI feature shaping
+
+## AI PM Additions
+
+For AI product work, the base PM structure usually needs a few extra sections:
+
+- input and output definition
+- quality bar and failure modes
+- fallback behavior
+- human-in-the-loop decisions
+- evaluation before launch
+- safety, trust, and misuse risks
+
+If the feature relies on an LLM or another probabilistic system, build these into the skill instead of treating them as afterthoughts.
 
 ## Quality Bar
 
@@ -69,4 +83,10 @@ Examples:
 - Prefer concrete examples
 - Teach the why, not just the format
 - Keep workflows executable
+
+## Suggested Expansion Order
+
+1. Add more component skills before adding more workflows.
+2. Add one command only after at least two related skills exist.
+3. Add a reference file only when the core `SKILL.md` becomes crowded.
 

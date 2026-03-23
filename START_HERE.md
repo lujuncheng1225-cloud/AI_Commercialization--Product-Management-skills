@@ -16,12 +16,15 @@ Use:
 
 - `skills/problem-statement/SKILL.md`
 - `skills/prd-development/SKILL.md`
+- `skills/ai-feature-brief/SKILL.md`
+- `skills/llm-evaluation-plan/SKILL.md`
 
 ### I need help making a decision
 
 Use:
 
 - `skills/prioritization-advisor/SKILL.md`
+- `skills/ai-risk-review/SKILL.md`
 
 ### I need a structured guided session
 
@@ -43,6 +46,10 @@ Using skills/prd-development/SKILL.md, create a PRD for a team inbox redesign. F
 Run commands/prioritize.md for this request: too many stakeholder requests, no clear scoring model, limited engineering capacity.
 ```
 
+```text
+Run commands/shape-ai-feature.md for this request: build an AI copilot for PMs to turn interview notes into opportunity themes.
+```
+
 ## Operating Pattern
 
 - Component skills create one artifact well.
@@ -50,3 +57,11 @@ Run commands/prioritize.md for this request: too many stakeholder requests, no c
 - Workflow skills orchestrate multi-step PM work.
 - Commands chain several skills into one repeatable path.
 
+## Helpful Commands
+
+```bash
+bash ./scripts/find-a-skill.sh --list-all
+bash ./scripts/find-a-skill.sh --keyword evaluation
+bash ./scripts/find-a-command.sh --list-all
+python3 ./scripts/generate-catalog.py
+```
