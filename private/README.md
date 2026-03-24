@@ -17,6 +17,21 @@
 - `METRICS_CONTEXT_TEMPLATE.md`
 - `DECISION_PREFERENCES_TEMPLATE.md`
 - `TERMS_GLOSSARY_TEMPLATE.md`
+- `PRODUCT_CONTEXT_STARTER.md`
+- `METRICS_CONTEXT_STARTER.md`
+- `DECISION_PREFERENCES_STARTER.md`
+- `TERMS_GLOSSARY_STARTER.md`
+
+## Starter vs Template / Starter 和 Template 的区别
+
+- `*_TEMPLATE.md`：空白模板，适合从零开始填
+- `*_STARTER.md`：带强默认假设的起稿版，适合直接改
+
+注意：
+
+- `STARTER` 不是你的真实业务事实
+- 它只是一个可编辑的专业默认版本
+- 如果真实信息和 starter 冲突，以真实信息为准
 
 ## How To Use / 怎么用
 
