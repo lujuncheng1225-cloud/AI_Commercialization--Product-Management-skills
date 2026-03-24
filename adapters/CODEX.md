@@ -10,7 +10,9 @@
 2. `agent/ROUTING.md`
 3. `agent/OUTPUT_STANDARDS.md`
 4. `agent/DOMAIN_CONTEXT.md`
-5. 对应的 `command` 或 `skill`
+5. `agent/SPARSE_CONTEXT_POLICY.md`
+6. 如存在，再读取 `private/` 下相关文件
+7. 对应的 `command` 或 `skill`
 
 ## Recommended Bootstrap Prompt / 推荐启动提示词
 
@@ -22,6 +24,7 @@ Before doing the task, read:
 2. agent/ROUTING.md
 3. agent/OUTPUT_STANDARDS.md
 4. agent/DOMAIN_CONTEXT.md
+5. agent/SPARSE_CONTEXT_POLICY.md
 
 Then:
 - decide whether this task should use a command or a single skill
@@ -39,6 +42,7 @@ Task:
 - 如果任务跨多个阶段，优先走 `command`
 - 如果用户只要一个产物，才直接走单个 `skill`
 - 如果输入明显不足，先提问，不要直接写正式产物
+- 如果 `private/` 没有完整内容，仍应按稀疏上下文模式稳定工作
 
 ## Good Prompt Pattern / 推荐提示结构
 

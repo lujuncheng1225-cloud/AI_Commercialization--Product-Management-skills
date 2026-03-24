@@ -10,6 +10,7 @@
 2. `agent/ROUTING.md`
 3. `agent/OUTPUT_STANDARDS.md`
 4. `agent/DOMAIN_CONTEXT.md`
+5. `agent/SPARSE_CONTEXT_POLICY.md`
 
 ## Recommended Project Rule / 推荐项目规则
 
@@ -23,11 +24,13 @@ Always read and follow:
 - agent/ROUTING.md
 - agent/OUTPUT_STANDARDS.md
 - agent/DOMAIN_CONTEXT.md
+- agent/SPARSE_CONTEXT_POLICY.md
 
 Route requests to the appropriate command or skill before answering.
 Prefer commands for multi-step PM work.
 Ask clarifying questions when required inputs are missing.
 Do not invent metrics, baselines, or company context.
+If context is sparse, produce a bounded answer instead of pretending the information is complete.
 Keep outputs aligned with the selected file's structure and decision output.
 ```
 

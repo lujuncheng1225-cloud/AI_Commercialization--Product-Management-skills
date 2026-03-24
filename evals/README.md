@@ -19,6 +19,8 @@
    - 输出是否符合 `agent/OUTPUT_STANDARDS.md`
 3. `Professional Reliability`
    - 是否出现阶段错配、臆造、空话或错误自信
+4. `Sparse-Context Robustness`
+   - 在信息很少时是否仍然稳健
 
 ## How To Use / 怎么用
 
@@ -32,6 +34,7 @@
 2. 给它一份 `evals/cases/*.md` 里的任务
 3. 记录它选择的 `command` / `skill`
 4. 用 `evals/rubrics/routing-rubric.md` 和 `evals/rubrics/output-rubric.md` 打分
+5. 遇到稀疏上下文 case 时，同时检查 `agent/SPARSE_CONTEXT_POLICY.md` 是否被正确遵守
 
 ## Scoring Model / 评分模型
 
@@ -61,14 +64,16 @@
 每次接入一个新平台时：
 
 1. 先跑 `4` 个基础 case
-2. 记录 route、结论和主要缺陷
-3. 如果有系统性错误，先改 adapter 或启动 prompt
-4. 修完后再重跑同一批 case
+2. 再跑 `1` 个稀疏上下文 case
+3. 记录 route、结论和主要缺陷
+4. 如果有系统性错误，先改 adapter 或启动 prompt
+5. 修完后再重跑同一批 case
 
 ## Related Files / 相关文件
 
 - `agent/ROUTING.md`
 - `agent/OUTPUT_STANDARDS.md`
+- `agent/SPARSE_CONTEXT_POLICY.md`
 - `evals/rubrics/routing-rubric.md`
 - `evals/rubrics/output-rubric.md`
 - `evals/SCORECARD_TEMPLATE.md`

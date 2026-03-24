@@ -10,7 +10,9 @@
 2. `agent/ROUTING.md`
 3. `agent/OUTPUT_STANDARDS.md`
 4. `agent/DOMAIN_CONTEXT.md`
-5. 目标 `command` 或 `skill`
+5. `agent/SPARSE_CONTEXT_POLICY.md`
+6. 如存在，再读取 `private/` 下相关文件
+7. 目标 `command` 或 `skill`
 
 ## Recommended Bootstrap Prompt / 推荐启动提示词
 
@@ -22,6 +24,7 @@ Read these files first:
 - agent/ROUTING.md
 - agent/OUTPUT_STANDARDS.md
 - agent/DOMAIN_CONTEXT.md
+- agent/SPARSE_CONTEXT_POLICY.md
 
 Then route the request to the best command or skill in this repo.
 If critical inputs are missing, ask up to 3 clarifying questions first.
@@ -36,6 +39,7 @@ Task:
 - Claude Code 在多步流程上通常表现稳定，适合优先执行 `commands/`
 - 但不要因为它能长链推理，就跳过输入协议和决策出口
 - 如果任务跨 discovery、定义、评审多个阶段，应按 command 分阶段输出
+- 如果业务上下文很少，应显式进入稀疏上下文模式，而不是用长答案掩盖信息缺口
 
 ## Good Operating Habit / 推荐习惯
 

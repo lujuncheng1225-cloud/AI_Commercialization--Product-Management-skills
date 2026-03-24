@@ -13,10 +13,12 @@
 - `agent/ROUTING.md`
 - `agent/OUTPUT_STANDARDS.md`
 - `agent/DOMAIN_CONTEXT.md`
+- `agent/SPARSE_CONTEXT_POLICY.md`
 - `adapters/CODEX.md`
 - `adapters/CLAUDE_CODE.md`
 - `adapters/CURSOR.md`
 - `evals/README.md`
+- `private/README.md`
 
 ## 从哪里开始
 

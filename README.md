@@ -9,6 +9,7 @@
 - `agent/` 规范层
 - `adapters/` 平台接入层
 - `evals/` 质量评估层
+- `private/` 私有上下文层
 - 模板、样例输出、catalog
 - 结构校验和风格一致性检查
 - 中文主版本内容
@@ -25,6 +26,7 @@
 - `agent/`：跨平台 agent 路由与输出规范
 - `adapters/`：Codex / Claude Code / Cursor 接入说明
 - `evals/`：跨平台 agent 评估基线
+- `private/`：可选的私人业务上下文模板
 - `docs/`：使用和维护文档
 - `scripts/`：检索、校验和 catalog 脚本
 - `catalog/`：自动生成索引
@@ -58,8 +60,10 @@
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
 - [agent/DOMAIN_CONTEXT.md](agent/DOMAIN_CONTEXT.md)
+- [agent/SPARSE_CONTEXT_POLICY.md](agent/SPARSE_CONTEXT_POLICY.md)
 - [adapters/CODEX.md](adapters/CODEX.md)
 - [evals/README.md](evals/README.md)
+- [private/README.md](private/README.md)
 
 ```text
 Using skills/problem-statement/SKILL.md，帮我定义新 B2B 用户激活低的问题。先问不超过 3 个澄清问题，再输出 markdown。
