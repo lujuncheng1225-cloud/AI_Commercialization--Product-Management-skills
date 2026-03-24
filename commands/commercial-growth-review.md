@@ -55,4 +55,4 @@ outputs:
 
 ## Sample Output / 样例输出
 
-- `examples/commercial-strategy-review-sample.md`
+- `examples/commercial-growth-review-sample.md`

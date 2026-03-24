@@ -4,11 +4,15 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
+from urllib.parse import unquote
 
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
 COMMANDS_DIR = ROOT / "commands"
+DOC_LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+SAMPLE_OUTPUT_PATTERN = re.compile(r"## Sample Output .*?(?=\n## |\Z)", re.S)
+INLINE_CODE_PATH_PATTERN = re.compile(r"`([^`\n]+\.md)`")
 
 REQUIRED_SKILL_FIELDS = {"name", "description", "type"}
 REQUIRED_COMMAND_FIELDS = {"name", "description", "uses", "outputs"}
@@ -53,6 +57,42 @@ def find_frontmatter_end(text: str) -> int:
     return len(parts[0]) + len("---\n") + len(parts[1]) + len("---\n")
 
 
+def is_external_link(target: str) -> bool:
+    return target.startswith(("http://", "https://", "mailto:", "#"))
+
+
+def validate_markdown_links(path: Path, errors: list[str]) -> None:
+    text = path.read_text(encoding="utf-8")
+    for target in DOC_LINK_PATTERN.findall(text):
+        clean_target = unquote(target.split("#", 1)[0])
+        if not clean_target or is_external_link(clean_target):
+            continue
+        if clean_target.startswith("/"):
+            errors.append(f"{path}: invalid absolute local link target {target}")
+            continue
+        resolved = (path.parent / clean_target).resolve()
+        if not resolved.exists():
+            errors.append(f"{path}: missing markdown link target {target}")
+
+
+def validate_sample_output_paths(path: Path, errors: list[str]) -> None:
+    text = path.read_text(encoding="utf-8")
+    match = SAMPLE_OUTPUT_PATTERN.search(text)
+    if not match:
+        return
+
+    sample_paths = INLINE_CODE_PATH_PATTERN.findall(match.group(0))
+    for sample in sample_paths:
+        resolved = (path.parent / sample).resolve()
+        if not resolved.exists():
+            errors.append(f"{path}: missing sample output target {sample}")
+            continue
+        if resolved.stem.endswith("-sample") and not resolved.stem.startswith(path.stem):
+            errors.append(
+                f"{path}: sample output target {sample} does not match command name '{path.stem}'"
+            )
+
+
 def validate_skill(path: Path, names: set[str], errors: list[str]) -> None:
     meta = parse_frontmatter(path)
     if not meta:
@@ -80,6 +120,8 @@ def validate_skill(path: Path, names: set[str], errors: list[str]) -> None:
         if not ref_path.exists():
             errors.append(f"{path}: missing reference target {ref}")
 
+    validate_markdown_links(path, errors)
+
 
 def validate_command(path: Path, skill_names: set[str], errors: list[str]) -> None:
     meta = parse_frontmatter(path)
@@ -98,6 +140,9 @@ def validate_command(path: Path, skill_names: set[str], errors: list[str]) -> No
         for skill in uses:
             if skill not in skill_names:
                 errors.append(f"{path}: unknown skill in uses: {skill}")
+
+    validate_markdown_links(path, errors)
+    validate_sample_output_paths(path, errors)
 
 
 def collect_skill_files() -> list[Path]:
@@ -120,6 +165,15 @@ def main() -> int:
     for command_file in command_files:
         validate_command(command_file, skill_names, errors)
 
+    for doc_file in sorted(ROOT.glob("*.md")):
+        validate_markdown_links(doc_file, errors)
+
+    for doc_file in sorted((ROOT / "docs").rglob("*.md")):
+        validate_markdown_links(doc_file, errors)
+
+    for doc_file in sorted((ROOT / "catalog").rglob("*.md")):
+        validate_markdown_links(doc_file, errors)
+
     if errors:
         print("Validation failed:")
         for error in errors:
@@ -132,4 +186,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

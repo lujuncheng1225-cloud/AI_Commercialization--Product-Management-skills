@@ -45,7 +45,7 @@
 
 ## First Run / 快速开始
 
-先看 [START_HERE.md](/Users/yancheng/Documents/AI%20Product%20Management/START_HERE.md)，然后直接跑一个 skill 或 command。
+先看 [START_HERE.md](START_HERE.md)，然后直接跑一个 skill 或 command。
 
 ```text
 Using skills/problem-statement/SKILL.md，帮我定义新 B2B 用户激活低的问题。先问不超过 3 个澄清问题，再输出 markdown。

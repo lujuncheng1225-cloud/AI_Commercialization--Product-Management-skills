@@ -4,9 +4,9 @@
 
 如果你要快速理解它，建议看这几个入口：
 
-- [README.md](/Users/yancheng/Documents/AI%20Product%20Management/README.md)
-- [START_HERE.md](/Users/yancheng/Documents/AI%20Product%20Management/START_HERE.md)
-- [Using PM Skills with Codex.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/Using%20PM%20Skills%20with%20Codex.md)
+- [README.md](README.md)
+- [START_HERE.md](START_HERE.md)
+- [Using PM Skills with Codex.md](docs/Using%20PM%20Skills%20with%20Codex.md)
 
 它现在不是单纯的 skill 仓库，而是：
 
