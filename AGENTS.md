@@ -7,6 +7,7 @@ For portable, cross-tool behavior, agents should also read:
 - `agent/ROUTING.md`
 - `agent/OUTPUT_STANDARDS.md`
 - `agent/DOMAIN_CONTEXT.md`
+- `evals/README.md`
 
 ## Operating Philosophy
 
@@ -32,3 +33,4 @@ For portable, cross-tool behavior, agents should also read:
 - When adding commands, keep them as thin orchestrators over skills
 - Keep `agent/` as the cross-platform policy layer
 - Keep `adapters/` as thin platform-specific entry instructions
+- Keep `evals/` as the cross-platform quality baseline

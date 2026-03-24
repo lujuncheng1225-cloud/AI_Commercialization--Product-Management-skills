@@ -9,6 +9,7 @@
 - `agent/OUTPUT_STANDARDS.md`
 - `agent/DOMAIN_CONTEXT.md`
 - `adapters/CODEX.md`
+- `evals/README.md`
 
 ## 基本模式
 

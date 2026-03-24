@@ -16,6 +16,7 @@
 - `adapters/CODEX.md`
 - `adapters/CLAUDE_CODE.md`
 - `adapters/CURSOR.md`
+- `evals/README.md`
 
 ## 从哪里开始
 
