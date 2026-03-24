@@ -66,8 +66,9 @@ outputs:
 
 最后必须收敛到以下之一：
 
-- `继续推进到 PRD`
+- `进入商业化 PRD`
 - `先做实验`
+- `先重构套餐或价格策略`
 - `补数据后再判断`
 - `暂缓`
 
@@ -80,4 +81,3 @@ outputs:
 ## Sample Output / 样例输出
 
 - `examples/commercial-strategy-review-sample.md`
-

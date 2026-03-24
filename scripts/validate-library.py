@@ -79,9 +79,14 @@ def validate_sample_output_paths(path: Path, errors: list[str]) -> None:
     text = path.read_text(encoding="utf-8")
     match = SAMPLE_OUTPUT_PATTERN.search(text)
     if not match:
+        errors.append(f"{path}: missing Sample Output section")
         return
 
     sample_paths = INLINE_CODE_PATH_PATTERN.findall(match.group(0))
+    if not sample_paths:
+        errors.append(f"{path}: Sample Output section must include at least one markdown path")
+        return
+
     for sample in sample_paths:
         resolved = (path.parent / sample).resolve()
         if not resolved.exists():

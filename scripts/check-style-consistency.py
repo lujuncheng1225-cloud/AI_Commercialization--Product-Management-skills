@@ -23,6 +23,7 @@ COMMAND_REQUIRED_HEADERS = [
     "## Workflow / 流程",
     "## Checkpoints / 检查点",
     "## Decision Output / 决策出口",
+    "## Sample Output / 样例输出",
 ]
 
 
