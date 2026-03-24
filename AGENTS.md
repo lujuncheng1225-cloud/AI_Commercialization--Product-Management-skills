@@ -2,6 +2,12 @@
 
 This repo stores PM skills for both humans and coding agents.
 
+For portable, cross-tool behavior, agents should also read:
+
+- `agent/ROUTING.md`
+- `agent/OUTPUT_STANDARDS.md`
+- `agent/DOMAIN_CONTEXT.md`
+
 ## Operating Philosophy
 
 - Do not optimize away the teaching value.
@@ -24,4 +30,5 @@ This repo stores PM skills for both humans and coding agents.
 - Preserve the distinction between component, interactive, and workflow skills
 - Do not add filler docs inside skill directories
 - When adding commands, keep them as thin orchestrators over skills
-
+- Keep `agent/` as the cross-platform policy layer
+- Keep `adapters/` as thin platform-specific entry instructions

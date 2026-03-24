@@ -2,6 +2,14 @@
 
 你可以直接让 Codex 读取这个仓库里的文件来工作。
 
+如果你希望 Codex 不只是“读一个 skill 文件”，而是表现得像你跨设备可迁移的私人 PM agent，先读：
+
+- `AGENTS.md`
+- `agent/ROUTING.md`
+- `agent/OUTPUT_STANDARDS.md`
+- `agent/DOMAIN_CONTEXT.md`
+- `adapters/CODEX.md`
+
 ## 基本模式
 
 明确指定某个 skill 或 command 文件，然后说明工作方式。

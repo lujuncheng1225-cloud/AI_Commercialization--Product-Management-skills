@@ -8,6 +8,15 @@
 2. 给一个真实业务问题
 3. 先让 agent 问澄清问题，再开始产出
 
+如果你要把这个仓库接到不同电脑、不同 agent 上，先读：
+
+- `agent/ROUTING.md`
+- `agent/OUTPUT_STANDARDS.md`
+- `agent/DOMAIN_CONTEXT.md`
+- `adapters/CODEX.md`
+- `adapters/CLAUDE_CODE.md`
+- `adapters/CURSOR.md`
+
 ## 从哪里开始
 
 ### 我需要一个 PM 产物

@@ -179,6 +179,12 @@ def main() -> int:
     for doc_file in sorted((ROOT / "catalog").rglob("*.md")):
         validate_markdown_links(doc_file, errors)
 
+    for doc_file in sorted((ROOT / "agent").rglob("*.md")):
+        validate_markdown_links(doc_file, errors)
+
+    for doc_file in sorted((ROOT / "adapters").rglob("*.md")):
+        validate_markdown_links(doc_file, errors)
+
     if errors:
         print("Validation failed:")
         for error in errors:
