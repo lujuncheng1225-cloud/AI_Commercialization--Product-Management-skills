@@ -2,6 +2,13 @@
 
 一个给产品经理和 AI agent 使用的可复用 PM 技能库，也是一个面向 AI PM 与商业化 PM 的轻量决策系统。
 
+它现在不仅覆盖常见 PM 产出，还开始把更高质量的判断机制写进仓库：
+
+- `Reasoning Heuristics`：第一性原理、苏格拉底提问、奥卡姆剃刀
+- `Disconfirming Checks`：要求主动找反证和最强替代解释
+- `Decision Discipline`：强调为什么不是更简单方案、也不是更重方案
+- `Sharper Samples + Harder Evals`：用更强样例和更刁钻 case 抑制模板化回答
+
 当前这套仓库不只是“skill 文件集合”，而是已经包含：
 
 - `20` 个 skills
@@ -49,6 +56,8 @@
 - `Input Contract`：关键 workflow 都定义了输入协议
 - `Decision Output`：关键 workflow 都会收敛到统一决策出口
 - `Templates + Samples`：不只是告诉你怎么写，还给结构模板和样例输出
+- `Reasoning Quality`：不只追求结构完整，还强调反证、替代解释和收敛条件
+- `Harder Evals`：开始用高混杂信号 case 测 agent 会不会过早自信
 - `Validation`：能校验 metadata、引用关系和章节一致性
 
 ## First Run / 快速开始
