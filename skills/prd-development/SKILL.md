@@ -31,6 +31,19 @@ estimated_time: "60-120 min"
 9. Risks and Dependencies
 10. Open Questions
 
+### Decision Standard / 决策标准
+
+PRD 不是“把想法写完整”，而是把以下判断写清楚：
+
+1. 为什么值得做
+2. 为什么现在做
+3. 为什么先做这个版本
+4. 为什么不做更大或更小的版本
+
+### Scope Discipline / 范围纪律
+
+如果一个需求不能明显改变主指标、关键风险或核心可用性，默认不要进 must-have。
+
 ## Application / 用法
 
 ### Phase 1 / 问题澄清
@@ -44,10 +57,12 @@ estimated_time: "60-120 min"
 ### Phase 3 / 方案定义
 
 - 说明核心方案、关键流程、约束与取舍
+- 明确为什么不是更简单方案，也不是更大方案
 
 ### Phase 4 / 成功定义
 
 - 明确 primary metric 和 supporting metrics
+- 写出哪些结果会说明这份 PRD 的核心假设错了
 
 ### Phase 5 / 需求与范围
 
@@ -73,10 +88,11 @@ estimated_time: "60-120 min"
 - 方案写得比问题还快
 - 没有成功指标
 - scope 不受控
+- 把希望一次性解决的所有问题都装进同一版 PRD
+- 没写“什么结果会证明自己判断错了”
 
 ## References / 关联项
 
 - `template.md`
 - `../problem-statement/SKILL.md`
 - `../workshop-facilitation/SKILL.md`
-

@@ -25,11 +25,22 @@ estimated_time: "45-90 min"
 3. 评估方案
 4. 风险评审
 
+### First-Principles Check / 第一性原理检查
+
+在进入功能定义前，先避免被现有产品形态或 demo 想象锁死。
+
+至少检查这三件事：
+
+1. 用户真正想完成的任务是什么
+2. 当前想法继承了哪些旧交互、旧流程或旧组织约束
+3. 如果从零设计，最小可行且可验证的 AI 能力是什么
+
 ## Application / 用法
 
 ### Phase 1 / 问题定义
 
 - 用 `../problem-statement/SKILL.md`
+- 必要时先做 `First-Principles Check`
 
 ### Phase 2 / 功能定义
 
@@ -66,6 +77,7 @@ estimated_time: "45-90 min"
 - demo 导向而不是产品导向
 - 跳过评估
 - 忽略 bad output 时怎么办
+- 把现有人工流程原样包一层 AI，当成创新方案
 
 ## References / 关联项
 
@@ -73,4 +85,3 @@ estimated_time: "45-90 min"
 - `../ai-feature-brief/SKILL.md`
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-risk-review/SKILL.md`
-

@@ -25,6 +25,24 @@ scenarios:
 - 质量门槛
 - 出错代价
 
+### Strategic Rule / 策略规则
+
+模型选择不是“找最强模型”，而是“为当前任务买到足够可靠的能力”。
+
+优先判断这 3 件事：
+
+1. 这个任务的失败代价，决定你该为质量付多少钱
+2. 这个任务的调用规模，决定你能不能长期承受当前方案
+3. 这个任务的分布是否稳定，决定你需不需要路由和 fallback
+
+### Disconfirming Checks / 反证检查
+
+在推荐更复杂策略前，先检查：
+
+- 是不是 prompt、上下文工程或输出约束没做好，而不是模型本身不够强
+- 是不是任务被错误地合并成一个大任务，导致看起来必须上大模型
+- 是不是只有少量高风险 case 需要强模型，而不是全量请求都需要
+
 ## Application / 用法
 
 最多问 5 个短问题：
@@ -45,6 +63,12 @@ scenarios:
 
 ### Why It Fits
 - [原因]
+
+### Why Not The Simpler Option
+- [为什么不能更简单]
+
+### Why Not The Stronger Option
+- [为什么不用更重的方案]
 
 ### Operational Notes
 - [时延]
@@ -70,9 +94,10 @@ scenarios:
 - 只看 demo 效果
 - 忽略规模化成本
 - 忘记 fallback
+- 把 prompt 问题、系统设计问题误判成模型能力问题
+- 在没有分布分层的情况下过早上路由
 
 ## References / 关联项
 
 - `../llm-evaluation-plan/SKILL.md`
 - `../ai-feature-brief/SKILL.md`
-

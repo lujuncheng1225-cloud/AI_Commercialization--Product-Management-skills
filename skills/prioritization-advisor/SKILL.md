@@ -22,6 +22,16 @@ scenarios:
 - Value-Effort：适合快速做取舍
 - Weighted Scoring：适合多方对齐
 
+### Occam Rule / 奥卡姆剃刀规则
+
+优先级讨论里，如果两个框架或两套排序逻辑都能支持当前决策，优先选：
+
+- 假设更少的
+- 解释成本更低的
+- 团队更容易持续执行的
+
+默认不要在信息稀疏时引入过度精细的打分系统。
+
 ## Application / 用法
 
 最多问 4 个短问题：
@@ -67,8 +77,8 @@ scenarios:
 - 数据不足却推荐复杂框架
 - 把战略取舍和 backlog 排序混在一起
 - 只报框架名，不说落地方法
+- 为了显得严谨而上复杂模型，但团队根本不会长期使用
 
 ## References / 关联项
 
 - `../workshop-facilitation/SKILL.md`
-

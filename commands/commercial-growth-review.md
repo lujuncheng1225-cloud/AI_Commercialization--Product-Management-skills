@@ -36,6 +36,27 @@ outputs:
 3. 用 `revenue-metrics-scorecard` 把诊断锚定到商业指标上。
 4. 用 `growth-experiment-design` 产出下一步实验。
 
+## Advanced Review Rules / 进阶评审规则
+
+### One-Core-Problem Rule / 单核心问题规则
+
+每轮评审优先收敛一个主问题，不要同时把获客、激活、定价、留存都当成同等优先级。
+
+### Disconfirm-Your-Story Rule / 反证你的故事
+
+当你形成初步解释后，必须补一句：
+
+- 什么证据会推翻这个解释
+- 哪个最强替代解释目前也成立
+
+### Cheapest-Sharpest-Next-Step / 最便宜但最锋利的下一步
+
+下一步动作优先满足：
+
+- 能最快区分两个主要解释
+- 能影响下一次资源分配
+- 不要求同时改太多变量
+
 ## Checkpoints / 检查点
 
 - 区分获客问题和留存问题。
@@ -53,6 +74,11 @@ outputs:
 - `暂缓`
 
 并说明主要依据和下一步。
+
+如果选择 `补数据后再判断`，必须明确：
+
+- 缺的不是泛数据，而是哪一个关键判别证据
+- 这条证据会改变哪一个决策
 
 ## Sample Output / 样例输出
 
