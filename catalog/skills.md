@@ -146,6 +146,22 @@ Generated from `skills`.
 - Best for: 定义商业化指标看板, 统一收入和转化指标, 给 monetization 项目建立指标框架
 - Example: 为 self-serve SaaS 定义 revenue scorecard
 
+## review-gates
+
+- Path: `skills/review-gates/SKILL.md`
+- Type: `component`
+- Description: 在正式交付前用结构化关口审查方案、文档或分析结果。适用于避免局部正确但整体跑偏、避免草率交付的场景。
+- Best for: 在交付前做结构化审查, 检查文档或分析是否真的能用, 明确返工条件和通过条件
+- Example: PRD 写完后做一轮交付前审查
+
+## task-decomposition
+
+- Path: `skills/task-decomposition/SKILL.md`
+- Type: `component`
+- Description: 把一个较大的 PM、AI PM 或商业化任务拆成可快速验证的执行步骤。适用于任务过大、容易失控、需要先把执行顺序和检查点想清楚的场景。
+- Best for: 把大任务拆成小步骤, 降低 PRD、评审或分析任务的失控风险, 给 agent 或团队生成可执行计划
+- Example: 把一份复杂 PRD 写作任务拆成 30 分钟内可推进的步骤
+
 ## voice-of-customer-synthesis
 
 - Path: `skills/voice-of-customer-synthesis/SKILL.md`

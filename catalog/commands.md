@@ -55,7 +55,7 @@ Generated from `commands`.
 
 - Path: `commands/shape-ai-feature.md`
 - Description: 通过问题定义、功能定义、评估和风险评审来整理 AI 产品项目。
-- Uses: workshop-facilitation, problem-statement, ai-feature-brief, llm-evaluation-plan, ai-risk-review
+- Uses: workshop-facilitation, problem-statement, task-decomposition, ai-feature-brief, llm-evaluation-plan, ai-risk-review, review-gates
 - Outputs: AI 功能 brief, 评估方案, 风险评审, 上线准备问题
 
 ## write-commercial-prd
@@ -69,5 +69,5 @@ Generated from `commands`.
 
 - Path: `commands/write-prd.md`
 - Description: 通过问题定义、需求整理和初步故事拆解来生成 PRD。
-- Uses: workshop-facilitation, problem-statement, prd-development
+- Uses: workshop-facilitation, problem-statement, task-decomposition, prd-development, review-gates
 - Outputs: 结构化 PRD, 成功指标, 范围边界

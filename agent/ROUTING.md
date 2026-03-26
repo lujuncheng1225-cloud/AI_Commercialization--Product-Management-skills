@@ -143,6 +143,8 @@
   - `skills/problem-statement/SKILL.md`
 - 写 AI 功能 brief：
   - `skills/ai-feature-brief/SKILL.md`
+- 拆解大任务或执行步骤：
+  - `skills/task-decomposition/SKILL.md`
 - 写 LLM 评估方案：
   - `skills/llm-evaluation-plan/SKILL.md`
 - 做 AI 风险评审：
@@ -159,6 +161,8 @@
   - `skills/growth-experiment-design/SKILL.md`
 - 写收入指标看板：
   - `skills/revenue-metrics-scorecard/SKILL.md`
+- 在交付前做结构化审查：
+  - `skills/review-gates/SKILL.md`
 
 ## Clarify First / 先澄清的情况
 

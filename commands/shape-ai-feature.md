@@ -5,9 +5,11 @@ argument-hint: "<AI 项目或功能想法>"
 uses:
   - workshop-facilitation
   - problem-statement
+  - task-decomposition
   - ai-feature-brief
   - llm-evaluation-plan
   - ai-risk-review
+  - review-gates
 outputs:
   - AI 功能 brief
   - 评估方案
@@ -34,13 +36,16 @@ outputs:
 
 1. 用 `workshop-facilitation` 澄清问题和场景。
 2. 用 `problem-statement` 定义用户痛点和业务痛点。
-3. 用 `ai-feature-brief` 明确体验、输入、输出和 fallback。
-4. 用 `llm-evaluation-plan` 定义质量如何衡量。
-5. 用 `ai-risk-review` 列出上线风险和缓解动作。
+3. 用 `task-decomposition` 把功能定义、评估和风险问题拆成明确步骤。
+4. 用 `ai-feature-brief` 明确体验、输入、输出和 fallback。
+5. 用 `llm-evaluation-plan` 定义质量如何衡量。
+6. 用 `ai-risk-review` 列出上线风险和缓解动作。
+7. 用 `review-gates` 做交付前审查。
 
 ## Checkpoints / 检查点
 
 - 不要跳过失败模式。
+- 复杂任务先拆解，再进入细化定义。
 - 低置信度输出必须有 fallback。
 - 区分 demo 效果和上线质量。
 

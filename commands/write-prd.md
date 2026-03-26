@@ -5,7 +5,9 @@ argument-hint: "<项目或功能>"
 uses:
   - workshop-facilitation
   - problem-statement
+  - task-decomposition
   - prd-development
+  - review-gates
 outputs:
   - 结构化 PRD
   - 成功指标
@@ -31,12 +33,15 @@ outputs:
 
 1. 如果背景不清楚，先用 `workshop-facilitation`。
 2. 用 `problem-statement` 澄清用户问题和业务问题。
-3. 用 `prd-development` 产出完整文档。
-4. 结尾补 assumptions、risks 和 next steps。
+3. 用 `task-decomposition` 把成文和关键决策拆成可检查的小步骤。
+4. 用 `prd-development` 产出完整文档。
+5. 用 `review-gates` 做交付前审查。
+6. 结尾补 assumptions、risks 和 next steps。
 
 ## Checkpoints / 检查点
 
 - 在展开方案前先确认问题。
+- 大任务先拆解，再连续成文。
 - 至少保留一个可衡量的成功指标。
 - 明确写出 out of scope。
 
