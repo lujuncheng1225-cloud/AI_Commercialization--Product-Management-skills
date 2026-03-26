@@ -82,6 +82,49 @@ scenarios:
 
 - “先写一版再慢慢改。”
 
+### Strong Example / 强样例
+
+```markdown
+## Task Decomposition
+
+### Goal
+产出一份面向新用户 onboarding 改版的 PRD 草案，并能支持设计和工程进入细化讨论。
+
+### Assumptions
+- 当前最大问题发生在首次价值出现前
+- 本轮先解决激活，不同时处理邀请后的协作问题
+
+### Work Steps
+1. 重新确认问题定义
+   - Output: 一段明确的问题陈述
+   - Check: 能回答“谁卡住、卡在哪、为什么现在要解决”
+
+2. 拆出 success metrics 和 guardrails
+   - Output: 1 个主指标 + 2-3 个配套指标
+   - Check: 指标能支持 go / no-go 判断，而不只是观察
+
+3. 收敛本轮 scope
+   - Output: must-have / out-of-scope 清单
+   - Check: 每个 must-have 都能解释它如何影响主指标
+
+4. 写核心流程和需求
+   - Output: PRD 主体
+   - Check: 方案、范围、风险之间没有明显冲突
+
+5. 做交付前复核
+   - Output: 返工点或可交付结论
+   - Check: 至少经过一次 fit / reasoning / integration 审查
+
+### Review Points
+- Step 1 后复核是否把方案误写成问题
+- Step 3 后复核是否 scope 失控
+- Step 5 后决定是否可直接交付
+
+### Stop / Rework Conditions
+- 如果问题定义无法支撑主指标，停止写 PRD，回到 discovery
+- 如果 must-have 超过本轮资源上限，回到 scope 收敛
+```
+
 ## Common Pitfalls / 常见误区
 
 - 步骤太大，一步里混了多个决策

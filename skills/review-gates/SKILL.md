@@ -78,6 +78,28 @@ scenarios:
 
 - “整体还可以，先这样吧。”
 
+### Strong Example / 强样例
+
+```markdown
+## Review Gates
+
+### Gate 1: Fit Check
+- Pass / Fail: Pass
+- Notes: 这份输出确实回答了“是否先写 PRD 还是先补澄清”，没有把任务答成泛泛建议清单。
+
+### Gate 2: Reasoning Check
+- Pass / Fail: Fail
+- Notes: 有主结论，但没有写最强替代解释，也没有说明哪些缺失信息会改变当前判断。
+
+### Gate 3: Integration Check
+- Pass / Fail: Pass
+- Notes: 指标、范围和下一步基本一致，没有明显自相矛盾。
+
+### Rework Required
+- 补上最强替代解释
+- 补上“什么结果会推翻当前主结论”
+```
+
 ## Common Pitfalls / 常见误区
 
 - 只看文风，不看结论和证据
