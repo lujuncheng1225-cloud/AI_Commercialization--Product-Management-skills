@@ -11,7 +11,7 @@
 
 当前这套仓库不只是“skill 文件集合”，而是已经包含：
 
-- `20` 个 skills
+- `22` 个 skills
 - `10` 个 commands
 - `agent/` 规范层
 - `adapters/` 平台接入层
@@ -64,6 +64,13 @@
 
 先看 [START_HERE.md](START_HERE.md)，然后直接跑一个 skill 或 command。
 
+如果你只记住一条默认工作流，记这条：
+
+1. 先用 `workshop-facilitation` 或 command 把问题聊透
+2. 再用 `task-decomposition` 把任务拆成可检查的小步骤
+3. 再产出文档或判断
+4. 最后用 `review-gates` 做交付前审查
+
 如果你希望把它当成“可迁移的私人 PM Agent 脑”，先读：
 
 - [agent/ROUTING.md](agent/ROUTING.md)
@@ -80,6 +87,10 @@ Using skills/problem-statement/SKILL.md，帮我定义新 B2B 用户激活低的
 
 ```text
 Run commands/shape-ai-feature.md for this request: 为产品团队设计一个 AI 会议纪要功能，自动提取 action items 和 decisions。
+```
+
+```text
+Run commands/write-prd.md for this request: 为 self-serve 新用户 onboarding 改版写一份 PRD。先拆解任务，再成文，最后做 review gates。
 ```
 
 ```text
