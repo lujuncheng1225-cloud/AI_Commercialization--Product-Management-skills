@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/hero.png" alt="PM AI Skill Toolkit" width="720">
+  <img src="docs/images/hero-en.png" alt="PM AI Skill Toolkit" width="720">
 </p>
 
 <p align="center">
