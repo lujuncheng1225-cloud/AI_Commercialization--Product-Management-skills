@@ -8,8 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
+:root, [data-theme="light"] {
   --color-bg:#FAF7F2;--color-bg-warm:#F5F0E8;--color-bg-code:#1E1E2E;
+  --color-nav-bg:rgba(250,247,242,.92);--color-nav-shadow:rgba(44,42,40,.05);--color-tooltip-bg:#1E1E2E;--color-tooltip-text:#CDD6F4;
   --color-text:#2C2A28;--color-text-secondary:#6B6560;--color-text-muted:#9E9790;
   --color-border:#E5DFD6;--color-border-light:#EEEBE5;
   --color-surface:#FFFFFF;--color-surface-warm:#FDF9F3;
@@ -34,12 +35,12 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-snap-type:y proximity;scroll-behavior:smooth}
-body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);line-height:var(--leading-normal);overflow-x:hidden}
+body{background:var(--color-bg);color:var(--color-text);transition:background .3s,color .3s;font-family:var(--font-body);line-height:var(--leading-normal);overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(217,79,48,.03) 0%,transparent 50%);pointer-events:none;z-index:0}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--color-border);border-radius:var(--radius-full)}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-height);background:rgba(250,247,242,.92);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid var(--color-border-light);display:flex;align-items:center;padding:0 var(--space-6)}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-height);transition:background .3s;background:var(--color-nav-bg);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid var(--color-border-light);display:flex;align-items:center;padding:0 var(--space-6)}
 .progress-bar{position:absolute;top:0;left:0;height:3px;background:var(--color-accent);transition:width .1s;width:0}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--content-width-wide);margin:0 auto}
 .nav-title{font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);color:var(--color-text-secondary);letter-spacing:-.02em}
@@ -83,7 +84,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .quiz-question-block{margin-bottom:var(--space-6)}
 .quiz-question{font-family:var(--font-display);font-weight:600;font-size:var(--text-lg);margin-bottom:var(--space-4)}
 .quiz-options{display:flex;flex-direction:column;gap:var(--space-3)}
-.quiz-option{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border:2px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface);cursor:pointer;width:100%;text-align:left;font-size:var(--text-base);font-family:var(--font-body);transition:border-color var(--duration-fast),background var(--duration-fast);color:var(--color-text)}
+.quiz-option{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border:2px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface);cursor:pointer;width:100%;text-align:left;font-size:var(--text-base);font-family:var(--font-body);transition:border-color var(--duration-fast),background var(--duration-fast);color:var(--color-text);min-height:48px}
 .quiz-option:hover{border-color:var(--color-accent-muted)}
 .quiz-option.selected{border-color:var(--color-accent);background:var(--color-accent-light)}
 .quiz-option.correct{border-color:var(--color-success);background:var(--color-success-light)}
@@ -198,7 +199,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 /* GLOSSARY TOOLTIP */
 .term{border-bottom:1.5px dashed var(--color-accent-muted);cursor:pointer;position:relative}
 .term:hover,.term.active{border-bottom-color:var(--color-accent);color:var(--color-accent)}
-.term-tooltip{position:fixed;background:var(--color-bg-code);color:#CDD6F4;padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);font-family:var(--font-body);line-height:var(--leading-normal);width:max(200px,min(320px,80vw));box-shadow:var(--shadow-lg);pointer-events:none;opacity:0;transition:opacity var(--duration-fast);z-index:10000}
+.term-tooltip{position:fixed;background:var(--color-tooltip-bg);color:var(--color-tooltip-text);padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);font-family:var(--font-body);line-height:var(--leading-normal);width:max(200px,min(320px,80vw));box-shadow:var(--shadow-lg);pointer-events:none;opacity:0;transition:opacity var(--duration-fast);z-index:10000}
 .term-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--color-bg-code)}
 .term-tooltip.visible{opacity:1}
 .term-tooltip.flip::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--color-bg-code)}
@@ -227,22 +228,114 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   .flow-arrow{transform:rotate(90deg)}
   .skill-table{font-size:var(--text-xs)}
   .nav-dots{gap:4px}.nav-dot{width:10px;height:10px}
+  .nav-inner{gap:var(--space-2)}
+  .nav-title{font-size:var(--text-xs)}
+  .flow-animation{padding:var(--space-4)}
+  .flow-actors{gap:var(--space-1)}
+  .flow-actor{min-width:60px;padding:var(--space-2)}
+  .flow-actor-icon{width:36px;height:36px;font-size:var(--text-sm)}
+  .flow-actor span{font-size:9px}
+  .chat-window{margin:var(--space-4) 0}
+  .chat-bubble{max-width:85%}
 }
 @media(max-width:480px){
   :root{--text-4xl:1.5rem;--text-5xl:1.875rem;--text-6xl:2.25rem}
   .pattern-cards{grid-template-columns:1fr}
   .hero h1{font-size:var(--text-3xl)}
+  .table-card{display:block}
+  .table-card thead{display:none}
+  .table-card tbody tr{display:block;margin-bottom:var(--space-3);background:var(--color-surface);border-radius:var(--radius-sm);padding:var(--space-3);box-shadow:var(--shadow-sm)}
+  .table-card tbody td{display:flex;justify-content:space-between;padding:var(--space-1) 0;border-bottom:1px solid var(--color-border-light);font-size:var(--text-sm)}
+  .table-card tbody td::before{content:attr(data-label);font-weight:600;color:var(--color-text-secondary);font-size:var(--text-xs);margin-right:var(--space-2)}
+  .table-card tbody td:last-child{border-bottom:none}
+  .module-body{gap:var(--space-10)}
+}
+
+@media(max-width:375px){
+  .hero{padding:var(--space-16) var(--space-4) var(--space-10)}
+  .hero h1{font-size:var(--text-2xl)}
+  .hero p{font-size:var(--text-base)}
+  .module-title{font-size:var(--text-xl)}
+  .screen-heading{font-size:var(--text-xl)}
+  .pattern-card{padding:var(--space-4)}
+  .step-card{padding:var(--space-3) var(--space-4)}
+  .flow-actors{gap:2px}
+  .flow-actor{min-width:48px;padding:var(--space-1)}
+  .flow-actor-icon{width:28px;height:28px;font-size:var(--text-xs)}
+  .theme-toggle{bottom:var(--space-4);right:var(--space-4);width:38px;height:38px;font-size:1rem}
+}
+[data-theme="dark"] {
+  --color-bg:#181818;--color-bg-warm:#1E1C1A;--color-bg-code:#2A2A3C;
+  --color-text:#E8E4DE;--color-text-secondary:#A09A92;--color-text-muted:#6E6962;
+  --color-border:#3A3632;--color-border-light:#2E2B27;
+  --color-surface:#242220;--color-surface-warm:#2A2725;
+  --color-accent:#E8704A;--color-accent-hover:#F08058;--color-accent-light:#3A2520;--color-accent-muted:#B8705A;
+  --color-success:#4CAF6A;--color-success-light:#1E3A28;
+  --color-error:#E05555;--color-error-light:#3A1E1E;
+  --color-info:#4A9BB5;--color-info-light:#1E2E36;
+  --color-actor-1:#E8704A;--color-actor-2:#4A9BB5;--color-actor-3:#9580C4;--color-actor-4:#E0B84A;--color-actor-5:#4CAF6A;
+  --color-nav-bg:rgba(24,24,24,.92);--color-nav-shadow:rgba(0,0,0,.2);
+  --color-tooltip-bg:#2A2A3C;--color-tooltip-text:#E0DDD6;
+}
+
+.theme-toggle{position:fixed;bottom:var(--space-6);right:var(--space-6);width:44px;height:44px;border-radius:50%;border:2px solid var(--color-border);background:var(--color-surface);cursor:pointer;z-index:999;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:var(--shadow-md);transition:all .3s}
+.theme-toggle:hover{transform:scale(1.1);border-color:var(--color-accent)}
+.search-wrapper{position:relative}
+.search-input{font-family:var(--font-body);font-size:var(--text-xs);padding:5px 10px 5px 28px;border:1.5px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface);color:var(--color-text);width:160px;transition:all .2s;outline:none}
+.search-input:focus{border-color:var(--color-accent);width:220px}
+.search-input::placeholder{color:var(--color-text-muted)}
+.search-icon{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--color-text-muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);right:0;width:320px;max-height:360px;overflow-y:auto;background:var(--color-surface);border:1.5px solid var(--color-border);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);z-index:2000;display:none}
+.search-results.show{display:block}
+.search-results-header{padding:var(--space-2) var(--space-3);font-size:var(--text-xs);color:var(--color-text-muted);font-weight:600;border-bottom:1px solid var(--color-border-light)}
+.search-result-item{padding:var(--space-2) var(--space-3);cursor:pointer;transition:background .15s;border-bottom:1px solid var(--color-border-light);font-size:var(--text-sm)}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--color-accent-light)}
+.search-result-item code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--color-bg-code);color:#89B4FA;padding:1px 5px;border-radius:4px;margin-right:var(--space-2)}
+.search-result-item .sr-desc{color:var(--color-text-secondary);font-size:var(--text-xs);margin-left:var(--space-2)}
+.search-empty{padding:var(--space-4) var(--space-3);text-align:center;color:var(--color-text-muted);font-size:var(--text-sm)}
+.search-hint{padding:var(--space-2) var(--space-3);font-size:var(--text-xs);color:var(--color-text-muted);border-top:1px solid var(--color-border-light);text-align:center}
+.copy-btn{position:absolute;top:var(--space-2);left:var(--space-3);padding:3px 10px;border-radius:4px;font-size:var(--text-xs);font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-family:var(--font-body);transition:all .2s;z-index:2}
+.copy-btn:hover{background:rgba(255,255,255,.2);color:white}
+.copy-btn.copied{background:var(--color-success);border-color:var(--color-success);color:white}
+.nav-resume{font-size:var(--text-xs);color:var(--color-accent);cursor:pointer;background:none;border:none;font-family:var(--font-body);padding:2px 8px;border-radius:var(--radius-sm);transition:background .2s;white-space:nowrap}
+.nav-resume:hover{background:var(--color-accent-light)}
+.case-flow{display:flex;flex-direction:column;gap:var(--space-4)}
+.case-step{background:var(--color-surface);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border-left:4px solid var(--color-accent)}
+.case-step-header{padding:var(--space-3) var(--space-4);font-family:var(--font-display);font-weight:600;font-size:var(--text-sm);display:flex;align-items:center;gap:var(--space-2);background:var(--color-bg-warm)}
+.case-step-num{width:24px;height:24px;border-radius:50%;background:var(--color-accent);color:white;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);flex-shrink:0}
+.case-step-body{padding:var(--space-4)}
+.case-step-label{font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);margin-bottom:var(--space-2)}
+.case-step-content{font-size:var(--text-sm);color:var(--color-text-secondary);line-height:var(--leading-normal)}
+.case-step-content strong{color:var(--color-text)}
+.case-flow-arrow{text-align:center;color:var(--color-accent);font-size:var(--text-xl);padding:var(--space-1) 0}
+.about-module{text-align:center;padding:var(--space-8) 0}
+.about-version{font-family:var(--font-display);font-size:var(--text-3xl);font-weight:800;color:var(--color-accent);margin-bottom:var(--space-4)}
+.about-changelog{max-width:500px;margin:0 auto;text-align:left}
+.about-changelog dt{font-family:var(--font-mono);font-size:var(--text-sm);font-weight:600;color:var(--color-accent);margin-top:var(--space-3)}
+.about-changelog dd{font-size:var(--text-sm);color:var(--color-text-secondary);margin-top:var(--space-1)}
+@media print{
+  .nav,.theme-toggle,.chat-controls,.flow-controls,.quiz-btn,.quiz-option,.copy-btn,.search-wrapper,.progress-bar{display:none!important}
+  .module{min-height:auto;page-break-after:always;padding:2rem 1.5rem;scroll-snap-align:none}
+  .module:last-child{page-break-after:auto}
+  .animate-in{opacity:1!important;transform:none!important}
+  .chat-message{opacity:1!important;transform:none!important;display:flex!important}
+  body::before{display:none}
 }
 </style>
 </head>
+<button class="theme-toggle" id="theme-toggle" aria-label="切换主题" title="切换亮色/暗色模式">🌙</button>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="progress-bar" id="progress-bar"></div>
   <div class="nav-inner">
-    <span class="nav-title">☕ PM Skills 课程</span>
-    <div class="nav-dots">
+    <div class="nav-left"><span class="nav-title">☕ PM Skills 课程</span><button class="nav-resume" id="nav-resume" style="display:none">📖 继续上次学习</button></div>
+    <div class="nav-right">
+      <div class="search-wrapper" id="search-wrapper"><span class="search-icon">🔍</span><input class="search-input" id="search-input" type="text" placeholder="搜索 skill/command..." autocomplete="off"><div class="search-results" id="search-results"></div></div>
+      <button class="nav-btn" onclick="window.print()">📄 PDF</button>
+      <div class="nav-dots">
       <button class="nav-dot" data-target="module-0" aria-label="首页"></button>
       <button class="nav-dot" data-target="module-1" aria-label="模块1"></button>
       <button class="nav-dot" data-target="module-2" aria-label="模块2"></button>
@@ -252,6 +345,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <button class="nav-dot" data-target="module-6" aria-label="模块6"></button>
       <button class="nav-dot" data-target="module-7" aria-label="模块7"></button>
       <button class="nav-dot" data-target="module-8" aria-label="模块8"></button>
+      <button class="nav-dot" data-target="module-9" aria-label="实战案例"></button>
+      <button class="nav-dot" data-target="module-10" aria-label="模块10"></button>
+      <button class="nav-dot" data-target="module-11" aria-label="模块11"></button>
+      <button class="nav-dot" data-target="module-12" aria-label="关于"></button>
     </div>
   </div>
 </nav>
@@ -289,7 +386,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)">
             <div class="pattern-icon" style="background:var(--color-actor-1)">🔧</div>
             <h4 class="pattern-title">Skill（技能）</h4>
-            <p class="pattern-desc">单个专业助手。比如 problem-statement 专门帮你把模糊痛点变成清晰问题定义。22 个 skill 各司其职。</p>
+            <p class="pattern-desc">单个专业助手。比如 <span class="term" data-definition="问题定义 Skill，把模糊痛点变清晰问题">problem-statement</span> 专门帮你把模糊痛点变成清晰问题定义。22 个 skill 各司其职。</p>
           </div>
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)">
             <div class="pattern-icon" style="background:var(--color-actor-2)">📋</div>
@@ -364,11 +461,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         <div class="step-cards stagger-children">
           <div class="step-card animate-in">
             <div class="step-num">1</div>
-            <div class="step-body"><strong>澄清 — workshop-facilitation</strong><p>先聊透需求和边界。背景模糊时，这是最稳的第一步。</p></div>
+            <div class="step-body"><strong>澄清 — <span class="term" data-definition="结构化引导 Skill，帮澄清需求和边界">workshop-facilitation</span></strong><p>先聊透需求和边界。背景模糊时，这是最稳的第一步。</p></div>
           </div>
           <div class="step-card animate-in">
             <div class="step-num">2</div>
-            <div class="step-body"><strong>拆解 — task-decomposition</strong><p>把大任务拆成可检查的小步骤，每步都能验证是否完成。</p></div>
+            <div class="step-body"><strong>拆解 — <span class="term" data-definition="任务拆解 Skill，把大任务拆成可检查小步骤">task-decomposition</span></strong><p>把大任务拆成可检查的小步骤，每步都能验证是否完成。</p></div>
           </div>
           <div class="step-card animate-in">
             <div class="step-num">3</div>
@@ -376,7 +473,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           </div>
           <div class="step-card animate-in">
             <div class="step-num">4</div>
-            <div class="step-body"><strong>审查 — review-gates</strong><p>交付前跑一轮结构化审查，防止"局部对但整体跑偏"。</p></div>
+            <div class="step-body"><strong>审查 — <span class="term" data-definition="审查关卡 Skill，交付前结构化质量检查">review-gates</span></strong><p>交付前跑一轮结构化审查，防止"局部对但整体跑偏"。</p></div>
           </div>
         </div>
       </section>
@@ -386,7 +483,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         <h2 class="screen-heading">推荐起手式</h2>
         <div class="translation-block animate-in">
           <div class="translation-code">
-<span class="translation-label">PROMPT 示例</span>
+<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">PROMPT 示例</span>
 <pre><code>Run commands/write-prd.md for this request:
 为 self-serve 新用户 onboarding 改版
 写一份 PRD。先拆解任务，再成文，
@@ -395,7 +492,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="translation-english">
             <span class="translation-label">人话翻译</span>
             <p class="tl">🔧 "Run commands/write-prd.md" = 调用"写 PRD"这套 SOP</p>
-            <p class="tl">📋 它会自动串联：workshop-facilitation → problem-statement → task-decomposition → prd-development → review-gates</p>
+            <p class="tl">📋 它会自动串联：<span class="term" data-definition="结构化引导 Skill，帮澄清需求和边界">workshop-facilitation</span> → <span class="term" data-definition="问题定义 Skill，把模糊痛点变清晰问题">problem-statement</span> → <span class="term" data-definition="任务拆解 Skill，把大任务拆成可检查小步骤">task-decomposition</span> → <span class="term" data-definition="PRD 开发 Skill，从问题到需求的完整文档">prd-development</span> → <span class="term" data-definition="审查关卡 Skill，交付前结构化质量检查">review-gates</span></p>
             <p class="tl">✅ "先拆解任务，再成文，最后做 review gates" = 按标准四步流程走</p>
           </div>
         </div>
@@ -421,7 +518,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
             </div>
             <div class="chat-message" data-msg="2" data-sender="prd" style="display:none">
               <div class="chat-avatar" style="background:var(--color-actor-3)">P</div>
-              <div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-3)">prd-development</span><p>拆好的步骤我来逐一执行——问题定义、用户分析、方案、指标、边界。</p></div>
+              <div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-3)"><span class="term" data-definition="PRD 开发 Skill，从问题到需求的完整文档">prd-development</span></span><p>拆好的步骤我来逐一执行——问题定义、用户分析、方案、指标、边界。</p></div>
             </div>
             <div class="chat-message" data-msg="3" data-sender="review" style="display:none">
               <div class="chat-avatar" style="background:var(--color-actor-4)">R</div>
@@ -452,7 +549,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="quiz-question-block" data-question="m2q1" data-correct="m2-c">
             <h3 class="quiz-question">第一步该怎么做？</h3>
             <div class="quiz-options">
-              <button class="quiz-option" data-value="m2-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用 ai-feature-brief 写功能定义</span></button>
+              <button class="quiz-option" data-value="m2-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用 <span class="term" data-definition="AI 功能简报 Skill，定义用户任务、输入输出、质量标准">ai-feature-brief</span> 写功能定义</span></button>
               <button class="quiz-option" data-value="m2-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>用 shape-ai-feature command</span></button>
               <button class="quiz-option" data-value="m2-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接跑 shape-ai-feature command，它内部会先用 workshop-facilitation 澄清</span></button>
             </div>
@@ -479,14 +576,14 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <section class="screen animate-in">
         <h2 class="screen-heading">7 个产出型 Skill</h2>
         <div style="overflow-x:auto">
-          <table class="skill-table">
+          <table class="skill-table table-card">
             <thead><tr><th>Skill</th><th>产出</th><th>典型场景</th></tr></thead>
             <tbody>
               <tr><td><code>problem-statement</code></td><td>问题定义</td><td>写 PRD 前先定义清楚问题</td></tr>
               <tr><td><code>prd-development</code></td><td>完整 PRD</td><td>从问题到需求的完整文档</td></tr>
-              <tr><td><code>ai-feature-brief</code></td><td>AI 功能简报</td><td>把 AI 点子变成可讨论方案</td></tr>
+              <tr><td><code><span class="term" data-definition="AI 功能简报 Skill，定义用户任务、输入输出、质量标准">ai-feature-brief</span></code></td><td>AI 功能简报</td><td>把 AI 点子变成可讨论方案</td></tr>
               <tr><td><code>commercial-prd</code></td><td>商业化 PRD</td><td>定价/转化/留存类项目文档</td></tr>
-              <tr><td><code>pricing-packaging-brief</code></td><td>定价套餐简报</td><td>设计或调整 SaaS 定价</td></tr>
+              <tr><td><code><span class="term" data-definition="定价套餐 Skill，设计价格档位和功能组合">pricing-packaging-brief</span></code></td><td>定价套餐简报</td><td>设计或调整 SaaS 定价</td></tr>
               <tr><td><code>revenue-metrics-scorecard</code></td><td>收入指标看板</td><td>统一商业化健康指标</td></tr>
               <tr><td><code>task-decomposition</code></td><td>执行步骤清单</td><td>把大任务拆成可验证小步骤</td></tr>
             </tbody>
@@ -499,7 +596,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         <h2 class="screen-heading">深挖：problem-statement</h2>
         <div class="translation-block animate-in">
           <div class="translation-code">
-<span class="translation-label">SKILL 核心要素</span>
+<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">SKILL 核心要素</span>
 <pre><code>一个好的问题定义要回答：
 1. 谁遇到了这个问题
 2. 问题具体是什么
@@ -544,8 +641,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="quiz-question-block" data-question="m3q1" data-correct="m3-b">
             <h3 class="quiz-question">该用哪个 Skill？</h3>
             <div class="quiz-options">
-              <button class="quiz-option" data-value="m3-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>conversion-funnel-diagnostic（看漏斗）</span></button>
-              <button class="quiz-option" data-value="m3-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>pricing-packaging-brief（定义定价和套餐结构）</span></button>
+              <button class="quiz-option" data-value="m3-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span><span class="term" data-definition="转化漏斗诊断 Skill，分析漏斗掉点和原因">conversion-funnel-diagnostic</span>（看漏斗）</span></button>
+              <button class="quiz-option" data-value="m3-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span><span class="term" data-definition="定价套餐 Skill，设计价格档位和功能组合">pricing-packaging-brief</span>（定义定价和套餐结构）</span></button>
               <button class="quiz-option" data-value="m3-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>revenue-metrics-scorecard（看收入指标）</span></button>
             </div>
             <div class="quiz-feedback" id="m3q1-feedback"></div>
@@ -558,11 +655,66 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 </section>
 
-<!-- ============ MODULE 4: 判断与决策型 Skills ============ -->
-<section class="module" id="module-4" style="background:var(--color-bg-warm)">
+
+<!-- ============ MODULE 9 (NEW): 实战案例 ============ -->
+<section class="module" id="module-9" style="background:var(--color-bg-warm)">
   <div class="module-content">
     <header class="module-header animate-in">
-      <span class="module-number">04</span>
+      <span class="module-number">09</span>
+      <h1 class="module-title">实战案例：VIP 会员 AI 头像功能</h1>
+      <p class="module-subtitle">模拟完整流程：从模糊想法到可执行方案。每步展示输入和产出。</p>
+    </header>
+    <div class="module-body">
+      <section class="screen animate-in">
+        <div class="scenario-block"><span class="scenario-label">场景</span><p>老板说"给 VIP 会员加一个 AI 头像功能，下个版本要上"。需求很模糊。</p></div>
+      </section>
+      <section class="screen animate-in">
+        <h2 class="screen-heading">完整流程 Walkthrough</h2>
+        <div class="case-flow">
+          <div class="case-step"><div class="case-step-header"><div class="case-step-num">1</div>workshop-facilitation（澄清）</div><div class="case-step-body"><div class="case-step-label">用户输入</div><div class="case-step-content"><strong>"给 VIP 加 AI 头像，要快。"</strong></div><div class="case-step-label" style="margin-top:var(--space-3)">产出摘要</div><div class="case-step-content"><p>✅ 目标用户：月付费 ≥¥30 的 VIP（~12万月活）</p><p>✅ 核心需求：AI 生成个性化头像替代默认头像</p><p>⚠️ 需澄清：风格范围？审核机制？算力成本？</p><p>📋 建议：先做限定风格版（3-5种），MVP 验证</p></div></div></div>
+          <div class="case-flow-arrow">⬇️</div>
+          <div class="case-step"><div class="case-step-header"><div class="case-step-num">2</div>task-decomposition（拆解）</div><div class="case-step-body"><div class="case-step-label">产出摘要</div><div class="case-step-content"><p>① 需求细化（30min） ② AI 方案设计（1h） ③ 风控设计（30min） ④ PRD（1h） ⑤ Review（30min）</p></div></div></div>
+          <div class="case-flow-arrow">⬇️</div>
+          <div class="case-step"><div class="case-step-header"><div class="case-step-num">3</div>ai-feature-brief（功能定义）</div><div class="case-step-body"><div class="case-step-label">产出摘要</div><div class="case-step-content"><p>🎯 用户任务：选照片→选风格→生成→设为头像</p><p>⚡ 触发：个人资料页→"AI 生成"按钮</p><p>📥 输入：照片+风格  📤 输出：512x512 头像</p><p>✅ 质量标准：生成 &lt;5s，满意度 &gt;70%</p><p>⚠️ 失败：超时→默认风格；违规→拒绝提示</p></div></div></div>
+          <div class="case-flow-arrow">⬇️</div>
+          <div class="case-step"><div class="case-step-header"><div class="case-step-num">4</div>ai-risk-review（风险评审）</div><div class="case-step-body"><div class="case-step-label">产出摘要</div><div class="case-step-content"><p>🔴 质量：风格一致性→限定 prompt+抽检</p><p>🟡 信任：不当照片→前置审核</p><p>🟢 运营：算力 ¥0.02/次，可控</p><p>🟡 滥用：他人肖像→加水印+举报</p></div></div></div>
+          <div class="case-flow-arrow">⬇️</div>
+          <div class="case-step"><div class="case-step-header"><div class="case-step-num">5</div>review-gates（审查）</div><div class="case-step-body"><div class="case-step-label">审查结果</div><div class="case-step-content"><p>✅ Fit Check：定位清晰，用户明确</p><p>✅ Reasoning：每步有数据依据</p><p>⚠️ Completeness：缺 A/B 实验方案→建议补充</p><p>📌 结论：补充实验方案后可进入开发</p></div></div></div>
+        </div>
+      </section>
+      <section class="screen animate-in">
+        <h2 class="screen-heading">案例 Quiz</h2>
+        <div class="quiz-container" id="quiz-m9">
+          <div class="quiz-question-block" data-question="mcq1" data-correct="mcq-b">
+            <h3 class="quiz-question">为什么 review-gates 建议补充 A/B 实验方案？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="mcq-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>PRD 格式要求</span></button>
+              <button class="quiz-option" data-value="mcq-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Completeness 检查发现缺少效果验证环节</span></button>
+              <button class="quiz-option" data-value="mcq-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>ai-risk-review 强制要求</span></button>
+            </div>
+            <div class="quiz-feedback" id="mcq1-feedback"></div>
+          </div>
+          <div class="quiz-question-block" data-question="mcq2" data-correct="mcq-a">
+            <h3 class="quiz-question">哪个 Command 可一次性跑完全流程？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="mcq-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>shape-ai-feature</span></button>
+              <button class="quiz-option" data-value="mcq-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>write-prd</span></button>
+              <button class="quiz-option" data-value="mcq-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>prepare-ai-launch</span></button>
+            </div>
+            <div class="quiz-feedback" id="mcq2-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m9')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m9')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+<!-- ============ MODULE 4: 判断与决策型 Skills ============ -->
+<section class="module" id="module-11" style="background:var(--color-bg-warm)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">06</span>
       <h1 class="module-title">判断与决策型 Skills</h1>
       <p class="module-subtitle">比喻：像一个由专科医生组成的会诊团队。你不找他们"写报告"，你找他们"帮我看看到底是什么问题、该怎么做"。</p>
     </header>
@@ -574,8 +726,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">📊</div><h4 class="pattern-title">prioritization-advisor</h4><p class="pattern-desc">根据团队环境和数据条件推荐优先级框架（RICE/ICE/Value-Effort）</p></div>
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">🤖</div><h4 class="pattern-title">model-selection-advisor</h4><p class="pattern-desc">根据任务类型、时延、成本选模型策略（单模型/路由/fallback）</p></div>
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">🔬</div><h4 class="pattern-title">ai-risk-review</h4><p class="pattern-desc">评审 AI 功能的质量、信任、运营、滥用和策略风险</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)"><div class="pattern-icon" style="background:var(--color-actor-4)">📉</div><h4 class="pattern-title">conversion-funnel-diagnostic</h4><p class="pattern-desc">诊断转化漏斗的阶段、掉点和可能原因</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-5)"><div class="pattern-icon" style="background:var(--color-actor-5)">🔄</div><h4 class="pattern-title">retention-levers-review</h4><p class="pattern-desc">分析留存驱动、流失模式和干预杠杆</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)"><div class="pattern-icon" style="background:var(--color-actor-4)">📉</div><h4 class="pattern-title"><span class="term" data-definition="转化漏斗诊断 Skill，分析漏斗掉点和原因">conversion-funnel-diagnostic</span></h4><p class="pattern-desc">诊断转化漏斗的阶段、掉点和可能原因</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-5)"><div class="pattern-icon" style="background:var(--color-actor-5)">🔄</div><h4 class="pattern-title"><span class="term" data-definition="留存杠杆 Skill，分析留存驱动和流失模式">retention-levers-review</span></h4><p class="pattern-desc">分析留存驱动、流失模式和干预杠杆</p></div>
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-accent)"><div class="pattern-icon" style="background:var(--color-accent)">🧪</div><h4 class="pattern-title">growth-experiment-design</h4><p class="pattern-desc">设计"一个改动、一个主指标、一个决策"的增长实验</p></div>
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-info)"><div class="pattern-icon" style="background:var(--color-info)">📝</div><h4 class="pattern-title">experiment-brief</h4><p class="pattern-desc">轻量实验设计：假设、受众、方法、决策规则</p></div>
           <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">⭐</div><h4 class="pattern-title">north-star-metric</h4><p class="pattern-desc">定义北极星指标及 guardrail</p></div>
@@ -589,7 +741,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         <h2 class="screen-heading">因果纪律：漏斗掉点 ≠ 原因</h2>
         <div class="translation-block animate-in">
           <div class="translation-code">
-<span class="translation-label">conversion-funnel-diagnostic</span>
+<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">conversion-funnel-diagnostic</span>
 <pre><code>漏斗诊断要区分：
 - 漏在哪里（位置）
 - 是流量质量、产品问题、
@@ -618,7 +770,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
             <div class="quiz-options">
               <button class="quiz-option" data-value="m4-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>只选 ai-feature-brief</span></button>
               <button class="quiz-option" data-value="m4-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>model-selection-advisor + ai-risk-review + llm-evaluation-plan</span></button>
-              <button class="quiz-option" data-value="m4-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>conversion-funnel-diagnostic + retention-levers-review</span></button>
+              <button class="quiz-option" data-value="m4-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>conversion-funnel-diagnostic + <span class="term" data-definition="留存杠杆 Skill，分析留存驱动和流失模式">retention-levers-review</span></span></button>
             </div>
             <div class="quiz-feedback" id="m4q1-feedback"></div>
           </div>
@@ -631,10 +783,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 </section>
 
 <!-- ============ MODULE 5: Commands 工作流 ============ -->
-<section class="module" id="module-5" style="background:var(--color-bg)">
+<section class="module" id="module-10" style="background:var(--color-bg)">
   <div class="module-content">
     <header class="module-header animate-in">
-      <span class="module-number">05</span>
+      <span class="module-number">07</span>
       <h1 class="module-title">Commands 工作流</h1>
       <p class="module-subtitle">比喻：10 条"流水线"，每条线把多个 Skill 串成完整的工作流程。你投进去一个业务问题，出来一套可执行的方案。</p>
     </header>
@@ -643,7 +795,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <section class="screen animate-in">
         <h2 class="screen-heading">10 个 Command 一览</h2>
         <div style="overflow-x:auto">
-          <table class="skill-table">
+          <table class="skill-table table-card">
             <thead><tr><th>Command</th><th>用途</th><th>串联的 Skills</th></tr></thead>
             <tbody>
               <tr><td><code>write-prd</code></td><td>写通用 PRD</td><td>workshop + problem + task + prd-dev + review</td></tr>
@@ -688,7 +840,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         <h2 class="screen-heading">常用 Command Prompt</h2>
         <div class="translation-block animate-in">
           <div class="translation-code">
-<span class="translation-label">AI PM 线</span>
+<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">AI PM 线</span>
 <pre><code>Run commands/shape-ai-feature.md for:
 为 PM 团队设计一个 AI copilot，
 帮他们把访谈记录整理成 insight。
@@ -728,10 +880,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 </section>
 
 <!-- ============ MODULE 6: Agent 规范层 ============ -->
-<section class="module" id="module-6" style="background:var(--color-bg-warm)">
+<section class="module" id="module-11" style="background:var(--color-bg-warm)">
   <div class="module-content">
     <header class="module-header animate-in">
-      <span class="module-number">06</span>
+      <span class="module-number">08</span>
       <h1 class="module-title">Agent 规范层</h1>
       <p class="module-subtitle">比喻：就像一个公司的"管理手册"。它不替你干活，但确保每个 AI 助手都知道该怎么干活、什么时候该拒绝、输出该长什么样。</p>
     </header>
@@ -745,15 +897,15 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
             <span class="ft-desc">AI 助手的"管理手册"</span>
             <div class="ft-children">
               <div class="ft-file">
-                <span class="ft-name">ROUTING.md</span>
+                <span class="ft-name"><span class="term" data-definition="路由规则，定义什么任务选哪个 Skill/Command">ROUTING</span>.md</span>
                 <span class="ft-desc">路由规则：什么任务该选哪个 skill/command</span>
               </div>
               <div class="ft-file">
-                <span class="ft-name">OUTPUT_STANDARDS.md</span>
+                <span class="ft-name"><span class="term" data-definition="输出标准，要求先给判断再给装饰，先给依据再给自信">OUTPUT_STANDARDS</span>.md</span>
                 <span class="ft-desc">输出标准：Decision before decoration, Evidence before confidence</span>
               </div>
               <div class="ft-file">
-                <span class="ft-name">DOMAIN_CONTEXT.md</span>
+                <span class="ft-name"><span class="term" data-definition="领域上下文，默认服务于 AI PM 和 Commercial PM">DOMAIN_CONTEXT</span>.md</span>
                 <span class="ft-desc">领域上下文：默认服务于 AI PM 和 Commercial PM</span>
               </div>
               <div class="ft-file">
@@ -765,7 +917,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         </div>
       </section>
 
-      <!-- Screen 2: ROUTING deep dive -->
+      <!-- Screen 2: <span class="term" data-definition="路由规则，定义什么任务选哪个 Skill/Command">ROUTING</span> deep dive -->
       <section class="screen animate-in">
         <h2 class="screen-heading">路由规则：三步走</h2>
         <div class="step-cards stagger-children">
@@ -788,12 +940,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         </div>
       </section>
 
-      <!-- Screen 3: OUTPUT_STANDARDS -->
+      <!-- Screen 3: <span class="term" data-definition="输出标准，要求先给判断再给装饰，先给依据再给自信">OUTPUT_STANDARDS</span> -->
       <section class="screen animate-in">
         <h2 class="screen-heading">输出标准</h2>
         <div class="translation-block animate-in">
           <div class="translation-code">
-<span class="translation-label">OUTPUT_STANDARDS</span>
+<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">OUTPUT_STANDARDS</span>
 <pre><code>核心原则：
 - Decision before decoration
 - Evidence before confidence
@@ -844,10 +996,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 </section>
 
 <!-- ============ MODULE 7: 质量评估 ============ -->
-<section class="module" id="module-7" style="background:var(--color-bg)">
+<section class="module" id="module-10" style="background:var(--color-bg)">
   <div class="module-content">
     <header class="module-header animate-in">
-      <span class="module-number">07</span>
+      <span class="module-number">10</span>
       <h1 class="module-title">质量评估</h1>
       <p class="module-subtitle">比喻：就像工厂的质检部门。不测"哪个 AI 更聪明"，而是测它是否选对了工具、输出是否达标、缺信息时是否先问。</p>
     </header>
@@ -884,7 +1036,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
         <h2 class="screen-heading">评分模型</h2>
         <div class="translation-block animate-in">
           <div class="translation-code">
-<span class="translation-label">评分标准</span>
+<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">评分标准</span>
 <pre><code>总分 = Routing (0-3) + Output (0-7)
 
 建议阈值：
@@ -929,10 +1081,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 </section>
 
 <!-- ============ MODULE 8: 速查手册 ============ -->
-<section class="module" id="module-8" style="background:var(--color-bg-warm)">
+<section class="module" id="module-11" style="background:var(--color-bg-warm)">
   <div class="module-content">
     <header class="module-header animate-in">
-      <span class="module-number">08</span>
+      <span class="module-number">11</span>
       <h1 class="module-title">速查手册</h1>
       <p class="module-subtitle">比喻：这是你的"冰箱贴"——一张图看完全部 22+10，按场景快速找到对的工具。</p>
     </header>
@@ -941,7 +1093,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <section class="screen animate-in">
         <h2 class="screen-heading">全部 22 个 Skills</h2>
         <div style="overflow-x:auto">
-          <table class="skill-table">
+          <table class="skill-table table-card">
             <thead><tr><th>分类</th><th>Skill</th><th>一句话说明</th></tr></thead>
             <tbody>
               <tr><td rowspan="7" style="font-weight:700;color:var(--color-actor-1);vertical-align:top">🤖 AI PM</td><td><code>ai-feature-brief</code></td><td>把 AI 点子变成可讨论方案</td></tr>
@@ -1105,6 +1257,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     m7q1: { true: '✅ 正确！evals 目录提供了标准化的测试用例和评分 rubric，是验证可靠性的推荐方式。', false: '❌ 那种方式不够系统。evals 提供了标准化的 case 和 rubric 来做客观评估。' },
     m8q1: { true: '✅ 正确！commercial-strategy-review 是最完整的商业化评审 command，串联 8 个 skill。', false: '❌ 那个 command 覆盖面不够。commercial-strategy-review 才是最完整的。' },
     m8q2: { true: '✅ 正确！OUTPUT_STANDARDS 的成文类禁止规则明确要求 PRD 必须包含 success metrics 和 out of scope。', false: '❌ 这是输出质量问题，不是路由问题。OUTPUT_STANDARDS 的成文类规则要求 PRD 必须有指标和边界。' },
+    mcq1: { true: '✅ 正确！Completeness 检查发现缺少上线后效果验证方案。', false: '❌ 不是格式要求，是 Completeness 检查发现缺少验证环节。' },
+    mcq2: { true: '✅ 正确！shape-ai-feature 串联从澄清到审查的完整流程。', false: '❌ 那个 command 覆盖面不够完整。' },
   };
 
   window.selectOption = function(btn) {
@@ -1251,8 +1405,46 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       }
     });
   });
-  document.addEventListener('click', () => { if (activeTooltip) { activeTooltip.classList.remove('visible'); activeTooltip.remove(); activeTooltip = null; } });
+  document.addEventListener('click', function(e){ if(activeTooltip&&!e.target.closest('.term')){ activeTooltip.classList.remove('visible'); activeTooltip.remove(); activeTooltip=null; }});
+  // === 主题切换 ===
+  var themeBtn=document.getElementById('theme-toggle'),savedTheme=localStorage.getItem('pm-course-theme')||'light';
+  document.documentElement.dataset.theme=savedTheme;themeBtn.textContent=savedTheme==='dark'?'☀️':'🌙';
+  themeBtn.addEventListener('click',function(){var c=document.documentElement.dataset.theme,n=c==='dark'?'light':'dark';document.documentElement.dataset.theme=n;themeBtn.textContent=n==='dark'?'☀️':'🌙';localStorage.setItem('pm-course-theme',n);});
+
+  // === 进度保存 ===
+  var PROGRESS_KEY='pm-course-scroll',resumeBtn=document.getElementById('nav-resume');
+  if(localStorage.getItem(PROGRESS_KEY))resumeBtn.style.display='inline-block';
+  function resumeProgress(){var idx=parseInt(localStorage.getItem(PROGRESS_KEY)),mods=document.querySelectorAll('.module');if(idx>=0&&idx<mods.length)mods[idx].scrollIntoView({behavior:'smooth'});}
+  function debounce(fn,ms){var t;return function(){clearTimeout(t);t=setTimeout(fn,ms);};}
+  function saveCurrentModule(){var mods=document.querySelectorAll('.module'),closest=0,minDist=Infinity;mods.forEach(function(m,i){var d=Math.abs(m.getBoundingClientRect().top);if(d<minDist){minDist=d;closest=i;}});localStorage.setItem(PROGRESS_KEY,closest);if(closest>0)resumeBtn.style.display='inline-block';}
+  window.addEventListener('scroll',debounce(saveCurrentModule,1000),{passive:true});
+
+  // === 复制按钮 ===
+  window.copyPrompt=function(btn){var codeBlock=btn.closest('.translation-code'),pre=codeBlock.querySelector('pre');if(!pre)return;var text=pre.textContent;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){btn.textContent='已复制 ✓';btn.classList.add('copied');setTimeout(function(){btn.textContent='复制';btn.classList.remove('copied');},2000);}).catch(function(){fallbackCopy(text,btn);});}else{fallbackCopy(text,btn);}};
+  function fallbackCopy(text,btn){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');btn.textContent='已复制 ✓';btn.classList.add('copied');setTimeout(function(){btn.textContent='复制';btn.classList.remove('copied');},2000);}catch(e){btn.textContent='复制失败';}document.body.removeChild(ta);}
+
+  // === 搜索功能 ===
+  var searchData=[{name:'problem-statement',type:'skill',desc:'定义清晰的问题',target:'module-3'},{name:'prd-development',type:'skill',desc:'完整 PRD',target:'module-3'},{name:'ai-feature-brief',type:'skill',desc:'AI 功能简报',target:'module-3'},{name:'commercial-prd',type:'skill',desc:'商业化 PRD',target:'module-3'},{name:'pricing-packaging-brief',type:'skill',desc:'定价套餐',target:'module-3'},{name:'revenue-metrics-scorecard',type:'skill',desc:'收入指标看板',target:'module-3'},{name:'task-decomposition',type:'skill',desc:'拆解大任务',target:'module-2'},{name:'workshop-facilitation',type:'skill',desc:'结构化引导',target:'module-2'},{name:'review-gates',type:'skill',desc:'交付前审查',target:'module-2'},{name:'prioritization-advisor',type:'skill',desc:'优先级框架',target:'module-6'},{name:'model-selection-advisor',type:'skill',desc:'模型选择',target:'module-6'},{name:'ai-risk-review',type:'skill',desc:'AI 风险评审',target:'module-6'},{name:'conversion-funnel-diagnostic',type:'skill',desc:'漏斗诊断',target:'module-6'},{name:'retention-levers-review',type:'skill',desc:'留存分析',target:'module-6'},{name:'growth-experiment-design',type:'skill',desc:'增长实验',target:'module-6'},{name:'experiment-brief',type:'skill',desc:'实验设计',target:'module-6'},{name:'north-star-metric',type:'skill',desc:'北极星指标',target:'module-6'},{name:'voice-of-customer-synthesis',type:'skill',desc:'用户反馈',target:'module-6'},{name:'ai-feature-shaping',type:'skill',desc:'AI 功能整理',target:'module-3'},{name:'ai-launch-checklist',type:'skill',desc:'上线检查',target:'module-3'},{name:'llm-evaluation-plan',type:'skill',desc:'评估方案',target:'module-3'},{name:'agent-workflow-brief',type:'skill',desc:'Agent 工作流',target:'module-3'},{name:'write-prd',type:'command',desc:'写 PRD',target:'module-7'},{name:'write-commercial-prd',type:'command',desc:'商业化 PRD',target:'module-7'},{name:'shape-ai-feature',type:'command',desc:'AI 功能定义',target:'module-7'},{name:'prepare-ai-launch',type:'command',desc:'AI 上线',target:'module-7'},{name:'commercial-growth-review',type:'command',desc:'增长评审',target:'module-7'},{name:'commercial-strategy-review',type:'command',desc:'策略评审',target:'module-7'},{name:'improve-trial-to-paid',type:'command',desc:'转付费',target:'module-7'},{name:'analyze-paid-retention',type:'command',desc:'付费留存',target:'module-7'},{name:'redesign-pricing-packages',type:'command',desc:'定价重构',target:'module-7'},{name:'prioritize',type:'command',desc:'优先级',target:'module-7'}];
+  var searchInput=document.getElementById('search-input'),searchResults=document.getElementById('search-results');
+  searchInput.addEventListener('input',debounce(function(){var q=searchInput.value.trim().toLowerCase();if(!q){searchResults.classList.remove('show');return;}var matches=searchData.filter(function(d){return d.name.indexOf(q)!==-1||d.desc.indexOf(q)!==-1;});if(!matches.length){searchResults.innerHTML='<div class="search-empty">没有找到匹配结果</div>';}else{var h='<div class="search-results-header">'+matches.length+' 个结果</div>';matches.forEach(function(m){h+='<div class="search-result-item" data-target="'+m.target+'"><code>'+m.name+'</code><span class="sr-desc">'+m.desc+'</span></div>';});h+='<div class="search-hint">Esc 关闭 · Ctrl/Cmd+K 搜索</div>';searchResults.innerHTML=h;}searchResults.classList.add('show');},200));
+  searchResults.addEventListener('click',function(e){var item=e.target.closest('.search-result-item');if(item){var t=document.getElementById(item.dataset.target);if(t)t.scrollIntoView({behavior:'smooth'});searchResults.classList.remove('show');searchInput.value='';}});
+  document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();searchInput.focus();}if(e.key==='Escape'){searchResults.classList.remove('show');searchInput.blur();}});
+  document.addEventListener('click',function(e){if(!document.getElementById('search-wrapper').contains(e.target))searchResults.classList.remove('show');});
+
+
 })();
 </script>
+
+<!-- ============ MODULE 12: 关于 ============ -->
+<section class="module" id="module-12" style="background:var(--color-bg)">
+  <div class="module-content">
+    <div class="about-module animate-in">
+      <div class="about-version">v1.0</div>
+      <h2 class="module-title" style="margin-bottom:var(--space-8)">关于本课程</h2>
+      <div class="about-changelog"><dl><dt>v1.0</dt><dd>初始版本，覆盖 22 个 Skills + 10 个 Commands 的完整交互式教程</dd></dl></div>
+      <div class="callout callout-info" style="max-width:500px;margin:var(--space-8) auto 0"><div class="callout-icon">📖</div><div class="callout-content"><strong>持续更新</strong><p>本课程随仓库迭代持续更新。如有建议或发现错误，欢迎提 Issue。</p></div></div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
