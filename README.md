@@ -1,123 +1,77 @@
-# AI Product Management Skills
+# PM AI Skill 工具箱
 
-一个给产品经理和 AI agent 使用的可复用 PM 技能库，也是一个面向 AI PM 与商业化 PM 的轻量决策系统。
+> 产品经理的 AI 技能库。20 个即用场景，对话式引导，填几个问题就生成完整的 Prompt。
 
-它现在不仅覆盖常见 PM 产出，还开始把更高质量的判断机制写进仓库：
+**不需要理解 Prompt 工程。不需要复制粘贴模板。**
 
-- `Reasoning Heuristics`：第一性原理、苏格拉底提问、奥卡姆剃刀
-- `Disconfirming Checks`：要求主动找反证和最强替代解释
-- `Decision Discipline`：强调为什么不是更简单方案、也不是更重方案
-- `Sharper Samples + Harder Evals`：用更强样例和更刁钻 case 抑制模板化回答
+选择场景 → 回答 2-3 个问题 → 点击生成 → 复制到 ChatGPT / DeepSeek → 得到专业结果。
 
-当前这套仓库不只是“skill 文件集合”，而是已经包含：
+👉 **[在线体验](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/docs/pm-skills-interactive-course.html)**
 
-- `22` 个 skills
-- `10` 个 commands
-- `agent/` 规范层
-- `adapters/` 平台接入层
-- `evals/` 质量评估层
-- `private/` 私有上下文层
-- 模板、样例输出、catalog
-- 结构校验和风格一致性检查
-- 中文主版本内容
+---
 
-核心覆盖两条主线：
+## 覆盖场景（20 个 Skill，8 大分类）
 
-- `AI PM`：AI 功能定义、评估、风险、模型策略、上线准备
-- `Commercial PM`：定价、转化漏斗、留存、增长实验、收入指标、商业化 PRD
+| 分类 | 场景 |
+|------|------|
+| **竞品分析** | 功能对比 · 定价分析 · 动态追踪 |
+| **用户研究** | 用户画像 · 反馈分析 · 流失分析 |
+| **需求管理** | 优先级排序 · PRD 初稿 · 评审模拟 |
+| **定价策略** | 定价方案 · AB 实验设计 |
+| **数据分析** | 异常解读 · 周报月报 · 看板设计 |
+| **商业化** | 商业化方案 · 续订挽回 |
+| **增长策略** | 增长实验 · 市场进入 |
+| **项目沟通** | 跨部门邮件 · 项目复盘 |
 
-## Structure / 结构
+## 为什么做这个
 
-- `skills/`：单个技能
-- `commands/`：多技能工作流
-- `agent/`：跨平台 agent 路由与输出规范
-- `adapters/`：Codex / Claude Code / Cursor 接入说明
-- `evals/`：跨平台 agent 评估基线
-- `private/`：可选的私人业务上下文模板
-- `docs/`：使用和维护文档
-- `scripts/`：检索、校验和 catalog 脚本
-- `catalog/`：自动生成索引
+产品经理用 AI 最大的门槛不是"不会写 Prompt"，而是：
 
-## Featured Skills / 代表技能
+1. **不知道该问什么** — 一个竞品分析该包含哪些维度？需求优先级有哪些框架？
+2. **Prompt 模板不够用** — 模板是死的，你的产品是活的。填占位符不如对话式引导
+3. **没有体系** — 20 个场景覆盖了 PM 日常 80% 的高频工作，不用每次从零开始
 
-- `problem-statement`：问题定义
-- `prd-development`：通用 PRD 工作流
-- `ai-feature-brief`：AI 功能定义
-- `llm-evaluation-plan`：AI 评估方案
-- `pricing-packaging-brief`：定价与套餐设计
-- `conversion-funnel-diagnostic`：转化漏斗诊断
-- `retention-levers-review`：留存杠杆分析
-- `revenue-metrics-scorecard`：商业化指标看板
+**Skill ≠ 提示词。** Skill 是封装好的能力——内部的 Prompt 工程由专业 PM 设计，用户只需要回答自己的业务问题。
 
-## What Makes It Different / 这套仓库现在的特点
+## 快速开始
 
-- `中文主版本`：人读起来顺，路径和 skill 名称保持稳定
-- `业务任务型 commands`：可以直接跑真实 PM 任务，不必手动拼 skill
-- `Input Contract`：关键 workflow 都定义了输入协议
-- `Decision Output`：关键 workflow 都会收敛到统一决策出口
-- `Templates + Samples`：不只是告诉你怎么写，还给结构模板和样例输出
-- `Reasoning Quality`：不只追求结构完整，还强调反证、替代解释和收敛条件
-- `Harder Evals`：开始用高混杂信号 case 测 agent 会不会过早自信
-- `Validation`：能校验 metadata、引用关系和章节一致性
+1. 打开 [在线体验页面](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/docs/pm-skills-interactive-course.html)
+2. 选择一个场景（如"竞品功能对比"）
+3. 填写你的产品信息（产品名、竞品、背景等）
+4. 点击"生成" → 复制 → 粘贴到任意 AI 工具
 
-## First Run / 快速开始
+**支持暗色模式和移动端。**
 
-先看 [START_HERE.md](START_HERE.md)，然后直接跑一个 skill 或 command。
+## 技术实现
 
-如果你只记住一条默认工作流，记这条：
+- 单文件 HTML，数据驱动渲染
+- 对话式分步引导（text / textarea / checkbox / radio）
+- 一键复制生成的 Prompt
+- 搜索和分类筛选
+- 暗色模式 + 响应式
 
-1. 先用 `workshop-facilitation` 或 command 把问题聊透
-2. 再用 `task-decomposition` 把任务拆成可检查的小步骤
-3. 再产出文档或判断
-4. 最后用 `review-gates` 做交付前审查
-
-如果你希望把它当成“可迁移的私人 PM Agent 脑”，先读：
-
-- [agent/ROUTING.md](agent/ROUTING.md)
-- [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
-- [agent/DOMAIN_CONTEXT.md](agent/DOMAIN_CONTEXT.md)
-- [agent/SPARSE_CONTEXT_POLICY.md](agent/SPARSE_CONTEXT_POLICY.md)
-- [adapters/CODEX.md](adapters/CODEX.md)
-- [evals/README.md](evals/README.md)
-- [private/README.md](private/README.md)
-
-```text
-Using skills/problem-statement/SKILL.md，帮我定义新 B2B 用户激活低的问题。先问不超过 3 个澄清问题，再输出 markdown。
-```
-
-```text
-Run commands/shape-ai-feature.md for this request: 为产品团队设计一个 AI 会议纪要功能，自动提取 action items 和 decisions。
-```
-
-```text
-Run commands/write-prd.md for this request: 为 self-serve 新用户 onboarding 改版写一份 PRD。先拆解任务，再成文，最后做 review gates。
-```
-
-```text
-Run commands/commercial-growth-review.md for this request: 诊断我们 self-serve SaaS 从激活到付费的转化掉点。
-```
-
-```text
-Run commands/write-commercial-prd.md for this request: 重做升级流程并重新设计 pro 套餐包装。
-```
-
-```text
-Run commands/commercial-strategy-review.md for this request: 评审 MVLAND 下一阶段怎么提升商业化收入。
-```
-
-## Principles / 原则
-
-- Outcome over output
-- Evidence over opinion
-- Reusable workflows over one-off prompts
-- Clear triggers over vague descriptions
-
-## Useful Scripts / 常用脚本
+## 本地运行
 
 ```bash
-python3 scripts/validate-library.py
-python3 scripts/check-style-consistency.py
-python3 scripts/generate-catalog.py
-bash scripts/find-a-skill.sh --keyword pricing
-bash scripts/find-a-command.sh --keyword strategy
+git clone https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills.git
+cd AI_Commercialization--Product-Management-skills/docs
+python3 -m http.server 8888
+# 打开 http://localhost:8888/pm-skills-interactive-course.html
 ```
+
+## 仓库完整结构
+
+这个仓库不只是工具箱页面，还包括完整的 PM 技能文件体系：
+
+- `docs/pm-skills-interactive-course.html` — **交互式 Skill 工具箱（主入口）**
+- `skills/` — 22 个 PM 技能文件（Markdown，可直接用于 AI Agent）
+- `commands/` — 多技能工作流
+- `agent/` — 跨平台 Agent 路由与输出规范
+- `adapters/` — Codex / Claude Code / Cursor 接入说明
+- `evals/` — Agent 质量评估基线
+
+详见 [START_HERE.md](START_HERE.md)。
+
+## License
+
+MIT
