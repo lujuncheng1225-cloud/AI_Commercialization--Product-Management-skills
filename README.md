@@ -1,12 +1,26 @@
-# PM AI Skill 工具箱
+<p align="center">
+  <img src="docs/images/hero.png" alt="PM AI Skill 工具箱" width="720">
+</p>
 
-> 产品经理的 AI 技能库。20 个即用场景，对话式引导，填几个问题就生成完整的 Prompt。
+<p align="center">
+  <strong>产品经理的 AI 技能库</strong> · 20 个即用场景 · 对话式引导 · 填表即用
+</p>
+
+<p align="center">
+  <a href="https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/docs/pm-skills-interactive-course.html">在线体验</a>
+  ·
+  <a href="#覆盖场景20-个-skill8-大分类">场景列表</a>
+  ·
+  <a href="#快速开始">快速开始</a>
+</p>
+
+---
+
+产品经理用 AI 最大的门槛不是"不会写 Prompt"，而是**不知道该问什么**。
+
+这个工具箱封装了 20 个高频 PM 场景：竞品分析、需求排序、PRD 生成、定价策略、增长实验……选择场景，回答几个问题，生成完整的 Prompt，复制到 ChatGPT 或 DeepSeek 即可。
 
 **不需要理解 Prompt 工程。不需要复制粘贴模板。**
-
-选择场景 → 回答 2-3 个问题 → 点击生成 → 复制到 ChatGPT / DeepSeek → 得到专业结果。
-
-👉 **[在线体验](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/docs/pm-skills-interactive-course.html)**
 
 ---
 
