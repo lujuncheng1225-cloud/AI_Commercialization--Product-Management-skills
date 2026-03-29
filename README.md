@@ -1,20 +1,98 @@
 <p align="center">
-  <img src="docs/images/hero.png" alt="PM AI Skill 工具箱" width="720">
+  <img src="docs/images/hero.png" alt="PM AI Skill Toolkit" width="720">
 </p>
 
 <p align="center">
-  <strong>产品经理的 AI 技能库</strong> · 20 个即用场景 · 对话式引导 · 填表即用
+  <strong>PM AI Skill Toolkit</strong> · 20 ready-to-use scenarios · Guided prompts · Fill-in-and-go
 </p>
 
 <p align="center">
-  <a href="https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/docs/pm-skills-interactive-course.html">在线体验</a>
+  <a href="https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html">Live Demo</a>
   ·
-  <a href="#覆盖场景20-个-skill8-大分类">场景列表</a>
+  <a href="#-scenarios-20-skills-8-categories">Scenarios</a>
   ·
-  <a href="#快速开始">快速开始</a>
+  <a href="#-quick-start">Quick Start</a>
+  ·
+  <a href="#产品经理-ai-技能库">中文</a>
 </p>
 
 ---
+
+The biggest barrier for PMs using AI isn't "can't write prompts" — it's **don't know what to ask**.
+
+This toolkit encapsulates 20 high-frequency PM scenarios: competitor analysis, requirement prioritization, PRD generation, pricing strategy, growth experiments... Select a scenario, answer a few questions, generate a complete prompt, copy to ChatGPT or DeepSeek.
+
+**No Prompt engineering needed. No copy-pasting templates.**
+
+---
+
+## 📋 Scenarios (20 Skills, 8 Categories)
+
+| Category | Skills |
+|----------|--------|
+| **Competitor Analysis** | Feature Comparison · Pricing Analysis · Competitive Tracking |
+| **User Research** | User Persona · Feedback Analysis · Churn Analysis |
+| **Requirements** | Priority Sorting · PRD Draft · Review Simulation |
+| **Pricing** | Pricing Strategy · Pricing Experiment |
+| **Data Analysis** | Anomaly Diagnosis · Report Generator · Dashboard Design |
+| **Monetization** | Monetization Plan · Retention Strategy |
+| **Growth** | Growth Experiment · Market Entry |
+| **Communication** | Cross-team Email · Project Retrospective |
+
+## 🚀 Quick Start
+
+1. Open the [Live Demo](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
+2. Pick a scenario (e.g., "Feature Comparison")
+3. Fill in your product info (product name, competitors, context)
+4. Click "Generate" → Copy → Paste into any AI tool
+
+**Dark mode and mobile-friendly. Bilingual UI (EN/中文).**
+
+## Why This Exists
+
+- **Don't know what to ask** — What dimensions should a competitor analysis cover? What frameworks exist for requirement prioritization?
+- **Templates are dead** — Your product is alive. Guided Q&A beats fill-in-the-blank templates.
+- **No system** — 20 scenarios cover 80% of a PM's daily work. Stop starting from scratch.
+
+**Skill ≠ Prompt.** A Skill is an encapsulated capability — the Prompt engineering is done by experienced PMs. Users just answer their own business questions.
+
+## 🛠 Tech
+
+- Single-file HTML, data-driven rendering
+- Guided step-by-step flow (text / textarea / checkbox / radio)
+- One-click copy generated prompts
+- Search and category filter
+- Dark mode + responsive
+
+## 📦 Local Run
+
+```bash
+git clone https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills.git
+cd AI_Commercialization--Product-Management-skills/docs
+python3 -m http.server 8888
+# Open http://localhost:8888/pm-skills-interactive-course.html
+```
+
+## 📁 Full Repository Structure
+
+This repo is more than just the toolkit page — it includes a complete PM skill file system:
+
+- `docs/pm-skills-interactive-course.html` — **Interactive Skill Toolkit (main entry)**
+- `skills/` — 22 PM skill files (Markdown, usable by AI Agents directly)
+- `commands/` — Multi-skill workflows
+- `agent/` — Cross-platform Agent routing & output standards
+- `adapters/` — Codex / Claude Code / Cursor integration
+- `evals/` — Agent quality evaluation baselines
+
+See [START_HERE.md](START_HERE.md) for details.
+
+## License
+
+MIT
+
+---
+
+## 产品经理 AI 技能库
 
 产品经理用 AI 最大的门槛不是"不会写 Prompt"，而是**不知道该问什么**。
 
@@ -22,7 +100,7 @@
 
 **不需要理解 Prompt 工程。不需要复制粘贴模板。**
 
----
+选择场景 → 回答 2-3 个问题 → 点击生成 → 复制到 AI 工具 → 得到专业结果
 
 ## 覆盖场景（20 个 Skill，8 大分类）
 
@@ -37,55 +115,11 @@
 | **增长策略** | 增长实验 · 市场进入 |
 | **项目沟通** | 跨部门邮件 · 项目复盘 |
 
-## 为什么做这个
-
-产品经理用 AI 最大的门槛不是"不会写 Prompt"，而是：
-
-1. **不知道该问什么** — 一个竞品分析该包含哪些维度？需求优先级有哪些框架？
-2. **Prompt 模板不够用** — 模板是死的，你的产品是活的。填占位符不如对话式引导
-3. **没有体系** — 20 个场景覆盖了 PM 日常 80% 的高频工作，不用每次从零开始
-
-**Skill ≠ 提示词。** Skill 是封装好的能力——内部的 Prompt 工程由专业 PM 设计，用户只需要回答自己的业务问题。
-
 ## 快速开始
 
-1. 打开 [在线体验页面](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/docs/pm-skills-interactive-course.html)
+1. 打开 [在线体验](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
 2. 选择一个场景（如"竞品功能对比"）
 3. 填写你的产品信息（产品名、竞品、背景等）
 4. 点击"生成" → 复制 → 粘贴到任意 AI 工具
 
-**支持暗色模式和移动端。中英文双语界面，自动跟随浏览器语言。**
-
-## 技术实现
-
-- 单文件 HTML，数据驱动渲染
-- 对话式分步引导（text / textarea / checkbox / radio）
-- 一键复制生成的 Prompt
-- 搜索和分类筛选
-- 暗色模式 + 响应式
-
-## 本地运行
-
-```bash
-git clone https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills.git
-cd AI_Commercialization--Product-Management-skills/docs
-python3 -m http.server 8888
-# 打开 http://localhost:8888/pm-skills-interactive-course.html
-```
-
-## 仓库完整结构
-
-这个仓库不只是工具箱页面，还包括完整的 PM 技能文件体系：
-
-- `docs/pm-skills-interactive-course.html` — **交互式 Skill 工具箱（主入口）**
-- `skills/` — 22 个 PM 技能文件（Markdown，可直接用于 AI Agent）
-- `commands/` — 多技能工作流
-- `agent/` — 跨平台 Agent 路由与输出规范
-- `adapters/` — Codex / Claude Code / Cursor 接入说明
-- `evals/` — Agent 质量评估基线
-
-详见 [START_HERE.md](START_HERE.md)。
-
-## License
-
-MIT
+**支持暗色模式和移动端。中英文双语界面。**
