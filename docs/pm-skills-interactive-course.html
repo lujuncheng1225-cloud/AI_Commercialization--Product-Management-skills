@@ -3,2625 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PM AI 工具箱 — 产品经理的 AI 场景化技能库</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>PM AI Skill 工具箱</title>
 <style>
-:root, [data-theme="light"] {
-  --color-bg:#FAF7F2;--color-bg-warm:#F5F0E8;--color-bg-code:#1E1E2E;
-  --color-nav-bg:rgba(250,247,242,.92);--color-nav-shadow:rgba(44,42,40,.05);--color-tooltip-bg:#1E1E2E;--color-tooltip-text:#CDD6F4;
-  --color-text:#2C2A28;--color-text-secondary:#6B6560;--color-text-muted:#9E9790;
-  --color-border:#E5DFD6;--color-border-light:#EEEBE5;
-  --color-surface:#FFFFFF;--color-surface-warm:#FDF9F3;
-  --color-accent:#D94F30;--color-accent-hover:#C4432A;--color-accent-light:#FDEEE9;--color-accent-muted:#E8836C;
-  --color-success:#2D8B55;--color-success-light:#E8F5EE;
-  --color-error:#C93B3B;--color-error-light:#FDE8E8;
-  --color-info:#2A7B9B;--color-info-light:#E4F2F7;
-  --color-actor-1:#D94F30;--color-actor-2:#2A7B9B;--color-actor-3:#7B6DAA;--color-actor-4:#D4A843;--color-actor-5:#2D8B55;
-  --font-display:'Bricolage Grotesque',Georgia,serif;
-  --font-body:'DM Sans',-apple-system,sans-serif;
-  --font-mono:'JetBrains Mono','Fira Code',Consolas,monospace;
-  --text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-lg:1.125rem;
-  --text-xl:1.25rem;--text-2xl:1.5rem;--text-3xl:1.875rem;--text-4xl:2.25rem;--text-5xl:3rem;--text-6xl:3.75rem;
-  --leading-tight:1.15;--leading-snug:1.3;--leading-normal:1.6;--leading-loose:1.8;
-  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
-  --content-width:800px;--content-width-wide:1000px;--nav-height:50px;
-  --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:9999px;
-  --shadow-sm:0 1px 2px rgba(44,42,40,.05);--shadow-md:0 4px 12px rgba(44,42,40,.08);
-  --shadow-lg:0 8px 24px rgba(44,42,40,.1);--shadow-xl:0 16px 48px rgba(44,42,40,.12);
-  --ease-out:cubic-bezier(.16,1,.3,1);--ease-in-out:cubic-bezier(.65,0,.35,1);
-  --duration-fast:150ms;--duration-normal:300ms;--duration-slow:500ms;--stagger-delay:120ms;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-snap-type:y proximity;scroll-behavior:auto}
-body{background:var(--color-bg);color:var(--color-text);transition:background .3s,color .3s;font-family:var(--font-body);line-height:var(--leading-normal);overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(217,79,48,.03) 0%,transparent 50%);pointer-events:none;z-index:0}
-::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--color-border);border-radius:var(--radius-full)}
-
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;height:56px;transition:background .3s,box-shadow .3s;background:var(--color-nav-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);z-index:1000;border-bottom:1px solid var(--color-border-light);display:flex;align-items:center;padding:0 var(--space-6)}
-.nav.scrolled{box-shadow:0 1px 8px var(--color-nav-shadow)}
-.progress-bar{position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--color-accent),var(--color-accent-muted));transition:width .1s;width:0}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--content-width-wide);margin:0 auto;gap:var(--space-4)}
-.nav-left{display:flex;align-items:center;gap:var(--space-3);flex-shrink:0}
-.nav-title{font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);color:var(--color-text-secondary);letter-spacing:-.02em}
-.nav-resume{font-size:var(--text-xs);color:var(--color-accent);cursor:pointer;background:none;border:none;font-family:var(--font-body);padding:4px 12px;border-radius:var(--radius-full);transition:all .2s;white-space:nowrap}
-.nav-resume:hover{background:var(--color-accent-light)}
-.nav-center{flex:1;display:flex;justify-content:center}
-.nav-dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:300px}
-.nav-dot{position:relative;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--color-text-muted);background:transparent;cursor:pointer;transition:all var(--duration-normal) var(--ease-out);padding:0}
-.nav-dot.current{border-color:var(--color-accent);background:var(--color-accent);box-shadow:0 0 0 3px rgba(217,79,48,.3);width:10px;height:10px}
-.nav-dot.visited{background:var(--color-accent);border-color:var(--color-accent)}
-
-.nav-dot:hover{transform:scale(1.2)}
-.nav-dot::after{content:attr(data-label);position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);font-size:10px;font-weight:600;color:var(--color-text-secondary);background:var(--color-surface);padding:3px 8px;border-radius:6px;box-shadow:var(--shadow-md);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;z-index:100}
-.nav-dot:hover::after{opacity:1}
-.nav-right{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0}
-.nav-btn{padding:4px 12px;border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;cursor:pointer;border:1.5px solid var(--color-border);background:transparent;color:var(--color-accent);font-family:var(--font-body);transition:all .2s;white-space:nowrap}
-.nav-btn:hover{background:var(--color-accent);color:white;border-color:var(--color-accent)}
-
-/* VIEW TOGGLE */
-.nav-view-toggle{display:flex;align-items:center;gap:2px;background:var(--color-bg-warm);border-radius:var(--radius-full);padding:2px}
-.nav-view-btn{padding:3px 10px;border-radius:var(--radius-full);font-size:10px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--color-text-muted);font-family:var(--font-body);transition:all .2s;white-space:nowrap}
-.nav-view-btn.active{background:var(--color-accent);color:white}
-
-/* MODULES */
-.module{min-height:100dvh;min-height:100vh;scroll-snap-align:start;padding:var(--space-16) var(--space-6);padding-top:calc(var(--nav-height) + var(--space-16));position:relative;z-index:1}
-.module-content{max-width:var(--content-width-wide);margin:0 auto}
-.module-header{text-align:center;margin-bottom:var(--space-12)}
-.module-number{font-family:var(--font-display);font-size:var(--text-6xl);font-weight:800;color:var(--color-accent);opacity:.15;display:block;line-height:1}
-.module-title{font-family:var(--font-display);font-size:var(--text-4xl);font-weight:700;margin-top:var(--space-2);line-height:var(--leading-tight)}
-.module-subtitle{font-size:var(--text-lg);color:var(--color-text-secondary);margin-top:var(--space-3);max-width:600px;margin-left:auto;margin-right:auto}
-.module-body{display:flex;flex-direction:column;gap:var(--space-16)}
-.screen{max-width:var(--content-width);margin:0 auto}
-.screen-heading{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:600;margin-bottom:var(--space-6);line-height:var(--leading-snug)}
-
-/* ANIMATE IN */
-.animate-in{opacity:0;transform:translateY(20px);transition:opacity var(--duration-slow) var(--ease-out),transform var(--duration-slow) var(--ease-out)}
-.animate-in.visible{opacity:1;transform:translateY(0);will-change:transform,opacity}
-.stagger-children>.animate-in{transition-delay:calc(var(--stagger-index,0)*var(--stagger-delay))}
-
-/* TRANSLATION BLOCK */
-.translation-block{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-md);margin:var(--space-8) 0}
-.translation-code{background:var(--color-bg-code);color:#CDD6F4;padding:var(--space-6);font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;position:relative;white-space:pre-wrap;word-break:break-word;overflow-x:hidden}
-.translation-english{background:var(--color-surface-warm);padding:var(--space-6);font-size:var(--text-sm);line-height:1.7;border-left:3px solid var(--color-accent)}
-.translation-label{position:absolute;top:var(--space-2);right:var(--space-3);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;opacity:.5}
-.translation-english .translation-label{color:var(--color-text-muted);position:static;margin-bottom:var(--space-3);display:block}
-.tl{margin-bottom:var(--space-2);color:var(--color-text-secondary)}
-@media(max-width:768px){.translation-block{grid-template-columns:1fr}.translation-english{border-left:none;border-top:3px solid var(--color-accent)}}
-
-/* CODE HIGHLIGHTS */
-.code-keyword{color:#CBA6F7}.code-string{color:#A6E3A1}.code-function{color:#89B4FA}
-.code-comment{color:#6C7086}.code-number{color:#FAB387}.code-property{color:#F9E2AF}
-
-/* QUIZ */
-.quiz-container{margin:var(--space-6) 0}
-.quiz-question-block{margin-bottom:var(--space-6)}
-.quiz-question{font-family:var(--font-display);font-weight:600;font-size:var(--text-lg);margin-bottom:var(--space-4)}
-.quiz-options{display:flex;flex-direction:column;gap:var(--space-3)}
-.quiz-option{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border:2px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface);cursor:pointer;width:100%;text-align:left;font-size:var(--text-base);font-family:var(--font-body);transition:border-color var(--duration-fast),background var(--duration-fast);color:var(--color-text);min-height:48px}
-.quiz-option:hover{border-color:var(--color-accent-muted)}
-.quiz-option.selected{border-color:var(--color-accent);background:var(--color-accent-light)}
-.quiz-option.correct{border-color:var(--color-success);background:var(--color-success-light)}
-.quiz-option.incorrect{border-color:var(--color-error);background:var(--color-error-light)}
-.quiz-option:disabled{cursor:default}
-.quiz-option-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--color-border);transition:all var(--duration-fast);flex-shrink:0}
-.quiz-option.selected .quiz-option-radio{border-color:var(--color-accent);background:var(--color-accent);box-shadow:inset 0 0 0 3px white}
-.quiz-feedback{max-height:0;overflow:hidden;opacity:0;transition:max-height var(--duration-normal),opacity var(--duration-normal);border-radius:var(--radius-sm);font-size:var(--text-sm)}
-.quiz-feedback.show{max-height:200px;opacity:1;padding:var(--space-3);margin-top:var(--space-2)}
-.quiz-feedback.success{background:var(--color-success-light);color:var(--color-success)}
-.quiz-feedback.error{background:var(--color-error-light);color:var(--color-error)}
-.quiz-btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-5);border-radius:var(--radius-sm);font-family:var(--font-body);font-weight:600;font-size:var(--text-sm);cursor:pointer;border:none;transition:all var(--duration-fast);margin-right:var(--space-2)}
-.quiz-check-btn{background:var(--color-accent);color:white}
-.quiz-check-btn:hover{background:var(--color-accent-hover)}
-.quiz-reset-btn{background:var(--color-border-light);color:var(--color-text-secondary)}
-.quiz-reset-btn:hover{background:var(--color-border)}
-
-/* SCENARIO BLOCK */
-.scenario-block{background:var(--color-info-light);border-left:4px solid var(--color-info);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:var(--space-4) var(--space-5);margin-bottom:var(--space-5)}
-.scenario-label{font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-info);font-weight:600}
-.scenario-block p{margin-top:var(--space-2);font-size:var(--text-base)}
-
-/* PATTERN CARDS */
-.pattern-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4)}
-.pattern-card{background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-6);box-shadow:var(--shadow-sm);transition:box-shadow var(--duration-normal)}
-@media(hover:hover){.pattern-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}}
-.pattern-icon{width:44px;height:44px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:var(--space-3)}
-.pattern-title{font-family:var(--font-display);font-weight:600;font-size:var(--text-base);margin-bottom:var(--space-2)}
-.pattern-desc{font-size:var(--text-sm);color:var(--color-text-secondary);line-height:var(--leading-normal)}
-
-/* CALLOUT */
-.callout{border-radius:var(--radius-md);padding:var(--space-5);display:flex;gap:var(--space-4);margin:var(--space-6) 0}
-.callout-icon{font-size:1.5rem;flex-shrink:0}
-.callout-content strong{display:block;margin-bottom:var(--space-1)}
-.callout-content p{font-size:var(--text-sm);color:var(--color-text-secondary)}
-.callout-accent{background:var(--color-accent-light);border-left:4px solid var(--color-accent)}
-.callout-info{background:var(--color-info-light);border-left:4px solid var(--color-info)}
-.callout-warning{background:var(--color-error-light);border-left:4px solid var(--color-error)}
-
-/* FLOW STEPS */
-.flow-steps{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;justify-content:center;margin:var(--space-8) 0}
-.flow-step{background:var(--color-surface);border:2px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);text-align:center;min-width:120px;box-shadow:var(--shadow-sm)}
-.flow-step.active{border-color:var(--color-accent);box-shadow:0 0 0 3px rgba(217,79,48,.15)}
-.flow-step-num{width:28px;height:28px;border-radius:50%;background:var(--color-accent);color:white;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-2);font-size:var(--text-sm)}
-.flow-step p{font-size:var(--text-sm);font-weight:500}
-.flow-arrow{color:var(--color-accent);font-size:var(--text-xl);font-weight:700}
-
-/* STEP CARDS */
-.step-cards{display:flex;flex-direction:column;gap:var(--space-3)}
-.step-card{display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-4) var(--space-5);background:var(--color-surface);border-radius:var(--radius-md);border-left:3px solid var(--color-accent);box-shadow:var(--shadow-sm)}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--color-accent);color:white;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);flex-shrink:0}
-.step-body p{margin:var(--space-1) 0 0;color:var(--color-text-secondary);font-size:var(--text-sm)}
-
-/* FILE TREE */
-.file-tree{font-family:var(--font-mono);font-size:var(--text-sm);background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-5);box-shadow:var(--shadow-sm);margin:var(--space-6) 0}
-.ft-folder,.ft-file{padding:var(--space-2) var(--space-3);border-left:2px solid var(--color-border-light);margin-left:var(--space-4)}
-.ft-name{font-weight:600}
-.ft-folder>.ft-name{color:var(--color-accent)}
-.ft-folder>.ft-name::before{content:'📁 '}
-.ft-file>.ft-name{color:var(--color-text)}
-.ft-file>.ft-name::before{content:'📄 '}
-.ft-desc{color:var(--color-text-secondary);font-family:var(--font-body);margin-left:var(--space-2);font-size:var(--text-xs)}
-.ft-children{margin-left:var(--space-4)}
-
-/* ICON ROWS */
-.icon-rows{display:flex;flex-direction:column;gap:var(--space-3)}
-.icon-row{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4);background:var(--color-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
-.icon-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.icon-row p{margin:0;color:var(--color-text-secondary);font-size:var(--text-sm);margin-top:var(--space-1)}
-
-/* CHAT ANIMATION */
-.chat-window{max-width:520px;margin:var(--space-6) auto;background:var(--color-surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden}
-.chat-header{background:var(--color-bg-code);color:#CDD6F4;padding:var(--space-3) var(--space-5);font-family:var(--font-display);font-weight:600;font-size:var(--text-sm)}
-.chat-messages{padding:var(--space-4);min-height:280px;max-height:400px;overflow-y:auto}
-.chat-message{display:flex;gap:var(--space-3);margin-bottom:var(--space-3);animation:fadeSlideUp .3s var(--ease-out)}
-.chat-avatar{width:36px;height:36px;border-radius:50%;color:white;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:var(--text-sm);flex-shrink:0}
-.chat-bubble{background:var(--color-bg-warm);border-radius:0 var(--radius-md) var(--radius-md) var(--radius-md);padding:var(--space-3) var(--space-4);max-width:80%}
-.chat-sender{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:600;display:block;margin-bottom:var(--space-1)}
-.chat-bubble p{font-size:var(--text-sm);line-height:var(--leading-normal)}
-.chat-typing{display:none;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-4)}
-.chat-typing-dots{display:flex;gap:4px}
-.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--color-text-muted);animation:typingBounce 1.4s infinite}
-.typing-dot:nth-child(2){animation-delay:.2s}
-.typing-dot:nth-child(3){animation-delay:.4s}
-.chat-controls{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-top:1px solid var(--color-border-light)}
-.chat-controls button{padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:600;cursor:pointer;border:none;transition:all var(--duration-fast)}
-.chat-controls .chat-play{background:var(--color-accent);color:white}
-.chat-controls .chat-play:hover{background:var(--color-accent-hover)}
-.chat-controls .chat-replay{background:var(--color-border-light);color:var(--color-text-secondary)}
-.chat-progress{margin-left:auto;font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono)}
-@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-@keyframes fadeSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-/* FLOW ANIMATION */
-.flow-animation{max-width:700px;margin:var(--space-6) auto;background:var(--color-surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:var(--space-8)}
-.flow-actors{display:flex;justify-content:space-around;gap:var(--space-3);margin-bottom:var(--space-6);flex-wrap:wrap}
-.flow-actor{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);padding:var(--space-4);border-radius:var(--radius-md);border:2px solid var(--color-border-light);transition:all var(--duration-normal) var(--ease-out);min-width:100px}
-.flow-actor.active{border-color:var(--color-accent);box-shadow:0 0 0 3px rgba(217,79,48,.2);transform:scale(1.05);will-change:transform}
-.flow-actor-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-family:var(--font-display);font-size:var(--text-lg)}
-.flow-actor span{font-size:var(--text-xs);font-weight:600;text-align:center}
-.flow-connector{display:flex;align-items:center;justify-content:center;padding:var(--space-2) 0}
-.flow-packet-bar{height:4px;border-radius:2px;background:var(--color-accent);width:0;transition:width .6s var(--ease-out)}
-.flow-packet-bar.active{width:100%}
-.flow-step-label{min-height:60px;padding:var(--space-4);background:var(--color-bg-warm);border-radius:var(--radius-sm);margin:var(--space-4) 0;font-size:var(--text-sm);color:var(--color-text-secondary);text-align:center;line-height:var(--leading-normal)}
-.flow-controls{display:flex;align-items:center;gap:var(--space-2);justify-content:center}
-.flow-controls button{padding:var(--space-2) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);font-weight:600;cursor:pointer;border:none;background:var(--color-accent);color:white;transition:all var(--duration-fast)}
-.flow-controls button:hover{background:var(--color-accent-hover)}
-.flow-controls .flow-reset{background:var(--color-border-light);color:var(--color-text-secondary)}
-.flow-controls .flow-reset:hover{background:var(--color-border)}
-.flow-progress{font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);margin-left:var(--space-2)}
-
-/* GLOSSARY TOOLTIP */
-.term{border-bottom:1.5px dashed var(--color-accent-muted);cursor:pointer;position:relative}
-.term:hover,.term.active{border-bottom-color:var(--color-accent);color:var(--color-accent)}
-.term-tooltip{position:fixed;background:var(--color-tooltip-bg);color:var(--color-tooltip-text);padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);font-family:var(--font-body);line-height:var(--leading-normal);width:max(200px,min(320px,80vw));box-shadow:var(--shadow-lg);pointer-events:none;opacity:0;transition:opacity var(--duration-fast);z-index:10000}
-.term-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--color-bg-code)}
-.term-tooltip.visible{opacity:1}
-.term-tooltip.flip::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--color-bg-code)}
-
-/* HERO - TOOLBOX STYLE */
-.hero-toolbox{text-align:center;padding:var(--space-12) var(--space-6) var(--space-10)}
-.hero-toolbox h1{font-family:var(--font-display);font-size:var(--text-5xl);font-weight:800;line-height:var(--leading-tight);margin-bottom:var(--space-4)}
-.hero-toolbox h1 span{color:var(--color-accent)}
-.hero-toolbox .hero-sub{font-size:var(--text-lg);color:var(--color-text-secondary);max-width:550px;margin:0 auto var(--space-8);line-height:var(--leading-loose)}
-.toolbox-search{max-width:560px;margin:0 auto var(--space-6);position:relative}
-.toolbox-search-input{width:100%;padding:var(--space-4) var(--space-6);padding-left:var(--space-12);border:2px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-lg);font-family:var(--font-body);background:var(--color-surface);color:var(--color-text);transition:all .2s;outline:none;box-shadow:var(--shadow-md)}
-.toolbox-search-input:focus{border-color:var(--color-accent);box-shadow:0 0 0 4px rgba(217,79,48,.08),var(--shadow-lg)}
-.toolbox-search-input::placeholder{color:var(--color-text-muted)}
-.toolbox-search-icon{position:absolute;left:var(--space-4);top:50%;transform:translateY(-50%);font-size:1.2rem;color:var(--color-text-muted)}
-.hero-tags{display:flex;gap:var(--space-2);justify-content:center;flex-wrap:wrap;margin-bottom:var(--space-10)}
-.hero-tag{padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-xs);font-family:var(--font-mono);font-weight:600;border:1.5px solid var(--color-border);background:var(--color-surface);cursor:pointer;transition:all .2s}
-.hero-tag:hover{border-color:var(--color-accent);color:white;background:var(--color-accent)}
-
-/* SCENARIO CARDS GRID */
-.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);max-width:var(--content-wide);margin:0 auto}
-.scenario-card{background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-5);box-shadow:var(--shadow-sm);border-left:4px solid var(--color-accent);cursor:pointer;transition:all var(--duration-normal);text-decoration:none;color:inherit;display:block}
-.scenario-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.08);border-left-color:var(--color-accent-hover)}
-.scenario-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-2)}
-.scenario-card-title{font-family:var(--font-display);font-weight:600;font-size:var(--text-base)}
-.scenario-card-meta{display:flex;gap:var(--space-2);align-items:center}
-.scenario-card-level{font-size:var(--text-xs);padding:2px 8px;border-radius:var(--radius-full);font-weight:600}
-.scenario-card-level.beginner{background:var(--color-success-light);color:var(--color-success)}
-.scenario-card-level.intermediate{background:var(--color-info-light);color:var(--color-info)}
-.scenario-card-level.advanced{background:var(--color-accent-light);color:var(--color-accent)}
-.scenario-card-time{font-size:var(--text-xs);color:var(--color-text-muted)}
-.scenario-card-desc{font-size:var(--text-sm);color:var(--color-text-secondary);line-height:var(--leading-normal)}
-@media(max-width:768px){.scenario-grid{grid-template-columns:1fr}.scenario-card{border-left-width:3px}}
-
-/* MODULE TOC */
-.module-toc{display:flex;gap:var(--space-2);justify-content:center;flex-wrap:wrap;margin:var(--space-4) auto var(--space-8);max-width:400px}
-.module-toc a{padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);font-weight:600;border:1.5px solid var(--color-border);color:var(--color-text-secondary);text-decoration:none;transition:all .2s}
-.module-toc a:hover{border-color:var(--color-accent);color:var(--color-accent);background:var(--color-accent-light)}
-
-/* SCENARIO PAGE */
-.scenario-page{max-width:var(--content-width);margin:0 auto}
-.scenario-page-header{margin-bottom:var(--space-8)}
-.scenario-page-header h1{font-family:var(--font-display);font-size:var(--text-3xl);font-weight:700;line-height:var(--leading-tight);margin-bottom:var(--space-3)}
-.scenario-page-header p{font-size:var(--text-lg);color:var(--color-text-secondary);line-height:var(--leading-normal)}
-.scenario-page-back{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);cursor:pointer;margin-bottom:var(--space-6);transition:color .2s;text-decoration:none}
-.scenario-page-back:hover{color:var(--color-accent)}
-.scenario-prompt-box{background:var(--color-bg-code);border-radius:var(--radius-md);padding:var(--space-6);position:relative;margin:var(--space-6) 0}
-.scenario-prompt-box .copy-btn{top:var(--space-3);right:var(--space-3);left:auto}
-.scenario-prompt-box pre{color:#CDD6F4;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;white-space:pre-wrap;word-break:break-word}
-.scenario-prompt-box .prompt-label{position:absolute;top:var(--space-2);left:var(--space-3);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:rgba(205,214,244,.4);font-weight:600}
-.scenario-example{margin:var(--space-6) 0}
-.scenario-example-label{font-family:var(--font-display);font-weight:600;font-size:var(--text-base);margin-bottom:var(--space-4);display:flex;align-items:center;gap:var(--space-2)}
-.scenario-chat{background:var(--color-surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden}
-.scenario-chat-user{padding:var(--space-4) var(--space-5);background:var(--color-bg-warm);border-bottom:1px solid var(--color-border-light);display:flex;gap:var(--space-3);align-items:flex-start}
-.scenario-chat-user-avatar{width:32px;height:32px;border-radius:50%;background:var(--color-actor-2);color:white;display:flex;align-items:center;justify-content:center;font-size:var(--text-sm);font-weight:700;flex-shrink:0}
-.scenario-chat-user p{font-size:var(--text-sm);line-height:var(--leading-normal)}
-.scenario-chat-ai{padding:var(--space-4) var(--space-5);display:flex;gap:var(--space-3);align-items:flex-start}
-.scenario-chat-ai-avatar{width:32px;height:32px;border-radius:50%;background:var(--color-actor-1);color:white;display:flex;align-items:center;justify-content:center;font-size:var(--text-sm);font-weight:700;flex-shrink:0}
-.scenario-chat-ai p{font-size:var(--text-sm);line-height:var(--leading-normal);color:var(--color-text-secondary)}
-.scenario-chat-ai p strong{color:var(--color-text)}
-.scenario-collapse{border:2px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;margin:var(--space-6) 0}
-.scenario-collapse-header{padding:var(--space-4) var(--space-5);cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--color-surface);font-family:var(--font-display);font-weight:600;font-size:var(--text-base);transition:background .2s;user-select:none}
-.scenario-collapse-header:hover{background:var(--color-surface-warm)}
-.scenario-collapse-arrow{transition:transform var(--duration-normal);font-size:var(--text-sm)}
-.scenario-collapse.open .scenario-collapse-arrow{transform:rotate(180deg)}
-.scenario-collapse-body{max-height:0;overflow:hidden;transition:max-height var(--duration-slow) var(--ease-out)}
-.scenario-collapse.open .scenario-collapse-body{max-height:2000px}
-.scenario-collapse-content{padding:var(--space-4) var(--space-5);font-size:var(--text-sm);color:var(--color-text-secondary);line-height:var(--leading-normal)}
-.scenario-collapse-content strong{color:var(--color-text)}
-.scenario-collapse-content ul{padding-left:var(--space-5);margin:var(--space-2) 0}
-.scenario-collapse-content li{margin-bottom:var(--space-1)}
-.scenario-related{margin-top:var(--space-6);padding-top:var(--space-6);border-top:1px solid var(--color-border-light)}
-.scenario-related h4{font-family:var(--font-display);font-weight:600;font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-3)}
-.scenario-related-list{display:flex;gap:var(--space-2);flex-wrap:wrap}
-.scenario-related-link{padding:var(--space-2) var(--space-3);border-radius:var(--radius-full);font-size:var(--text-xs);border:1px solid var(--color-border);color:var(--color-text-secondary);cursor:pointer;transition:all .2s;text-decoration:none}
-.scenario-related-link:hover{border-color:var(--color-accent);color:var(--color-accent);background:var(--color-accent-light)}
-
-/* TABLE */
-.skill-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-6) 0}
-.skill-table th{text-align:left;padding:var(--space-3) var(--space-4);background:var(--color-bg-warm);font-family:var(--font-display);font-weight:600;border-bottom:2px solid var(--color-border)}
-.skill-table td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-border-light)}
-.skill-table tr:hover td{background:var(--color-surface-warm)}
-.skill-table code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--color-bg-code);color:#89B4FA;padding:2px 6px;border-radius:4px}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  :root{--text-4xl:1.875rem;--text-5xl:2.25rem;--text-6xl:3rem}
-  .module{padding:var(--space-8) var(--space-4);padding-top:calc(var(--nav-height) + var(--space-8))}
-  .pattern-cards{grid-template-columns:1fr 1fr}
-  .flow-steps{flex-direction:column;align-items:center}
-  .flow-arrow{transform:rotate(90deg)}
-  .skill-table{font-size:var(--text-xs)}
-  .nav-dots{gap:4px}.nav-dot{width:6px;height:6px}
-  .nav-inner{gap:var(--space-2)}
-  .nav-title{font-size:var(--text-xs)}
-  .nav-center{display:none}
-  .nav-resume{font-size:9px;padding:2px 6px}
-  .flow-animation{padding:var(--space-4)}
-  .flow-actors{gap:var(--space-1)}
-  .flow-actor{min-width:60px;padding:var(--space-2)}
-  .flow-actor-icon{width:36px;height:36px;font-size:var(--text-sm)}
-  .flow-actor span{font-size:9px}
-  .chat-window{margin:var(--space-4) 0}
-  .chat-bubble{max-width:85%}
-  .toolbox-search-input{font-size:var(--text-base);padding:var(--space-3) var(--space-4);padding-left:var(--space-10)}
-  .hero-toolbox h1{font-size:var(--text-3xl)}
-  .scenario-page-header h1{font-size:var(--text-2xl)}
-}
-@media(max-width:480px){
-  :root{--text-4xl:1.5rem;--text-5xl:1.875rem;--text-6xl:2.25rem}
-  .pattern-cards{grid-template-columns:1fr}
-  .table-card{display:block}
-  .table-card thead{display:none}
-  .table-card tbody tr{display:block;margin-bottom:var(--space-3);background:var(--color-surface);border-radius:var(--radius-sm);padding:var(--space-3);box-shadow:var(--shadow-sm)}
-  .table-card tbody td{display:flex;justify-content:space-between;padding:var(--space-1) 0;border-bottom:1px solid var(--color-border-light);font-size:var(--text-sm)}
-  .table-card tbody td::before{content:attr(data-label);font-weight:600;color:var(--color-text-secondary);font-size:var(--text-xs);margin-right:var(--space-2)}
-  .table-card tbody td:last-child{border-bottom:none}
-  .module-body{gap:var(--space-10)}
-}
-@media(max-width:375px){
-  .hero-toolbox{padding:var(--space-8) var(--space-4)}
-  .hero-toolbox h1{font-size:var(--text-2xl)}
-  .hero-toolbox .hero-sub{font-size:var(--text-base)}
-  .module-title{font-size:var(--text-xl)}
-  .screen-heading{font-size:var(--text-xl)}
-  .pattern-card{padding:var(--space-4)}
-  .step-card{padding:var(--space-3) var(--space-4)}
-  .flow-actors{gap:2px}
-  .flow-actor{min-width:48px;padding:var(--space-1)}
-  .flow-actor-icon{width:28px;height:28px;font-size:var(--text-xs)}
-}
-[data-theme="dark"] {
-  --color-bg:#181818;--color-bg-warm:#1E1C1A;--color-bg-code:#2A2A3C;
-  --color-text:#E8E4DE;--color-text-secondary:#A09A92;--color-text-muted:#6E6962;
-  --color-border:#3A3632;--color-border-light:#2E2B27;
-  --color-surface:#242220;--color-surface-warm:#2A2725;
-  --color-accent:#E8704A;--color-accent-hover:#F08058;--color-accent-light:#3A2520;--color-accent-muted:#B8705A;
-  --color-success:#4CAF6A;--color-success-light:#1E3A28;
-  --color-error:#E05555;--color-error-light:#3A1E1E;
-  --color-info:#4A9BB5;--color-info-light:#1E2E36;
-  --color-actor-1:#E8704A;--color-actor-2:#4A9BB5;--color-actor-3:#9580C4;--color-actor-4:#E0B84A;--color-actor-5:#4CAF6A;
-  --color-nav-bg:rgba(24,24,24,.92);--color-nav-shadow:rgba(0,0,0,.2);
-  --color-tooltip-bg:#2A2A3C;--color-tooltip-text:#E0DDD6;
-}
-
-/* FLOATING TOOLBAR */
-.floating-toolbar{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);display:flex;align-items:center;gap:4px;padding:6px;background:var(--color-nav-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-radius:var(--radius-full);border:1px solid var(--color-border-light);box-shadow:var(--shadow-lg);z-index:999;opacity:0;transition:transform .3s var(--ease-out),opacity .3s;pointer-events:none}
-.floating-toolbar.visible{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
-.floating-toolbar button{width:40px;height:40px;border:none;background:transparent;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s;color:var(--color-text-secondary)}
-.floating-toolbar button:hover{background:var(--color-accent-light);color:var(--color-accent);transform:translateY(-2px)}
-.search-wrapper{position:relative}
-.search-input{font-family:var(--font-body);font-size:var(--text-xs);padding:5px 10px 5px 28px;border:1.5px solid var(--color-border);border-radius:var(--radius-full);background:var(--color-surface);color:var(--color-text);width:160px;transition:all .2s;outline:none}
-.search-input:focus{border-color:var(--color-accent);width:220px}
-.search-input::placeholder{color:var(--color-text-muted)}
-.search-icon{position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--color-text-muted);pointer-events:none}
-.search-results{position:absolute;top:calc(100% + 6px);right:0;width:320px;max-height:360px;overflow-y:auto;background:var(--color-surface);border:1.5px solid var(--color-border);border-radius:var(--radius-md);box-shadow:var(--shadow-lg);z-index:2000;display:none}
-.search-results.show{display:block}
-.search-results-header{padding:var(--space-2) var(--space-3);font-size:var(--text-xs);color:var(--color-text-muted);font-weight:600;border-bottom:1px solid var(--color-border-light)}
-.search-result-item{padding:var(--space-2) var(--space-3);cursor:pointer;transition:background .15s;border-bottom:1px solid var(--color-border-light);font-size:var(--text-sm)}
-.search-result-item:last-child{border-bottom:none}
-.search-result-item:hover{background:var(--color-accent-light)}
-.search-result-item code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--color-bg-code);color:#89B4FA;padding:1px 5px;border-radius:4px;margin-right:var(--space-2)}
-.search-result-item .sr-desc{color:var(--color-text-secondary);font-size:var(--text-xs);margin-left:var(--space-2)}
-.search-empty{padding:var(--space-4) var(--space-3);text-align:center;color:var(--color-text-muted);font-size:var(--text-sm)}
-.search-hint{padding:var(--space-2) var(--space-3);font-size:var(--text-xs);color:var(--color-text-muted);border-top:1px solid var(--color-border-light);text-align:center}
-.copy-btn{position:absolute;top:var(--space-2);left:var(--space-3);padding:3px 10px;border-radius:4px;font-size:var(--text-xs);font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-family:var(--font-body);transition:all .2s;z-index:2}
-.copy-btn:hover{background:rgba(255,255,255,.2);color:white}
-.copy-btn.copied{background:var(--color-success);border-color:var(--color-success);color:white}
-.case-flow{display:flex;flex-direction:column;gap:var(--space-4)}
-.case-step{background:var(--color-surface);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border-left:4px solid var(--color-accent)}
-.case-step-header{padding:var(--space-3) var(--space-4);font-family:var(--font-display);font-weight:600;font-size:var(--text-sm);display:flex;align-items:center;gap:var(--space-2);background:var(--color-bg-warm)}
-.case-step-num{width:24px;height:24px;border-radius:50%;background:var(--color-accent);color:white;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);flex-shrink:0}
-.case-step-body{padding:var(--space-4)}
-.case-step-label{font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);margin-bottom:var(--space-2)}
-.case-step-content{font-size:var(--text-sm);color:var(--color-text-secondary);line-height:var(--leading-normal)}
-.case-step-content strong{color:var(--color-text)}
-.case-flow-arrow{text-align:center;color:var(--color-accent);font-size:var(--text-xl);padding:var(--space-1) 0}
-.about-module{text-align:center;padding:var(--space-8) 0}
-.about-version{font-family:var(--font-display);font-size:var(--text-3xl);font-weight:800;color:var(--color-accent);margin-bottom:var(--space-4)}
-.about-changelog{max-width:500px;margin:0 auto;text-align:left}
-.about-changelog dt{font-family:var(--font-mono);font-size:var(--text-sm);font-weight:600;color:var(--color-accent);margin-top:var(--space-3)}
-.about-changelog dd{font-size:var(--text-sm);color:var(--color-text-secondary);margin-top:var(--space-1)}
-@media print{
-  .nav,.floating-toolbar,.chat-controls,.flow-controls,.quiz-btn,.quiz-option,.copy-btn,.search-wrapper,.progress-bar{display:none!important}
-  .module{min-height:auto;page-break-after:always;padding:2rem 1.5rem;scroll-snap-align:none}
-  .module:last-child{page-break-after:auto}
-  .animate-in{opacity:1!important;transform:none!important}
-  .chat-message{opacity:1!important;transform:none!important;display:flex!important}
-  body::before{display:none}
-}
+:root{--bg:#FAFAFA;--bg2:#F5F5F5;--card:#fff;--text:#1a1a1a;--text2:#666;--text3:#999;--brand:#6C5CE7;--brand-light:#A29BFE;--brand-bg:rgba(108,92,231,.08);--border:#E8E8E8;--shadow:0 1px 3px rgba(0,0,0,.06);--shadow-lg:0 4px 12px rgba(0,0,0,.08);--radius:16px;--radius2:12px;--code-bg:#1E1E2E;--code-text:#CDD6F4}
+.dark{--bg:#0F0F14;--bg2:#1A1A24;--card:#1E1E2E;--text:#E4E4E7;--text2:#9CA3AF;--text3:#6B7280;--brand:#A29BFE;--brand-light:#C4B5FD;--brand-bg:rgba(162,155,254,.1);--border:#2D2D3D;--shadow:0 1px 3px rgba(0,0,0,.2);--shadow-lg:0 4px 12px rgba(0,0,0,.3);--code-bg:#16161E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;min-height:100vh}
+.container{max-width:960px;margin:0 auto;padding:24px 20px 60px}
+.header{text-align:center;padding:40px 0 32px}
+.header h1{font-size:28px;font-weight:700;margin-bottom:6px}
+.header p{color:var(--text2);font-size:15px}
+.search-box{max-width:480px;margin:0 auto 24px;position:relative}
+.search-box input{width:100%;padding:12px 16px 12px 44px;border:1px solid var(--border);border-radius:var(--radius2);background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s}
+.search-box input:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
+.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}
+.categories{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
+.cat-btn{padding:6px 16px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:13px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.cat-btn:hover{border-color:var(--brand);color:var(--brand)}
+.cat-btn.active{background:var(--text);color:#fff;border-color:var(--text)}
+.dark .cat-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;transition:all .2s}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--brand-light)}
+.card .cat-tag{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+.card h3{font-size:17px;font-weight:600;margin-bottom:6px}
+.card .desc{color:var(--text2);font-size:13px;margin-bottom:16px;line-height:1.5}
+.card .meta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3)}
+.card .meta .level{padding:2px 8px;border-radius:6px;background:var(--brand-bg);color:var(--brand);font-weight:500}
+.theme-toggle{position:fixed;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:100}
+.detail{max-width:600px;margin:0 auto}
+.back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--text2);font-size:14px;cursor:pointer;margin-bottom:24px;background:none;border:none}
+.back-btn:hover{color:var(--brand)}
+.detail h2{font-size:24px;font-weight:700;margin-bottom:8px}
+.detail .detail-desc{color:var(--text2);font-size:15px;margin-bottom:28px}
+.step-indicator{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:14px;color:var(--text3)}
+.step-indicator .current{color:var(--brand);font-weight:600}
+.step-bar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.step-bar .fill{height:100%;background:var(--brand);border-radius:2px;transition:width .3s}
+.step-title{font-size:18px;font-weight:600;margin-bottom:20px}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:14px;font-weight:500;margin-bottom:8px}
+.field input[type="text"],.field textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius2);background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s;font-family:inherit}
+.field input:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
+.field textarea{min-height:100px;resize:vertical}
+.tag-group{display:flex;flex-wrap:wrap;gap:8px}
+.tag-option{padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:14px;cursor:pointer;transition:all .2s;user-select:none}
+.tag-option:hover{border-color:var(--brand-light);color:var(--brand)}
+.tag-option.selected{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn-row{display:flex;justify-content:space-between;margin-top:32px}
+.btn{padding:12px 24px;border-radius:var(--radius2);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-secondary{background:var(--bg2);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--text3)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.result{max-width:640px;margin:0 auto}
+.result .check{font-size:28px;margin-bottom:12px}
+.result h2{font-size:22px;font-weight:700;margin-bottom:20px}
+.prompt-block{background:var(--code-bg);border-radius:var(--radius2);padding:24px;margin-bottom:20px;position:relative;overflow:hidden}
+.prompt-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand);border-radius:4px 0 0 4px}
+.prompt-block pre{color:var(--code-text);font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-word;font-family:'SF Mono','Fira Code',monospace;margin:0}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.tips{background:var(--brand-bg);border-radius:var(--radius2);padding:20px}
+.tips h4{font-size:14px;margin-bottom:10px;color:var(--brand)}
+.tips li{font-size:13px;color:var(--text2);margin-bottom:4px;padding-left:4px}
+.empty{text-align:center;padding:60px 20px;color:var(--text3);font-size:15px}
+@media(max-width:640px){.header h1{font-size:22px}.grid{grid-template-columns:1fr}.container{padding:16px 16px 40px}.header{padding:24px 0 20px}.btn-row{flex-direction:column;gap:10px}.btn{width:100%;text-align:center}.result-actions{flex-direction:column}}
+.hidden{display:none!important}
 </style>
 </head>
 <body>
-
-<!-- FLOATING TOOLBAR -->
-<div class="floating-toolbar" id="floating-toolbar">
-  <button id="theme-toggle" aria-label="切换主题" title="切换亮色/暗色模式">🌙</button>
-  <button id="btn-top" aria-label="回到顶部" title="回到顶部">⬆️</button>
-  <button id="btn-copy-link" aria-label="复制链接" title="复制链接">📋</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+<div class="container">
+<div id="home">
+<div class="header"><h1>PM AI Skill 工具箱</h1><p>产品经理的 AI 技能库 · 选场景，答问题，生成专属 Prompt</p></div>
+<div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" id="search" placeholder="搜索场景…" oninput="filterCards()"></div>
+<div class="categories" id="cats"></div>
+<div class="grid" id="grid"></div>
 </div>
-
-<!-- NAV -->
-<nav class="nav">
-  <div class="progress-bar" id="progress-bar"></div>
-  <div class="nav-inner">
-    <div class="nav-left"><span class="nav-title">☕ PM 工具箱</span><button class="nav-resume" id="nav-resume" style="display:none">📖 继续</button></div>
-    <div class="nav-center">
-      <div class="nav-dots" id="nav-dots-container">
-      </div>
-    </div>
-    <div class="nav-right">
-      <div class="search-wrapper" id="search-wrapper"><span class="search-icon">🔍</span><input class="search-input" id="search-input" type="text" placeholder="搜索场景或模块..." autocomplete="off"><div class="search-results" id="search-results"></div></div>
-      <button class="nav-btn" onclick="window.print()">📄 PDF</button>
-    </div>
-  </div>
-</nav>
-
-<!-- ============ HERO (TOOLBOX MODE) ============ -->
-<section class="module" id="module-0">
-  <div class="module-content">
-    <div class="hero-toolbox animate-in">
-      <h1>产品经理的<br><span>AI 工具箱</span></h1>
-      <p class="hero-sub">不用学完整套课程才能用。找到一个和你当前问题匹配的场景，复制 Prompt，直接开始。</p>
-      <div class="toolbox-search">
-        <span class="toolbox-search-icon">🔍</span>
-        <input class="toolbox-search-input" id="toolbox-search" type="text" placeholder="你想让 AI 帮你做什么？" autocomplete="off">
-      </div>
-      <div class="hero-tags">
-        <span class="hero-tag" onclick="document.getElementById('scenario-1').scrollIntoView({behavior:'smooth'})">竞品分析</span>
-        <span class="hero-tag" onclick="document.getElementById('scenario-2').scrollIntoView({behavior:'smooth'})">用户画像</span>
-        <span class="hero-tag" onclick="document.getElementById('scenario-5').scrollIntoView({behavior:'smooth'})">PRD</span>
-        <span class="hero-tag" onclick="document.getElementById('scenario-4').scrollIntoView({behavior:'smooth'})">周报</span>
-        <span class="hero-tag" onclick="document.getElementById('scenario-6').scrollIntoView({behavior:'smooth'})">定价</span>
-        <span class="hero-tag" onclick="document.getElementById('scenario-8').scrollIntoView({behavior:'smooth'})">增长实验</span>
-        <span class="hero-tag" onclick="document.getElementById('scenario-3').scrollIntoView({behavior:'smooth'})">数据异常</span>
-        <span class="hero-tag" onclick="document.getElementById('scenario-14').scrollIntoView({behavior:'smooth'})">需求评审</span>
-      </div>
-
-      <div style="text-align:center;margin-top:var(--space-8)">
-        <p style="font-family:var(--font-display);font-weight:600;font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:var(--space-4)">🔥 高频场景</p>
-        <div class="scenario-grid">
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-1').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">📊 竞品分析报告</span><div class="scenario-card-meta"><span class="scenario-card-level beginner">入门</span><span class="scenario-card-time">2 分钟</span></div></div>
-            <p class="scenario-card-desc">输入产品名，AI 帮你生成结构化竞品分析报告</p>
-          </div>
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-4').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">📝 周报 / 月报</span><div class="scenario-card-meta"><span class="scenario-card-level beginner">入门</span><span class="scenario-card-time">30 秒</span></div></div>
-            <p class="scenario-card-desc">丢几条要点给 AI，秒出结构化周报</p>
-          </div>
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-5').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">📋 需求文档初稿</span><div class="scenario-card-meta"><span class="scenario-card-level beginner">入门</span><span class="scenario-card-time">5 分钟</span></div></div>
-            <p class="scenario-card-desc">一句话描述需求，AI 产出完整 PRD 框架</p>
-          </div>
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-6').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">💰 定价策略</span><div class="scenario-card-meta"><span class="scenario-card-level intermediate">进阶</span><span class="scenario-card-time">5 分钟</span></div></div>
-            <p class="scenario-card-desc">AI 帮你设计合理的价格档位和功能组合</p>
-          </div>
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-8').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">🧪 A/B 实验设计</span><div class="scenario-card-meta"><span class="scenario-card-level intermediate">进阶</span><span class="scenario-card-time">3 分钟</span></div></div>
-            <p class="scenario-card-desc">一个改动、一个主指标、一个决策规则</p>
-          </div>
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-7').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">📉 用户流失分析</span><div class="scenario-card-meta"><span class="scenario-card-level intermediate">进阶</span><span class="scenario-card-time">5 分钟</span></div></div>
-            <p class="scenario-card-desc">AI 帮你诊断流失原因并推荐干预方案</p>
-          </div>
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-12').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">📦 用户反馈归类</span><div class="scenario-card-meta"><span class="scenario-card-level intermediate">进阶</span><span class="scenario-card-time">2 分钟</span></div></div>
-            <p class="scenario-card-desc">AI 帮你把零散反馈归类、排优先级</p>
-          </div>
-          <div class="scenario-card animate-in" onclick="document.getElementById('scenario-14').scrollIntoView({behavior:'smooth'})">
-            <div class="scenario-card-header"><span class="scenario-card-title">🎯 策略评估框架</span><div class="scenario-card-meta"><span class="scenario-card-level advanced">高级</span><span class="scenario-card-time">10 分钟</span></div></div>
-            <p class="scenario-card-desc">AI 帮你建立系统化的策略评估体系</p>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 1: 竞品分析报告 ============ -->
-<section class="module" id="scenario-1">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📊 让 AI 帮你写竞品分析报告</h1>
-        <p>老板让你分析竞品，但你对他们的产品细节一知半解。把产品名丢给 AI，它能帮你产出一份结构化的竞品分析框架。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>你是一位资深的商业化产品经理，擅长竞品分析。
-
-请帮我分析 {{竞品产品名}}（{{竞品公司名}}）的以下方面：
-
-1. **核心定位与目标用户**：他们的核心价值主张是什么？主要服务谁？
-2. **定价策略**：价格档位、免费/付费边界、常见促销方式
-3. **核心功能对比**：列出 5-8 个核心功能，标注哪些是免费/付费
-4. **商业化模式**：订阅制？按量计费？混合模式？收入驱动点是什么？
-5. **用户增长策略**：他们怎么获客？PLG 还是 SLG？
-6. **差异化优势**：和同类产品比，他们的独特卖点是什么？
-7. **对我们（{{我们的产品名}}）的启示**：3 条可借鉴的策略 + 2 个需要警惕的风险
-
-补充信息：
-- 我们的产品是 {{我们的产品简介，一句话}}
-- 我特别关注 {{你关注的方面，如"定价策略"或"用户增长"}}
-- 请用表格和要点形式输出，方便我放进 PPT</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>帮分析 Canva 的商业化策略。我们是一款面向中小企业的在线设计工具，月活 50 万，正考虑从免费转 SaaS 付费。我特别关注他们的定价策略和免费用户转化。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>1. 核心定位</strong>：Canva = "让每个人都能设计"。目标用户从个人扩展到企业，通过模板降低设计门槛。<br><br><strong>2. 定价策略</strong>：<br>• Free：核心编辑功能 + 10 万+ 模板<br>• Pro（$9.99/月）：去水印、品牌套件、100M+ 图库<br>• Teams（$14.99/人/月）：品牌管理、审批流、团队模板<br><br><strong>3. 商业化模式</strong>：Freemium + 模板生态 + AI 升级包。收入驱动 = 免费→Pro 转化 + Teams 企业扩展<br><br><strong>7. 对你们的启示</strong>：<br>✅ <strong>可借鉴</strong>：① 保留免费版核心功能，用"品牌化"和"团队协作"驱动付费 ② 提供年付折扣（Pro 年付省 16%）提升 LTV ③ 模板生态增加切换成本<br><br>⚠️ <strong>需警惕</strong>：① Canva 用 10 年才跑通规模化，短期内别对标他们的定价 ② 免费版功能太多导致转化率低，你们的免费边界要更清晰</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>角色定义</strong>："资深商业化产品经理"让 AI 用专业框架思考，而不是泛泛而谈</li>
-            <li><strong>结构化输出</strong>：7 个维度确保分析不遗漏关键面，比"帮我分析竞品"全面得多</li>
-            <li><strong>上下文注入</strong>：告诉 AI 你的产品定位和关注点，输出才不会是泛泛的百科</li>
-            <li><strong>格式约束</strong>："表格和要点形式"让输出直接可用，省去二次整理</li>
-          </ul>
-          <p style="margin-top:var(--space-3)"><strong>微调建议</strong>：如果你要分析的不是 SaaS 产品，把"定价策略"换成"商业模式"，把"免费/付费边界"换成"收入来源"。如果只需要某个维度，只保留对应部分即可。</p>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-9">竞品功能对比矩阵</a>
-          <a class="scenario-related-link" href="#scenario-11">市场进入策略</a>
-          <a class="scenario-related-link" href="#scenario-6">定价策略</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 2: 用户分层和画像 ============ -->
-<section class="module" id="scenario-2">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>👥 用 AI 做用户分层和画像</h1>
-        <p>用户群越来越大，但你不清楚他们是谁、怎么用你的产品。把用户数据和行为描述丢给 AI，它能帮你做分层和画像。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>你是一位数据驱动的增长产品经理。
-
-我需要对我的产品 {{产品名}} 的用户做分层分析。
-
-**产品信息**：{{一句话产品描述}}
-
-**我掌握的数据**：
-{{列出你有的数据，例如：
-- 月活：50 万，日活：12 万
-- 付费用户：3 万，ARPU ¥68/月
-- 用户分布：一线城市 40%，二线 35%，其他 25%
-- 核心使用场景：A、B、C
-- 留存数据：次日留存 45%，7 日留存 28%，30 日留存 18%
-}}
-
-**请帮我**：
-1. 按行为和付费意愿做 3-5 个用户分层（每层：占比、特征、核心需求、付费潜力）
-2. 为每个分层画一个用户画像（名字、背景、使用场景、痛点、期望）
-3. 指出哪个分层是当前增长的最大机会
-4. 给出 3 条针对不同分层的运营策略建议
-
-请用表格 + 要点输出，画像用第一人称描述。</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>产品是一个 AI 图片编辑工具，月活 50 万，日活 12 万。付费 3 万，ARPU ¥68。场景主要是头像制作、商品图、社交媒体图。留存：次日 45%，7 日 28%，30 日 18%。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>分层结果：</strong><br><br>① <strong>社交尝鲜型（35%）</strong>：月用 1-3 次，用完就走。画像："我是小红书博主，偶尔需要修个头像。"<br>付费潜力：⭐⭐<br><br>② <strong>内容创作者（25%）</strong>：周用 3+ 次，商品图为主。画像："我开淘宝店，每天要处理 20+ 商品图。"<br>付费潜力：⭐⭐⭐⭐⭐<br><br>③ <strong>专业设计师（8%）</strong>：日活用户，高频深度使用。画像："我是设计公司员工，用它做初稿再进 PS 精修。"<br>付费潜力：⭐⭐⭐⭐<br><br>④ <strong>流失休眠型（32%）</strong>：注册后不再活跃。画像："注册试了一下，觉得没啥特别就走了。"<br><br><strong>最大机会</strong>：② 内容创作者。他们有明确付费意愿（省时间=赚钱），且单用户价值高。<br><br><strong>策略建议</strong>：① 对 ② 推"批量处理"付费功能 ② 对 ④ 用"新模板+限时免费"召回 ③ 对 ① 用社交分享裂变</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>数据先行</strong>：先列数据再让 AI 分析，比让 AI 猜靠谱得多</li>
-            <li><strong>画像用第一人称</strong>：让 AI 用"我"来描述用户，生成的画像更生动、更容易在团队内传播</li>
-            <li><strong>机会判断</strong>：不只是分层，还要求 AI 指出最大机会，直接指向行动</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-7">用户流失分析</a>
-          <a class="scenario-related-link" href="#scenario-12">用户反馈归类</a>
-          <a class="scenario-related-link" href="#scenario-3">数据异常解读</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 3: 数据异常解读 ============ -->
-<section class="module" id="scenario-3">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📉 让 AI 帮你解读数据异常</h1>
-        <p>数据仪表盘上突然出现一个异常指标。与其自己瞎猜，不如让 AI 帮你系统性地排查可能原因。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>你是一位数据分析师，擅长快速定位数据异常的根因。
-
-**异常描述**：
-- 指标：{{指标名，如"付费转化率"}}
-- 异常：{{如"从 12% 跌到 8%"}}，发生时间：{{时间}}
-- 基线：{{正常范围，如"过去 3 个月稳定在 11-13%"}}
-
-**产品背景**：
-- {{产品名}}：{{一句话描述}}
-- 最近两周的变更：{{列出任何上线、活动、外部事件}}
-
-**请帮我**：
-1. 列出 5-8 个可能导致这个异常的假设（按可能性排序）
-2. 每个假设需要什么数据来验证？
-3. 我应该先查什么、后查什么（给出排查优先级）
-4. 如果 30 分钟内只能验证 2 个假设，你会选哪两个？为什么？
-
-注意：不要急着下结论，帮我建立排查框架。</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>付费转化率从 12% 跌到 8%，上周一开始。正常范围 11-13%。产品是 SaaS 设计工具。最近两周没有大版本上线，但上上周五更新了定价页文案。没有做任何促销活动。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>假设排序：</strong><br><br>① <strong>定价页文案变更影响（概率 40%）</strong>：时间吻合，文案可能让用户困惑或觉得贵了<br>→ 验证：对比新旧文案的页面停留时间、跳出率、AB 数据<br><br>② <strong>流量质量变化（30%）</strong>：可能有新渠道的流量质量较差<br>→ 验证：按渠道拆分转化率，看是否全渠道下降<br><br>③ <strong>竞品动作（15%）</strong>：竞品可能降价或推了新活动<br>→ 验证：查竞品近期动态<br><br>④ <strong>支付/技术故障（10%）</strong>：支付流程可能有 bug<br>→ 验证：查支付成功率日志<br><br>⑤ <strong>季节性因素（5%）</strong>：月底/季末效应<br>→ 验证：同比去年数据<br><br><strong>30 分钟内优先查</strong>：① 和 ④。① 因为时间完美吻合且影响面大；④ 因为技术故障一旦确认可以秒修复。</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>禁止直接下结论</strong>："不要急着下结论"防止 AI 臆造原因（这是 AI 最常见的错误）</li>
-            <li><strong>要求验证方法</strong>：不只是给假设，还告诉你怎么验证，这才是真正有用的</li>
-            <li><strong>时间约束</strong>："30 分钟内只能验证 2 个"迫使 AI 做取舍，给你可执行的建议</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-7">用户流失分析</a>
-          <a class="scenario-related-link" href="#scenario-8">A/B 实验设计</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 4: 周报/月报 ============ -->
-<section class="module" id="scenario-4">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📝 用 AI 生成周报 / 月报</h1>
-        <p>写周报最烦的不是写内容，而是组织结构。丢几条要点给 AI，30 秒出一份结构清晰、重点突出的周报。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我把以下内容整理成一份 {{周报/月报}}。
-
-**基本信息**：
-- 汇报人：{{你的名字}}
-- 团队：{{团队名}}
-- 时间范围：{{本周/本月}}
-
-**原始内容**（想到什么写什么，不需要组织）：
-{{列出你本周做的事情，例如：
-- 完成了 AI 头像功能的 PRD
-- 和设计团队对齐了交互方案
-- 看了竞品 Canva 的定价，觉得我们的定价有问题
-- 数据显示 trial 转化率跌了 4 个点，在排查原因
-- 下周要开始做用户调研
-}}
-
-**要求**：
-1. 分成：本周进展 / 关键数据 / 问题与风险 / 下周计划
-2. 每条用一句话概括，突出结果而非过程
-3. 问题要带上你的判断和建议方案，不要只列问题
-4. 语气专业简洁，适合向上汇报
-5. 如果有数据变化，用 ↑↓ 标注趋势</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>完成了 AI 头像功能 PRD。和设计对齐了交互方案。看了竞品定价，觉得我们的有问题。trial 转化率跌了 4 个点，在排查。下周开始用户调研。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>📊 本周进展</strong><br>• 完成 AI 头像功能 PRD 评审，已进入开发排期<br>• 与设计团队对齐交互方案，预计下周进入视觉设计<br><br><strong>📈 关键数据</strong><br>• Trial→Paid 转化率：8%（↓4pp vs 近 3 月均值 12%）<br><br><strong>⚠️ 问题与风险</strong><br>• 转化率下降初步排查：时间与定价页文案更新吻合，建议回滚验证（已提 PR）<br>• 竞品定价分析发现我方 Pro 版价格偏高 20%，建议纳入下季度定价优化<br><br><strong>📅 下周计划</strong><br>• 启动 AI 头像功能目标用户调研（预计访谈 5-8 人）<br>• 跟进转化率回滚后数据恢复情况</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>降低输入门槛</strong>："想到什么写什么"让用户不用先组织语言，AI 来做整理</li>
-            <li><strong>结果导向</strong>："突出结果而非过程"避免流水账</li>
-            <li><strong>问题带方案</strong>：不只是列问题，还要求带上判断和建议——这是向上汇报的关键区别</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-5">需求文档</a>
-          <a class="scenario-related-link" href="#scenario-10">商业化方案</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 5: 需求文档初稿 ============ -->
-<section class="module" id="scenario-5">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📋 让 AI 帮你写需求文档初稿</h1>
-        <p>需求在脑子里但写不出来？一句话描述你的需求，AI 帮你产出完整的 PRD 框架，你再补充细节就行。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我写一份 PRD 初稿。
-
-**需求描述**：
-{{一句话描述你要做什么，例如：
-"给 VIP 会员加 AI 生成头像功能，让他们可以上传照片生成个性化头像"
-}}
-
-**产品背景**：
-- 产品：{{产品名}}
-- 目标用户：{{谁}}
-- 当前痛点：{{为什么做}}
-
-**请按以下结构输出 PRD**：
-1. **问题定义**：谁遇到了什么问题？为什么现在要解决？证据是什么？
-2. **用户故事**：2-3 个核心用户故事（As a... I want... So that...）
-3. **功能方案**：核心功能点列表，标注优先级（P0/P1/P2）
-4. **成功指标**：3-5 个可量化的成功指标
-5. **非目标（Out of Scope）**：明确不做的事情
-6. **风险与依赖**：技术风险、外部依赖、时间约束
-7. **里程碑**：建议的阶段性交付计划
-
-注意：
-- 每个部分都要具体可执行，不要写空话
-- 如果某些信息我没提供，请标注 [需要补充] 并给出你的假设
-- 语气适合在团队内评审</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>给 VIP 会员加 AI 生成头像功能。产品是美颜相机，目标用户是月付费 ≥¥30 的 VIP，大约 12 万月活。痛点是用户想要个性化头像但不会设计。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>1. 问题定义</strong><br>• 谁在痛：12 万 VIP 用户中，35% 从未更换过头像（数据来源：[需要补充]）<br>• 为什么现在：竞品 X 上月上线类似功能，我们需要跟进<br>• 证据：用户调研中"想要个性化头像"提及率 28%（调研数据：[需要补充]）<br><br><strong>2. 用户故事</strong><br>• 作为 VIP 用户，我想上传自拍生成卡通头像，这样社交资料更有个性<br>• 作为新注册用户，我想看到有吸引力的头像选项，这样更有动力完善资料<br><br><strong>3. 功能方案</strong><br>• P0：照片上传 + 5 种风格选择 + 一键生成 + 设为头像<br>• P1：风格微调（发色、配饰）+ 保存历史记录<br>• P2：社交分享 + 好友头像同款<br><br><strong>4. 成功指标</strong><br>• VIP 头像使用率 &gt; 40%（上线 30 天内）<br>• 功能满意度 &gt; 70%（内测 NPS）<br>• VIP 续费率提升 &ge; 2pp<br><br><strong>5. Out of Scope</strong><br>• 不做视频头像<br>• 不做非 VIP 用户开放<br>• 不做第三方 IP 合作风格</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>结构化输出合同</strong>：7 个板块确保 PRD 不遗漏关键部分</li>
-            <li><strong>[需要补充] 标记</strong>：AI 不会臆造你没给的信息，而是标注出来让你补——这比编造数据安全得多</li>
-            <li><strong>Out of Scope</strong>：明确不做的事和要做的事一样重要，防止范围蔓延</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-8">A/B 实验设计</a>
-          <a class="scenario-related-link" href="#scenario-4">周报</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 6: 定价策略 ============ -->
-<section class="module" id="scenario-6">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>💰 让 AI 做定价策略建议</h1>
-        <p>定价是最容易纠结的事。把你的产品信息和用户数据丢给 AI，它能帮你做系统化的定价分析。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>你是一位 SaaS 定价专家，擅长设计定价套餐和商业化策略。
-
-**产品信息**：
-- 产品：{{产品名}}，{{一句话描述}}
-- 当前定价：{{现有价格档位和功能}}
-- 目标用户：{{用户群描述}}
-
-**关键数据**：
-- 月活：{{数量}}，付费用户：{{数量}}，转化率：{{%}}
-- ARPU：¥{{金额}}，LTV：¥{{金额}}（如不确定标注"不确定"）
-- 主要竞品定价：{{列出 2-3 个竞品的价格}}
-
-**请帮我**：
-1. 评估当前定价的 3 个优势和 3 个问题
-2. 建议 2-3 个定价方案（每个方案包含：价格档位、功能划分、目标用户、预期转化影响）
-3. 推荐最合适的方案，说明理由
-4. 指出实施这个方案需要注意的风险
-
-格式：用表格对比方案，要点列出理由和风险。</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>AI 图片编辑工具，月活 50 万。现在只有免费和 ¥68/月两个档位，付费 3 万。竞品 Canva Pro $9.99，稿定设计 ¥99/月。用户主要是自媒体和小电商。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>当前定价评估</strong><br>✅ 优势：① 价格低于竞品 ② 免费→付费一步到位决策简单<br>⚠️ 问题：① 缺中间档位，¥68 对轻量用户太贵 ② 没有年付折扣 ③ 电商用户和 C 端用户用同样的套餐<br><br><strong>推荐方案：三档定价</strong><br>• Lite ¥28/月：基础编辑 + 每月 20 次 AI<br>• Pro ¥68/月：全功能 + 无限 AI（现有用户不变）<br>• Business ¥198/月：批量处理 + 团队 + API<br><br><strong>理由</strong>：¥28 档位抓"想试试但怕贵"的用户，预计整体转化率从 6% 提升到 8-9%<br><strong>风险</strong>：现有 ¥68 用户可能降级到 ¥28，建议先对 Lite 用户限制导出分辨率</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>先评现状</strong>：让 AI 先评估当前定价，避免"推倒重来"的倾向</li>
-            <li><strong>多方案对比</strong>：不给单一方案，而是多个选项让你选择——AI 是参谋不是决策者</li>
-            <li><strong>风险意识</strong>：要求指出风险，特别是"现有用户可能降级"这类容易被忽略的问题</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-1">竞品分析</a>
-          <a class="scenario-related-link" href="#scenario-10">商业化方案</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 7: 用户流失分析 ============ -->
-<section class="module" id="scenario-7">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📉 用 AI 分析用户流失原因</h1>
-        <p>付费用户在流失，但你不知道为什么。AI 能帮你从多个维度分析流失模式，找到真正的驱动因素。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>你是一位用户增长专家，擅长流失分析和留存优化。
-
-**产品信息**：
-- 产品：{{产品名}}，{{一句话描述}}
-- 定价：{{价格档位}}
-
-**流失数据**：
-{{列出你有的数据，例如：
-- 月流失率：8%（上月 5%）
-- 流失用户画像：主要是 Pro 档位，使用 2-4 个月后流失
-- 流失前行为：最后两周使用频率下降 60%
-- NPS：+15（上月 +28）
-- 最近更新：上线了新功能 X
-}}
-
-**请帮我**：
-1. 分析 3-5 个可能的流失原因（区分"流失位置"和"流失原因"）
-2. 对每个原因给出验证方法和所需数据
-3. 设计 3 个流失干预策略（分别针对不同阶段）
-4. 建议优先执行哪个策略，为什么
-
-注意：漏斗掉点 ≠ 原因。不要在数据不充分时给出高置信度结论。</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>AI 编辑工具，Pro ¥68/月。月流失率从 5% 涨到 8%。流失用户主要是用了 2-4 个月的 Pro 用户。NPS 从 +28 跌到 +15。上个月上线了新功能"AI 写真"，但反馈一般。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>可能原因</strong>：<br>① <strong>新功能失望效应（概率 35%）</strong>：用户期待高但"AI 写真"质量不达标，降低了整体满意度<br>② <strong>2-4 月倦怠期（30%）</strong>：核心使用场景用完了，缺少持续使用的理由<br>③ <strong>竞品分流（20%）</strong>：[需要补充] 竞品同期是否推了同类功能或降价<br>④ <strong>定价疲劳（15%）</strong>：月付用户每月都要做一次"值不值"的判断<br><br><strong>干预策略</strong>：<br>• <strong>新用户引导优化</strong>：在前 2 周内展示更多使用场景，延长探索期<br>• <strong>里程碑奖励</strong>：使用满 3 个月送 1 个月——直接对抗 2-4 月流失高峰<br>• <strong>年付转化</strong>：对月付 2 个月以上的用户推年付 8 折，锁定 LTV<br><br><strong>优先执行</strong>：年付转化（见效快、ROI 高）+ 里程碑奖励（治本）</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>因果纪律</strong>：明确要求"区分位置和原因"，防止最常见的分析错误</li>
-            <li><strong>置信度约束</strong>："不要在数据不充分时给出高置信度结论"确保 AI 诚实</li>
-            <li><strong>分阶段干预</strong>：不同阶段的用户需要不同的挽留策略，一刀切效果差</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-2">用户分层</a>
-          <a class="scenario-related-link" href="#scenario-3">数据异常解读</a>
-          <a class="scenario-related-link" href="#scenario-12">用户反馈归类</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 8: A/B 实验设计 ============ -->
-<section class="module" id="scenario-8">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🧪 让 AI 帮你设计 A/B 实验方案</h1>
-        <p>想验证一个改动是否有效，但不确定实验怎么设计。AI 帮你产出一份完整的实验方案。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我设计一个 A/B 实验方案。
-
-**实验目标**：
-{{你想验证什么，例如："验证新的定价页设计能否提升 trial-to-paid 转化率"}}
-
-**产品背景**：
-- 产品：{{产品名}}
-- 当前相关指标：{{如"trial-to-paid 转化率 8%"}}
-- 日活/日新增：{{数量}}
-
-**改动内容**：
-{{具体改了什么，例如："重新设计了定价页，增加了用户评价模块和对比表格"}}
-
-**请输出**：
-1. **假设**：用"If...then..."格式写出实验假设
-2. **主指标**：一个核心指标（必须可直接衡量）
-3. **辅助指标**：2-3 个辅助指标（防踩坑）
-4. **受众和分组**：谁参与实验？流量怎么分配？
-5. **实验时长**：需要跑多久？（给出计算依据）
-6. **决策规则**：什么结果算赢？什么结果算输？需要多大提升才算显著？
-7. **风险预案**：实验期间出现负向怎么处理？
-
-要求：一个改动、一个主指标、一个决策规则。不要设计复杂的多变量实验。</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>验证新定价页能否提升 trial-to-paid 转化率。当前 8%。日新增 trial 500 人。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>假设</strong>：If 增加用户评价模块和对比表格，Then trial-to-paid 转化率将从 8% 提升到 &ge;10%<br><br><strong>主指标</strong>：Trial→Paid 转化率（14 天窗口内）<br><strong>辅助指标</strong>：定价页停留时间、跳出率、付费档位分布<br><br><strong>分组</strong>：50/50 随机分流，新注册 trial 用户<br><br><strong>实验时长</strong>：14 天。依据：日 500 trial × 14 天 = 7000 样本，每组 3500，8% 基线转化率，最小检测效应 25%（8%→10%），统计功效 80%，需要约 2800/组<br><br><strong>决策规则</strong>：<br>• 赢：转化率 &ge;10% 且 p &lt; 0.05 → 全量上线<br>• 输：转化率 &le;8% 或无显著差异 → 回滚<br>• 待定：9-10% 之间 → 延长 7 天观察<br><br><strong>风险预案</strong>：如实验组转化率 &lt;6%（低于基线 25%），立即停止实验并回滚</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>"一个改动"原则</strong>：防止设计成多变量实验导致无法归因</li>
-            <li><strong>辅助指标</strong>：不只看主指标，辅助指标帮你理解"为什么赢/输"</li>
-            <li><strong>决策规则前置</strong>：在实验开始前就定义好"什么算赢"，避免事后找理由</li>
-            <li><strong>风险预案</strong>：实验出问题时知道怎么止损，而不是干等着</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-3">数据异常解读</a>
-          <a class="scenario-related-link" href="#scenario-6">定价策略</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 9: 竞品功能对比矩阵 ============ -->
-<section class="module" id="scenario-9">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📊 用 AI 做竞品功能对比矩阵</h1>
-        <p>需要快速了解你和竞品的功能差异？AI 帮你生成一份清晰的功能对比表格，直接放进方案文档。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我做一份竞品功能对比矩阵。
-
-**我的产品**：{{产品名}} - {{一句话描述}}
-
-**竞品列表**：
-1. {{竞品 1}} - {{一句话描述}}
-2. {{竞品 2}} - {{一句话描述}}
-3. {{竞品 3}}（可选）
-
-**请生成一个功能对比表格**：
-- 行 = 功能点（20-30 个核心功能，按模块分组）
-- 列 = 我的产品 vs 竞品
-- 单元格 = ✅ 有 / ❌ 无 / ⚠️ 部分支持 / 💰 付费专属
-
-**功能分类**：
-1. 核心编辑/创作功能
-2. AI 功能
-3. 协作/团队功能
-4. 导出/集成
-5. 定价相关
-
-**额外输出**：
-- 标注我们独有但竞品没有的功能（竞争优势）
-- 标注竞品有但我们没有的功能（功能缺口）
-- 给出 3 个功能补齐建议的优先级排序</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>我的产品：WHEE AI 图片编辑。竞品：美图秀秀、醒图、Canva。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>功能对比矩阵（摘要）</strong><br><br>| 功能 | WHEE | 美图秀秀 | 醒图 | Canva |<br>|------|-------|---------|------|-------|<br>| AI 换脸 | ✅ | ✅ | ❌ | ❌ |<br>| AI 扩图 | ✅ | ⚠️ | ❌ | ✅💰 |<br>| 批量处理 | ✅ | ❌ | ❌ | ✅💰 |<br>| 团队协作 | ❌ | ❌ | ❌ | ✅💰 |<br>| 视频编辑 | ⚠️ | ✅ | ✅ | ✅💰 |<br><br><strong>🏆 我们的竞争优势</strong>：AI 换脸 + 批量处理组合（竞品没有同时具备的）<br><strong>⚠️ 功能缺口</strong>：团队协作、模板生态<br><strong>📋 补齐优先级</strong>：① 模板市场 ② 团队协作 ③ 视频编辑增强</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>结构化对比</strong>：表格形式一目了然，比文字描述高效 10 倍</li>
-            <li><strong>优势+缺口双视角</strong>：不只看别人有什么，也看自己有什么别人没有的</li>
-            <li><strong>优先级排序</strong>：给补齐建议排优先级，防止"什么都要做"的倾向</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-1">竞品分析报告</a>
-          <a class="scenario-related-link" href="#scenario-11">市场进入策略</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 10: 商业化方案 ============ -->
-<section class="module" id="scenario-10">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>💼 让 AI 帮你写商业化方案</h1>
-        <p>老板让你出一个商业化方案，但不知道从哪下手。AI 帮你搭建完整的商业化框架。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我写一份商业化方案。
-
-**项目背景**：
-- 产品：{{产品名}}
-- 当前状态：{{如"免费产品，月活 50 万，准备商业化"}}
-- 目标：{{如"12 个月内实现月收入 100 万"}}
-
-**现有信息**：
-{{列出你有的数据，如用户量、使用频率、用户反馈、竞品定价等}}
-
-**请输出以下内容**：
-1. **商业化目标拆解**：月收入 100 万 = 需要多少付费用户 × 什么 ARPU？拆解到月度
-2. **定价策略**：建议的价格档位和功能划分
-3. **转化漏斗设计**：免费→试用→付费的路径设计，每一步的关键动作和预期转化率
-4. **增长策略**：怎么获客？怎么提升转化？怎么降低流失？
-5. **里程碑和节奏**：前 3 个月、3-6 个月、6-12 个月分别做什么
-6. **关键假设和风险**：哪些假设如果错了方案就不成立？
-
-格式：要点 + 表格，适合向管理层汇报。数据不确定的请标注 [待验证]。</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>AI 图片编辑工具，免费月活 50 万。想 12 个月内月收入 100 万。用户主要是自媒体和小电商。目前没有付费功能。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>收入拆解</strong>：100 万/月 = 15000 付费用户 × ¥68 ARPU（或 5000 用户 × ¥198）<br>当前转化率假设 3%（行业基准），需 50 万免费用户 → 15000 付费<br><br><strong>定价建议</strong>：Pro ¥28/月 + Business ¥68/月，双档覆盖不同付费意愿<br><br><strong>转化路径</strong>：免费体验 → 用量达上限提示升级 → 首月 5 折 → 付费<br><br><strong>关键风险</strong>：① [待验证] 3% 转化率是否可达成 ② 竞品 Canva 免费版功能太强<br><strong>里程碑</strong>：M1-3 上线付费 + 验证转化 → M4-6 优化漏斗 → M7-12 规模化增长</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>目标倒推</strong>：从收入目标倒推需要多少用户和什么 ARPU，让方案有数学依据</li>
-            <li><strong>假设标注</strong>：[待验证] 标记确保你知道哪些是假设，哪些有数据支撑</li>
-            <li><strong>里程碑节奏</strong>：分阶段规划让方案可执行、可追踪</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-6">定价策略</a>
-          <a class="scenario-related-link" href="#scenario-8">A/B 实验设计</a>
-          <a class="scenario-related-link" href="#scenario-7">用户流失分析</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 11: 市场进入策略 ============ -->
-<section class="module" id="scenario-11">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🌏 用 AI 做市场进入策略分析</h1>
-        <p>要进入一个新市场或新领域？AI 帮你快速做市场分析和进入策略。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我做一份市场进入策略分析。
-
-**我的产品**：{{产品名}} - {{一句话描述}}
-
-**目标市场**：{{想进入的市场，如"东南亚 AI 图片编辑市场"或"企业级 SaaS 市场"}}
-
-**我的优势**：{{列出 2-3 个核心优势}}
-
-**请分析**：
-1. **市场规模**：TAM/SAM/SOM 估算（用你掌握的数据，不确定的标注）
-2. **竞争格局**：主要玩家、他们的定位、市场份额估计
-3. **用户需求差异**：目标市场和我们现有市场的用户有什么不同？
-4. **进入策略**：推荐 2-3 个进入方式（如：直接进入、合作、收购、渐进式），各有什么利弊
-5. **本地化要点**：需要做哪些本地化调整？
-6. **风险和成功条件**：最大的 3 个风险是什么？成功的必要条件是什么？
-
-格式：要点 + 矩阵对比，适合向管理层汇报。</pre>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>TAM/SAM/SOM 框架</strong>：标准的市场规模分析方法，确保分析有层次</li>
-            <li><strong>多策略对比</strong>：不给单一方案，多个进入方式对比利弊</li>
-            <li><strong>本地化意识</strong>：进入新市场最常犯的错就是"直接复制"，这个 Prompt 强制你考虑差异</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-1">竞品分析报告</a>
-          <a class="scenario-related-link" href="#scenario-9">竞品功能对比</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 12: 用户反馈归类 ============ -->
-<section class="module" id="scenario-12">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📦 让 AI 做用户反馈归类和优先级排序</h1>
-        <p>一堆用户反馈不知道怎么处理？AI 帮你归类、提取主题、排优先级。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我整理和归类以下用户反馈。
-
-**产品**：{{产品名}}
-
-**反馈来源**：{{如"App Store 评价 + 用户社群 + 客服工单"}}
-
-**原始反馈**：
-{{粘贴 10-50 条用户反馈，每条一行，例如：
-- "AI 生成的图片质量不稳定，有时候很好有时候很差"
-- "希望能批量处理，每次一张太慢了"
-- "价格太贵了，Canva 更便宜"
-- "导出的时候经常崩溃"
-- ...
-}}
-
-**请帮我**：
-1. 归类为 5-8 个主题（每个主题包含：主题名、反馈数量、代表性引用）
-2. 按影响范围和紧急程度排序（用 P0/P1/P2 标注）
-3. 每个主题给出 1 条产品建议
-4. 标注哪些是"噪音"（低价值反馈，可以暂时忽略）
-
-格式：表格 + 要点，每个主题附 2-3 条原始引用。</pre>
-      </div>
-
-      <div class="scenario-example">
-        <div class="scenario-example-label">💬 真实示例</div>
-        <div class="scenario-chat">
-          <div class="scenario-chat-user"><div class="scenario-chat-user-avatar">你</div><p>以下是最近 20 条 App Store 差评：AI 质量不稳定（5条）、导出崩溃（4条）、想要批量处理（3条）、太贵了（3条）、界面太复杂（2条）、加载太慢（2条）、想要更多模板（1条）。</p></div>
-          <div class="scenario-chat-ai"><div class="scenario-chat-ai-avatar">AI</div><p><strong>P0 紧急</strong>：<br>• 🔴 <strong>导出崩溃</strong>（4条）："导出的时候经常崩溃""辛苦编辑半小时全没了"<br>→ 建议：立即修复，这是基础功能故障<br><br><strong>P1 重要</strong>：<br>• 🟡 <strong>AI 质量不稳定</strong>（5条）："有时候很好有时候很差"<br>→ 建议：增加重试按钮 + 质量预检<br>• 🟡 <strong>加载速度</strong>（2条）<br>→ 建议：增加加载骨架屏优化体验感知<br><br><strong>P2 改进</strong>：<br>• 🟢 批量处理（需求型，3条）<br>• 🟢 更多模板（需求型，1条）<br>• ⚪ "太贵了"（噪音，3条）— 价格策略需单独分析，不适合作为功能需求</p></div>
-        </div>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>噪音过滤</strong>：明确要求标注"噪音"，防止"什么反馈都当需求"的常见错误</li>
-            <li><strong>优先级框架</strong>：P0/P1/P2 让团队知道先做什么</li>
-            <li><strong>附原始引用</strong>：保留原始反馈防止 AI 过度解读</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-2">用户分层</a>
-          <a class="scenario-related-link" href="#scenario-7">用户流失分析</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 13: 自动化数据监控 ============ -->
-<section class="module" id="scenario-13">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🤖 用 AI 搭建自动化数据监控</h1>
-        <p>每天手动看数据太累？AI 帮你设计一套自动化的异常监控和告警体系。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我设计一套数据异常自动监控方案。
-
-**产品**：{{产品名}}
-**当前数据工具**：{{如"GrowingIO + 内部看板"}}
-**核心指标**：{{列出 5-8 个你每天关注的指标}}
-
-**请帮我设计**：
-1. **监控指标清单**：哪些指标需要自动监控？各自的基线和阈值怎么定？
-2. **异常检测逻辑**：怎么判断"异常"？（绝对值 vs 相对变化 vs 统计显著性）
-3. **告警分级**：P0（立即响应）/ P1（当天处理）/ P2（关注即可）各包含什么？
-4. **告警通知设计**：谁来接收？什么渠道？告警信息包含什么？
-5. **误报控制**：怎么减少不必要的告警？（静默期、确认机制等）
-6. **每周自动报告**：AI 自动生成的周报应该包含什么？
-
-输出：表格 + 流程图描述，可以直接交给数据团队执行。</pre>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>告警分级</strong>：不是所有异常都需要立即响应，分级避免告警疲劳</li>
-            <li><strong>误报控制</strong>：这是监控系统最容易出问题的地方——告警太多 = 没有告警</li>
-            <li><strong>可执行输出</strong>：要求输出"可以直接交给数据团队执行"的方案</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-3">数据异常解读</a>
-          <a class="scenario-related-link" href="#scenario-14">策略评估框架</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 14: 策略评估框架 ============ -->
-<section class="module" id="scenario-14">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🎯 让 AI 帮你建立策略评估框架</h1>
-        <p>面对多个策略方向不知道怎么选？AI 帮你建一套系统化的评估框架，让决策有据可依。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我建立一套策略评估框架。
-
-**当前决策背景**：
-{{描述你面临的决策，如：
-"我们需要决定下一步产品方向：A. 做视频编辑 B. 做企业版 C. 做海外市场"
-}}
-
-**可用资源**：
-- 团队：{{团队规模和能力}}
-- 预算：{{如果有}}
-- 时间：{{决策 deadline}}
-
-**请帮我**：
-1. 定义 5-8 个评估维度（如用户价值、技术可行性、市场时机、竞争壁垒、ROI、战略对齐等）
-2. 每个维度的权重（按重要性 1-10 打分，总和 100）
-3. 用这个框架对每个选项打分（给出你的判断依据，不确定的标注）
-4. 生成一个评分矩阵和排名
-5. 指出评分中最不确定的 2-3 个假设，建议怎么验证
-
-注意：框架是工具，不是答案。帮我思考，不要替我做最终决策。</pre>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>"框架是工具不是答案"</strong>：明确 AI 的角色——帮你思考，不替你决策</li>
-            <li><strong>权重透明</strong>：每个维度的权重都有理由，可以讨论和调整</li>
-            <li><strong>不确定性标注</strong>：最不确定的假设往往是最需要验证的——这比总分排名更有价值</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-11">市场进入策略</a>
-          <a class="scenario-related-link" href="#scenario-10">商业化方案</a>
-          <a class="scenario-related-link" href="#scenario-15">跨产品线策略迁移</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 15: 跨产品线策略迁移 ============ -->
-<section class="module" id="scenario-15">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🔄 用 AI 做跨产品线策略迁移分析</h1>
-        <p>某个产品线验证成功的策略，能不能迁移到其他产品线？AI 帮你分析迁移的可行性和适配方案。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我分析一个跨产品线的策略迁移。
-
-**成功案例**：
-- 产品：{{产品 A 名}}
-- 策略：{{什么策略，如"用 freemium 模式 + 7 天试用推动付费转化"}}
-- 效果：{{量化结果，如"转化率从 3% 提升到 8%"}}
-**目标产品**：
-- 产品：{{产品 B 名}}
-- 当前状态：{{如"付费转化率 2%，想提升"}}
-
-**请分析**：
-1. 这个策略能迁移的核心要素是什么？（去掉产品特殊性后，本质是什么？）
-2. 两个产品的用户群差异是什么？会影响迁移效果吗？
-3. 迁移需要做哪些适配？（直接复制 vs 需要修改）
-4. 预期效果和风险
-5. 建议的迁移步骤（MVP 验证 → 优化 → 全量）
-
-格式：对比表格 + 要点。</pre>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>本质抽象</strong>：要求"去掉产品特殊性后看本质"，这是策略迁移的关键思维能力</li>
-            <li><strong>用户差异分析</strong>：直接复制几乎一定失败，差异分析是必要的</li>
-            <li><strong>MVP 验证</strong>：迁移策略也要小步验证，不要一上来就全量</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-14">策略评估框架</a>
-          <a class="scenario-related-link" href="#scenario-8">A/B 实验设计</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SCENARIO 16: 订阅增长模型 ============ -->
-<section class="module" id="scenario-16">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📈 让 AI 帮你设计订阅增长模型</h1>
-        <p>订阅制产品的增长是一个系统工程。AI 帮你搭建完整的订阅增长模型，从获客到 LTV 优化。</p>
-      </div>
-
-      <div class="scenario-prompt-box">
-        <span class="prompt-label">📋 PROMPT</span>
-        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
-<pre>帮我设计一套订阅增长模型。
-
-**产品信息**：
-- 产品：{{产品名}}
-- 模式：{{如"SaaS 订阅"}}
-- 当前数据：
-  - 月活：{{}}
-  - 付费用户：{{}}
-  - ARPU：¥{{}}
-  - 月流失率：{{%}}
-  - LTV：¥{{}}（如不确定标注）
-  - CAC：¥{{}}（如不确定标注）
-
-**增长目标**：
-{{如"6 个月内付费用户从 3 万增长到 8 万"}}
-
-**请帮我**：
-1. **增长等式拆解**：付费用户增长 = 获客 × 转化 × 留存，每个环节的当前值和目标值
-2. **杠杆分析**：哪个环节的提升空间最大？（投入产出比最高的杠杆）
-3. **具体策略**：针对最大杠杆的 3 个可执行策略
-4. **财务模型**：按照这个增长路径，6 个月后的 MRR 预测
-5. **关键指标看板**：日常应该跟踪的 5-8 个指标
-
-注意：如果某些数据缺失，请标注 [待补充] 并用合理假设推算。</pre>
-      </div>
-
-      <div class="scenario-collapse" onclick="this.classList.toggle('open')">
-        <div class="scenario-collapse-header"><span>🧠 为什么这个 Prompt 有效？</span><span class="scenario-collapse-arrow">▼</span></div>
-        <div class="scenario-collapse-body"><div class="scenario-collapse-content">
-          <ul>
-            <li><strong>增长等式</strong>：获客×转化×留存的框架确保你不遗漏任何环节</li>
-            <li><strong>杠杆分析</strong>：不是所有环节都值得投入，找到 ROI 最高的那个</li>
-            <li><strong>财务预测</strong>：从用户增长推导收入预测，让方案有商业说服力</li>
-          </ul>
-        </div></div>
-      </div>
-
-      <div class="scenario-related">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-6">定价策略</a>
-          <a class="scenario-related-link" href="#scenario-7">用户流失分析</a>
-          <a class="scenario-related-link" href="#scenario-10">商业化方案</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BROWSE ALL MODULES ============ -->
-<section class="module" id="module-learn-1">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🔧 Skills 与 Commands：两种"帮手"</h1>
-        <p>想象你有一个由 22 个专业助手组成的团队，每人擅长一件事。另外还有 10 套标准操作流程（SOP），把多个助手串起来完成复杂任务。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m1">测验</a></div>
-    </div>
-    </header>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">Skills vs Commands：两种"帮手"</h2>
-        <div class="pattern-cards stagger-children">
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)">
-            <div class="pattern-icon" style="background:var(--color-actor-1)">🔧</div>
-            <h4 class="pattern-title">Skill（技能）</h4>
-            <p class="pattern-desc">单个专业助手。比如 <span class="term" data-definition="问题定义 Skill，把模糊痛点变清晰问题">problem-statement</span> 专门帮你把模糊痛点变成清晰问题定义。22 个 skill 各司其职。</p>
-          </div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)">
-            <div class="pattern-icon" style="background:var(--color-actor-2)">📋</div>
-            <h4 class="pattern-title">Command（指令）</h4>
-            <p class="pattern-desc">一套 SOP，串联多个 skill 完成复杂任务。比如 write-prd 会依次调用 5 个 skill 来产出完整 PRD。</p>
-          </div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)">
-            <div class="pattern-icon" style="background:var(--color-actor-3)">🧭</div>
-            <h4 class="pattern-title">Agent 规范</h4>
-            <p class="pattern-desc">团队的"管理手册"。告诉 AI 该选哪个 skill/command、输出该长什么样、专业底线是什么。</p>
-          </div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-5)">
-            <div class="pattern-icon" style="background:var(--color-actor-5)">✅</div>
-            <h4 class="pattern-title">Evals（评估）</h4>
-            <p class="pattern-desc">质检部门。用标准测试用例检查 AI 是否选对了工具、输出是否达标。</p>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">两条主线</h2>
-        <div class="icon-rows stagger-children">
-          <div class="icon-row animate-in"><div class="icon-circle" style="background:var(--color-actor-1)">🤖</div><div><strong>AI PM 线</strong><p>AI 功能定义 → 评估方案 → 模型选择 → 风险评审 → 上线准备</p></div></div>
-          <div class="icon-row animate-in"><div class="icon-circle" style="background:var(--color-actor-2)">💰</div><div><strong>Commercial PM 线</strong><p>定价套餐 → 转化漏斗 → 付费留存 → 增长实验 → 商业化 PRD</p></div></div>
-        </div>
-        <div class="callout callout-info animate-in" style="margin-top:var(--space-6)">
-          <div class="callout-icon">💡</div>
-          <div class="callout-content"><strong>不需要编程背景</strong><p>这套工具箱是为产品经理设计的。你只需要用自然语言描述业务问题，AI 会自动选择合适的 skill/command 来帮你。</p></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">快速检测</h2>
-        <div class="quiz-container" id="quiz-m1">
-          <div class="quiz-question-block" data-question="m1q1" data-correct="m1-c">
-            <h3 class="quiz-question">你想"帮团队选一个优先级框架"，该用 Skill 还是 Command？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m1-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用 prioritization-advisor 这个 Skill</span></button>
-              <button class="quiz-option" data-value="m1-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>用 write-prd 这个 Command</span></button>
-              <button class="quiz-option" data-value="m1-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>用 prioritize 这个 Command，它会先帮你澄清再推荐框架</span></button>
-            </div>
-            <div class="quiz-feedback" id="m1q1-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m1')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m1')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-5">需求文档</a><a class="scenario-related-link" href="#scenario-10">商业化方案</a><a class="scenario-related-link" href="#scenario-14">策略评估框架</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 2: 默认工作流 ============ -->
-<section class="module" id="module-learn-2">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🔄 默认工作流</h1>
-        <p>就像做手术前要先消毒、再麻醉、再开刀——PM 工作也有标准流程：澄清 → 拆解 → 产出 → 审查。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m2">测验</a></div>
-    </div>
-    </header>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">四步标准流程</h2>
-        <div class="step-cards stagger-children">
-          <div class="step-card animate-in"><div class="step-num">1</div><div class="step-body"><strong>澄清 — <span class="term" data-definition="结构化引导 Skill，帮澄清需求和边界">workshop-facilitation</span></strong><p>先聊透需求和边界。背景模糊时，这是最稳的第一步。</p></div></div>
-          <div class="step-card animate-in"><div class="step-num">2</div><div class="step-body"><strong>拆解 — <span class="term" data-definition="任务拆解 Skill，把大任务拆成可检查小步骤">task-decomposition</span></strong><p>把大任务拆成可检查的小步骤，每步都能验证是否完成。</p></div></div>
-          <div class="step-card animate-in"><div class="step-num">3</div><div class="step-body"><strong>产出 — 目标 Skill/Command</strong><p>真正产出文档、判断或方案——比如 PRD、AI Feature Brief、定价方案。</p></div></div>
-          <div class="step-card animate-in"><div class="step-num">4</div><div class="step-body"><strong>审查 — <span class="term" data-definition="审查关卡 Skill，交付前结构化质量检查">review-gates</span></strong><p>交付前跑一轮结构化审查，防止"局部对但整体跑偏"。</p></div></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">推荐起手式</h2>
-        <div class="translation-block animate-in">
-          <div class="translation-code">
-<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">PROMPT 示例</span>
-<pre><code>Run commands/write-prd.md for this request:
-为 self-serve 新用户 onboarding 改版
-写一份 PRD。先拆解任务，再成文，
-最后做 review gates。</code></pre>
-          </div>
-          <div class="translation-english">
-            <span class="translation-label">人话翻译</span>
-            <p class="tl">🔧 "Run commands/write-prd.md" = 调用"写 PRD"这套 SOP</p>
-            <p class="tl">📋 它会自动串联：<span class="term" data-definition="结构化引导 Skill，帮澄清需求和边界">workshop-facilitation</span> → <span class="term" data-definition="问题定义 Skill，把模糊痛点变清晰问题">problem-statement</span> → <span class="term" data-definition="任务拆解 Skill，把大任务拆成可检查小步骤">task-decomposition</span> → <span class="term" data-definition="PRD 开发 Skill，从问题到需求的完整文档">prd-development</span> → <span class="term" data-definition="审查关卡 Skill，交付前结构化质量检查">review-gates</span></p>
-            <p class="tl">✅ "先拆解任务，再成文，最后做 review gates" = 按标准四步流程走</p>
-          </div>
-        </div>
-        <div class="callout callout-accent animate-in">
-          <div class="callout-icon">🎯</div>
-          <div class="callout-content"><strong>记住三件事</strong><p>① 先选 command（单点任务再选 skill） ② 提真实业务问题，别只给抽象方向 ③ 默认按 澄清→拆解→产出→审查 推进</p></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">Skill 们怎么协作？</h2>
-        <div class="chat-window">
-          <div class="chat-header">💬 默认工作流群聊</div>
-          <div class="chat-messages" id="chat-default">
-            <div class="chat-message" data-msg="0" data-sender="workshop" style="display:none"><div class="chat-avatar" style="background:var(--color-actor-1)">W</div><div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-1)">workshop-facilitation</span><p>我先帮你把需求聊透——目标用户是谁？当前最大痛点是什么？</p></div></div>
-            <div class="chat-message" data-msg="1" data-sender="task" style="display:none"><div class="chat-avatar" style="background:var(--color-actor-2)">T</div><div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-2)">task-decomposition</span><p>需求清楚后我来拆——把"写 PRD"拆成 5-8 个 30 分钟内能推进的小步骤。</p></div></div>
-            <div class="chat-message" data-msg="2" data-sender="prd" style="display:none"><div class="chat-avatar" style="background:var(--color-actor-3)">P</div><div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-3)"><span class="term" data-definition="PRD 开发 Skill，从问题到需求的完整文档">prd-development</span></span><p>拆好的步骤我来逐一执行——问题定义、用户分析、方案、指标、边界。</p></div></div>
-            <div class="chat-message" data-msg="3" data-sender="review" style="display:none"><div class="chat-avatar" style="background:var(--color-actor-4)">R</div><div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-4)">review-gates</span><p>最后我检查——问题答对了吗？依据充分吗？范围清楚吗？没有就打回去。</p></div></div>
-          </div>
-          <div class="chat-typing" id="chat-typing-default"><div class="chat-avatar" id="typing-avatar-default">?</div><div class="chat-typing-dots"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div>
-          <div class="chat-controls">
-            <button class="chat-play" onclick="playChatNext('chat-default','chat-typing-default','typing-avatar-default')">下一条</button>
-            <button class="chat-play" onclick="playChatAll('chat-default','chat-typing-default','typing-avatar-default')">全部播放</button>
-            <button class="chat-replay" onclick="resetChat('chat-default','chat-typing-default')">重播</button>
-            <span class="chat-progress" id="chat-progress-default">0 / 4</span>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">场景选择</h2>
-        <div class="quiz-container" id="quiz-m2">
-          <div class="scenario-block"><span class="scenario-label">场景</span><p>你要为 PM 团队设计一个 AI copilot，帮他们把访谈记录整理成 insight。但需求还很模糊。</p></div>
-          <div class="quiz-question-block" data-question="m2q1" data-correct="m2-c">
-            <h3 class="quiz-question">第一步该怎么做？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m2-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用 <span class="term" data-definition="AI 功能简报 Skill，定义用户任务、输入输出、质量标准">ai-feature-brief</span> 写功能定义</span></button>
-              <button class="quiz-option" data-value="m2-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>用 shape-ai-feature command</span></button>
-              <button class="quiz-option" data-value="m2-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接跑 shape-ai-feature command，它内部会先用 workshop-facilitation 澄清</span></button>
-            </div>
-            <div class="quiz-feedback" id="m2q1-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m2')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m2')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-5">需求文档</a><a class="scenario-related-link" href="#scenario-8">A/B 实验</a><a class="scenario-related-link" href="#scenario-15">策略迁移</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 3: 产出型 Skills ============ -->
-<section class="module" id="module-learn-3">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📦 产出型 Skills</h1>
-        <p>像一个有 7 种模具的工厂。你放进去"原材料"（业务背景），它帮你压出标准"零件"（PRD、Brief、Scorecard）。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m3">测验</a></div>
-    </div>
-    </header>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">7 个产出型 Skill</h2>
-        <div style="overflow-x:auto">
-          <table class="skill-table table-card">
-            <thead><tr><th>Skill</th><th>产出</th><th>典型场景</th></tr></thead>
-            <tbody>
-              <tr><td><code>problem-statement</code></td><td>问题定义</td><td>写 PRD 前先定义清楚问题</td></tr>
-              <tr><td><code>prd-development</code></td><td>完整 PRD</td><td>从问题到需求的完整文档</td></tr>
-              <tr><td><code><span class="term" data-definition="AI 功能简报 Skill，定义用户任务、输入输出、质量标准">ai-feature-brief</span></code></td><td>AI 功能简报</td><td>把 AI 点子变成可讨论方案</td></tr>
-              <tr><td><code>commercial-prd</code></td><td>商业化 PRD</td><td>定价/转化/留存类项目文档</td></tr>
-              <tr><td><code><span class="term" data-definition="定价套餐 Skill，设计价格档位和功能组合">pricing-packaging-brief</span></code></td><td>定价套餐简报</td><td>设计或调整 SaaS 定价</td></tr>
-              <tr><td><code>revenue-metrics-scorecard</code></td><td>收入指标看板</td><td>统一商业化健康指标</td></tr>
-              <tr><td><code>task-decomposition</code></td><td>执行步骤清单</td><td>把大任务拆成可验证小步骤</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">深挖：problem-statement</h2>
-        <div class="translation-block animate-in">
-          <div class="translation-code">
-<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">SKILL 核心要素</span>
-<pre><code>一个好的问题定义要回答：
-1. 谁遇到了这个问题
-2. 问题具体是什么
-3. 为什么痛
-4. 有什么证据
-5. 为什么现在要处理</code></pre>
-          </div>
-          <div class="translation-english">
-            <span class="translation-label">人话翻译</span>
-            <p class="tl">👤 谁在痛——不是"用户"，而是"首次注册后 3 天内没完成 onboarding 的新用户"</p>
-            <p class="tl">🔥 具体什么痛——不是"体验不好"，而是"第二步的引导文案让 60% 的人困惑"</p>
-            <p class="tl">📉 为什么痛——业务影响：每流失 1% = 月损失 ¥XX</p>
-            <p class="tl">📊 证据——数据、用户反馈、访谈引用</p>
-            <p class="tl">⏰ 为什么现在——竞品上线了、季度目标截止、技术窗口</p>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">深挖：ai-feature-brief</h2>
-        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-4)">在写完整 PRD 前，先把 AI 功能定义清楚。它要回答 7 个关键问题：</p>
-        <div class="pattern-cards stagger-children">
-          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-1)">🎯</div><h4 class="pattern-title">用户任务</h4><p class="pattern-desc">用户要完成什么？</p></div>
-          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-2)">⚡</div><h4 class="pattern-title">触发条件</h4><p class="pattern-desc">什么时候自动/手动触发？</p></div>
-          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-3)">📥</div><h4 class="pattern-title">输入</h4><p class="pattern-desc">需要什么数据？</p></div>
-          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-4)">📤</div><h4 class="pattern-title">输出</h4><p class="pattern-desc">产出什么格式？</p></div>
-          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-5)">✅</div><h4 class="pattern-title">质量标准</h4><p class="pattern-desc">什么叫"足够好"？</p></div>
-          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-accent)">⚠️</div><h4 class="pattern-title">失败模式</h4><p class="pattern-desc">出错时怎么办？</p></div>
-          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-info)">🔄</div><h4 class="pattern-title">Fallback</h4><p class="pattern-desc">兜底方案是什么？</p></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">场景选择</h2>
-        <div class="quiz-container" id="quiz-m3">
-          <div class="scenario-block"><span class="scenario-label">场景</span><p>老板说"我们的 free/pro/team 三档定价太乱了，用户选不明白"。你想整理一个定价方案。</p></div>
-          <div class="quiz-question-block" data-question="m3q1" data-correct="m3-b">
-            <h3 class="quiz-question">该用哪个 Skill？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m3-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span><span class="term" data-definition="转化漏斗诊断 Skill，分析漏斗掉点和原因">conversion-funnel-diagnostic</span>（看漏斗）</span></button>
-              <button class="quiz-option" data-value="m3-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span><span class="term" data-definition="定价套餐 Skill，设计价格档位和功能组合">pricing-packaging-brief</span>（定义定价和套餐结构）</span></button>
-              <button class="quiz-option" data-value="m3-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>revenue-metrics-scorecard（看收入指标）</span></button>
-            </div>
-            <div class="quiz-feedback" id="m3q1-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m3')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m3')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-5">需求文档</a><a class="scenario-related-link" href="#scenario-6">定价策略</a><a class="scenario-related-link" href="#scenario-1">竞品分析</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 9: 实战案例 ============ -->
-<section class="module" id="module-learn-9">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🏗️ 实战案例：VIP 会员 AI 头像功能</h1>
-        <p>模拟完整流程：从模糊想法到可执行方案。每步展示输入和产出。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m9">测验</a></div>
-    </div>
-    <div class="module-body">
-      <section class="screen animate-in"><div class="scenario-block"><span class="scenario-label">场景</span><p>老板说"给 VIP 会员加一个 AI 头像功能，下个版本要上"。需求很模糊。</p></div></section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">完整流程 Walkthrough</h2>
-        <div class="case-flow">
-          <div class="case-step"><div class="case-step-header"><div class="case-step-num">1</div>workshop-facilitation（澄清）</div><div class="case-step-body"><div class="case-step-label">用户输入</div><div class="case-step-content"><strong>"给 VIP 加 AI 头像，要快。"</strong></div><div class="case-step-label" style="margin-top:var(--space-3)">产出摘要</div><div class="case-step-content"><p>✅ 目标用户：月付费 ≥¥30 的 VIP（~12万月活）</p><p>✅ 核心需求：AI 生成个性化头像替代默认头像</p><p>⚠️ 需澄清：风格范围？审核机制？算力成本？</p><p>📋 建议：先做限定风格版（3-5种），MVP 验证</p></div></div></div>
-          <div class="case-flow-arrow">⬇️</div>
-          <div class="case-step"><div class="case-step-header"><div class="case-step-num">2</div>task-decomposition（拆解）</div><div class="case-step-body"><div class="case-step-label">产出摘要</div><div class="case-step-content"><p>① 需求细化（30min） ② AI 方案设计（1h） ③ 风控设计（30min） ④ PRD（1h） ⑤ Review（30min）</p></div></div></div>
-          <div class="case-flow-arrow">⬇️</div>
-          <div class="case-step"><div class="case-step-header"><div class="case-step-num">3</div>ai-feature-brief（功能定义）</div><div class="case-step-body"><div class="case-step-label">产出摘要</div><div class="case-step-content"><p>🎯 用户任务：选照片→选风格→生成→设为头像</p><p>⚡ 触发：个人资料页→"AI 生成"按钮</p><p>📥 输入：照片+风格  📤 输出：512x512 头像</p><p>✅ 质量标准：生成 &lt;5s，满意度 &gt;70%</p><p>⚠️ 失败：超时→默认风格；违规→拒绝提示</p></div></div></div>
-          <div class="case-flow-arrow">⬇️</div>
-          <div class="case-step"><div class="case-step-header"><div class="case-step-num">4</div>ai-risk-review（风险评审）</div><div class="case-step-body"><div class="case-step-label">产出摘要</div><div class="case-step-content"><p>🔴 质量：风格一致性→限定 prompt+抽检</p><p>🟡 信任：不当照片→前置审核</p><p>🟢 运营：算力 ¥0.02/次，可控</p><p>🟡 滥用：他人肖像→加水印+举报</p></div></div></div>
-          <div class="case-flow-arrow">⬇️</div>
-          <div class="case-step"><div class="case-step-header"><div class="case-step-num">5</div>review-gates（审查）</div><div class="case-step-body"><div class="case-step-label">审查结果</div><div class="case-step-content"><p>✅ Fit Check：定位清晰，用户明确</p><p>✅ Reasoning：每步有数据依据</p><p>⚠️ Completeness：缺 A/B 实验方案→建议补充</p><p>📌 结论：补充实验方案后可进入开发</p></div></div></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">案例 Quiz</h2>
-        <div class="quiz-container" id="quiz-m9">
-          <div class="quiz-question-block" data-question="mcq1" data-correct="mcq-b">
-            <h3 class="quiz-question">为什么 review-gates 建议补充 A/B 实验方案？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="mcq-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>PRD 格式要求</span></button>
-              <button class="quiz-option" data-value="mcq-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>Completeness 检查发现缺少效果验证环节</span></button>
-              <button class="quiz-option" data-value="mcq-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>ai-risk-review 强制要求</span></button>
-            </div>
-            <div class="quiz-feedback" id="mcq1-feedback"></div>
-          </div>
-          <div class="quiz-question-block" data-question="mcq2" data-correct="mcq-a">
-            <h3 class="quiz-question">哪个 Command 可一次性跑完全流程？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="mcq-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>shape-ai-feature</span></button>
-              <button class="quiz-option" data-value="mcq-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>write-prd</span></button>
-              <button class="quiz-option" data-value="mcq-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>prepare-ai-launch</span></button>
-            </div>
-            <div class="quiz-feedback" id="mcq2-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m9')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m9')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-5">需求文档</a><a class="scenario-related-link" href="#scenario-8">A/B 实验</a><a class="scenario-related-link" href="#scenario-3">数据异常解读</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 4: 判断与决策型 Skills ============ -->
-<section class="module" id="module-learn-6">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🔬 判断与决策型 Skills</h1>
-        <p>像一个由专科医生组成的会诊团队。你不找他们"写报告"，你找他们"帮我看看到底是什么问题、该怎么做"。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m4">测验</a></div>
-    </div>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">10 个判断型 Skill</h2>
-        <div class="pattern-cards stagger-children">
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">📊</div><h4 class="pattern-title">prioritization-advisor</h4><p class="pattern-desc">根据团队环境和数据条件推荐优先级框架（RICE/ICE/Value-Effort）</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">🤖</div><h4 class="pattern-title">model-selection-advisor</h4><p class="pattern-desc">根据任务类型、时延、成本选模型策略（单模型/路由/fallback）</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">🔬</div><h4 class="pattern-title">ai-risk-review</h4><p class="pattern-desc">评审 AI 功能的质量、信任、运营、滥用和策略风险</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)"><div class="pattern-icon" style="background:var(--color-actor-4)">📉</div><h4 class="pattern-title"><span class="term" data-definition="转化漏斗诊断 Skill，分析漏斗掉点和原因">conversion-funnel-diagnostic</span></h4><p class="pattern-desc">诊断转化漏斗的阶段、掉点和可能原因</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-5)"><div class="pattern-icon" style="background:var(--color-actor-5)">🔄</div><h4 class="pattern-title"><span class="term" data-definition="留存杠杆 Skill，分析留存驱动和流失模式">retention-levers-review</span></h4><p class="pattern-desc">分析留存驱动、流失模式和干预杠杆</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-accent)"><div class="pattern-icon" style="background:var(--color-accent)">🧪</div><h4 class="pattern-title">growth-experiment-design</h4><p class="pattern-desc">设计"一个改动、一个主指标、一个决策"的增长实验</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-info)"><div class="pattern-icon" style="background:var(--color-info)">📝</div><h4 class="pattern-title">experiment-brief</h4><p class="pattern-desc">轻量实验设计：假设、受众、方法、决策规则</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">⭐</div><h4 class="pattern-title">north-star-metric</h4><p class="pattern-desc">定义北极星指标及 guardrail</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">🎙️</div><h4 class="pattern-title">voice-of-customer-synthesis</h4><p class="pattern-desc">把访谈/工单/反馈整理成主题和产品含义</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)"><div class="pattern-icon" style="background:var(--color-actor-4)">🔧</div><h4 class="pattern-title">review-gates</h4><p class="pattern-desc">交付前结构化审查（Fit Check → Reasoning → Completeness）</p></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">因果纪律：漏斗掉点 ≠ 原因</h2>
-        <div class="translation-block animate-in">
-          <div class="translation-code">
-<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">conversion-funnel-diagnostic</span>
-<pre><code>漏斗诊断要区分：
-- 漏在哪里（位置）
-- 是流量质量、产品问题、
-  定价问题还是信息传达问题
-- 还缺什么证据</code></pre>
-          </div>
-          <div class="translation-english">
-            <span class="translation-label">核心原则</span>
-            <p class="tl">📍 "漏在哪里"只是异常发生的位置，不是原因</p>
-            <p class="tl">🔍 下判断前至少区分四类原因：流量质量 / 产品体验 / 定价策略 / 信息传达</p>
-            <p class="tl">📊 没有数据支撑时，不要直接断言"就是价格问题"</p>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">场景选择</h2>
-        <div class="quiz-container" id="quiz-m4">
-          <div class="scenario-block"><span class="scenario-label">场景</span><p>你们的 AI 会议纪要功能用户反馈"有时总结不准确"。你需要决定用什么模型，以及出错了怎么办。</p></div>
-          <div class="quiz-question-block" data-question="m4q1" data-correct="m4-b">
-            <h3 class="quiz-question">该选哪些 Skill？（可多选，但最佳组合是？）</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m4-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>只选 ai-feature-brief</span></button>
-              <button class="quiz-option" data-value="m4-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>model-selection-advisor + ai-risk-review + llm-evaluation-plan</span></button>
-              <button class="quiz-option" data-value="m4-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>conversion-funnel-diagnostic + <span class="term" data-definition="留存杠杆 Skill，分析留存驱动和流失模式">retention-levers-review</span></span></button>
-            </div>
-            <div class="quiz-feedback" id="m4q1-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m4')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m4')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-3">数据解读</a><a class="scenario-related-link" href="#scenario-7">流失分析</a><a class="scenario-related-link" href="#scenario-8">A/B 实验</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 5: Commands 工作流 ============ -->
-<section class="module" id="module-learn-7">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>🔗 Commands 工作流</h1>
-        <p>10 条"流水线"，每条线把多个 Skill 串成完整的工作流程。你投进去一个业务问题，出来一套可执行的方案。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m5">测验</a></div>
-    </div>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">10 个 Command 一览</h2>
-        <div style="overflow-x:auto">
-          <table class="skill-table table-card">
-            <thead><tr><th>Command</th><th>用途</th><th>串联的 Skills</th></tr></thead>
-            <tbody>
-              <tr><td><code>write-prd</code></td><td>写通用 PRD</td><td>workshop + problem + task + prd-dev + review</td></tr>
-              <tr><td><code>write-commercial-prd</code></td><td>写商业化 PRD</td><td>funnel + pricing + scorecard + commercial-prd</td></tr>
-              <tr><td><code>shape-ai-feature</code></td><td>AI 功能定义</td><td>workshop + problem + task + brief + eval + risk + review</td></tr>
-              <tr><td><code>prepare-ai-launch</code></td><td>AI 上线准备</td><td>eval-plan + risk + checklist</td></tr>
-              <tr><td><code>commercial-growth-review</code></td><td>商业化增长评审</td><td>funnel + retention + scorecard + experiment</td></tr>
-              <tr><td><code>commercial-strategy-review</code></td><td>完整商业化策略评审</td><td>8 个 skill 串联</td></tr>
-              <tr><td><code>improve-trial-to-paid</code></td><td>提升试用转付费</td><td>funnel + pricing + scorecard + experiment</td></tr>
-              <tr><td><code>analyze-paid-retention</code></td><td>付费留存分析</td><td>retention + scorecard + VOC + experiment</td></tr>
-              <tr><td><code>redesign-pricing-packages</code></td><td>定价套餐重构</td><td>pricing + scorecard + funnel + commercial-prd</td></tr>
-              <tr><td><code>prioritize</code></td><td>优先级框架推荐</td><td>workshop + prioritization-advisor</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">数据流转：shape-ai-feature</h2>
-        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-4)">点击"下一步"看数据在 Skill 之间怎么流转</p>
-        <div class="flow-animation">
-          <div class="flow-actors">
-            <div class="flow-actor" id="fa-workshop"><div class="flow-actor-icon" style="background:var(--color-actor-1)">W</div><span>workshop</span></div>
-            <div class="flow-actor" id="fa-problem"><div class="flow-actor-icon" style="background:var(--color-actor-2)">P</div><span>problem</span></div>
-            <div class="flow-actor" id="fa-task"><div class="flow-actor-icon" style="background:var(--color-actor-3)">T</div><span>task</span></div>
-            <div class="flow-actor" id="fa-brief"><div class="flow-actor-icon" style="background:var(--color-actor-4)">B</div><span>brief</span></div>
-            <div class="flow-actor" id="fa-review"><div class="flow-actor-icon" style="background:var(--color-actor-5)">R</div><span>review</span></div>
-          </div>
-          <div class="flow-packet-bar" id="flow-packet-bar"></div>
-          <div class="flow-step-label" id="flow-label">点击"下一步"开始</div>
-          <div class="flow-controls">
-            <button onclick="flowNext()">下一步</button>
-            <button class="flow-reset" onclick="flowReset()">重置</button>
-            <span class="flow-progress" id="flow-progress">0 / 7</span>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">常用 Command Prompt</h2>
-        <div class="translation-block animate-in">
-          <div class="translation-code">
-<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">AI PM 线</span>
-<pre><code>Run commands/shape-ai-feature.md for:
-为 PM 团队设计一个 AI copilot，
-帮他们把访谈记录整理成 insight。
-先澄清，再拆解，再做 feature 定义。</code></pre>
-          </div>
-          <div class="translation-english">
-            <span class="translation-label">Commercial PM 线</span>
-            <p class="tl">💰 Run commands/improve-trial-to-paid.md for: 我们的 trial-to-paid 只有 8%，需要提升到 12%。主要漏点在 trial 第 3 天。</p>
-            <p class="tl">📊 Run commands/commercial-growth-review.md for: 收入增长停滞，需要从漏斗、留存、定价三个维度做一次全面诊断。</p>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">场景选择</h2>
-        <div class="quiz-container" id="quiz-m5">
-          <div class="scenario-block"><span class="scenario-label">场景</span><p>你们的产品 trial-to-paid 转化率只有 8%，老板要求下个季度提升到 12%。你有漏斗数据，但不知道问题出在哪。</p></div>
-          <div class="quiz-question-block" data-question="m5q1" data-correct="m5-a">
-            <h3 class="quiz-question">该用哪个 Command？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m5-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>improve-trial-to-paid</span></button>
-              <button class="quiz-option" data-value="m5-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>commercial-growth-review</span></button>
-              <button class="quiz-option" data-value="m5-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>shape-ai-feature</span></button>
-            </div>
-            <div class="quiz-feedback" id="m5q1-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m5')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m5')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-5">需求文档</a><a class="scenario-related-link" href="#scenario-10">商业化方案</a><a class="scenario-related-link" href="#scenario-7">用户流失</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 6: Agent 规范层 ============ -->
-<section class="module" id="module-learn-8">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📜 Agent 规范层</h1>
-        <p>就像一个公司的"管理手册"。它不替你干活，但确保每个 AI 助手都知道该怎么干活、什么时候该拒绝、输出该长什么样。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m6">测验</a></div>
-    </div>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">agent/ 目录结构</h2>
-        <div class="file-tree">
-          <div class="ft-folder open"><span class="ft-name">agent/</span><span class="ft-desc">AI 助手的"管理手册"</span><div class="ft-children">
-            <div class="ft-file"><span class="ft-name"><span class="term" data-definition="路由规则，定义什么任务选哪个 Skill/Command">ROUTING</span>.md</span><span class="ft-desc">路由规则：什么任务该选哪个 skill/command</span></div>
-            <div class="ft-file"><span class="ft-name"><span class="term" data-definition="输出标准，要求先给判断再给装饰，先给依据再给自信">OUTPUT_STANDARDS</span>.md</span><span class="ft-desc">输出标准：Decision before decoration, Evidence before confidence</span></div>
-            <div class="ft-file"><span class="ft-name"><span class="term" data-definition="领域上下文，默认服务于 AI PM 和 Commercial PM">DOMAIN_CONTEXT</span>.md</span><span class="ft-desc">领域上下文：默认服务于 AI PM 和 Commercial PM</span></div>
-            <div class="ft-file"><span class="ft-name">SPARSE_CONTEXT_POLICY.md</span><span class="ft-desc">稀疏上下文策略：信息不足时该怎么办</span></div>
-          </div></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">路由规则：三步走</h2>
-        <div class="step-cards stagger-children">
-          <div class="step-card animate-in"><div class="step-num">1</div><div class="step-body"><strong>识别任务类型</strong><p>定义类？诊断类？决策类？成文类？上线类？</p></div></div>
-          <div class="step-card animate-in"><div class="step-num">2</div><div class="step-body"><strong>判断单点还是流程</strong><p>单个产物 → Skill；多步骤工作流 → Command</p></div></div>
-          <div class="step-card animate-in"><div class="step-num">3</div><div class="step-body"><strong>缺信息先澄清</strong><p>不超过 3 个问题。不要审讯式追问。</p></div></div>
-        </div>
-        <div class="callout callout-warning animate-in" style="margin-top:var(--space-6)"><div class="callout-icon">🚫</div><div class="callout-content"><strong>硬规则</strong><p>不要臆造业务指标；不要把"建议上线"写成"建议立 PRD"；不要在没有证据时给出高置信度结论。</p></div></div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">输出标准</h2>
-        <div class="translation-block animate-in">
-          <div class="translation-code">
-<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">OUTPUT_STANDARDS</span>
-<pre><code>核心原则：
-- Decision before decoration
-- Evidence before confidence
-- Structure before style
-- Actionability before completeness
-
-通用输出合同：
-1. 结论 / Decision
-2. 关键依据 / Evidence
-3. 假设 / Assumptions
-4. 风险 / Risks
-5. 下一步 / Next Steps</code></pre>
-          </div>
-          <div class="translation-english">
-            <span class="translation-label">人话翻译</span>
-            <p class="tl">🎯 先给判断，再给包装</p>
-            <p class="tl">📊 有证据才自信，没证据就说"不确定"</p>
-            <p class="tl">📐 结构比文风重要</p>
-            <p class="tl">🚀 能落地比面面俱到重要</p>
-            <p class="tl">📝 每个输出都要有：结论 → 依据 → 假设 → 风险 → 下一步</p>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">场景选择</h2>
-        <div class="quiz-container" id="quiz-m6">
-          <div class="scenario-block"><span class="scenario-label">场景</span><p>用户说"帮我做个分析"。没说分析什么、没给数据、没说目标。</p></div>
-          <div class="quiz-question-block" data-question="m6q1" data-correct="m6-b">
-            <h3 class="quiz-question">根据 SPARSE_CONTEXT_POLICY，AI 应该怎么做？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m6-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>假装有数据，先写一份完整分析报告</span></button>
-              <button class="quiz-option" data-value="m6-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>先问 1-3 个澄清问题，给出受限版本的方向判断</span></button>
-              <button class="quiz-option" data-value="m6-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>拒绝执行，要求用户补充完整资料后再来</span></button>
-            </div>
-            <div class="quiz-feedback" id="m6q1-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m6')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m6')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-14">策略评估</a><a class="scenario-related-link" href="#scenario-12">用户反馈</a><a class="scenario-related-link" href="#scenario-3">数据异常</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 7: 质量评估 ============ -->
-<section class="module" id="module-learn-10">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>✅ 质量评估</h1>
-        <p>就像工厂的质检部门。不测"哪个 AI 更聪明"，而是测它是否选对了工具、输出是否达标、缺信息时是否先问。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m7">测验</a></div>
-    </div>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">Evals 评什么？</h2>
-        <div class="pattern-cards stagger-children">
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">🧭</div><h4 class="pattern-title">Routing（路由）</h4><p class="pattern-desc">任务是否命中了正确的 command 或 skill？0-3 分。</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">📝</div><h4 class="pattern-title">Output Quality（输出质量）</h4><p class="pattern-desc">输出是否符合 OUTPUT_STANDARDS？0-7 分。</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">🛡️</div><h4 class="pattern-title">Professional Reliability</h4><p class="pattern-desc">是否出现阶段错配、臆造、空话或错误自信？</p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)"><div class="pattern-icon" style="background:var(--color-actor-4)">🏜️</div><h4 class="pattern-title">Sparse-Context Robustness</h4><p class="pattern-desc">信息很少时是否仍然稳健？是否遵守稀疏上下文策略？</p></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">评分模型</h2>
-        <div class="translation-block animate-in">
-          <div class="translation-code">
-<button class="copy-btn" onclick="copyPrompt(this)">复制</button><span class="translation-label">评分标准</span>
-<pre><code>总分 = Routing (0-3) + Output (0-7)
-
-建议阈值：
-9-10：可直接复用
-7-8：可用，观察稳定性
-5-6：部分可用，需修正
-<5  ：不通过，不可依赖</code></pre>
-          </div>
-          <div class="translation-english">
-            <span class="translation-label">怎么用</span>
-            <p class="tl">📋 用 evals/cases/ 里的测试用例（7 个 case）给 AI 做测试</p>
-            <p class="tl">📝 用 evals/rubrics/ 里的 rubric 打分</p>
-            <p class="tl">🔄 每次接入新平台先跑 4 个基础 case + 1 个稀疏 case</p>
-            <p class="tl">⚠️ 不要因为 AI 会说漂亮话就给高分——看路由和判断是否正确</p>
-          </div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">场景选择</h2>
-        <div class="quiz-container" id="quiz-m7">
-          <div class="scenario-block"><span class="scenario-label">场景</span><p>你在新接入了 Cursor IDE 来使用这套 PM Skills。你想验证它是否靠谱。</p></div>
-          <div class="quiz-question-block" data-question="m7q1" data-correct="m7-a">
-            <h3 class="quiz-question">推荐的验证方式是？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m7-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>先跑 4 个基础 eval case + 1 个稀疏上下文 case，用 rubric 打分</span></button>
-              <button class="quiz-option" data-value="m7-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用它写一份完整 PRD 看看效果</span></button>
-              <button class="quiz-option" data-value="m7-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>问它 10 个问题看回答是否通顺</span></button>
-            </div>
-            <div class="quiz-feedback" id="m7q1-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m7')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m7')">重试</button>
-        </div>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-8">A/B 实验</a><a class="scenario-related-link" href="#scenario-3">数据异常</a><a class="scenario-related-link" href="#scenario-1">竞品分析</a>
-        </div>
-      </div></section>
-
-<!-- ============ MODULE 8: 速查手册 ============ -->
-<section class="module" id="module-learn-11">
-  <div class="module-content">
-    <div class="scenario-page animate-in">
-      <a class="scenario-page-back" href="#module-0">← 返回首页</a>
-      <div class="scenario-page-header">
-        <h1>📖 速查手册</h1>
-        <p>这是你的"冰箱贴"——一张图看完全部 22+10，按场景快速找到对的工具。</p>
-      </div>
-      <div class="module-toc"><a href="#quiz-m8">测验</a></div>
-    </div>
-    <div class="module-body">
-      <section class="screen animate-in">
-        <h2 class="screen-heading">全部 22 个 Skills</h2>
-        <div style="overflow-x:auto">
-          <table class="skill-table table-card">
-            <thead><tr><th>分类</th><th>Skill</th><th>一句话说明</th></tr></thead>
-            <tbody>
-              <tr><td rowspan="7" style="font-weight:700;color:var(--color-actor-1);vertical-align:top">🤖 AI PM</td><td><code>ai-feature-brief</code></td><td>把 AI 点子变成可讨论方案</td></tr>
-              <tr><td><code>ai-feature-shaping</code></td><td>把 AI 想法整理成问题+功能+评估+风险</td></tr>
-              <tr><td><code>ai-launch-checklist</code></td><td>AI 上线前质量/fallback/监控检查</td></tr>
-              <tr><td><code>ai-risk-review</code></td><td>评审 AI 功能五大风险面</td></tr>
-              <tr><td><code>llm-evaluation-plan</code></td><td>定义离线与线上评估方案</td></tr>
-              <tr><td><code>model-selection-advisor</code></td><td>根据任务选模型策略</td></tr>
-              <tr><td><code>agent-workflow-brief</code></td><td>定义 agent 工作流</td></tr>
-              <tr><td rowspan="8" style="font-weight:700;color:var(--color-actor-2);vertical-align:top">💰 Commercial</td><td><code>pricing-packaging-brief</code></td><td>定义定价与套餐结构</td></tr>
-              <tr><td><code>conversion-funnel-diagnostic</code></td><td>诊断转化漏斗掉点</td></tr>
-              <tr><td><code>retention-levers-review</code></td><td>分析留存驱动和流失模式</td></tr>
-              <tr><td><code>growth-experiment-design</code></td><td>设计增长实验</td></tr>
-              <tr><td><code>revenue-metrics-scorecard</code></td><td>商业化指标看板</td></tr>
-              <tr><td><code>commercial-prd</code></td><td>商业化项目 PRD</td></tr>
-              <tr><td><code>north-star-metric</code></td><td>定义北极星指标</td></tr>
-              <tr><td><code>experiment-brief</code></td><td>轻量实验设计</td></tr>
-              <tr><td rowspan="7" style="font-weight:700;color:var(--color-actor-3);vertical-align:top">📋 通用 PM</td><td><code>problem-statement</code></td><td>定义清晰的问题</td></tr>
-              <tr><td><code>prd-development</code></td><td>从问题到需求的完整 PRD</td></tr>
-              <tr><td><code>prioritization-advisor</code></td><td>推荐优先级框架</td></tr>
-              <tr><td><code>voice-of-customer-synthesis</code></td><td>归纳用户反馈</td></tr>
-              <tr><td><code>task-decomposition</code></td><td>拆解大任务</td></tr>
-              <tr><td><code>review-gates</code></td><td>交付前结构化审查</td></tr>
-              <tr><td><code>workshop-facilitation</code></td><td>结构化引导会话</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">按场景速查</h2>
-        <div class="pattern-cards stagger-children">
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">📝</div><h4 class="pattern-title">"我要写 PRD"</h4><p class="pattern-desc">→ Command: <strong>write-prd</strong></p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">🤖</div><h4 class="pattern-title">"我要定义 AI 功能"</h4><p class="pattern-desc">→ Command: <strong>shape-ai-feature</strong></p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">🚀</div><h4 class="pattern-title">"AI 功能准备上线"</h4><p class="pattern-desc">→ Command: <strong>prepare-ai-launch</strong></p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">📊</div><h4 class="pattern-title">"商业化增长有问题"</h4><p class="pattern-desc">→ Command: <strong>commercial-growth-review</strong></p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">💳</div><h4 class="pattern-title">"trial 转付费低"</h4><p class="pattern-desc">→ Command: <strong>improve-trial-to-paid</strong></p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">💰</div><h4 class="pattern-title">"要重做定价"</h4><p class="pattern-desc">→ Command: <strong>redesign-pricing-packages</strong></p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">🔄</div><h4 class="pattern-title">"付费用户不续费"</h4><p class="pattern-desc">→ Command: <strong>analyze-paid-retention</strong></p></div>
-          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">🎯</div><h4 class="pattern-title">"需求不知道怎么排"</h4><p class="pattern-desc">→ Command: <strong>prioritize</strong></p></div>
-        </div>
-      </section>
-      <section class="screen animate-in">
-        <h2 class="screen-heading">最终挑战</h2>
-        <div class="quiz-container" id="quiz-m8">
-          <div class="quiz-question-block" data-question="m8q1" data-correct="m8-b">
-            <h3 class="quiz-question">你要做一个"商业化策略评审"，需要从指标、漏斗、定价、留存到实验设计做一次完整评审。该用哪个 Command？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m8-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>commercial-growth-review</span></button>
-              <button class="quiz-option" data-value="m8-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>commercial-strategy-review（最完整的，串联 8 个 skill）</span></button>
-              <button class="quiz-option" data-value="m8-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>write-commercial-prd</span></button>
-            </div>
-            <div class="quiz-feedback" id="m8q1-feedback"></div>
-          </div>
-          <div class="quiz-question-block" data-question="m8q2" data-correct="m8-a">
-            <h3 class="quiz-question">AI 产出了一个没有"成功指标"、没有"Out of Scope"的 PRD。这违反了 Agent 规范层的什么规则？</h3>
-            <div class="quiz-options">
-              <button class="quiz-option" data-value="m8-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>OUTPUT_STANDARDS 的成文类禁止规则</span></button>
-              <button class="quiz-option" data-value="m8-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>ROUTING 的路由规则</span></button>
-              <button class="quiz-option" data-value="m8-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>SPARSE_CONTEXT_POLICY</span></button>
-            </div>
-            <div class="quiz-feedback" id="m8q2-feedback"></div>
-          </div>
-          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m8')">检查答案</button>
-          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m8')">重试</button>
-        </div>
-      </section>
-      <section class="screen animate-in" style="text-align:center">
-        <h2 class="screen-heading">🎓 恭喜完成课程！</h2>
-        <div class="callout callout-accent" style="max-width:500px;margin:var(--space-6) auto"><div class="callout-icon">☕</div><div class="callout-content"><strong>记住三件事</strong><p>① 先选 command，单点任务再选 skill<br>② 提真实业务问题，别只给抽象方向<br>③ 默认按 澄清→拆解→产出→审查 推进</p></div></div>
-        <p style="color:var(--color-text-secondary);margin-top:var(--space-6)">去仓库里开始用吧：<br><code style="font-family:var(--font-mono);font-size:var(--text-sm);background:var(--color-bg-code);color:#89B4FA;padding:4px 10px;border-radius:6px">github.com/yancheng2024/AI_Commercialization--Product-Management-skills</code></p>
-      </section>
-    </div>
-  </div>
-
-      <div class="scenario-related" style="max-width:var(--content-width);margin:var(--space-8) auto 0">
-        <h4>🔗 相关场景</h4>
-        <div class="scenario-related-list">
-          <a class="scenario-related-link" href="#scenario-1">竞品分析</a><a class="scenario-related-link" href="#scenario-6">定价策略</a><a class="scenario-related-link" href="#scenario-5">需求文档</a>
-        </div>
-      </div></section>
-
+<div id="detail" class="detail hidden"></div>
+<div id="result" class="result hidden"></div>
+</div>
 <script>
-(function(){
-  // === BUILD NAV DOTS DYNAMICALLY ===
-  var navDotsContainer = document.getElementById('nav-dots-container');
-  var allModules = document.querySelectorAll('.module');
-  var dotHTML = '';
-  allModules.forEach(function(m, i) {
-    var id = m.id;
-    var isScenario = id.startsWith('scenario-');
-    var h1 = m.querySelector('h1');
-    var title = h1 ? h1.textContent.replace(/[^\u4e00-\u9fff\w\s]/g,'').trim().substring(0,12) : (isScenario ? '场景' : '模块');
-    var cls = 'nav-dot';
-    dotHTML += '<button class="' + cls + '" data-target="' + id + '" data-label="' + title + '" aria-label="' + title + '"></button>';
-  });
-  navDotsContainer.innerHTML = dotHTML;
+const skills=[
+{id:'competitor-feature',category:'竞品分析',title:'竞品功能对比',desc:'输入产品名，AI 帮你生成结构化功能对比矩阵',level:'入门',
+steps:[
+{title:'你要对比哪两个产品？',fields:[{key:'productA',label:'产品 A',type:'text',placeholder:'如：TikTok'},{key:'productB',label:'产品 B',type:'text',placeholder:'如：Instagram Reels'}]},
+{title:'你想重点对比哪些方面？',fields:[{key:'dimensions',type:'checkbox',options:['核心功能','用户体验','变现模式','用户增长','技术架构','市场定位'],defaults:['核心功能','用户体验']}]},
+{title:'补充你的背景信息（可选）',fields:[{key:'context',label:'你的产品/背景',type:'textarea',placeholder:'如：我正在做一个短视频社交产品，面向 Z 世代用户'}]}
+],
+prompt:d=>`你是一个资深产品经理，擅长竞品分析。\n\n请对比以下两个产品：\n· ${d.productA}\n· ${d.productB}\n\n重点对比维度：\n${d.dimensions.map(v=>'· '+v).join('\n')}\n\n${d.context?'我的背景：'+d.context+'\n\n':''}请按以下结构输出：\n1. 市场定位对比\n2. 核心功能对比矩阵（用表格）\n3. 用户体验差异\n4. 差异化分析\n5. 结论与建议`,
+tips:['把生成的 Prompt 粘贴到 ChatGPT 或 DeepSeek','可以追问"帮我补充用户评价方面的对比"','建议使用 GPT-4 或 Claude 获得最佳效果']},
 
-  // === INTERSECTION OBSERVER ===
-  var navEl = document.querySelector('.nav');
-  var toolbar = document.getElementById('floating-toolbar');
-  var lastProgress = 0;
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        entry.target.addEventListener('transitionend', function handler() {
-          entry.target.style.willChange = '';
-          entry.target.removeEventListener('transitionend', handler);
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '50px 0px', threshold: [0.05, 0.2] });
-  document.querySelectorAll('.animate-in').forEach(function(el) { observer.observe(el); });
+{id:'competitor-pricing',category:'竞品分析',title:'竞品定价分析',desc:'对比竞品定价策略，找到定价机会点',level:'进阶',
+steps:[
+{title:'你要分析哪些产品的定价？',fields:[{key:'products',label:'产品列表',type:'textarea',placeholder:'每行一个，如：\nNotion\nCoda\nObsidian'},{key:'market',label:'目标市场',type:'text',placeholder:'如：全球 SaaS 市场'}]},
+{title:'你已有的定价信息（可选）',fields:[{key:'pricing',label:'已知定价信息',type:'textarea',placeholder:'如：Notion 免费/$8/$15'}]},
+{title:'你的分析重点是什么？',fields:[{key:'focus',type:'checkbox',options:['定价模型对比','价格区间分析','功能与价格关系','用户分层策略','免费版策略'],defaults:['定价模型对比','价格区间分析']}]}
+],
+prompt:d=>`你是一个资深的 SaaS 产品经理，擅长定价策略分析。\n\n请分析以下产品的定价策略：\n${d.products.split('\n').filter(Boolean).map(v=>'· '+v).join('\n')}\n\n目标市场：${d.market}\n${d.pricing?'已知定价信息：\n'+d.pricing+'\n\n':''}重点分析维度：\n${d.focus.map(v=>'· '+v).join('\n')}\n\n请按以下结构输出：\n1. 各产品定价概览（表格）\n2. 定价模型对比分析\n3. 价格-功能对应关系\n4. 目标用户分层策略\n5. 定价机会与建议`,
+tips:['不知道竞品定价也没关系，AI 会基于公开信息分析','追问"如果我要做低价切入，怎么定价合适"']},
 
-  // === STAGGER ===
-  document.querySelectorAll('.stagger-children').forEach(function(parent) {
-    Array.from(parent.children).forEach(function(child, i) {
-      child.style.setProperty('--stagger-index', i);
-    });
-  });
+{id:'competitor-tracking',category:'竞品分析',title:'竞品动态追踪',desc:'生成竞品监控框架，系统化追踪竞品变化',level:'入门',
+steps:[
+{title:'你要追踪哪些竞品？',fields:[{key:'competitors',label:'竞品列表',type:'textarea',placeholder:'每行一个，如：\nFigma\nSketch\nAdobe XD'}]},
+{title:'你关注的动态类型？',fields:[{key:'trackTypes',type:'checkbox',options:['产品更新','新功能发布','定价变化','市场活动','融资动态','团队变化','用户评价'],defaults:['产品更新','新功能发布','定价变化']}]}
+],
+prompt:d=>`你是一个资深产品经理，擅长竞品情报收集与分析。\n\n请帮我建立一个竞品动态追踪框架：\n\n追踪目标：\n${d.competitors.split('\n').filter(Boolean).map(v=>'· '+v).join('\n')}\n\n重点追踪类型：\n${d.trackTypes.map(v=>'· '+v).join('\n')}\n\n请输出：\n1. 信息来源清单（每个竞品推荐 5-8 个信息渠道）\n2. 追踪频率建议\n3. 动态分类标签体系\n4. 一份可直接使用的竞品动态周报模板\n5. 关键信号识别指南`,
+tips:['可以把生成的追踪框架放入 Notion / 飞书多维表格使用','追问"帮我设计竞品动态周报的具体格式"']},
 
-  // === PROGRESS BAR + NAV SHADOW ===
-  var progressBar = document.getElementById('progress-bar');
-  function updateProgress() {
-    var scrollTop = window.scrollY;
-    var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-    if (Math.abs(progress - lastProgress) > 0.5) {
-      lastProgress = progress;
-      progressBar.style.width = progress + '%';
-    }
-    if (scrollTop > 100) navEl.classList.add('scrolled');
-    else navEl.classList.remove('scrolled');
-    if (scrollTop > window.innerHeight) toolbar.classList.add('visible');
-    else toolbar.classList.remove('visible');
-  }
-  window.addEventListener('scroll', function() { requestAnimationFrame(updateProgress); }, { passive: true });
+{id:'user-persona',category:'用户研究',title:'用户画像生成',desc:'输入产品信息，AI 生成详细的用户画像',level:'入门',
+steps:[
+{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：一个面向独立设计师的项目管理工具'}]},
+{title:'你的目标用户大致是谁？',fields:[{key:'target',label:'目标用户',type:'text',placeholder:'如：自由职业设计师、小团队负责人'}]},
+{title:'用户会在什么场景下使用？',fields:[{key:'scenarios',type:'checkbox',options:['日常工作','项目管理','创意协作','远程办公','学习培训','个人兴趣'],defaults:['日常工作','项目管理']}]}
+],
+prompt:d=>`你是一个资深用户研究员，擅长构建用户画像。\n\n产品：${d.product}\n目标用户：${d.target}\n使用场景：\n${d.scenarios.map(v=>'· '+v).join('\n')}\n\n请生成 3 个详细的用户画像，每个包含：\n1. 基本信息（虚构但合理）\n2. 用户目标与痛点\n3. 使用行为特征\n4. 决策因素\n5. 典型的一天（Day in the Life）\n6. 对我们产品的期待与担忧`,
+tips:['生成的画像可用于 PRD、设计评审和营销文案','追问"帮我补充用户获取渠道分析"']},
 
-  // === NAV DOTS ===
-  var dots = document.querySelectorAll('.nav-dot');
-  var moduleObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var id = entry.target.id;
-        dots.forEach(function(d) {
-          d.classList.remove('current');
-          if (d.dataset.target === id) d.classList.add('current');
-        });
-      }
-    });
-  }, { threshold: 0.3 });
-  allModules.forEach(function(m) { moduleObserver.observe(m); });
-  dots.forEach(function(d) {
-    d.addEventListener('click', function() {
-      var target = document.getElementById(d.dataset.target);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
+{id:'user-feedback',category:'用户研究',title:'用户反馈分析',desc:'粘贴用户反馈，AI 帮你提炼关键洞察',level:'入门',
+steps:[
+{title:'粘贴用户反馈',fields:[{key:'feedback',label:'用户反馈内容',type:'textarea',placeholder:'每条反馈一行，如：\n"导出功能太慢了"\n"希望支持暗色模式"\n"协作功能不够流畅"'}]},
+{title:'你希望重点分析什么？',fields:[{key:'focus',type:'radio',options:['功能需求提炼','情感倾向分析','优先级排序','全部都分析'],defaults:'全部都分析'}]}
+],
+prompt:d=>`你是一个资深产品经理，擅长用户反馈分析。\n\n以下是收集到的用户反馈：\n${d.feedback}\n\n请进行分析，重点：${d.focus}\n\n请输出：\n1. 反馈总览\n2. 高频关键词提取\n3. 功能需求分类与优先级建议\n4. 正面反馈亮点\n5. 负面反馈痛点及根因分析\n6. 行动建议（短期 vs 长期）`,
+tips:['反馈越多分析越准确，建议至少 10 条','追问"帮我设计一个用户反馈收集问卷"']},
 
-  // === KEYBOARD NAV ===
-  document.addEventListener('keydown', function(e) {
-    if (['INPUT','TEXTAREA'].includes(e.target.tagName)) return;
-    var currentIdx = Array.from(dots).findIndex(function(d) { return d.classList.contains('current'); });
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-      e.preventDefault();
-      var next = Math.min(currentIdx + 1, allModules.length - 1);
-      allModules[next].scrollIntoView({ behavior: 'smooth' });
-    }
-    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      var prev = Math.max(currentIdx - 1, 0);
-      allModules[prev].scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+{id:'user-churn',category:'用户研究',title:'用户流失分析',desc:'分析用户为什么离开，找到挽回策略',level:'进阶',
+steps:[
+{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'text',placeholder:'如：在线教育平台，月费 99 元'}]},
+{title:'你知道的流失情况',fields:[{key:'data',label:'流失数据',type:'textarea',placeholder:'如：月流失率约 8%，主要在第 7-14 天流失'}]},
+{title:'你怀疑的流失原因',fields:[{key:'suspects',type:'checkbox',options:['新手指引不够','核心价值不明显','竞品更便宜','功能满足不了需求','使用频次低','付费门槛高'],defaults:['新手指引不够','核心价值不明显']}]}
+],
+prompt:d=>`你是一个资深增长产品经理，擅长用户留存和流失分析。\n\n产品：${d.product}\n\n流失数据：\n${d.data}\n\n怀疑的流失原因：\n${d.suspects.map(v=>'· '+v).join('\n')}\n\n请输出：\n1. 流失漏斗分析\n2. 流失用户画像特征\n3. 流失原因假设排序\n4. 验证假设的方案\n5. 挽回策略建议（按用户价值分层）\n6. 预防流失的长期策略`,
+tips:['数据不多也没关系，AI 会基于常见模式给出分析框架','追问"帮我设计新用户 Onboarding 优化方案"']},
 
-  // === TOOLBOX SEARCH ===
-  var toolboxSearch = document.getElementById('toolbox-search');
-  if (toolboxSearch) {
-    toolboxSearch.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        var q = toolboxSearch.value.trim().toLowerCase();
-        if (!q) return;
-        // Search scenarios
-        var scenarios = document.querySelectorAll('[id^="scenario-"]');
-        var found = false;
-        scenarios.forEach(function(s) {
-          var text = s.textContent.toLowerCase();
-          if (text.indexOf(q) !== -1 && !found) {
-            s.scrollIntoView({ behavior: 'smooth' });
-            found = true;
-          }
-        });
-        // Also search modules
-        if (!found) {
-          var modules = document.querySelectorAll('[id^="module-learn-"]');
-          modules.forEach(function(m) {
-            var text = m.textContent.toLowerCase();
-            if (text.indexOf(q) !== -1 && !found) {
-              m.scrollIntoView({ behavior: 'smooth' });
-              found = true;
-            }
-          });
-        }
-      }
-    });
-  }
+{id:'req-priority',category:'需求管理',title:'需求优先级排序',desc:'粘贴需求列表，AI 用专业框架帮你排序',level:'进阶',
+steps:[
+{title:'粘贴你的需求列表',fields:[{key:'requirements',label:'需求列表',type:'textarea',placeholder:'每行一个，如：\n1. 支持暗色模式\n2. 导出为 PDF\n3. 团队协作权限管理'}]},
+{title:'选择排序框架',fields:[{key:'framework',type:'radio',options:['RICE（覆盖×影响×信心÷工作量）','ICE（影响×信心×难易度）','自定义权重'],defaults:'RICE（覆盖×影响×信心÷工作量）'}]}
+],
+prompt:d=>`你是一个资深产品经理，擅长需求管理和优先级决策。\n\n以下是我的需求列表：\n${d.requirements}\n\n请使用 ${d.framework} 框架帮我排序。\n\n请输出：\n1. 每个需求的框架评分明细（用表格）\n2. 排序结果（从高到低）\n3. 分为三档：立即做 / 计划做 / 暂缓\n4. 如果只能选 3 个，推荐哪 3 个？为什么？`,
+tips:['需求描述越详细，排序越准确','追问"帮我补充每个需求的工作量估算"']},
 
-  // === QUIZ ===
-  var explanations = {
-    m1q1: { true: '✅ 正确！prioritize 是一个 Command，它内部会先调用 workshop-facilitation 澄清需求，再用 prioritization-advisor 推荐框架。', false: '❌ prioritize 是 Command 不是 Skill。它串联了 workshop-facilitation 和 prioritization-advisor 两个 skill。' },
-    m2q1: { true: '✅ 正确！shape-ai-feature command 内部第一步就是 workshop-facilitation，不需要你手动先跑。', false: '❌ shape-ai-feature command 内部已经包含了 workshop-facilitation，直接跑 command 就会自动先澄清。' },
-    m3q1: { true: '✅ 正确！pricing-packaging-brief 就是专门用来设计/调整定价与套餐结构的 skill。', false: '❌ 那个 skill 不是用来解决定价结构问题的。pricing-packaging-brief 才是专门做这个的。' },
-    m4q1: { true: '✅ 正确！三个 skill 配合：选模型(model-selection) + 评审风险(ai-risk-review) + 设计评估方案(llm-evaluation-plan)。', false: '❌ 那个组合是解决商业化问题的，不是 AI 模型策略问题。' },
-    m5q1: { true: '✅ 正确！improve-trial-to-paid 就是专门针对 trial→paid 这段漏斗的 command。', false: '❌ 那个 command 覆盖面太广或不对口。improve-trial-to-paid 才是专门针对 trial-to-paid 转化的。' },
-    m6q1: { true: '✅ 正确！SPARSE_CONTEXT_POLICY 要求：先问 1-3 个问题 + 给受限版本的方向判断 + 不臆造数据。', false: '❌ 要么臆造了数据，要么太极端了。正确做法是先澄清再给受限判断。' },
-    m7q1: { true: '✅ 正确！evals 目录提供了标准化的测试用例和评分 rubric，是验证可靠性的推荐方式。', false: '❌ 那种方式不够系统。evals 提供了标准化的 case 和 rubric 来做客观评估。' },
-    m8q1: { true: '✅ 正确！commercial-strategy-review 是最完整的商业化评审 command，串联 8 个 skill。', false: '❌ 那个 command 覆盖面不够。commercial-strategy-review 才是最完整的。' },
-    m8q2: { true: '✅ 正确！OUTPUT_STANDARDS 的成文类禁止规则明确要求 PRD 必须包含 success metrics 和 out of scope。', false: '❌ 这是输出质量问题，不是路由问题。OUTPUT_STANDARDS 的成文类规则要求 PRD 必须有指标和边界。' },
-    mcq1: { true: '✅ 正确！Completeness 检查发现缺少上线后效果验证方案。', false: '❌ 不是格式要求，是 Completeness 检查发现缺少验证环节。' },
-    mcq2: { true: '✅ 正确！shape-ai-feature 串联从澄清到审查的完整流程。', false: '❌ 那个 command 覆盖面不够完整。' },
-  };
+{id:'prd-draft',category:'需求管理',title:'PRD 初稿生成',desc:'输入需求信息，AI 生成结构化 PRD 初稿',level:'进阶',
+steps:[
+{title:'你要做什么功能/产品？',fields:[{key:'requirement',label:'需求描述',type:'textarea',placeholder:'如：为项目管理工具增加甘特图功能，支持任务依赖关系可视化'}]},
+{title:'谁会用这个功能？',fields:[{key:'users',label:'目标用户',type:'text',placeholder:'如：项目经理、团队负责人'}]},
+{title:'关键功能点',fields:[{key:'features',label:'核心功能',type:'textarea',placeholder:'每行一个，如：\n任务时间线展示\n拖拽调整时间\n任务依赖连线'}]},
+{title:'有什么约束条件？',fields:[{key:'constraints',type:'checkbox',options:['有上线时间要求','需要兼容旧版','有技术限制','需要考虑性能','需要多端适配','暂无特殊约束'],defaults:['暂无特殊约束']}]}
+],
+prompt:d=>`你是一个资深产品经理，擅长撰写 PRD。\n\n需求：${d.requirement}\n目标用户：${d.users}\n\n核心功能：\n${d.features.split('\n').filter(Boolean).map(v=>'· '+v).join('\n')}\n\n约束条件：\n${d.constraints.map(v=>'· '+v).join('\n')}\n\n请生成一份完整的 PRD 初稿：\n1. 文档概述（背景、目标、范围）\n2. 用户故事（User Stories）\n3. 功能需求详细说明\n4. 非功能需求\n5. 交互流程说明\n6. 数据需求\n7. 验收标准\n8. 上线计划建议`,
+tips:['PRD 初稿需要根据实际情况调整完善','追问"帮我补充竞品在这方面的做法"']},
 
-  window.selectOption = function(btn) {
-    var block = btn.closest('.quiz-question-block');
-    block.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected'); });
-    btn.classList.add('selected');
-  };
+{id:'req-review',category:'需求管理',title:'需求评审模拟',desc:'AI 扮演评审专家，提前发现需求漏洞',level:'进阶',
+steps:[
+{title:'粘贴你的需求描述',fields:[{key:'requirement',label:'需求描述',type:'textarea',placeholder:'如：我们计划增加 AI 写作助手功能，用户输入主题自动生成文章大纲…'}]},
+{title:'你希望从哪些角度评审？',fields:[{key:'angles',type:'checkbox',options:['完整性','可行性','用户价值','技术风险','边界条件','异常场景','性能影响','数据安全'],defaults:['完整性','可行性','用户价值','边界条件']}]}
+],
+prompt:d=>`你是一个严格但建设性的需求评审专家。请对以下需求进行评审：\n\n${d.requirement}\n\n评审角度：\n${d.angles.map(v=>'· '+v).join('\n')}\n\n请输出：\n1. 需求理解确认\n2. 发现的问题（P0 致命 / P1 重要 / P2 建议）\n3. 遗漏的场景和边界条件\n4. 潜在的技术风险\n5. 改进建议\n6. 评审结论：通过 / 有条件通过 / 需要修改`,
+tips:['这个 Skill 相当于免费的评审预演','追问"如果我是评审委员会成员，我会怎么提问"']},
 
-  window.checkQuiz = function(sectionId) {
-    var container = document.getElementById(sectionId);
-    var questions = container.querySelectorAll('.quiz-question-block');
-    var correct = 0;
-    questions.forEach(function(q) {
-      var selected = q.querySelector('.quiz-option.selected');
-      var feedback = q.querySelector('.quiz-feedback');
-      var correctValue = q.dataset.correct;
-      var qId = q.dataset.question;
-      if (!selected) { feedback.textContent = '先选一个答案！'; feedback.className = 'quiz-feedback show warning'; return; }
-      if (selected.dataset.value === correctValue) {
-        correct++; selected.classList.add('correct');
-        feedback.innerHTML = explanations[qId].true; feedback.className = 'quiz-feedback show success';
-      } else {
-        selected.classList.add('incorrect');
-        q.querySelector('[data-value="' + correctValue + '"]').classList.add('correct');
-        feedback.innerHTML = explanations[qId].false; feedback.className = 'quiz-feedback show error';
-      }
-      q.querySelectorAll('.quiz-option').forEach(function(o) { o.disabled = true; });
-    });
-  };
+{id:'pricing-strategy',category:'定价策略',title:'定价方案建议',desc:'根据产品价值和市场情况，获得定价方案建议',level:'进阶',
+steps:[
+{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：SaaS 项目管理工具，核心功能是看板、甘特图、团队协作'}]},
+{title:'用户能获得什么价值？',fields:[{key:'value',label:'核心价值',type:'textarea',placeholder:'如：提升团队协作效率 30%，减少会议时间'}]},
+{title:'你知道的竞品定价',fields:[{key:'competitors',label:'竞品定价',type:'textarea',placeholder:'如：\nJira：$7.75/人/月起\nAsana：$10.99/人/月起'}]}
+],
+prompt:d=>`你是一个资深的定价策略专家。\n\n产品：${d.product}\n\n用户核心价值：\n${d.value}\n\n竞品定价：\n${d.competitors}\n\n请输出：\n1. 定价模型建议（订阅制/按量计费/阶梯定价/…）\n2. 建议价格区间（含理由）\n3. 版本划分建议（免费版/专业版/企业版）\n4. 每个版本的功能与定价\n5. 定价心理学技巧建议\n6. 上线定价策略`,
+tips:['定价是动态的，建议定期回顾调整','追问"如果我要做免费增值模式，怎么设计免费版边界"']},
 
-  window.resetQuiz = function(sectionId) {
-    var container = document.getElementById(sectionId);
-    container.querySelectorAll('.quiz-question-block').forEach(function(q) {
-      q.querySelectorAll('.quiz-option').forEach(function(o) { o.classList.remove('selected','correct','incorrect'); o.disabled = false; });
-      var fb = q.querySelector('.quiz-feedback'); fb.textContent = ''; fb.className = 'quiz-feedback';
-    });
-  };
+{id:'ab-pricing',category:'定价策略',title:'AB 定价实验设计',desc:'科学设计定价实验，用数据驱动定价决策',level:'高级',
+steps:[
+{title:'你的实验目标是什么？',fields:[{key:'goal',label:'实验目标',type:'text',placeholder:'如：验证 $29/月 vs $39/月 哪个 ARPU 更高'}]},
+{title:'你要测试的变量',fields:[{key:'variables',label:'变量定义',type:'textarea',placeholder:'如：\nA组：$29/月\nB组：$39/月（含高级功能）'}]},
+{title:'你有哪些可用数据？',fields:[{key:'data',label:'可用数据',type:'checkbox',options:['月活用户数','当前转化率','ARPU','流失率','用户分群数据','竞品定价'],defaults:['月活用户数','当前转化率','ARPU']}]}
+],
+prompt:d=>`你是一个资深的增长实验专家，擅长定价实验设计。\n\n实验目标：${d.goal}\n\n测试变量：\n${d.variables}\n\n可用数据：\n${d.data.map(v=>'· '+v).join('\n')}\n\n请设计完整的 AB 定价实验方案：\n1. 实验假设\n2. 实验设计（分组方式、流量分配、实验周期）\n3. 样本量计算\n4. 核心指标定义\n5. 实验监控方案\n6. 结果判定标准\n7. 风险控制措施`,
+tips:['定价实验涉及收入，建议小流量测试后逐步放量','追问"如果实验结果不显著怎么办"']},
 
-  // === CHAT ANIMATION ===
-  var chatStates = {};
-  window.playChatNext = function(chatId, typingId, avatarId) {
-    if (!chatStates[chatId]) chatStates[chatId] = 0;
-    var idx = chatStates[chatId];
-    var messages = document.querySelectorAll('#' + chatId + ' .chat-message');
-    if (idx >= messages.length) return;
-    var msg = messages[idx];
-    var sender = msg.dataset.sender;
-    var colors = { workshop:'var(--color-actor-1)', task:'var(--color-actor-2)', prd:'var(--color-actor-3)', review:'var(--color-actor-4)' };
-    var initials = { workshop:'W', task:'T', prd:'P', review:'R' };
-    var typing = document.getElementById(typingId);
-    var avatar = document.getElementById(avatarId);
-    avatar.textContent = initials[sender] || '?';
-    avatar.style.background = colors[sender] || 'var(--color-text-muted)';
-    typing.style.display = 'flex';
-    setTimeout(function() {
-      typing.style.display = 'none';
-      msg.style.display = 'flex';
-      chatStates[chatId] = idx + 1;
-      var prog = document.getElementById(chatId.replace('chat-','chat-progress-'));
-      if (prog) prog.textContent = chatStates[chatId] + ' / ' + messages.length;
-    }, 800);
-  };
+{id:'data-anomaly',category:'数据分析',title:'数据异常解读',desc:'描述数据异常，AI 帮你排查原因',level:'入门',
+steps:[
+{title:'描述你观察到的异常',fields:[{key:'anomaly',label:'异常描述',type:'textarea',placeholder:'如：昨天 DAU 突然下降了 15%，从 10 万降到 8.5 万'}]},
+{title:'你有哪些相关信息？',fields:[{key:'info',label:'可用信息',type:'textarea',placeholder:'如：\n安卓端下降明显，iOS 端正常\n新用户和活跃用户都在下降'}]}
+],
+prompt:d=>`你是一个资深数据分析专家，擅长排查数据异常。\n\n异常描述：\n${d.anomaly}\n\n相关信息：\n${d.info}\n\n请帮我排查：\n1. 可能的原因分类（技术问题/外部因素/数据问题/产品问题）\n2. 逐一分析每种可能性的概率\n3. 建议排查的步骤和数据维度\n4. 需要进一步确认的信息\n5. 紧急处理建议`,
+tips:['描述越详细，排查方向越准确','追问"帮我设计一个数据异常自动告警方案"']},
 
-  window.playChatAll = function(chatId, typingId, avatarId) {
-    var messages = document.querySelectorAll('#' + chatId + ' .chat-message');
-    var count = 0;
-    var interval = setInterval(function() {
-      if (count >= messages.length) { clearInterval(interval); return; }
-      window.playChatNext(chatId, typingId, avatarId);
-      count++;
-    }, 1200);
-  };
+{id:'report-gen',category:'数据分析',title:'周报/月报生成',desc:'输入关键信息，AI 生成结构化汇报',level:'入门',
+steps:[
+{title:'核心指标数据',fields:[{key:'metrics',label:'指标数据',type:'textarea',placeholder:'如：\nDAU：12.5 万（环比 +8%）\n付费转化率：3.2%（环比 +0.3%）'}]},
+{title:'关键进展和事件',fields:[{key:'progress',label:'关键进展',type:'textarea',placeholder:'如：\n- 完成了 v2.0 发布\n- 上线了推荐系统'}]},
+{title:'存在的问题和风险',fields:[{key:'risks',label:'问题与风险',type:'textarea',placeholder:'如：\n- 安卓端崩溃率偏高\n- 竞品发布了类似功能'}]}
+],
+prompt:d=>`你是一个资深产品经理，擅长工作汇报。\n\n请根据以下信息生成一份周报：\n\n核心指标：\n${d.metrics}\n\n关键进展：\n${d.progress}\n\n问题与风险：\n${d.risks}\n\n请输出：\n1. 本周概览（2-3 句话总结）\n2. 核心指标表现（用表格，标注环比变化）\n3. 重点进展\n4. 问题与风险（标注严重程度）\n5. 下周计划建议\n6. 需要协调的资源`,
+tips:['周报重在简洁，突出变化和行动','追问"帮我优化这份周报，让它更简洁"']},
 
-  window.resetChat = function(chatId, typingId) {
-    chatStates[chatId] = 0;
-    document.querySelectorAll('#' + chatId + ' .chat-message').forEach(function(m) { m.style.display = 'none'; });
-    document.getElementById(typingId).style.display = 'none';
-    var prog = document.getElementById(chatId.replace('chat-','chat-progress-'));
-    if (prog) prog.textContent = '0 / ' + document.querySelectorAll('#' + chatId + ' .chat-message').length;
-  };
+{id:'dashboard-design',category:'数据分析',title:'数据看板设计',desc:'设计产品数据看板，明确核心监控指标',level:'进阶',
+steps:[
+{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'text',placeholder:'如：电商小程序，主要卖美妆产品'}]},
+{title:'你的监控目标是什么？',fields:[{key:'goals',type:'checkbox',options:['用户增长','活跃度','商业化','留存','用户体验','运营效率'],defaults:['用户增长','商业化','留存']}]}
+],
+prompt:d=>`你是一个资深数据分析师，擅长数据看板设计。\n\n产品：${d.product}\n监控目标：\n${d.goals.map(v=>'· '+v).join('\n')}\n\n请设计一个完整的数据看板方案：\n1. 看板分区结构（一级指标 / 二级指标 / 下钻维度）\n2. 每个区域的核心指标定义（指标名、计算方式、目标值）\n3. 建议的图表类型\n4. 告警规则建议\n5. 看板布局建议`,
+tips:['先确定北极星指标，再搭建看板','追问"帮我用 SQL 写这些指标的计算逻辑"']},
 
-  // === FLOW ANIMATION ===
-  var flowSteps = [
-    { actor:'fa-workshop', label:'👤 用户提交 AI 功能想法 → workshop-facilitation 开始澄清需求和边界' },
-    { actor:'fa-problem', label:'📝 澄清完成 → problem-statement 把痛点结构化成问题定义' },
-    { actor:'fa-task', label:'✂️ task-decomposition 把"定义 AI 功能"拆成 5-8 个可检查的小步骤' },
-    { actor:'fa-brief', label:'📄 ai-feature-brief 产出功能简报：用户任务、输入输出、质量标准、fallback' },
-    { actor:'fa-brief', label:'🔬 llm-evaluation-plan 补充评估方案：离线+线上、样本、指标、阻断阈值' },
-    { actor:'fa-brief', label:'⚠️ ai-risk-review 评审五大风险面：质量、信任、运营、滥用、策略' },
-    { actor:'fa-review', label:'✅ review-gates 做交付前审查：Fit Check → Reasoning → Completeness' },
-  ];
-  var flowStepIdx = 0;
-  window.flowNext = function() {
-    if (flowStepIdx >= flowSteps.length) return;
-    var step = flowSteps[flowStepIdx];
-    document.querySelectorAll('.flow-actor').forEach(function(a) { a.classList.remove('active'); });
-    document.getElementById(step.actor).classList.add('active');
-    document.getElementById('flow-label').textContent = step.label;
-    flowStepIdx++;
-    document.getElementById('flow-progress').textContent = flowStepIdx + ' / ' + flowSteps.length;
-  };
-  window.flowReset = function() {
-    flowStepIdx = 0;
-    document.querySelectorAll('.flow-actor').forEach(function(a) { a.classList.remove('active'); });
-    document.getElementById('flow-label').textContent = '点击"下一步"开始';
-    document.getElementById('flow-progress').textContent = '0 / ' + flowSteps.length;
-  };
+{id:'monetization',category:'商业化',title:'商业化方案',desc:'为你的产品设计完整的商业化方案',level:'高级',
+steps:[
+{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：AI 写作助手工具，已有 5 万免费用户'}]},
+{title:'你倾向什么商业模式？',fields:[{key:'model',type:'radio',options:['订阅制','按量付费','广告变现','电商/交易','混合模式','不确定，帮我分析'],defaults:'不确定，帮我分析'}]},
+{title:'目标市场规模',fields:[{key:'market',label:'目标市场',type:'text',placeholder:'如：国内中小企业，年预算 5000-50000 元'}]}
+],
+prompt:d=>`你是一个资深商业化专家。\n\n产品：${d.product}\n偏好商业模式：${d.model}\n目标市场：${d.market}\n\n请设计完整的商业化方案：\n1. 推荐的商业模式及理由\n2. 收入模型测算（用户数 × 转化率 × ARPU）\n3. 产品分层策略（免费/付费/高级）\n4. 变现路径规划\n5. 关键里程碑和目标\n6. 风险与应对`,
+tips:['商业化需要结合实际数据，建议先用小规模验证','追问"帮我做一份 12 个月的商业化路线图"']},
 
-  // === GLOSSARY TOOLTIPS ===
-  var activeTooltip = null;
-  document.querySelectorAll('.term').forEach(function(term) {
-    var tip = document.createElement('span');
-    tip.className = 'term-tooltip';
-    tip.textContent = term.dataset.definition;
-    function showTip() {
-      if (activeTooltip && activeTooltip !== tip) { activeTooltip.classList.remove('visible'); activeTooltip.remove(); }
-      var rect = term.getBoundingClientRect();
-      var left = rect.left + rect.width/2 - 150;
-      left = Math.max(8, Math.min(left, window.innerWidth - 328));
-      tip.style.left = left + 'px';
-      document.body.appendChild(tip);
-      var tipH = tip.offsetHeight;
-      if (rect.top - tipH - 8 < 0) { tip.style.top = (rect.bottom + 8) + 'px'; tip.classList.add('flip'); }
-      else { tip.style.top = (rect.top - tipH - 8) + 'px'; tip.classList.remove('flip'); }
-      requestAnimationFrame(function() { tip.classList.add('visible'); });
-      activeTooltip = tip;
-    }
-    term.addEventListener('mouseenter', showTip);
-    term.addEventListener('mouseleave', function() { tip.classList.remove('visible'); setTimeout(function() { if (!tip.classList.contains('visible')) tip.remove(); }, 150); activeTooltip = null; });
-    term.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (tip.parentNode) { tip.classList.remove('visible'); tip.remove(); activeTooltip = null; }
-      else showTip();
-    });
-  });
-  document.addEventListener('click', function(e) { if(activeTooltip&&!e.target.closest('.term')){ activeTooltip.classList.remove('visible'); activeTooltip.remove(); activeTooltip=null; }});
+{id:'retention-strategy',category:'商业化',title:'续订挽回策略',desc:'设计用户续订和流失挽回策略',level:'高级',
+steps:[
+{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'text',placeholder:'如：SaaS 设计工具，月费 49 元'}]},
+{title:'流失用户有什么特征？',fields:[{key:'traits',label:'流失特征',type:'textarea',placeholder:'如：\n大多在订阅第 3 个月流失\n使用频率低于每周 1 次\n主要来自免费试用转化'}]}
+],
+prompt:d=>`你是一个资深增长产品经理，擅长用户续订和流失挽回。\n\n产品：${d.product}\n\n流失用户特征：\n${d.traits}\n\n请设计完整的续订挽回策略：\n1. 流失预警体系（提前识别高风险用户）\n2. 续订激励方案（折扣/赠品/功能解锁）\n3. 流失挽回触达策略（时机/渠道/话术）\n4. 重新激活方案（回归用户专属优惠）\n5. 长期留存提升策略`,
+tips:['挽回成本远低于获客成本，值得投入','追问"帮我设计具体的挽回邮件模板"']},
 
-  // === 主题切换 ===
-  var themeBtn=document.getElementById('theme-toggle'),savedTheme=localStorage.getItem('pm-course-theme')||'light';
-  document.documentElement.dataset.theme=savedTheme;themeBtn.textContent=savedTheme==='dark'?'☀️':'🌙';
-  themeBtn.addEventListener('click',function(){var c=document.documentElement.dataset.theme,n=c==='dark'?'light':'dark';document.documentElement.dataset.theme=n;themeBtn.textContent=n==='dark'?'☀️':'🌙';localStorage.setItem('pm-course-theme',n);});
+{id:'growth-experiment',category:'增长策略',title:'增长实验设计',desc:'设计科学的增长实验，系统化推动用户增长',level:'进阶',
+steps:[
+{title:'你的增长目标是什么？',fields:[{key:'goal',label:'增长目标',type:'text',placeholder:'如：3 个月内 DAU 从 10 万增长到 30 万'}]},
+{title:'你可以用的增长杠杆',fields:[{key:'levers',type:'checkbox',options:['产品驱动增长','渠道投放','内容营销','社交裂变','SEO/ASO','合作BD','付费获客'],defaults:['产品驱动增长','社交裂变','内容营销']}]},
+{title:'有什么约束条件？',fields:[{key:'constraints',label:'约束条件',type:'textarea',placeholder:'如：\n市场预算每月 5 万\n技术团队只有 2 人\n不能做补贴'}]}
+],
+prompt:d=>`你是一个资深增长专家，擅长增长实验设计。\n\n增长目标：${d.goal}\n\n可用杠杆：\n${d.levers.map(v=>'· '+v).join('\n')}\n\n约束条件：\n${d.constraints}\n\n请设计一份增长实验计划：\n1. 增长模型分解（北极星指标 → 关键子指标）\n2. 快赢实验（1-2 周可出结果，低成本）\n3. 核心实验（1-2 月，中投入）\n4. 长期投入（需要持续建设）\n5. 每个实验的假设、设计、预期结果\n6. 实验优先级排序`,
+tips:['增长实验要并行跑多个，不要押注单一方案','追问"帮我设计一个推荐裂变方案"']},
 
-  // === FLOATING TOOLBAR ===
-  document.getElementById('btn-top').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
-  document.getElementById('btn-copy-link').addEventListener('click',function(){
-    navigator.clipboard.writeText(window.location.href).then(function(){var btn=document.getElementById('btn-copy-link');btn.textContent='✅';setTimeout(function(){btn.textContent='📋';},1500);}).catch(function(){var btn=document.getElementById('btn-copy-link');btn.textContent='❌';setTimeout(function(){btn.textContent='📋';},1500);});
-  });
+{id:'market-entry',category:'增长策略',title:'市场进入策略',desc:'为新市场进入制定策略和行动计划',level:'高级',
+steps:[
+{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：AI 图片编辑 App，目前在国内运营'}]},
+{title:'你想进入什么市场？',fields:[{key:'market',label:'目标市场',type:'text',placeholder:'如：东南亚市场 / 日本市场 / 北美市场'}]},
+{title:'你有哪些资源？',fields:[{key:'resources',label:'可用资源',type:'checkbox',options:['本地化团队','市场预算','本地合作伙伴','技术基础设施','品牌知名度','政府/政策支持'],defaults:['市场预算','技术基础设施']}]}
+],
+prompt:d=>`你是一个资深战略产品经理，擅长市场进入策略。\n\n产品：${d.product}\n目标市场：${d.market}\n\n可用资源：\n${d.resources.map(v=>'· '+v).join('\n')}\n\n请设计市场进入策略：\n1. 目标市场分析（用户特征、竞争格局、政策环境）\n2. 进入模式建议（直接进入/合作/收购/…）\n3. 产品本地化策略\n4. 获客策略\n5. 里程碑规划（第 1 月/第 3 月/第 6 月/第 12 月）\n6. 风险与应对`,
+tips:['市场进入需要充分调研，建议先做小规模验证','追问"帮我分析这个市场的竞争格局"']},
 
-  // === 进度保存 ===
-  var PROGRESS_KEY='pm-course-scroll',resumeBtn=document.getElementById('nav-resume');
-  if(localStorage.getItem(PROGRESS_KEY))resumeBtn.style.display='inline-block';
-  function resumeProgress(){var idx=parseInt(localStorage.getItem(PROGRESS_KEY)),mods=document.querySelectorAll('.module');if(idx>=0&&idx<mods.length)mods[idx].scrollIntoView({behavior:'smooth'});}
-  function debounce(fn,ms){var t;return function(){clearTimeout(t);t=setTimeout(fn,ms);};}
-  function saveCurrentModule(){var mods=document.querySelectorAll('.module'),closest=0,minDist=Infinity;mods.forEach(function(m,i){var d=Math.abs(m.getBoundingClientRect().top);if(d<minDist){minDist=d;closest=i;}});localStorage.setItem(PROGRESS_KEY,closest);if(closest>0)resumeBtn.style.display='inline-block';}
-  window.addEventListener('scroll',debounce(saveCurrentModule,2000),{passive:true});
+{id:'cross-team-email',category:'项目沟通',title:'跨部门沟通邮件',desc:'生成专业的跨部门沟通邮件，推动协作',level:'入门',
+steps:[
+{title:'你的沟通目的是什么？',fields:[{key:'purpose',label:'沟通目的',type:'text',placeholder:'如：请求技术团队排期支持新功能开发'}]},
+{title:'对方是什么角色/部门？',fields:[{key:'audience',label:'对方角色',type:'text',placeholder:'如：技术负责人、设计团队、运营团队'}]},
+{title:'关键信息',fields:[{key:'info',label:'关键信息',type:'textarea',placeholder:'如：\n需求背景：用户反馈强烈\n期望时间：下个迭代\n影响范围：影响 30% 的活跃用户'}]}
+],
+prompt:d=>`你是一个擅长跨部门沟通的产品经理。请帮我写一封沟通邮件：\n\n沟通目的：${d.purpose}\n对方：${d.audience}\n\n关键信息：\n${d.info}\n\n请输出：\n1. 邮件主题（简洁有力）\n2. 邮件正文（专业但不生硬）\n3. 行动呼吁（明确的下一步）\n\n要求：\n- 语气专业友好\n- 结构清晰（背景 → 需求 → 价值 → 请求）\n- 体现对对方工作量和立场的理解\n- 长度控制在 200 字以内`,
+tips:['好的邮件要站在对方角度写','追问"帮我改成更正式/更轻松的语气"']},
 
-  // === 复制按钮 ===
-  window.copyPrompt=function(btn){var codeBlock=btn.closest('.translation-code,.scenario-prompt-box'),pre=codeBlock.querySelector('pre');if(!pre)return;var text=pre.textContent;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){btn.textContent='已复制 ✓';btn.classList.add('copied');setTimeout(function(){btn.textContent='复制';btn.classList.remove('copied');},2000);}).catch(function(){fallbackCopy(text,btn);});}else{fallbackCopy(text,btn);}};
-  function fallbackCopy(text,btn){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');btn.textContent='已复制 ✓';btn.classList.add('copied');setTimeout(function(){btn.textContent='复制';btn.classList.remove('copied');},2000);}catch(e){btn.textContent='复制失败';}document.body.removeChild(ta);}
+{id:'project-retrospective',category:'项目沟通',title:'项目复盘报告',desc:'生成结构化的项目复盘，沉淀经验教训',level:'进阶',
+steps:[
+{title:'项目名称和基本情况',fields:[{key:'project',label:'项目描述',type:'textarea',placeholder:'如：v2.0 大版本升级，历时 3 个月，团队 8 人'}]},
+{title:'项目结果如何？',fields:[{key:'result',label:'项目结果',type:'textarea',placeholder:'如：\n按时上线\n核心指标提升了 20%\n但有 3 个已知 bug 待修复'}]},
+{title:'发生了哪些关键事件？',fields:[{key:'events',label:'关键事件',type:'textarea',placeholder:'如：\n第 2 周需求变更导致返工\n第 6 周测试发现严重 bug\n上线前 2 天临时加需求'}]}
+],
+prompt:d=>`你是一个资深项目经理，擅长项目复盘。\n\n项目：${d.project}\n\n结果：\n${d.result}\n\n关键事件：\n${d.events}\n\n请生成一份完整的复盘报告：\n1. 项目概览（目标、结果、偏差分析）\n2. 做得好的地方（Keep）\n3. 需要改进的地方（Problem）\n4. 具体行动项（Action）\n5. 经验教训总结\n6. 对下次项目的建议`,
+tips:['复盘重在诚实，不要回避问题','追问"帮我识别这次项目中最大的风险管理失误"']}
+];
 
-  // === 搜索功能 ===
-  var searchData = [
-    // Scenarios
-    {name:'竞品分析报告',type:'场景',desc:'生成结构化竞品分析',target:'scenario-1'},
-    {name:'用户分层',type:'场景',desc:'用户分层和画像',target:'scenario-2'},
-    {name:'数据异常',type:'场景',desc:'解读数据异常',target:'scenario-3'},
-    {name:'周报',type:'场景',desc:'生成周报月报',target:'scenario-4'},
-    {name:'月报',type:'场景',desc:'生成周报月报',target:'scenario-4'},
-    {name:'需求文档',type:'场景',desc:'PRD 初稿',target:'scenario-5'},
-    {name:'PRD',type:'场景',desc:'PRD 初稿',target:'scenario-5'},
-    {name:'定价策略',type:'场景',desc:'定价建议',target:'scenario-6'},
-    {name:'流失分析',type:'场景',desc:'用户流失诊断',target:'scenario-7'},
-    {name:'A/B 实验',type:'场景',desc:'实验方案设计',target:'scenario-8'},
-    {name:'竞品对比',type:'场景',desc:'功能对比矩阵',target:'scenario-9'},
-    {name:'商业化',type:'场景',desc:'商业化方案',target:'scenario-10'},
-    {name:'市场进入',type:'场景',desc:'市场策略分析',target:'scenario-11'},
-    {name:'用户反馈',type:'场景',desc:'反馈归类排序',target:'scenario-12'},
-    {name:'数据监控',type:'场景',desc:'自动化监控',target:'scenario-13'},
-    {name:'策略评估',type:'场景',desc:'评估框架建立',target:'scenario-14'},
-    {name:'策略迁移',type:'场景',desc:'跨产品线迁移',target:'scenario-15'},
-    {name:'订阅增长',type:'场景',desc:'增长模型设计',target:'scenario-16'},
-    // Skills & Commands
-    {name:'problem-statement',type:'skill',desc:'定义清晰的问题',target:'module-learn-3'},
-    {name:'prd-development',type:'skill',desc:'完整 PRD',target:'module-learn-3'},
-    {name:'ai-feature-brief',type:'skill',desc:'AI 功能简报',target:'module-learn-3'},
-    {name:'pricing-packaging-brief',type:'skill',desc:'定价套餐',target:'module-learn-3'},
-    {name:'task-decomposition',type:'skill',desc:'拆解大任务',target:'module-learn-2'},
-    {name:'workshop-facilitation',type:'skill',desc:'结构化引导',target:'module-learn-2'},
-    {name:'review-gates',type:'skill',desc:'交付前审查',target:'module-learn-2'},
-    {name:'conversion-funnel-diagnostic',type:'skill',desc:'漏斗诊断',target:'module-learn-6'},
-    {name:'retention-levers-review',type:'skill',desc:'留存分析',target:'module-learn-6'},
-    {name:'growth-experiment-design',type:'skill',desc:'增长实验',target:'module-learn-6'},
-    {name:'voice-of-customer-synthesis',type:'skill',desc:'用户反馈',target:'module-learn-6'},
-    {name:'model-selection-advisor',type:'skill',desc:'模型选择',target:'module-learn-6'},
-    {name:'ai-risk-review',type:'skill',desc:'AI 风险评审',target:'module-learn-6'},
-    {name:'write-prd',type:'command',desc:'写 PRD',target:'module-learn-7'},
-    {name:'shape-ai-feature',type:'command',desc:'AI 功能定义',target:'module-learn-7'},
-    {name:'commercial-growth-review',type:'command',desc:'增长评审',target:'module-learn-7'},
-    {name:'improve-trial-to-paid',type:'command',desc:'转付费',target:'module-learn-7'},
-    {name:'redesign-pricing-packages',type:'command',desc:'定价重构',target:'module-learn-7'},
-    {name:'analyze-paid-retention',type:'command',desc:'付费留存',target:'module-learn-7'},
-    {name:'prioritize',type:'command',desc:'优先级',target:'module-learn-7'},
-  ];
-  var searchInput=document.getElementById('search-input'),searchResults=document.getElementById('search-results');
-  searchInput.addEventListener('input',debounce(function(){var q=searchInput.value.trim().toLowerCase();if(!q){searchResults.classList.remove('show');return;}var matches=searchData.filter(function(d){return d.name.toLowerCase().indexOf(q)!==-1||d.desc.indexOf(q)!==-1;});if(!matches.length){searchResults.innerHTML='<div class="search-empty">没有找到匹配结果</div>';}else{var h='<div class="search-results-header">'+matches.length+' 个结果</div>';matches.forEach(function(m){h+='<div class="search-result-item" data-target="'+m.target+'"><code>'+m.name+'</code><span class="sr-desc">'+m.desc+'</span></div>';});h+='<div class="search-hint">Esc 关闭 · Ctrl/Cmd+K 搜索</div>';searchResults.innerHTML=h;}searchResults.classList.add('show');},200));
-  searchResults.addEventListener('click',function(e){var item=e.target.closest('.search-result-item');if(item){var t=document.getElementById(item.dataset.target);if(t)t.scrollIntoView({behavior:'smooth'});searchResults.classList.remove('show');searchInput.value='';}});
-  document.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();searchInput.focus();}if(e.key==='Escape'){searchResults.classList.remove('show');searchInput.blur();}});
-  document.addEventListener('click',function(e){if(!document.getElementById('search-wrapper').contains(e.target))searchResults.classList.remove('show');});
+// ── APP ──────────────────────────────────────────────
+let currentSkill=null, currentStep=0, formData={}, activeCategory='全部';
 
-})();
-</script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.querySelector('.theme-toggle').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
+  localStorage.setItem('theme',document.body.classList.contains('dark')?'dark':'light');
+}
+if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark');document.querySelector('.theme-toggle').textContent='☀️';}
 
-<!-- ============ 关于 ============ -->
-<section class="module" id="module-about">
-  <div class="module-content">
-    <div class="about-module animate-in">
-      <div class="about-version">v3.0</div>
-      <h2 class="module-title" style="margin-bottom:var(--space-8)">关于本工具箱</h2>
-      <div class="about-changelog">
-        <dl>
-          <dt>v3.0</dt><dd>视觉统一改造：消除场景与模块的前后割裂感，统一卡片样式和导航体验</dd>
-          <dt>v2.0</dt><dd>工具箱模式改造：新增 16 个场景化 Prompt、首页重设计、场景驱动导航</dd>
-          <dt>v1.0</dt><dd>初始版本，覆盖 22 个 Skills + 10 个 Commands 的完整交互式教程</dd>
-        </dl>
-      </div>
-      <div class="callout callout-info" style="max-width:500px;margin:var(--space-8) auto 0"><div class="callout-icon">📖</div><div class="callout-content"><strong>持续更新</strong><p>本工具箱随仓库迭代持续更新。如有建议或发现错误，欢迎提 Issue。</p></div></div>
+function init(){
+  const cats=['全部',...new Set(skills.map(s=>s.category))];
+  document.getElementById('cats').innerHTML=cats.map(c=>`<button class="cat-btn${c==='全部'?' active':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+  filterCards();
+}
+
+function setCat(c){activeCategory=c;document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('active',b.textContent===c));filterCards();}
+function filterCards(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const filtered=skills.filter(s=>(activeCategory==='全部'||s.category===activeCategory)&&(s.title.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)||s.category.toLowerCase().includes(q)));
+  const grid=document.getElementById('grid');
+  grid.innerHTML=filtered.length?filtered.map(s=>`<div class="card" onclick="openSkill('${s.id}')"><div class="cat-tag">${s.category}</div><h3>${s.title}</h3><div class="desc">${s.desc}</div><div class="meta"><span class="level">${s.level}</span><span>${s.steps.length} 个问题 → 生成 Prompt</span></div></div>`).join(''):'<div class="empty">没有找到匹配的场景</div>';
+}
+
+function openSkill(id){
+  currentSkill=skills.find(s=>s.id===id);currentStep=0;formData={};
+  // init defaults
+  currentSkill.steps.forEach(step=>step.fields.forEach(f=>{
+    if(f.type==='checkbox')formData[f.key]=[...(f.defaults||[])];
+    else if(f.type==='radio')formData[f.key]=f.defaults||'';
+    else formData[f.key]='';
+  }));
+  show('detail');hide('home');hide('result');renderStep();
+}
+
+function renderStep(){
+  const s=currentSkill,step=s.steps[currentStep];
+  const pct=((currentStep+1)/s.steps.length*100);
+  document.getElementById('detail').innerHTML=`
+    <button class="back-btn" onclick="goHome()">← 返回</button>
+    <h2>${s.title}</h2>
+    <div class="detail-desc">${s.desc}</div>
+    <div class="step-indicator"><span class="current">第 ${currentStep+1} 步，共 ${s.steps.length} 步</span><div class="step-bar"><div class="fill" style="width:${pct}%"></div></div></div>
+    <div class="step-title">${step.title}</div>
+    ${step.fields.map(f=>renderField(f)).join('')}
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="prevStep()" ${currentStep===0?'disabled':''}>← 上一步</button>
+      <button class="btn btn-primary" onclick="${currentStep===s.steps.length-1?'generate()':'nextStep()'}">${currentStep===s.steps.length-1?'生成 Prompt →':'下一步 →'}</button>
+    </div>`;
+}
+
+function renderField(f){
+  if(f.type==='text')return`<div class="field"><label>${f.label}</label><input type="text" value="${esc(formData[f.key])}" placeholder="${f.placeholder||''}" onchange="formData['${f.key}']=this.value"></div>`;
+  if(f.type==='textarea')return`<div class="field"><label>${f.label}</label><textarea placeholder="${f.placeholder||''}" onchange="formData['${f.key}']=this.value">${esc(formData[f.key])}</textarea></div>`;
+  if(f.type==='checkbox')return`<div class="field"><label>${f.label||''}</label><div class="tag-group">${f.options.map(o=>`<div class="tag-option${(formData[f.key]||[]).includes(o)?' selected':''}" onclick="toggleTag('${f.key}','${o}',this)">${o}</div>`).join('')}</div></div>`;
+  if(f.type==='radio')return`<div class="field"><label>${f.label||''}</label><div class="tag-group">${f.options.map(o=>`<div class="tag-option${formData[f.key]===o?' selected':''}" onclick="setRadio('${f.key}','${o}',this)">${o}</div>`).join('')}</div></div>`;
+  return'';
+}
+
+function toggleTag(key,val,el){if(!formData[key])formData[key]=[];const i=formData[key].indexOf(val);if(i>=0)formData[key].splice(i,1);else formData[key].push(val);el.classList.toggle('selected');}
+function setRadio(key,val,el){formData[key]=val;el.parentElement.querySelectorAll('.tag-option').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');}
+function esc(s){return String(s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function nextStep(){currentStep++;renderStep();}
+function prevStep(){currentStep--;renderStep();}
+
+function generate(){
+  const prompt=currentSkill.prompt(formData);
+  show('result');hide('detail');hide('home');
+  document.getElementById('result').innerHTML=`
+    <div class="check">✅</div>
+    <h2>你的专属 Prompt 已生成</h2>
+    <div class="prompt-block"><pre>${esc(prompt)}</pre></div>
+    <div class="result-actions">
+      <button class="btn btn-primary" onclick="copyPrompt(this)">📋 复制到剪贴板</button>
+      <button class="btn btn-secondary" onclick="backToForm()">✏️ 修改回答</button>
+      <button class="btn btn-secondary" onclick="generate()">🔄 重新生成</button>
     </div>
-  </div>
-</section>
+    <div class="tips"><h4>💡 使用提示</h4><ul>${currentSkill.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;
+}
+
+function copyPrompt(btn){
+  const text=document.querySelector('.prompt-block pre').textContent;
+  navigator.clipboard.writeText(text).then(()=>{btn.textContent='已复制 ✓';setTimeout(()=>btn.textContent='📋 复制到剪贴板',2000);});
+}
+
+function backToForm(){show('detail');hide('result');renderStep();}
+function goHome(){currentSkill=null;show('home');hide('detail');hide('result');}
+function show(id){document.getElementById(id).classList.remove('hidden');}
+function hide(id){document.getElementById(id).classList.add('hidden');}
+
+init();
+</script>
 </body>
 </html>
