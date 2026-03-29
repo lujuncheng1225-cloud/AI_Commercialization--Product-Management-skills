@@ -31,6 +31,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .card .meta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3)}
 .card .meta .level{padding:2px 8px;border-radius:6px;background:var(--brand-bg);color:var(--brand);font-weight:500}
 .theme-toggle{position:fixed;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:100}
+.lang-toggle{position:fixed;top:16px;right:62px;padding:4px;border-radius:20px;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;font-size:12px;font-weight:600;z-index:100;color:var(--text2);gap:0;overflow:hidden}
+.lang-toggle button{border:none;background:none;padding:4px 10px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text3);transition:all .2s;border-radius:16px}
+.lang-toggle button.active{background:var(--brand);color:#fff}
 .detail{max-width:600px;margin:0 auto}
 .back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--text2);font-size:14px;cursor:pointer;margin-bottom:24px;background:none;border:none}
 .back-btn:hover{color:var(--brand)}
@@ -73,10 +76,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 </style>
 </head>
 <body>
+<div class="lang-toggle" id="langToggle"><button id="langZh" onclick="setLang('zh')">中</button><button id="langEn" onclick="setLang('en')">EN</button></div>
 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 <div class="container">
 <div id="home">
-<div class="header"><h1>PM AI Skill 工具箱</h1><p>产品经理的 AI 技能库 · 选场景，答问题，生成专属 Prompt</p></div>
+<div class="header"><h1 id="pageTitle">PM AI Skill 工具箱</h1><p id="pageSubtitle">产品经理的 AI 技能库 · 选场景，答问题，生成专属 Prompt</p></div>
 <div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" id="search" placeholder="搜索场景…" oninput="filterCards()"></div>
 <div class="categories" id="cats"></div>
 <div class="grid" id="grid"></div>
@@ -85,8 +89,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <div id="result" class="result hidden"></div>
 </div>
 <script>
+const i18n={
+  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，生成专属 Prompt',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'生成 Prompt →',copy:'📋 复制到剪贴板',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'你的专属 Prompt 已生成',tipsTitle:'💡 使用提示',cardMeta:(n)=>`${n} 个问题 → 生成 Prompt`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
+  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, generate your Prompt',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Generate Prompt →',copy:'📋 Copy to clipboard',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your custom Prompt is ready',tipsTitle:'💡 Tips',cardMeta:(n)=>`${n} questions → Generate Prompt`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
+};
+
+let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh')?'zh':'en');
+
+function t(key){return i18n[currentLang][key];}
+function catLabel(c){return i18n[currentLang].categories[c]||c;}
+function levelLabel(l){return i18n[currentLang].levels[l]||l;}
+function setLang(lang){
+  currentLang=lang;localStorage.setItem('lang',lang);
+  document.getElementById('langZh').classList.toggle('active',lang==='zh');
+  document.getElementById('langEn').classList.toggle('active',lang==='en');
+  document.documentElement.lang=lang==='zh'?'zh-CN':'en';
+  if(currentSkill)renderStep(); else{init();}
+}
+document.getElementById('langZh').classList.toggle('active',currentLang==='zh');
+document.getElementById('langEn').classList.toggle('active',currentLang==='en');
+document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';
+
 const skills=[
-{id:'competitor-feature',category:'竞品分析',title:'竞品功能对比',desc:'输入产品名，AI 帮你生成结构化功能对比矩阵',level:'入门',
+{id:'competitor-feature',category:'竞品分析',title:'竞品功能对比',titleEn:'Feature Comparison',desc:'输入产品名，AI 帮你生成结构化功能对比矩阵',descEn:'Generate a structured feature comparison matrix for any two products',level:'入门',
 steps:[
 {title:'你要对比哪两个产品？',fields:[{key:'productA',label:'产品 A',type:'text',placeholder:'如：TikTok'},{key:'productB',label:'产品 B',type:'text',placeholder:'如：Instagram Reels'}]},
 {title:'你想重点对比哪些方面？',fields:[{key:'dimensions',type:'checkbox',options:['核心功能','用户体验','变现模式','用户增长','技术架构','市场定位'],defaults:['核心功能','用户体验']}]},
@@ -95,7 +120,7 @@ steps:[
 prompt:d=>`你是一个资深产品经理，擅长竞品分析。\n\n请对比以下两个产品：\n· ${d.productA}\n· ${d.productB}\n\n重点对比维度：\n${d.dimensions.map(v=>'· '+v).join('\n')}\n\n${d.context?'我的背景：'+d.context+'\n\n':''}请按以下结构输出：\n1. 市场定位对比\n2. 核心功能对比矩阵（用表格）\n3. 用户体验差异\n4. 差异化分析\n5. 结论与建议`,
 tips:['把生成的 Prompt 粘贴到 ChatGPT 或 DeepSeek','可以追问"帮我补充用户评价方面的对比"','建议使用 GPT-4 或 Claude 获得最佳效果']},
 
-{id:'competitor-pricing',category:'竞品分析',title:'竞品定价分析',desc:'对比竞品定价策略，找到定价机会点',level:'进阶',
+{id:'competitor-pricing',category:'竞品分析',title:'竞品定价分析',titleEn:'Pricing Analysis',desc:'对比竞品定价策略，找到定价机会点',descEn:'Compare competitor pricing strategies and find pricing opportunities',level:'进阶',
 steps:[
 {title:'你要分析哪些产品的定价？',fields:[{key:'products',label:'产品列表',type:'textarea',placeholder:'每行一个，如：\nNotion\nCoda\nObsidian'},{key:'market',label:'目标市场',type:'text',placeholder:'如：全球 SaaS 市场'}]},
 {title:'你已有的定价信息（可选）',fields:[{key:'pricing',label:'已知定价信息',type:'textarea',placeholder:'如：Notion 免费/$8/$15'}]},
@@ -104,7 +129,7 @@ steps:[
 prompt:d=>`你是一个资深的 SaaS 产品经理，擅长定价策略分析。\n\n请分析以下产品的定价策略：\n${d.products.split('\n').filter(Boolean).map(v=>'· '+v).join('\n')}\n\n目标市场：${d.market}\n${d.pricing?'已知定价信息：\n'+d.pricing+'\n\n':''}重点分析维度：\n${d.focus.map(v=>'· '+v).join('\n')}\n\n请按以下结构输出：\n1. 各产品定价概览（表格）\n2. 定价模型对比分析\n3. 价格-功能对应关系\n4. 目标用户分层策略\n5. 定价机会与建议`,
 tips:['不知道竞品定价也没关系，AI 会基于公开信息分析','追问"如果我要做低价切入，怎么定价合适"']},
 
-{id:'competitor-tracking',category:'竞品分析',title:'竞品动态追踪',desc:'生成竞品监控框架，系统化追踪竞品变化',level:'入门',
+{id:'competitor-tracking',category:'竞品分析',title:'竞品动态追踪',titleEn:'Competitive Tracking',desc:'生成竞品监控框架，系统化追踪竞品变化',descEn:'Build a competitive monitoring framework to track changes systematically',level:'入门',
 steps:[
 {title:'你要追踪哪些竞品？',fields:[{key:'competitors',label:'竞品列表',type:'textarea',placeholder:'每行一个，如：\nFigma\nSketch\nAdobe XD'}]},
 {title:'你关注的动态类型？',fields:[{key:'trackTypes',type:'checkbox',options:['产品更新','新功能发布','定价变化','市场活动','融资动态','团队变化','用户评价'],defaults:['产品更新','新功能发布','定价变化']}]}
@@ -112,7 +137,7 @@ steps:[
 prompt:d=>`你是一个资深产品经理，擅长竞品情报收集与分析。\n\n请帮我建立一个竞品动态追踪框架：\n\n追踪目标：\n${d.competitors.split('\n').filter(Boolean).map(v=>'· '+v).join('\n')}\n\n重点追踪类型：\n${d.trackTypes.map(v=>'· '+v).join('\n')}\n\n请输出：\n1. 信息来源清单（每个竞品推荐 5-8 个信息渠道）\n2. 追踪频率建议\n3. 动态分类标签体系\n4. 一份可直接使用的竞品动态周报模板\n5. 关键信号识别指南`,
 tips:['可以把生成的追踪框架放入 Notion / 飞书多维表格使用','追问"帮我设计竞品动态周报的具体格式"']},
 
-{id:'user-persona',category:'用户研究',title:'用户画像生成',desc:'输入产品信息，AI 生成详细的用户画像',level:'入门',
+{id:'user-persona',category:'用户研究',title:'用户画像生成',titleEn:'User Persona',desc:'输入产品信息，AI 生成详细的用户画像',descEn:'Generate detailed user personas based on your product info',level:'入门',
 steps:[
 {title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：一个面向独立设计师的项目管理工具'}]},
 {title:'你的目标用户大致是谁？',fields:[{key:'target',label:'目标用户',type:'text',placeholder:'如：自由职业设计师、小团队负责人'}]},
@@ -121,7 +146,7 @@ steps:[
 prompt:d=>`你是一个资深用户研究员，擅长构建用户画像。\n\n产品：${d.product}\n目标用户：${d.target}\n使用场景：\n${d.scenarios.map(v=>'· '+v).join('\n')}\n\n请生成 3 个详细的用户画像，每个包含：\n1. 基本信息（虚构但合理）\n2. 用户目标与痛点\n3. 使用行为特征\n4. 决策因素\n5. 典型的一天（Day in the Life）\n6. 对我们产品的期待与担忧`,
 tips:['生成的画像可用于 PRD、设计评审和营销文案','追问"帮我补充用户获取渠道分析"']},
 
-{id:'user-feedback',category:'用户研究',title:'用户反馈分析',desc:'粘贴用户反馈，AI 帮你提炼关键洞察',level:'入门',
+{id:'user-feedback',category:'用户研究',title:'用户反馈分析',titleEn:'Feedback Analysis',desc:'粘贴用户反馈，AI 帮你提炼关键洞察',descEn:'Paste user feedback and extract key insights',level:'入门',
 steps:[
 {title:'粘贴用户反馈',fields:[{key:'feedback',label:'用户反馈内容',type:'textarea',placeholder:'每条反馈一行，如：\n"导出功能太慢了"\n"希望支持暗色模式"\n"协作功能不够流畅"'}]},
 {title:'你希望重点分析什么？',fields:[{key:'focus',type:'radio',options:['功能需求提炼','情感倾向分析','优先级排序','全部都分析'],defaults:'全部都分析'}]}
@@ -129,7 +154,7 @@ steps:[
 prompt:d=>`你是一个资深产品经理，擅长用户反馈分析。\n\n以下是收集到的用户反馈：\n${d.feedback}\n\n请进行分析，重点：${d.focus}\n\n请输出：\n1. 反馈总览\n2. 高频关键词提取\n3. 功能需求分类与优先级建议\n4. 正面反馈亮点\n5. 负面反馈痛点及根因分析\n6. 行动建议（短期 vs 长期）`,
 tips:['反馈越多分析越准确，建议至少 10 条','追问"帮我设计一个用户反馈收集问卷"']},
 
-{id:'user-churn',category:'用户研究',title:'用户流失分析',desc:'分析用户为什么离开，找到挽回策略',level:'进阶',
+{id:'user-churn',category:'用户研究',title:'用户流失分析',titleEn:'Churn Analysis',desc:'分析用户为什么离开，找到挽回策略',descEn:'Analyze why users leave and find retention strategies',level:'进阶',
 steps:[
 {title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'text',placeholder:'如：在线教育平台，月费 99 元'}]},
 {title:'你知道的流失情况',fields:[{key:'data',label:'流失数据',type:'textarea',placeholder:'如：月流失率约 8%，主要在第 7-14 天流失'}]},
@@ -138,7 +163,7 @@ steps:[
 prompt:d=>`你是一个资深增长产品经理，擅长用户留存和流失分析。\n\n产品：${d.product}\n\n流失数据：\n${d.data}\n\n怀疑的流失原因：\n${d.suspects.map(v=>'· '+v).join('\n')}\n\n请输出：\n1. 流失漏斗分析\n2. 流失用户画像特征\n3. 流失原因假设排序\n4. 验证假设的方案\n5. 挽回策略建议（按用户价值分层）\n6. 预防流失的长期策略`,
 tips:['数据不多也没关系，AI 会基于常见模式给出分析框架','追问"帮我设计新用户 Onboarding 优化方案"']},
 
-{id:'req-priority',category:'需求管理',title:'需求优先级排序',desc:'粘贴需求列表，AI 用专业框架帮你排序',level:'进阶',
+{id:'req-priority',category:'需求管理',title:'需求优先级排序',titleEn:'Priority Sorting',desc:'粘贴需求列表，AI 用专业框架帮你排序',descEn:'Sort requirements using professional frameworks (RICE, ICE, etc.)',level:'进阶',
 steps:[
 {title:'粘贴你的需求列表',fields:[{key:'requirements',label:'需求列表',type:'textarea',placeholder:'每行一个，如：\n1. 支持暗色模式\n2. 导出为 PDF\n3. 团队协作权限管理'}]},
 {title:'选择排序框架',fields:[{key:'framework',type:'radio',options:['RICE（覆盖×影响×信心÷工作量）','ICE（影响×信心×难易度）','自定义权重'],defaults:'RICE（覆盖×影响×信心÷工作量）'}]}
@@ -146,7 +171,7 @@ steps:[
 prompt:d=>`你是一个资深产品经理，擅长需求管理和优先级决策。\n\n以下是我的需求列表：\n${d.requirements}\n\n请使用 ${d.framework} 框架帮我排序。\n\n请输出：\n1. 每个需求的框架评分明细（用表格）\n2. 排序结果（从高到低）\n3. 分为三档：立即做 / 计划做 / 暂缓\n4. 如果只能选 3 个，推荐哪 3 个？为什么？`,
 tips:['需求描述越详细，排序越准确','追问"帮我补充每个需求的工作量估算"']},
 
-{id:'prd-draft',category:'需求管理',title:'PRD 初稿生成',desc:'输入需求信息，AI 生成结构化 PRD 初稿',level:'进阶',
+{id:'prd-draft',category:'需求管理',title:'PRD 初稿生成',titleEn:'PRD Draft',desc:'输入需求信息，AI 生成结构化 PRD 初稿',descEn:'Generate a structured PRD draft from your requirements',level:'进阶',
 steps:[
 {title:'你要做什么功能/产品？',fields:[{key:'requirement',label:'需求描述',type:'textarea',placeholder:'如：为项目管理工具增加甘特图功能，支持任务依赖关系可视化'}]},
 {title:'谁会用这个功能？',fields:[{key:'users',label:'目标用户',type:'text',placeholder:'如：项目经理、团队负责人'}]},
@@ -156,7 +181,7 @@ steps:[
 prompt:d=>`你是一个资深产品经理，擅长撰写 PRD。\n\n需求：${d.requirement}\n目标用户：${d.users}\n\n核心功能：\n${d.features.split('\n').filter(Boolean).map(v=>'· '+v).join('\n')}\n\n约束条件：\n${d.constraints.map(v=>'· '+v).join('\n')}\n\n请生成一份完整的 PRD 初稿：\n1. 文档概述（背景、目标、范围）\n2. 用户故事（User Stories）\n3. 功能需求详细说明\n4. 非功能需求\n5. 交互流程说明\n6. 数据需求\n7. 验收标准\n8. 上线计划建议`,
 tips:['PRD 初稿需要根据实际情况调整完善','追问"帮我补充竞品在这方面的做法"']},
 
-{id:'req-review',category:'需求管理',title:'需求评审模拟',desc:'AI 扮演评审专家，提前发现需求漏洞',level:'进阶',
+{id:'req-review',category:'需求管理',title:'需求评审模拟',titleEn:'Review Simulation',desc:'AI 扮演评审专家，提前发现需求漏洞',descEn:'AI acts as a reviewer to find gaps in your requirements',level:'进阶',
 steps:[
 {title:'粘贴你的需求描述',fields:[{key:'requirement',label:'需求描述',type:'textarea',placeholder:'如：我们计划增加 AI 写作助手功能，用户输入主题自动生成文章大纲…'}]},
 {title:'你希望从哪些角度评审？',fields:[{key:'angles',type:'checkbox',options:['完整性','可行性','用户价值','技术风险','边界条件','异常场景','性能影响','数据安全'],defaults:['完整性','可行性','用户价值','边界条件']}]}
@@ -164,7 +189,7 @@ steps:[
 prompt:d=>`你是一个严格但建设性的需求评审专家。请对以下需求进行评审：\n\n${d.requirement}\n\n评审角度：\n${d.angles.map(v=>'· '+v).join('\n')}\n\n请输出：\n1. 需求理解确认\n2. 发现的问题（P0 致命 / P1 重要 / P2 建议）\n3. 遗漏的场景和边界条件\n4. 潜在的技术风险\n5. 改进建议\n6. 评审结论：通过 / 有条件通过 / 需要修改`,
 tips:['这个 Skill 相当于免费的评审预演','追问"如果我是评审委员会成员，我会怎么提问"']},
 
-{id:'pricing-strategy',category:'定价策略',title:'定价方案建议',desc:'根据产品价值和市场情况，获得定价方案建议',level:'进阶',
+{id:'pricing-strategy',category:'定价策略',title:'定价方案建议',titleEn:'Pricing Strategy',desc:'根据产品价值和市场情况，获得定价方案建议',descEn:'Get pricing recommendations based on product value and market',level:'进阶',
 steps:[
 {title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：SaaS 项目管理工具，核心功能是看板、甘特图、团队协作'}]},
 {title:'用户能获得什么价值？',fields:[{key:'value',label:'核心价值',type:'textarea',placeholder:'如：提升团队协作效率 30%，减少会议时间'}]},
@@ -173,7 +198,7 @@ steps:[
 prompt:d=>`你是一个资深的定价策略专家。\n\n产品：${d.product}\n\n用户核心价值：\n${d.value}\n\n竞品定价：\n${d.competitors}\n\n请输出：\n1. 定价模型建议（订阅制/按量计费/阶梯定价/…）\n2. 建议价格区间（含理由）\n3. 版本划分建议（免费版/专业版/企业版）\n4. 每个版本的功能与定价\n5. 定价心理学技巧建议\n6. 上线定价策略`,
 tips:['定价是动态的，建议定期回顾调整','追问"如果我要做免费增值模式，怎么设计免费版边界"']},
 
-{id:'ab-pricing',category:'定价策略',title:'AB 定价实验设计',desc:'科学设计定价实验，用数据驱动定价决策',level:'高级',
+{id:'ab-pricing',category:'定价策略',title:'AB 定价实验设计',titleEn:'Pricing Experiment',desc:'科学设计定价实验，用数据驱动定价决策',descEn:'Design scientific pricing experiments with data-driven decisions',level:'高级',
 steps:[
 {title:'你的实验目标是什么？',fields:[{key:'goal',label:'实验目标',type:'text',placeholder:'如：验证 $29/月 vs $39/月 哪个 ARPU 更高'}]},
 {title:'你要测试的变量',fields:[{key:'variables',label:'变量定义',type:'textarea',placeholder:'如：\nA组：$29/月\nB组：$39/月（含高级功能）'}]},
@@ -182,7 +207,7 @@ steps:[
 prompt:d=>`你是一个资深的增长实验专家，擅长定价实验设计。\n\n实验目标：${d.goal}\n\n测试变量：\n${d.variables}\n\n可用数据：\n${d.data.map(v=>'· '+v).join('\n')}\n\n请设计完整的 AB 定价实验方案：\n1. 实验假设\n2. 实验设计（分组方式、流量分配、实验周期）\n3. 样本量计算\n4. 核心指标定义\n5. 实验监控方案\n6. 结果判定标准\n7. 风险控制措施`,
 tips:['定价实验涉及收入，建议小流量测试后逐步放量','追问"如果实验结果不显著怎么办"']},
 
-{id:'data-anomaly',category:'数据分析',title:'数据异常解读',desc:'描述数据异常，AI 帮你排查原因',level:'入门',
+{id:'data-anomaly',category:'数据分析',title:'数据异常解读',titleEn:'Anomaly Diagnosis',desc:'描述数据异常，AI 帮你排查原因',descEn:'Describe a data anomaly and get root cause analysis',level:'入门',
 steps:[
 {title:'描述你观察到的异常',fields:[{key:'anomaly',label:'异常描述',type:'textarea',placeholder:'如：昨天 DAU 突然下降了 15%，从 10 万降到 8.5 万'}]},
 {title:'你有哪些相关信息？',fields:[{key:'info',label:'可用信息',type:'textarea',placeholder:'如：\n安卓端下降明显，iOS 端正常\n新用户和活跃用户都在下降'}]}
@@ -190,7 +215,7 @@ steps:[
 prompt:d=>`你是一个资深数据分析专家，擅长排查数据异常。\n\n异常描述：\n${d.anomaly}\n\n相关信息：\n${d.info}\n\n请帮我排查：\n1. 可能的原因分类（技术问题/外部因素/数据问题/产品问题）\n2. 逐一分析每种可能性的概率\n3. 建议排查的步骤和数据维度\n4. 需要进一步确认的信息\n5. 紧急处理建议`,
 tips:['描述越详细，排查方向越准确','追问"帮我设计一个数据异常自动告警方案"']},
 
-{id:'report-gen',category:'数据分析',title:'周报/月报生成',desc:'输入关键信息，AI 生成结构化汇报',level:'入门',
+{id:'report-gen',category:'数据分析',title:'周报/月报生成',titleEn:'Report Generator',desc:'输入关键信息，AI 生成结构化汇报',descEn:'Generate structured weekly or monthly reports',level:'入门',
 steps:[
 {title:'核心指标数据',fields:[{key:'metrics',label:'指标数据',type:'textarea',placeholder:'如：\nDAU：12.5 万（环比 +8%）\n付费转化率：3.2%（环比 +0.3%）'}]},
 {title:'关键进展和事件',fields:[{key:'progress',label:'关键进展',type:'textarea',placeholder:'如：\n- 完成了 v2.0 发布\n- 上线了推荐系统'}]},
@@ -199,7 +224,7 @@ steps:[
 prompt:d=>`你是一个资深产品经理，擅长工作汇报。\n\n请根据以下信息生成一份周报：\n\n核心指标：\n${d.metrics}\n\n关键进展：\n${d.progress}\n\n问题与风险：\n${d.risks}\n\n请输出：\n1. 本周概览（2-3 句话总结）\n2. 核心指标表现（用表格，标注环比变化）\n3. 重点进展\n4. 问题与风险（标注严重程度）\n5. 下周计划建议\n6. 需要协调的资源`,
 tips:['周报重在简洁，突出变化和行动','追问"帮我优化这份周报，让它更简洁"']},
 
-{id:'dashboard-design',category:'数据分析',title:'数据看板设计',desc:'设计产品数据看板，明确核心监控指标',level:'进阶',
+{id:'dashboard-design',category:'数据分析',title:'数据看板设计',titleEn:'Dashboard Design',desc:'设计产品数据看板，明确核心监控指标',descEn:'Design product dashboards with key metrics',level:'进阶',
 steps:[
 {title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'text',placeholder:'如：电商小程序，主要卖美妆产品'}]},
 {title:'你的监控目标是什么？',fields:[{key:'goals',type:'checkbox',options:['用户增长','活跃度','商业化','留存','用户体验','运营效率'],defaults:['用户增长','商业化','留存']}]}
@@ -207,7 +232,7 @@ steps:[
 prompt:d=>`你是一个资深数据分析师，擅长数据看板设计。\n\n产品：${d.product}\n监控目标：\n${d.goals.map(v=>'· '+v).join('\n')}\n\n请设计一个完整的数据看板方案：\n1. 看板分区结构（一级指标 / 二级指标 / 下钻维度）\n2. 每个区域的核心指标定义（指标名、计算方式、目标值）\n3. 建议的图表类型\n4. 告警规则建议\n5. 看板布局建议`,
 tips:['先确定北极星指标，再搭建看板','追问"帮我用 SQL 写这些指标的计算逻辑"']},
 
-{id:'monetization',category:'商业化',title:'商业化方案',desc:'为你的产品设计完整的商业化方案',level:'高级',
+{id:'monetization',category:'商业化',title:'商业化方案',titleEn:'Monetization Plan',desc:'为你的产品设计完整的商业化方案',descEn:'Design a complete monetization plan for your product',level:'高级',
 steps:[
 {title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：AI 写作助手工具，已有 5 万免费用户'}]},
 {title:'你倾向什么商业模式？',fields:[{key:'model',type:'radio',options:['订阅制','按量付费','广告变现','电商/交易','混合模式','不确定，帮我分析'],defaults:'不确定，帮我分析'}]},
@@ -216,7 +241,7 @@ steps:[
 prompt:d=>`你是一个资深商业化专家。\n\n产品：${d.product}\n偏好商业模式：${d.model}\n目标市场：${d.market}\n\n请设计完整的商业化方案：\n1. 推荐的商业模式及理由\n2. 收入模型测算（用户数 × 转化率 × ARPU）\n3. 产品分层策略（免费/付费/高级）\n4. 变现路径规划\n5. 关键里程碑和目标\n6. 风险与应对`,
 tips:['商业化需要结合实际数据，建议先用小规模验证','追问"帮我做一份 12 个月的商业化路线图"']},
 
-{id:'retention-strategy',category:'商业化',title:'续订挽回策略',desc:'设计用户续订和流失挽回策略',level:'高级',
+{id:'retention-strategy',category:'商业化',title:'续订挽回策略',titleEn:'Retention Strategy',desc:'设计用户续订和流失挽回策略',descEn:'Design subscription renewal and win-back strategies',level:'高级',
 steps:[
 {title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'text',placeholder:'如：SaaS 设计工具，月费 49 元'}]},
 {title:'流失用户有什么特征？',fields:[{key:'traits',label:'流失特征',type:'textarea',placeholder:'如：\n大多在订阅第 3 个月流失\n使用频率低于每周 1 次\n主要来自免费试用转化'}]}
@@ -224,7 +249,7 @@ steps:[
 prompt:d=>`你是一个资深增长产品经理，擅长用户续订和流失挽回。\n\n产品：${d.product}\n\n流失用户特征：\n${d.traits}\n\n请设计完整的续订挽回策略：\n1. 流失预警体系（提前识别高风险用户）\n2. 续订激励方案（折扣/赠品/功能解锁）\n3. 流失挽回触达策略（时机/渠道/话术）\n4. 重新激活方案（回归用户专属优惠）\n5. 长期留存提升策略`,
 tips:['挽回成本远低于获客成本，值得投入','追问"帮我设计具体的挽回邮件模板"']},
 
-{id:'growth-experiment',category:'增长策略',title:'增长实验设计',desc:'设计科学的增长实验，系统化推动用户增长',level:'进阶',
+{id:'growth-experiment',category:'增长策略',title:'增长实验设计',titleEn:'Growth Experiment',desc:'设计科学的增长实验，系统化推动用户增长',descEn:'Design scientific growth experiments',level:'进阶',
 steps:[
 {title:'你的增长目标是什么？',fields:[{key:'goal',label:'增长目标',type:'text',placeholder:'如：3 个月内 DAU 从 10 万增长到 30 万'}]},
 {title:'你可以用的增长杠杆',fields:[{key:'levers',type:'checkbox',options:['产品驱动增长','渠道投放','内容营销','社交裂变','SEO/ASO','合作BD','付费获客'],defaults:['产品驱动增长','社交裂变','内容营销']}]},
@@ -233,7 +258,7 @@ steps:[
 prompt:d=>`你是一个资深增长专家，擅长增长实验设计。\n\n增长目标：${d.goal}\n\n可用杠杆：\n${d.levers.map(v=>'· '+v).join('\n')}\n\n约束条件：\n${d.constraints}\n\n请设计一份增长实验计划：\n1. 增长模型分解（北极星指标 → 关键子指标）\n2. 快赢实验（1-2 周可出结果，低成本）\n3. 核心实验（1-2 月，中投入）\n4. 长期投入（需要持续建设）\n5. 每个实验的假设、设计、预期结果\n6. 实验优先级排序`,
 tips:['增长实验要并行跑多个，不要押注单一方案','追问"帮我设计一个推荐裂变方案"']},
 
-{id:'market-entry',category:'增长策略',title:'市场进入策略',desc:'为新市场进入制定策略和行动计划',level:'高级',
+{id:'market-entry',category:'增长策略',title:'市场进入策略',titleEn:'Market Entry',desc:'为新市场进入制定策略和行动计划',descEn:'Develop strategies and action plans for new market entry',level:'高级',
 steps:[
 {title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：AI 图片编辑 App，目前在国内运营'}]},
 {title:'你想进入什么市场？',fields:[{key:'market',label:'目标市场',type:'text',placeholder:'如：东南亚市场 / 日本市场 / 北美市场'}]},
@@ -242,7 +267,7 @@ steps:[
 prompt:d=>`你是一个资深战略产品经理，擅长市场进入策略。\n\n产品：${d.product}\n目标市场：${d.market}\n\n可用资源：\n${d.resources.map(v=>'· '+v).join('\n')}\n\n请设计市场进入策略：\n1. 目标市场分析（用户特征、竞争格局、政策环境）\n2. 进入模式建议（直接进入/合作/收购/…）\n3. 产品本地化策略\n4. 获客策略\n5. 里程碑规划（第 1 月/第 3 月/第 6 月/第 12 月）\n6. 风险与应对`,
 tips:['市场进入需要充分调研，建议先做小规模验证','追问"帮我分析这个市场的竞争格局"']},
 
-{id:'cross-team-email',category:'项目沟通',title:'跨部门沟通邮件',desc:'生成专业的跨部门沟通邮件，推动协作',level:'入门',
+{id:'cross-team-email',category:'项目沟通',title:'跨部门沟通邮件',titleEn:'Cross-team Email',desc:'生成专业的跨部门沟通邮件，推动协作',descEn:'Generate professional cross-team communication emails',level:'入门',
 steps:[
 {title:'你的沟通目的是什么？',fields:[{key:'purpose',label:'沟通目的',type:'text',placeholder:'如：请求技术团队排期支持新功能开发'}]},
 {title:'对方是什么角色/部门？',fields:[{key:'audience',label:'对方角色',type:'text',placeholder:'如：技术负责人、设计团队、运营团队'}]},
@@ -251,7 +276,7 @@ steps:[
 prompt:d=>`你是一个擅长跨部门沟通的产品经理。请帮我写一封沟通邮件：\n\n沟通目的：${d.purpose}\n对方：${d.audience}\n\n关键信息：\n${d.info}\n\n请输出：\n1. 邮件主题（简洁有力）\n2. 邮件正文（专业但不生硬）\n3. 行动呼吁（明确的下一步）\n\n要求：\n- 语气专业友好\n- 结构清晰（背景 → 需求 → 价值 → 请求）\n- 体现对对方工作量和立场的理解\n- 长度控制在 200 字以内`,
 tips:['好的邮件要站在对方角度写','追问"帮我改成更正式/更轻松的语气"']},
 
-{id:'project-retrospective',category:'项目沟通',title:'项目复盘报告',desc:'生成结构化的项目复盘，沉淀经验教训',level:'进阶',
+{id:'project-retrospective',category:'项目沟通',title:'项目复盘报告',titleEn:'Project Retrospective',desc:'生成结构化的项目复盘，沉淀经验教训',descEn:'Generate structured project retrospectives',level:'进阶',
 steps:[
 {title:'项目名称和基本情况',fields:[{key:'project',label:'项目描述',type:'textarea',placeholder:'如：v2.0 大版本升级，历时 3 个月，团队 8 人'}]},
 {title:'项目结果如何？',fields:[{key:'result',label:'项目结果',type:'textarea',placeholder:'如：\n按时上线\n核心指标提升了 20%\n但有 3 个已知 bug 待修复'}]},
@@ -272,17 +297,24 @@ function toggleTheme(){
 if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark');document.querySelector('.theme-toggle').textContent='☀️';}
 
 function init(){
-  const cats=['全部',...new Set(skills.map(s=>s.category))];
-  document.getElementById('cats').innerHTML=cats.map(c=>`<button class="cat-btn${c==='全部'?' active':''}" onclick="setCat('${c}')">${c}</button>`).join('');
+  const allLabel=t('all');
+  const cats=[allLabel,...new Set(skills.map(s=>catLabel(s.category)))];
+  const catKeys=[...new Set(skills.map(s=>s.category))];
+  document.getElementById('cats').innerHTML=[allLabel,...catKeys.map(c=>catLabel(c))].map((label,i)=>`<button class="cat-btn${i===0?' active':''}" data-cat="${i===0?'all':catKeys[i-1]}" onclick="setCat('${i===0?'all':catKeys[i-1]}')">${label}</button>`).join('');
+  // update header
+  document.querySelector('.header h1').textContent=t('pageTitle');
+  document.querySelector('.header p').textContent=t('pageSubtitle');
+  document.getElementById('search').placeholder=t('searchPlaceholder');
+  document.title=t('pageTitle');
   filterCards();
 }
 
-function setCat(c){activeCategory=c;document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('active',b.textContent===c));filterCards();}
+function setCat(c){activeCategory=c;document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));filterCards();}
 function filterCards(){
   const q=document.getElementById('search').value.toLowerCase();
-  const filtered=skills.filter(s=>(activeCategory==='全部'||s.category===activeCategory)&&(s.title.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)||s.category.toLowerCase().includes(q)));
+  const filtered=skills.filter(s=>(activeCategory==='all'||s.category===activeCategory)&&(s.title.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)||(s.titleEn||'').toLowerCase().includes(q)||(s.descEn||'').toLowerCase().includes(q)||s.category.toLowerCase().includes(q)||catLabel(s.category).toLowerCase().includes(q)));
   const grid=document.getElementById('grid');
-  grid.innerHTML=filtered.length?filtered.map(s=>`<div class="card" onclick="openSkill('${s.id}')"><div class="cat-tag">${s.category}</div><h3>${s.title}</h3><div class="desc">${s.desc}</div><div class="meta"><span class="level">${s.level}</span><span>${s.steps.length} 个问题 → 生成 Prompt</span></div></div>`).join(''):'<div class="empty">没有找到匹配的场景</div>';
+  grid.innerHTML=filtered.length?filtered.map(s=>`<div class="card" onclick="openSkill('${s.id}')"><div class="cat-tag">${catLabel(s.category)}</div><h3>${currentLang==='zh'?s.title:s.titleEn}</h3><div class="desc">${currentLang==='zh'?s.desc:s.descEn}</div><div class="meta"><span class="level">${levelLabel(s.level)}</span><span>${t('cardMeta')(s.steps.length)}</span></div></div>`).join(''):`<div class="empty">${t('empty')}</div>`;
 }
 
 function openSkill(id){
@@ -299,16 +331,17 @@ function openSkill(id){
 function renderStep(){
   const s=currentSkill,step=s.steps[currentStep];
   const pct=((currentStep+1)/s.steps.length*100);
+  const isLast=currentStep===s.steps.length-1;
   document.getElementById('detail').innerHTML=`
-    <button class="back-btn" onclick="goHome()">← 返回</button>
-    <h2>${s.title}</h2>
-    <div class="detail-desc">${s.desc}</div>
-    <div class="step-indicator"><span class="current">第 ${currentStep+1} 步，共 ${s.steps.length} 步</span><div class="step-bar"><div class="fill" style="width:${pct}%"></div></div></div>
+    <button class="back-btn" onclick="goHome()">${t('back')}</button>
+    <h2>${currentLang==='zh'?s.title:s.titleEn}</h2>
+    <div class="detail-desc">${currentLang==='zh'?s.desc:s.descEn}</div>
+    <div class="step-indicator"><span class="current">${t('stepOf')(currentStep+1,s.steps.length)}</span><div class="step-bar"><div class="fill" style="width:${pct}%"></div></div></div>
     <div class="step-title">${step.title}</div>
     ${step.fields.map(f=>renderField(f)).join('')}
     <div class="btn-row">
-      <button class="btn btn-secondary" onclick="prevStep()" ${currentStep===0?'disabled':''}>← 上一步</button>
-      <button class="btn btn-primary" onclick="${currentStep===s.steps.length-1?'generate()':'nextStep()'}">${currentStep===s.steps.length-1?'生成 Prompt →':'下一步 →'}</button>
+      <button class="btn btn-secondary" onclick="prevStep()" ${currentStep===0?'disabled':''}>${t('prev')}</button>
+      <button class="btn btn-primary" onclick="${isLast?'generate()':'nextStep()'}">${isLast?t('generate'):t('next')}</button>
     </div>`;
 }
 
@@ -331,19 +364,19 @@ function generate(){
   show('result');hide('detail');hide('home');
   document.getElementById('result').innerHTML=`
     <div class="check">✅</div>
-    <h2>你的专属 Prompt 已生成</h2>
+    <h2>${t('promptGenerated')}</h2>
     <div class="prompt-block"><pre>${esc(prompt)}</pre></div>
     <div class="result-actions">
-      <button class="btn btn-primary" onclick="copyPrompt(this)">📋 复制到剪贴板</button>
-      <button class="btn btn-secondary" onclick="backToForm()">✏️ 修改回答</button>
-      <button class="btn btn-secondary" onclick="generate()">🔄 重新生成</button>
+      <button class="btn btn-primary" onclick="copyPrompt(this)">${t('copy')}</button>
+      <button class="btn btn-secondary" onclick="backToForm()">${t('modify')}</button>
+      <button class="btn btn-secondary" onclick="generate()">${t('regenerate')}</button>
     </div>
-    <div class="tips"><h4>💡 使用提示</h4><ul>${currentSkill.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;
+    <div class="tips"><h4>${t('tipsTitle')}</h4><ul>${currentSkill.tips.map(tip=>`<li>${tip}</li>`).join('')}</ul></div>`;
 }
 
 function copyPrompt(btn){
   const text=document.querySelector('.prompt-block pre').textContent;
-  navigator.clipboard.writeText(text).then(()=>{btn.textContent='已复制 ✓';setTimeout(()=>btn.textContent='📋 复制到剪贴板',2000);});
+  navigator.clipboard.writeText(text).then(()=>{btn.textContent=t('copied');setTimeout(()=>btn.textContent=t('copy'),2000);});
 }
 
 function backToForm(){show('detail');hide('result');renderStep();}
