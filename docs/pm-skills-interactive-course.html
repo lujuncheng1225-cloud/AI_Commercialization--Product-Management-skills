@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Skills 交互式课程 — AI 产品经理技能库完全指南</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-bg:#FAF7F2;--color-bg-warm:#F5F0E8;--color-bg-code:#1E1E2E;
+  --color-text:#2C2A28;--color-text-secondary:#6B6560;--color-text-muted:#9E9790;
+  --color-border:#E5DFD6;--color-border-light:#EEEBE5;
+  --color-surface:#FFFFFF;--color-surface-warm:#FDF9F3;
+  --color-accent:#D94F30;--color-accent-hover:#C4432A;--color-accent-light:#FDEEE9;--color-accent-muted:#E8836C;
+  --color-success:#2D8B55;--color-success-light:#E8F5EE;
+  --color-error:#C93B3B;--color-error-light:#FDE8E8;
+  --color-info:#2A7B9B;--color-info-light:#E4F2F7;
+  --color-actor-1:#D94F30;--color-actor-2:#2A7B9B;--color-actor-3:#7B6DAA;--color-actor-4:#D4A843;--color-actor-5:#2D8B55;
+  --font-display:'Bricolage Grotesque',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono','Fira Code',Consolas,monospace;
+  --text-xs:.75rem;--text-sm:.875rem;--text-base:1rem;--text-lg:1.125rem;
+  --text-xl:1.25rem;--text-2xl:1.5rem;--text-3xl:1.875rem;--text-4xl:2.25rem;--text-5xl:3rem;--text-6xl:3.75rem;
+  --leading-tight:1.15;--leading-snug:1.3;--leading-normal:1.6;--leading-loose:1.8;
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
+  --content-width:800px;--content-width-wide:1000px;--nav-height:50px;
+  --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:9999px;
+  --shadow-sm:0 1px 2px rgba(44,42,40,.05);--shadow-md:0 4px 12px rgba(44,42,40,.08);
+  --shadow-lg:0 8px 24px rgba(44,42,40,.1);--shadow-xl:0 16px 48px rgba(44,42,40,.12);
+  --ease-out:cubic-bezier(.16,1,.3,1);--ease-in-out:cubic-bezier(.65,0,.35,1);
+  --duration-fast:150ms;--duration-normal:300ms;--duration-slow:500ms;--stagger-delay:120ms;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth}
+body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);line-height:var(--leading-normal);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(217,79,48,.03) 0%,transparent 50%);pointer-events:none;z-index:0}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--color-border);border-radius:var(--radius-full)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-height);background:rgba(250,247,242,.92);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid var(--color-border-light);display:flex;align-items:center;padding:0 var(--space-6)}
+.progress-bar{position:absolute;top:0;left:0;height:3px;background:var(--color-accent);transition:width .1s;width:0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--content-width-wide);margin:0 auto}
+.nav-title{font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);color:var(--color-text-secondary);letter-spacing:-.02em}
+.nav-dots{display:flex;gap:var(--space-2)}
+.nav-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--color-text-muted);background:transparent;cursor:pointer;transition:all var(--duration-normal) var(--ease-out);padding:0}
+.nav-dot.current{border-color:var(--color-accent);background:var(--color-accent);box-shadow:0 0 0 3px rgba(217,79,48,.2)}
+.nav-dot.visited{background:var(--color-accent);border-color:var(--color-accent)}
+.nav-dot:hover{transform:scale(1.2)}
+
+/* MODULES */
+.module{min-height:100dvh;min-height:100vh;scroll-snap-align:start;padding:var(--space-16) var(--space-6);padding-top:calc(var(--nav-height) + var(--space-12));position:relative;z-index:1}
+.module-content{max-width:var(--content-width-wide);margin:0 auto}
+.module-header{text-align:center;margin-bottom:var(--space-12)}
+.module-number{font-family:var(--font-display);font-size:var(--text-6xl);font-weight:800;color:var(--color-accent);opacity:.15;display:block;line-height:1}
+.module-title{font-family:var(--font-display);font-size:var(--text-4xl);font-weight:700;margin-top:var(--space-2);line-height:var(--leading-tight)}
+.module-subtitle{font-size:var(--text-lg);color:var(--color-text-secondary);margin-top:var(--space-3);max-width:600px;margin-left:auto;margin-right:auto}
+.module-body{display:flex;flex-direction:column;gap:var(--space-16)}
+.screen{max-width:var(--content-width);margin:0 auto}
+.screen-heading{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:600;margin-bottom:var(--space-6);line-height:var(--leading-snug)}
+
+/* ANIMATE IN */
+.animate-in{opacity:0;transform:translateY(20px);transition:opacity var(--duration-slow) var(--ease-out),transform var(--duration-slow) var(--ease-out)}
+.animate-in.visible{opacity:1;transform:translateY(0)}
+.stagger-children>.animate-in{transition-delay:calc(var(--stagger-index,0)*var(--stagger-delay))}
+
+/* TRANSLATION BLOCK */
+.translation-block{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-md);margin:var(--space-8) 0}
+.translation-code{background:var(--color-bg-code);color:#CDD6F4;padding:var(--space-6);font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.7;position:relative;white-space:pre-wrap;word-break:break-word;overflow-x:hidden}
+.translation-english{background:var(--color-surface-warm);padding:var(--space-6);font-size:var(--text-sm);line-height:1.7;border-left:3px solid var(--color-accent)}
+.translation-label{position:absolute;top:var(--space-2);right:var(--space-3);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;opacity:.5}
+.translation-english .translation-label{color:var(--color-text-muted);position:static;margin-bottom:var(--space-3);display:block}
+.tl{margin-bottom:var(--space-2);color:var(--color-text-secondary)}
+@media(max-width:768px){.translation-block{grid-template-columns:1fr}.translation-english{border-left:none;border-top:3px solid var(--color-accent)}}
+
+/* CODE HIGHLIGHTS */
+.code-keyword{color:#CBA6F7}.code-string{color:#A6E3A1}.code-function{color:#89B4FA}
+.code-comment{color:#6C7086}.code-number{color:#FAB387}.code-property{color:#F9E2AF}
+
+/* QUIZ */
+.quiz-container{margin:var(--space-6) 0}
+.quiz-question-block{margin-bottom:var(--space-6)}
+.quiz-question{font-family:var(--font-display);font-weight:600;font-size:var(--text-lg);margin-bottom:var(--space-4)}
+.quiz-options{display:flex;flex-direction:column;gap:var(--space-3)}
+.quiz-option{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border:2px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-surface);cursor:pointer;width:100%;text-align:left;font-size:var(--text-base);font-family:var(--font-body);transition:border-color var(--duration-fast),background var(--duration-fast);color:var(--color-text)}
+.quiz-option:hover{border-color:var(--color-accent-muted)}
+.quiz-option.selected{border-color:var(--color-accent);background:var(--color-accent-light)}
+.quiz-option.correct{border-color:var(--color-success);background:var(--color-success-light)}
+.quiz-option.incorrect{border-color:var(--color-error);background:var(--color-error-light)}
+.quiz-option:disabled{cursor:default}
+.quiz-option-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--color-border);transition:all var(--duration-fast);flex-shrink:0}
+.quiz-option.selected .quiz-option-radio{border-color:var(--color-accent);background:var(--color-accent);box-shadow:inset 0 0 0 3px white}
+.quiz-feedback{max-height:0;overflow:hidden;opacity:0;transition:max-height var(--duration-normal),opacity var(--duration-normal);border-radius:var(--radius-sm);font-size:var(--text-sm)}
+.quiz-feedback.show{max-height:200px;opacity:1;padding:var(--space-3);margin-top:var(--space-2)}
+.quiz-feedback.success{background:var(--color-success-light);color:var(--color-success)}
+.quiz-feedback.error{background:var(--color-error-light);color:var(--color-error)}
+.quiz-btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-5);border-radius:var(--radius-sm);font-family:var(--font-body);font-weight:600;font-size:var(--text-sm);cursor:pointer;border:none;transition:all var(--duration-fast);margin-right:var(--space-2)}
+.quiz-check-btn{background:var(--color-accent);color:white}
+.quiz-check-btn:hover{background:var(--color-accent-hover)}
+.quiz-reset-btn{background:var(--color-border-light);color:var(--color-text-secondary)}
+.quiz-reset-btn:hover{background:var(--color-border)}
+
+/* SCENARIO BLOCK */
+.scenario-block{background:var(--color-info-light);border-left:4px solid var(--color-info);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:var(--space-4) var(--space-5);margin-bottom:var(--space-5)}
+.scenario-label{font-family:var(--font-mono);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-info);font-weight:600}
+.scenario-block p{margin-top:var(--space-2);font-size:var(--text-base)}
+
+/* PATTERN CARDS */
+.pattern-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4)}
+.pattern-card{background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-6);box-shadow:var(--shadow-sm);transition:transform var(--duration-normal) var(--ease-out),box-shadow var(--duration-normal)}
+.pattern-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.pattern-icon{width:44px;height:44px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:var(--space-3)}
+.pattern-title{font-family:var(--font-display);font-weight:600;font-size:var(--text-base);margin-bottom:var(--space-2)}
+.pattern-desc{font-size:var(--text-sm);color:var(--color-text-secondary);line-height:var(--leading-normal)}
+
+/* CALLOUT */
+.callout{border-radius:var(--radius-md);padding:var(--space-5);display:flex;gap:var(--space-4);margin:var(--space-6) 0}
+.callout-icon{font-size:1.5rem;flex-shrink:0}
+.callout-content strong{display:block;margin-bottom:var(--space-1)}
+.callout-content p{font-size:var(--text-sm);color:var(--color-text-secondary)}
+.callout-accent{background:var(--color-accent-light);border-left:4px solid var(--color-accent)}
+.callout-info{background:var(--color-info-light);border-left:4px solid var(--color-info)}
+.callout-warning{background:var(--color-error-light);border-left:4px solid var(--color-error)}
+
+/* FLOW STEPS */
+.flow-steps{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;justify-content:center;margin:var(--space-8) 0}
+.flow-step{background:var(--color-surface);border:2px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);text-align:center;min-width:120px;box-shadow:var(--shadow-sm)}
+.flow-step.active{border-color:var(--color-accent);box-shadow:0 0 0 3px rgba(217,79,48,.15)}
+.flow-step-num{width:28px;height:28px;border-radius:50%;background:var(--color-accent);color:white;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-2);font-size:var(--text-sm)}
+.flow-step p{font-size:var(--text-sm);font-weight:500}
+.flow-arrow{color:var(--color-accent);font-size:var(--text-xl);font-weight:700}
+
+/* STEP CARDS */
+.step-cards{display:flex;flex-direction:column;gap:var(--space-3)}
+.step-card{display:flex;align-items:flex-start;gap:var(--space-4);padding:var(--space-4) var(--space-5);background:var(--color-surface);border-radius:var(--radius-md);border-left:3px solid var(--color-accent);box-shadow:var(--shadow-sm)}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--color-accent);color:white;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);flex-shrink:0}
+.step-body p{margin:var(--space-1) 0 0;color:var(--color-text-secondary);font-size:var(--text-sm)}
+
+/* FILE TREE */
+.file-tree{font-family:var(--font-mono);font-size:var(--text-sm);background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-5);box-shadow:var(--shadow-sm);margin:var(--space-6) 0}
+.ft-folder,.ft-file{padding:var(--space-2) var(--space-3);border-left:2px solid var(--color-border-light);margin-left:var(--space-4)}
+.ft-name{font-weight:600}
+.ft-folder>.ft-name{color:var(--color-accent)}
+.ft-folder>.ft-name::before{content:'📁 '}
+.ft-file>.ft-name{color:var(--color-text)}
+.ft-file>.ft-name::before{content:'📄 '}
+.ft-desc{color:var(--color-text-secondary);font-family:var(--font-body);margin-left:var(--space-2);font-size:var(--text-xs)}
+.ft-children{margin-left:var(--space-4)}
+
+/* ICON ROWS */
+.icon-rows{display:flex;flex-direction:column;gap:var(--space-3)}
+.icon-row{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4);background:var(--color-surface);border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
+.icon-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.icon-row p{margin:0;color:var(--color-text-secondary);font-size:var(--text-sm);margin-top:var(--space-1)}
+
+/* CHAT ANIMATION */
+.chat-window{max-width:520px;margin:var(--space-6) auto;background:var(--color-surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden}
+.chat-header{background:var(--color-bg-code);color:#CDD6F4;padding:var(--space-3) var(--space-5);font-family:var(--font-display);font-weight:600;font-size:var(--text-sm)}
+.chat-messages{padding:var(--space-4);min-height:280px;max-height:400px;overflow-y:auto}
+.chat-message{display:flex;gap:var(--space-3);margin-bottom:var(--space-3);animation:fadeSlideUp .3s var(--ease-out)}
+.chat-avatar{width:36px;height:36px;border-radius:50%;color:white;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:var(--text-sm);flex-shrink:0}
+.chat-bubble{background:var(--color-bg-warm);border-radius:0 var(--radius-md) var(--radius-md) var(--radius-md);padding:var(--space-3) var(--space-4);max-width:80%}
+.chat-sender{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:600;display:block;margin-bottom:var(--space-1)}
+.chat-bubble p{font-size:var(--text-sm);line-height:var(--leading-normal)}
+.chat-typing{display:none;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-4)}
+.chat-typing-dots{display:flex;gap:4px}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--color-text-muted);animation:typingBounce 1.4s infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+.chat-controls{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-top:1px solid var(--color-border-light)}
+.chat-controls button{padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:600;cursor:pointer;border:none;transition:all var(--duration-fast)}
+.chat-controls .chat-play{background:var(--color-accent);color:white}
+.chat-controls .chat-play:hover{background:var(--color-accent-hover)}
+.chat-controls .chat-replay{background:var(--color-border-light);color:var(--color-text-secondary)}
+.chat-progress{margin-left:auto;font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono)}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* FLOW ANIMATION */
+.flow-animation{max-width:700px;margin:var(--space-6) auto;background:var(--color-surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:var(--space-8)}
+.flow-actors{display:flex;justify-content:space-around;gap:var(--space-3);margin-bottom:var(--space-6);flex-wrap:wrap}
+.flow-actor{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);padding:var(--space-4);border-radius:var(--radius-md);border:2px solid var(--color-border-light);transition:all var(--duration-normal) var(--ease-out);min-width:100px}
+.flow-actor.active{border-color:var(--color-accent);box-shadow:0 0 0 3px rgba(217,79,48,.2);transform:scale(1.05)}
+.flow-actor-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-family:var(--font-display);font-size:var(--text-lg)}
+.flow-actor span{font-size:var(--text-xs);font-weight:600;text-align:center}
+.flow-connector{display:flex;align-items:center;justify-content:center;padding:var(--space-2) 0}
+.flow-packet-bar{height:4px;border-radius:2px;background:var(--color-accent);width:0;transition:width .6s var(--ease-out)}
+.flow-packet-bar.active{width:100%}
+.flow-step-label{min-height:60px;padding:var(--space-4);background:var(--color-bg-warm);border-radius:var(--radius-sm);margin:var(--space-4) 0;font-size:var(--text-sm);color:var(--color-text-secondary);text-align:center;line-height:var(--leading-normal)}
+.flow-controls{display:flex;align-items:center;gap:var(--space-2);justify-content:center}
+.flow-controls button{padding:var(--space-2) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);font-weight:600;cursor:pointer;border:none;background:var(--color-accent);color:white;transition:all var(--duration-fast)}
+.flow-controls button:hover{background:var(--color-accent-hover)}
+.flow-controls .flow-reset{background:var(--color-border-light);color:var(--color-text-secondary)}
+.flow-controls .flow-reset:hover{background:var(--color-border)}
+.flow-progress{font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);margin-left:var(--space-2)}
+
+/* GLOSSARY TOOLTIP */
+.term{border-bottom:1.5px dashed var(--color-accent-muted);cursor:pointer;position:relative}
+.term:hover,.term.active{border-bottom-color:var(--color-accent);color:var(--color-accent)}
+.term-tooltip{position:fixed;background:var(--color-bg-code);color:#CDD6F4;padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);font-size:var(--text-sm);font-family:var(--font-body);line-height:var(--leading-normal);width:max(200px,min(320px,80vw));box-shadow:var(--shadow-lg);pointer-events:none;opacity:0;transition:opacity var(--duration-fast);z-index:10000}
+.term-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--color-bg-code)}
+.term-tooltip.visible{opacity:1}
+.term-tooltip.flip::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--color-bg-code)}
+
+/* HERO */
+.hero{text-align:center;padding:var(--space-24) var(--space-6) var(--space-16)}
+.hero h1{font-family:var(--font-display);font-size:var(--text-5xl);font-weight:800;line-height:var(--leading-tight);margin-bottom:var(--space-4)}
+.hero h1 span{color:var(--color-accent)}
+.hero p{font-size:var(--text-lg);color:var(--color-text-secondary);max-width:600px;margin:0 auto var(--space-8);line-height:var(--leading-loose)}
+.hero-tags{display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap}
+.hero-tag{padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);font-size:var(--text-xs);font-family:var(--font-mono);font-weight:600;border:1.5px solid var(--color-border);background:var(--color-surface)}
+
+/* TABLE */
+.skill-table{width:100%;border-collapse:collapse;font-size:var(--text-sm);margin:var(--space-6) 0}
+.skill-table th{text-align:left;padding:var(--space-3) var(--space-4);background:var(--color-bg-warm);font-family:var(--font-display);font-weight:600;border-bottom:2px solid var(--color-border)}
+.skill-table td{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-border-light)}
+.skill-table tr:hover td{background:var(--color-surface-warm)}
+.skill-table code{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--color-bg-code);color:#89B4FA;padding:2px 6px;border-radius:4px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  :root{--text-4xl:1.875rem;--text-5xl:2.25rem;--text-6xl:3rem}
+  .module{padding:var(--space-8) var(--space-4);padding-top:calc(var(--nav-height) + var(--space-8))}
+  .pattern-cards{grid-template-columns:1fr 1fr}
+  .flow-steps{flex-direction:column;align-items:center}
+  .flow-arrow{transform:rotate(90deg)}
+  .skill-table{font-size:var(--text-xs)}
+  .nav-dots{gap:4px}.nav-dot{width:10px;height:10px}
+}
+@media(max-width:480px){
+  :root{--text-4xl:1.5rem;--text-5xl:1.875rem;--text-6xl:2.25rem}
+  .pattern-cards{grid-template-columns:1fr}
+  .hero h1{font-size:var(--text-3xl)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="nav-inner">
+    <span class="nav-title">☕ PM Skills 课程</span>
+    <div class="nav-dots">
+      <button class="nav-dot" data-target="module-0" aria-label="首页"></button>
+      <button class="nav-dot" data-target="module-1" aria-label="模块1"></button>
+      <button class="nav-dot" data-target="module-2" aria-label="模块2"></button>
+      <button class="nav-dot" data-target="module-3" aria-label="模块3"></button>
+      <button class="nav-dot" data-target="module-4" aria-label="模块4"></button>
+      <button class="nav-dot" data-target="module-5" aria-label="模块5"></button>
+      <button class="nav-dot" data-target="module-6" aria-label="模块6"></button>
+      <button class="nav-dot" data-target="module-7" aria-label="模块7"></button>
+      <button class="nav-dot" data-target="module-8" aria-label="模块8"></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="module" id="module-0" style="display:flex;align-items:center">
+  <div class="module-content">
+    <div class="hero animate-in">
+      <h1>AI 产品经理<br><span>技能库完全指南</span></h1>
+      <p>22 个 Skills + 10 个 Commands，覆盖 AI 功能定义、商业化诊断、PRD 撰写、增长实验——一套让产品经理用 AI 把活干好的工具箱。</p>
+      <div class="hero-tags">
+        <span class="hero-tag">🤖 AI PM</span>
+        <span class="hero-tag">💰 Commercial PM</span>
+        <span class="hero-tag">📋 PRD</span>
+        <span class="hero-tag">📊 Growth</span>
+        <span class="hero-tag">🧪 Experiment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 1: 这是什么？ ============ -->
+<section class="module" id="module-1" style="background:var(--color-bg)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">01</span>
+      <h1 class="module-title">这是一个工具箱</h1>
+      <p class="module-subtitle">比喻：想象你有一个由 22 个专业助手组成的团队，每人擅长一件事。另外还有 10 套标准操作流程（SOP），把多个助手串起来完成复杂任务。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1 -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Skills vs Commands：两种"帮手"</h2>
+        <div class="pattern-cards stagger-children">
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)">
+            <div class="pattern-icon" style="background:var(--color-actor-1)">🔧</div>
+            <h4 class="pattern-title">Skill（技能）</h4>
+            <p class="pattern-desc">单个专业助手。比如 problem-statement 专门帮你把模糊痛点变成清晰问题定义。22 个 skill 各司其职。</p>
+          </div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)">
+            <div class="pattern-icon" style="background:var(--color-actor-2)">📋</div>
+            <h4 class="pattern-title">Command（指令）</h4>
+            <p class="pattern-desc">一套 SOP，串联多个 skill 完成复杂任务。比如 write-prd 会依次调用 5 个 skill 来产出完整 PRD。</p>
+          </div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)">
+            <div class="pattern-icon" style="background:var(--color-actor-3)">🧭</div>
+            <h4 class="pattern-title">Agent 规范</h4>
+            <p class="pattern-desc">团队的"管理手册"。告诉 AI 该选哪个 skill/command、输出该长什么样、专业底线是什么。</p>
+          </div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-5)">
+            <div class="pattern-icon" style="background:var(--color-actor-5)">✅</div>
+            <h4 class="pattern-title">Evals（评估）</h4>
+            <p class="pattern-desc">质检部门。用标准测试用例检查 AI 是否选对了工具、输出是否达标。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 2 -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">两条主线</h2>
+        <div class="icon-rows stagger-children">
+          <div class="icon-row animate-in">
+            <div class="icon-circle" style="background:var(--color-actor-1)">🤖</div>
+            <div><strong>AI PM 线</strong><p>AI 功能定义 → 评估方案 → 模型选择 → 风险评审 → 上线准备</p></div>
+          </div>
+          <div class="icon-row animate-in">
+            <div class="icon-circle" style="background:var(--color-actor-2)">💰</div>
+            <div><strong>Commercial PM 线</strong><p>定价套餐 → 转化漏斗 → 付费留存 → 增长实验 → 商业化 PRD</p></div>
+          </div>
+        </div>
+        <div class="callout callout-info animate-in" style="margin-top:var(--space-6)">
+          <div class="callout-icon">💡</div>
+          <div class="callout-content"><strong>不需要编程背景</strong><p>这套工具箱是为产品经理设计的。你只需要用自然语言描述业务问题，AI 会自动选择合适的 skill/command 来帮你。</p></div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">快速检测</h2>
+        <div class="quiz-container" id="quiz-m1">
+          <div class="quiz-question-block" data-question="m1q1" data-correct="m1-c">
+            <h3 class="quiz-question">你想"帮团队选一个优先级框架"，该用 Skill 还是 Command？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m1-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用 prioritization-advisor 这个 Skill</span></button>
+              <button class="quiz-option" data-value="m1-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>用 write-prd 这个 Command</span></button>
+              <button class="quiz-option" data-value="m1-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>用 prioritize 这个 Command，它会先帮你澄清再推荐框架</span></button>
+            </div>
+            <div class="quiz-feedback" id="m1q1-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m1')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m1')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 2: 怎么开始？ ============ -->
+<section class="module" id="module-2" style="background:var(--color-bg-warm)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">02</span>
+      <h1 class="module-title">默认工作流</h1>
+      <p class="module-subtitle">比喻：就像做手术前要先消毒、再麻醉、再开刀——PM 工作也有标准流程：澄清 → 拆解 → 产出 → 审查。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1: Default workflow -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">四步标准流程</h2>
+        <div class="step-cards stagger-children">
+          <div class="step-card animate-in">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>澄清 — workshop-facilitation</strong><p>先聊透需求和边界。背景模糊时，这是最稳的第一步。</p></div>
+          </div>
+          <div class="step-card animate-in">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>拆解 — task-decomposition</strong><p>把大任务拆成可检查的小步骤，每步都能验证是否完成。</p></div>
+          </div>
+          <div class="step-card animate-in">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>产出 — 目标 Skill/Command</strong><p>真正产出文档、判断或方案——比如 PRD、AI Feature Brief、定价方案。</p></div>
+          </div>
+          <div class="step-card animate-in">
+            <div class="step-num">4</div>
+            <div class="step-body"><strong>审查 — review-gates</strong><p>交付前跑一轮结构化审查，防止"局部对但整体跑偏"。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 2: Real prompt example -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">推荐起手式</h2>
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+<span class="translation-label">PROMPT 示例</span>
+<pre><code>Run commands/write-prd.md for this request:
+为 self-serve 新用户 onboarding 改版
+写一份 PRD。先拆解任务，再成文，
+最后做 review gates。</code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">人话翻译</span>
+            <p class="tl">🔧 "Run commands/write-prd.md" = 调用"写 PRD"这套 SOP</p>
+            <p class="tl">📋 它会自动串联：workshop-facilitation → problem-statement → task-decomposition → prd-development → review-gates</p>
+            <p class="tl">✅ "先拆解任务，再成文，最后做 review gates" = 按标准四步流程走</p>
+          </div>
+        </div>
+        <div class="callout callout-accent animate-in">
+          <div class="callout-icon">🎯</div>
+          <div class="callout-content"><strong>记住三件事</strong><p>① 先选 command（单点任务再选 skill） ② 提真实业务问题，别只给抽象方向 ③ 默认按 澄清→拆解→产出→审查 推进</p></div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Group Chat -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Skill 们怎么协作？</h2>
+        <div class="chat-window">
+          <div class="chat-header">💬 默认工作流群聊</div>
+          <div class="chat-messages" id="chat-default">
+            <div class="chat-message" data-msg="0" data-sender="workshop" style="display:none">
+              <div class="chat-avatar" style="background:var(--color-actor-1)">W</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-1)">workshop-facilitation</span><p>我先帮你把需求聊透——目标用户是谁？当前最大痛点是什么？</p></div>
+            </div>
+            <div class="chat-message" data-msg="1" data-sender="task" style="display:none">
+              <div class="chat-avatar" style="background:var(--color-actor-2)">T</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-2)">task-decomposition</span><p>需求清楚后我来拆——把"写 PRD"拆成 5-8 个 30 分钟内能推进的小步骤。</p></div>
+            </div>
+            <div class="chat-message" data-msg="2" data-sender="prd" style="display:none">
+              <div class="chat-avatar" style="background:var(--color-actor-3)">P</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-3)">prd-development</span><p>拆好的步骤我来逐一执行——问题定义、用户分析、方案、指标、边界。</p></div>
+            </div>
+            <div class="chat-message" data-msg="3" data-sender="review" style="display:none">
+              <div class="chat-avatar" style="background:var(--color-actor-4)">R</div>
+              <div class="chat-bubble"><span class="chat-sender" style="color:var(--color-actor-4)">review-gates</span><p>最后我检查——问题答对了吗？依据充分吗？范围清楚吗？没有就打回去。</p></div>
+            </div>
+          </div>
+          <div class="chat-typing" id="chat-typing-default">
+            <div class="chat-avatar" id="typing-avatar-default">?</div>
+            <div class="chat-typing-dots"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>
+          </div>
+          <div class="chat-controls">
+            <button class="chat-play" onclick="playChatNext('chat-default','chat-typing-default','typing-avatar-default')">下一条</button>
+            <button class="chat-play" onclick="playChatAll('chat-default','chat-typing-default','typing-avatar-default')">全部播放</button>
+            <button class="chat-replay" onclick="resetChat('chat-default','chat-typing-default')">重播</button>
+            <span class="chat-progress" id="chat-progress-default">0 / 4</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 4: Quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">场景选择</h2>
+        <div class="quiz-container" id="quiz-m2">
+          <div class="scenario-block">
+            <span class="scenario-label">场景</span>
+            <p>你要为 PM 团队设计一个 AI copilot，帮他们把访谈记录整理成 insight。但需求还很模糊。</p>
+          </div>
+          <div class="quiz-question-block" data-question="m2q1" data-correct="m2-c">
+            <h3 class="quiz-question">第一步该怎么做？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m2-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用 ai-feature-brief 写功能定义</span></button>
+              <button class="quiz-option" data-value="m2-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>用 shape-ai-feature command</span></button>
+              <button class="quiz-option" data-value="m2-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接跑 shape-ai-feature command，它内部会先用 workshop-facilitation 澄清</span></button>
+            </div>
+            <div class="quiz-feedback" id="m2q1-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m2')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m2')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 3: PM 产出型 Skills ============ -->
+<section class="module" id="module-3" style="background:var(--color-bg)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">03</span>
+      <h1 class="module-title">产出型 Skills</h1>
+      <p class="module-subtitle">比喻：像一个有 7 种模具的工厂。你放进去"原材料"（业务背景），它帮你压出标准"零件"（PRD、Brief、Scorecard）。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1: Overview table -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">7 个产出型 Skill</h2>
+        <div style="overflow-x:auto">
+          <table class="skill-table">
+            <thead><tr><th>Skill</th><th>产出</th><th>典型场景</th></tr></thead>
+            <tbody>
+              <tr><td><code>problem-statement</code></td><td>问题定义</td><td>写 PRD 前先定义清楚问题</td></tr>
+              <tr><td><code>prd-development</code></td><td>完整 PRD</td><td>从问题到需求的完整文档</td></tr>
+              <tr><td><code>ai-feature-brief</code></td><td>AI 功能简报</td><td>把 AI 点子变成可讨论方案</td></tr>
+              <tr><td><code>commercial-prd</code></td><td>商业化 PRD</td><td>定价/转化/留存类项目文档</td></tr>
+              <tr><td><code>pricing-packaging-brief</code></td><td>定价套餐简报</td><td>设计或调整 SaaS 定价</td></tr>
+              <tr><td><code>revenue-metrics-scorecard</code></td><td>收入指标看板</td><td>统一商业化健康指标</td></tr>
+              <tr><td><code>task-decomposition</code></td><td>执行步骤清单</td><td>把大任务拆成可验证小步骤</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Screen 2: Deep dive - problem-statement -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">深挖：problem-statement</h2>
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+<span class="translation-label">SKILL 核心要素</span>
+<pre><code>一个好的问题定义要回答：
+1. 谁遇到了这个问题
+2. 问题具体是什么
+3. 为什么痛
+4. 有什么证据
+5. 为什么现在要处理</code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">人话翻译</span>
+            <p class="tl">👤 谁在痛——不是"用户"，而是"首次注册后 3 天内没完成 onboarding 的新用户"</p>
+            <p class="tl">🔥 具体什么痛——不是"体验不好"，而是"第二步的引导文案让 60% 的人困惑"</p>
+            <p class="tl">📉 为什么痛——业务影响：每流失 1% = 月损失 ¥XX</p>
+            <p class="tl">📊 证据——数据、用户反馈、访谈引用</p>
+            <p class="tl">⏰ 为什么现在——竞品上线了、季度目标截止、技术窗口</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Deep dive - ai-feature-brief -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">深挖：ai-feature-brief</h2>
+        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-4)">在写完整 PRD 前，先把 AI 功能定义清楚。它要回答 7 个关键问题：</p>
+        <div class="pattern-cards stagger-children">
+          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-1)">🎯</div><h4 class="pattern-title">用户任务</h4><p class="pattern-desc">用户要完成什么？</p></div>
+          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-2)">⚡</div><h4 class="pattern-title">触发条件</h4><p class="pattern-desc">什么时候自动/手动触发？</p></div>
+          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-3)">📥</div><h4 class="pattern-title">输入</h4><p class="pattern-desc">需要什么数据？</p></div>
+          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-4)">📤</div><h4 class="pattern-title">输出</h4><p class="pattern-desc">产出什么格式？</p></div>
+          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-actor-5)">✅</div><h4 class="pattern-title">质量标准</h4><p class="pattern-desc">什么叫"足够好"？</p></div>
+          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-accent)">⚠️</div><h4 class="pattern-title">失败模式</h4><p class="pattern-desc">出错时怎么办？</p></div>
+          <div class="pattern-card animate-in"><div class="pattern-icon" style="background:var(--color-info)">🔄</div><h4 class="pattern-title">Fallback</h4><p class="pattern-desc">兜底方案是什么？</p></div>
+        </div>
+      </section>
+
+      <!-- Screen 4: Quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">场景选择</h2>
+        <div class="quiz-container" id="quiz-m3">
+          <div class="scenario-block">
+            <span class="scenario-label">场景</span>
+            <p>老板说"我们的 free/pro/team 三档定价太乱了，用户选不明白"。你想整理一个定价方案。</p>
+          </div>
+          <div class="quiz-question-block" data-question="m3q1" data-correct="m3-b">
+            <h3 class="quiz-question">该用哪个 Skill？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m3-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>conversion-funnel-diagnostic（看漏斗）</span></button>
+              <button class="quiz-option" data-value="m3-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>pricing-packaging-brief（定义定价和套餐结构）</span></button>
+              <button class="quiz-option" data-value="m3-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>revenue-metrics-scorecard（看收入指标）</span></button>
+            </div>
+            <div class="quiz-feedback" id="m3q1-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m3')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m3')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 4: 判断与决策型 Skills ============ -->
+<section class="module" id="module-4" style="background:var(--color-bg-warm)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">04</span>
+      <h1 class="module-title">判断与决策型 Skills</h1>
+      <p class="module-subtitle">比喻：像一个由专科医生组成的会诊团队。你不找他们"写报告"，你找他们"帮我看看到底是什么问题、该怎么做"。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1 -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">10 个判断型 Skill</h2>
+        <div class="pattern-cards stagger-children">
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">📊</div><h4 class="pattern-title">prioritization-advisor</h4><p class="pattern-desc">根据团队环境和数据条件推荐优先级框架（RICE/ICE/Value-Effort）</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">🤖</div><h4 class="pattern-title">model-selection-advisor</h4><p class="pattern-desc">根据任务类型、时延、成本选模型策略（单模型/路由/fallback）</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">🔬</div><h4 class="pattern-title">ai-risk-review</h4><p class="pattern-desc">评审 AI 功能的质量、信任、运营、滥用和策略风险</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)"><div class="pattern-icon" style="background:var(--color-actor-4)">📉</div><h4 class="pattern-title">conversion-funnel-diagnostic</h4><p class="pattern-desc">诊断转化漏斗的阶段、掉点和可能原因</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-5)"><div class="pattern-icon" style="background:var(--color-actor-5)">🔄</div><h4 class="pattern-title">retention-levers-review</h4><p class="pattern-desc">分析留存驱动、流失模式和干预杠杆</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-accent)"><div class="pattern-icon" style="background:var(--color-accent)">🧪</div><h4 class="pattern-title">growth-experiment-design</h4><p class="pattern-desc">设计"一个改动、一个主指标、一个决策"的增长实验</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-info)"><div class="pattern-icon" style="background:var(--color-info)">📝</div><h4 class="pattern-title">experiment-brief</h4><p class="pattern-desc">轻量实验设计：假设、受众、方法、决策规则</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">⭐</div><h4 class="pattern-title">north-star-metric</h4><p class="pattern-desc">定义北极星指标及 guardrail</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">🎙️</div><h4 class="pattern-title">voice-of-customer-synthesis</h4><p class="pattern-desc">把访谈/工单/反馈整理成主题和产品含义</p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)"><div class="pattern-icon" style="background:var(--color-actor-4)">🔧</div><h4 class="pattern-title">review-gates</h4><p class="pattern-desc">交付前结构化审查（Fit Check → Reasoning → Completeness）</p></div>
+        </div>
+      </section>
+
+      <!-- Screen 2: Deep dive conversion-funnel -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">因果纪律：漏斗掉点 ≠ 原因</h2>
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+<span class="translation-label">conversion-funnel-diagnostic</span>
+<pre><code>漏斗诊断要区分：
+- 漏在哪里（位置）
+- 是流量质量、产品问题、
+  定价问题还是信息传达问题
+- 还缺什么证据</code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">核心原则</span>
+            <p class="tl">📍 "漏在哪里"只是异常发生的位置，不是原因</p>
+            <p class="tl">🔍 下判断前至少区分四类原因：流量质量 / 产品体验 / 定价策略 / 信息传达</p>
+            <p class="tl">📊 没有数据支撑时，不要直接断言"就是价格问题"</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">场景选择</h2>
+        <div class="quiz-container" id="quiz-m4">
+          <div class="scenario-block">
+            <span class="scenario-label">场景</span>
+            <p>你们的 AI 会议纪要功能用户反馈"有时总结不准确"。你需要决定用什么模型，以及出错了怎么办。</p>
+          </div>
+          <div class="quiz-question-block" data-question="m4q1" data-correct="m4-b">
+            <h3 class="quiz-question">该选哪些 Skill？（可多选，但最佳组合是？）</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m4-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>只选 ai-feature-brief</span></button>
+              <button class="quiz-option" data-value="m4-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>model-selection-advisor + ai-risk-review + llm-evaluation-plan</span></button>
+              <button class="quiz-option" data-value="m4-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>conversion-funnel-diagnostic + retention-levers-review</span></button>
+            </div>
+            <div class="quiz-feedback" id="m4q1-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m4')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m4')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 5: Commands 工作流 ============ -->
+<section class="module" id="module-5" style="background:var(--color-bg)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">05</span>
+      <h1 class="module-title">Commands 工作流</h1>
+      <p class="module-subtitle">比喻：10 条"流水线"，每条线把多个 Skill 串成完整的工作流程。你投进去一个业务问题，出来一套可执行的方案。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1: All commands -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">10 个 Command 一览</h2>
+        <div style="overflow-x:auto">
+          <table class="skill-table">
+            <thead><tr><th>Command</th><th>用途</th><th>串联的 Skills</th></tr></thead>
+            <tbody>
+              <tr><td><code>write-prd</code></td><td>写通用 PRD</td><td>workshop + problem + task + prd-dev + review</td></tr>
+              <tr><td><code>write-commercial-prd</code></td><td>写商业化 PRD</td><td>funnel + pricing + scorecard + commercial-prd</td></tr>
+              <tr><td><code>shape-ai-feature</code></td><td>AI 功能定义</td><td>workshop + problem + task + brief + eval + risk + review</td></tr>
+              <tr><td><code>prepare-ai-launch</code></td><td>AI 上线准备</td><td>eval-plan + risk + checklist</td></tr>
+              <tr><td><code>commercial-growth-review</code></td><td>商业化增长评审</td><td>funnel + retention + scorecard + experiment</td></tr>
+              <tr><td><code>commercial-strategy-review</code></td><td>完整商业化策略评审</td><td>8 个 skill 串联</td></tr>
+              <tr><td><code>improve-trial-to-paid</code></td><td>提升试用转付费</td><td>funnel + pricing + scorecard + experiment</td></tr>
+              <tr><td><code>analyze-paid-retention</code></td><td>付费留存分析</td><td>retention + scorecard + VOC + experiment</td></tr>
+              <tr><td><code>redesign-pricing-packages</code></td><td>定价套餐重构</td><td>pricing + scorecard + funnel + commercial-prd</td></tr>
+              <tr><td><code>prioritize</code></td><td>优先级框架推荐</td><td>workshop + prioritization-advisor</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Screen 2: Message Flow Animation -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">数据流转：shape-ai-feature</h2>
+        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-4)">点击"下一步"看数据在 Skill 之间怎么流转</p>
+        <div class="flow-animation">
+          <div class="flow-actors">
+            <div class="flow-actor" id="fa-workshop"><div class="flow-actor-icon" style="background:var(--color-actor-1)">W</div><span>workshop</span></div>
+            <div class="flow-actor" id="fa-problem"><div class="flow-actor-icon" style="background:var(--color-actor-2)">P</div><span>problem</span></div>
+            <div class="flow-actor" id="fa-task"><div class="flow-actor-icon" style="background:var(--color-actor-3)">T</div><span>task</span></div>
+            <div class="flow-actor" id="fa-brief"><div class="flow-actor-icon" style="background:var(--color-actor-4)">B</div><span>brief</span></div>
+            <div class="flow-actor" id="fa-review"><div class="flow-actor-icon" style="background:var(--color-actor-5)">R</div><span>review</span></div>
+          </div>
+          <div class="flow-packet-bar" id="flow-packet-bar"></div>
+          <div class="flow-step-label" id="flow-label">点击"下一步"开始</div>
+          <div class="flow-controls">
+            <button onclick="flowNext()">下一步</button>
+            <button class="flow-reset" onclick="flowReset()">重置</button>
+            <span class="flow-progress" id="flow-progress">0 / 7</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Prompt examples -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">常用 Command Prompt</h2>
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+<span class="translation-label">AI PM 线</span>
+<pre><code>Run commands/shape-ai-feature.md for:
+为 PM 团队设计一个 AI copilot，
+帮他们把访谈记录整理成 insight。
+先澄清，再拆解，再做 feature 定义。</code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">Commercial PM 线</span>
+            <p class="tl">💰 Run commands/improve-trial-to-paid.md for: 我们的 trial-to-paid 只有 8%，需要提升到 12%。主要漏点在 trial 第 3 天。</p>
+            <p class="tl">📊 Run commands/commercial-growth-review.md for: 收入增长停滞，需要从漏斗、留存、定价三个维度做一次全面诊断。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 4: Quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">场景选择</h2>
+        <div class="quiz-container" id="quiz-m5">
+          <div class="scenario-block">
+            <span class="scenario-label">场景</span>
+            <p>你们的产品 trial-to-paid 转化率只有 8%，老板要求下个季度提升到 12%。你有漏斗数据，但不知道问题出在哪。</p>
+          </div>
+          <div class="quiz-question-block" data-question="m5q1" data-correct="m5-a">
+            <h3 class="quiz-question">该用哪个 Command？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m5-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>improve-trial-to-paid</span></button>
+              <button class="quiz-option" data-value="m5-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>commercial-growth-review</span></button>
+              <button class="quiz-option" data-value="m5-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>shape-ai-feature</span></button>
+            </div>
+            <div class="quiz-feedback" id="m5q1-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m5')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m5')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 6: Agent 规范层 ============ -->
+<section class="module" id="module-6" style="background:var(--color-bg-warm)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">06</span>
+      <h1 class="module-title">Agent 规范层</h1>
+      <p class="module-subtitle">比喻：就像一个公司的"管理手册"。它不替你干活，但确保每个 AI 助手都知道该怎么干活、什么时候该拒绝、输出该长什么样。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1: File tree -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">agent/ 目录结构</h2>
+        <div class="file-tree">
+          <div class="ft-folder open">
+            <span class="ft-name">agent/</span>
+            <span class="ft-desc">AI 助手的"管理手册"</span>
+            <div class="ft-children">
+              <div class="ft-file">
+                <span class="ft-name">ROUTING.md</span>
+                <span class="ft-desc">路由规则：什么任务该选哪个 skill/command</span>
+              </div>
+              <div class="ft-file">
+                <span class="ft-name">OUTPUT_STANDARDS.md</span>
+                <span class="ft-desc">输出标准：Decision before decoration, Evidence before confidence</span>
+              </div>
+              <div class="ft-file">
+                <span class="ft-name">DOMAIN_CONTEXT.md</span>
+                <span class="ft-desc">领域上下文：默认服务于 AI PM 和 Commercial PM</span>
+              </div>
+              <div class="ft-file">
+                <span class="ft-name">SPARSE_CONTEXT_POLICY.md</span>
+                <span class="ft-desc">稀疏上下文策略：信息不足时该怎么办</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 2: ROUTING deep dive -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">路由规则：三步走</h2>
+        <div class="step-cards stagger-children">
+          <div class="step-card animate-in">
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>识别任务类型</strong><p>定义类？诊断类？决策类？成文类？上线类？</p></div>
+          </div>
+          <div class="step-card animate-in">
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>判断单点还是流程</strong><p>单个产物 → Skill；多步骤工作流 → Command</p></div>
+          </div>
+          <div class="step-card animate-in">
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>缺信息先澄清</strong><p>不超过 3 个问题。不要审讯式追问。</p></div>
+          </div>
+        </div>
+        <div class="callout callout-warning animate-in" style="margin-top:var(--space-6)">
+          <div class="callout-icon">🚫</div>
+          <div class="callout-content"><strong>硬规则</strong><p>不要臆造业务指标；不要把"建议上线"写成"建议立 PRD"；不要在没有证据时给出高置信度结论。</p></div>
+        </div>
+      </section>
+
+      <!-- Screen 3: OUTPUT_STANDARDS -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">输出标准</h2>
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+<span class="translation-label">OUTPUT_STANDARDS</span>
+<pre><code>核心原则：
+- Decision before decoration
+- Evidence before confidence
+- Structure before style
+- Actionability before completeness
+
+通用输出合同：
+1. 结论 / Decision
+2. 关键依据 / Evidence
+3. 假设 / Assumptions
+4. 风险 / Risks
+5. 下一步 / Next Steps</code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">人话翻译</span>
+            <p class="tl">🎯 先给判断，再给包装</p>
+            <p class="tl">📊 有证据才自信，没证据就说"不确定"</p>
+            <p class="tl">📐 结构比文风重要</p>
+            <p class="tl">🚀 能落地比面面俱到重要</p>
+            <p class="tl">📝 每个输出都要有：结论 → 依据 → 假设 → 风险 → 下一步</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 4: Quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">场景选择</h2>
+        <div class="quiz-container" id="quiz-m6">
+          <div class="scenario-block">
+            <span class="scenario-label">场景</span>
+            <p>用户说"帮我做个分析"。没说分析什么、没给数据、没说目标。</p>
+          </div>
+          <div class="quiz-question-block" data-question="m6q1" data-correct="m6-b">
+            <h3 class="quiz-question">根据 SPARSE_CONTEXT_POLICY，AI 应该怎么做？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m6-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>假装有数据，先写一份完整分析报告</span></button>
+              <button class="quiz-option" data-value="m6-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>先问 1-3 个澄清问题，给出受限版本的方向判断</span></button>
+              <button class="quiz-option" data-value="m6-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>拒绝执行，要求用户补充完整资料后再来</span></button>
+            </div>
+            <div class="quiz-feedback" id="m6q1-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m6')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m6')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 7: 质量评估 ============ -->
+<section class="module" id="module-7" style="background:var(--color-bg)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">07</span>
+      <h1 class="module-title">质量评估</h1>
+      <p class="module-subtitle">比喻：就像工厂的质检部门。不测"哪个 AI 更聪明"，而是测它是否选对了工具、输出是否达标、缺信息时是否先问。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1 -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">Evals 评什么？</h2>
+        <div class="pattern-cards stagger-children">
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)">
+            <div class="pattern-icon" style="background:var(--color-actor-1)">🧭</div>
+            <h4 class="pattern-title">Routing（路由）</h4>
+            <p class="pattern-desc">任务是否命中了正确的 command 或 skill？0-3 分。</p>
+          </div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)">
+            <div class="pattern-icon" style="background:var(--color-actor-2)">📝</div>
+            <h4 class="pattern-title">Output Quality（输出质量）</h4>
+            <p class="pattern-desc">输出是否符合 OUTPUT_STANDARDS？0-7 分。</p>
+          </div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)">
+            <div class="pattern-icon" style="background:var(--color-actor-3)">🛡️</div>
+            <h4 class="pattern-title">Professional Reliability</h4>
+            <p class="pattern-desc">是否出现阶段错配、臆造、空话或错误自信？</p>
+          </div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-4)">
+            <div class="pattern-icon" style="background:var(--color-actor-4)">🏜️</div>
+            <h4 class="pattern-title">Sparse-Context Robustness</h4>
+            <p class="pattern-desc">信息很少时是否仍然稳健？是否遵守稀疏上下文策略？</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 2: Scoring -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">评分模型</h2>
+        <div class="translation-block animate-in">
+          <div class="translation-code">
+<span class="translation-label">评分标准</span>
+<pre><code>总分 = Routing (0-3) + Output (0-7)
+
+建议阈值：
+9-10：可直接复用
+7-8：可用，观察稳定性
+5-6：部分可用，需修正
+<5  ：不通过，不可依赖</code></pre>
+          </div>
+          <div class="translation-english">
+            <span class="translation-label">怎么用</span>
+            <p class="tl">📋 用 evals/cases/ 里的测试用例（7 个 case）给 AI 做测试</p>
+            <p class="tl">📝 用 evals/rubrics/ 里的 rubric 打分</p>
+            <p class="tl">🔄 每次接入新平台先跑 4 个基础 case + 1 个稀疏 case</p>
+            <p class="tl">⚠️ 不要因为 AI 会说漂亮话就给高分——看路由和判断是否正确</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">场景选择</h2>
+        <div class="quiz-container" id="quiz-m7">
+          <div class="scenario-block">
+            <span class="scenario-label">场景</span>
+            <p>你在新接入了 Cursor IDE 来使用这套 PM Skills。你想验证它是否靠谱。</p>
+          </div>
+          <div class="quiz-question-block" data-question="m7q1" data-correct="m7-a">
+            <h3 class="quiz-question">推荐的验证方式是？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m7-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>先跑 4 个基础 eval case + 1 个稀疏上下文 case，用 rubric 打分</span></button>
+              <button class="quiz-option" data-value="m7-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>直接用它写一份完整 PRD 看看效果</span></button>
+              <button class="quiz-option" data-value="m7-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>问它 10 个问题看回答是否通顺</span></button>
+            </div>
+            <div class="quiz-feedback" id="m7q1-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m7')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m7')">重试</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULE 8: 速查手册 ============ -->
+<section class="module" id="module-8" style="background:var(--color-bg-warm)">
+  <div class="module-content">
+    <header class="module-header animate-in">
+      <span class="module-number">08</span>
+      <h1 class="module-title">速查手册</h1>
+      <p class="module-subtitle">比喻：这是你的"冰箱贴"——一张图看完全部 22+10，按场景快速找到对的工具。</p>
+    </header>
+    <div class="module-body">
+      <!-- Screen 1: Complete skill list -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">全部 22 个 Skills</h2>
+        <div style="overflow-x:auto">
+          <table class="skill-table">
+            <thead><tr><th>分类</th><th>Skill</th><th>一句话说明</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="7" style="font-weight:700;color:var(--color-actor-1);vertical-align:top">🤖 AI PM</td><td><code>ai-feature-brief</code></td><td>把 AI 点子变成可讨论方案</td></tr>
+              <tr><td><code>ai-feature-shaping</code></td><td>把 AI 想法整理成问题+功能+评估+风险</td></tr>
+              <tr><td><code>ai-launch-checklist</code></td><td>AI 上线前质量/fallback/监控检查</td></tr>
+              <tr><td><code>ai-risk-review</code></td><td>评审 AI 功能五大风险面</td></tr>
+              <tr><td><code>llm-evaluation-plan</code></td><td>定义离线与线上评估方案</td></tr>
+              <tr><td><code>model-selection-advisor</code></td><td>根据任务选模型策略</td></tr>
+              <tr><td><code>agent-workflow-brief</code></td><td>定义 agent 工作流</td></tr>
+              <tr><td rowspan="8" style="font-weight:700;color:var(--color-actor-2);vertical-align:top">💰 Commercial</td><td><code>pricing-packaging-brief</code></td><td>定义定价与套餐结构</td></tr>
+              <tr><td><code>conversion-funnel-diagnostic</code></td><td>诊断转化漏斗掉点</td></tr>
+              <tr><td><code>retention-levers-review</code></td><td>分析留存驱动和流失模式</td></tr>
+              <tr><td><code>growth-experiment-design</code></td><td>设计增长实验</td></tr>
+              <tr><td><code>revenue-metrics-scorecard</code></td><td>商业化指标看板</td></tr>
+              <tr><td><code>commercial-prd</code></td><td>商业化项目 PRD</td></tr>
+              <tr><td><code>north-star-metric</code></td><td>定义北极星指标</td></tr>
+              <tr><td><code>experiment-brief</code></td><td>轻量实验设计</td></tr>
+              <tr><td rowspan="7" style="font-weight:700;color:var(--color-actor-3);vertical-align:top">📋 通用 PM</td><td><code>problem-statement</code></td><td>定义清晰的问题</td></tr>
+              <tr><td><code>prd-development</code></td><td>从问题到需求的完整 PRD</td></tr>
+              <tr><td><code>prioritization-advisor</code></td><td>推荐优先级框架</td></tr>
+              <tr><td><code>voice-of-customer-synthesis</code></td><td>归纳用户反馈</td></tr>
+              <tr><td><code>task-decomposition</code></td><td>拆解大任务</td></tr>
+              <tr><td><code>review-gates</code></td><td>交付前结构化审查</td></tr>
+              <tr><td><code>workshop-facilitation</code></td><td>结构化引导会话</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Screen 2: Scenario quick-find -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">按场景速查</h2>
+        <div class="pattern-cards stagger-children">
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">📝</div><h4 class="pattern-title">"我要写 PRD"</h4><p class="pattern-desc">→ Command: <strong>write-prd</strong></p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">🤖</div><h4 class="pattern-title">"我要定义 AI 功能"</h4><p class="pattern-desc">→ Command: <strong>shape-ai-feature</strong></p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-1)"><div class="pattern-icon" style="background:var(--color-actor-1)">🚀</div><h4 class="pattern-title">"AI 功能准备上线"</h4><p class="pattern-desc">→ Command: <strong>prepare-ai-launch</strong></p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">📊</div><h4 class="pattern-title">"商业化增长有问题"</h4><p class="pattern-desc">→ Command: <strong>commercial-growth-review</strong></p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">💳</div><h4 class="pattern-title">"trial 转付费低"</h4><p class="pattern-desc">→ Command: <strong>improve-trial-to-paid</strong></p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">💰</div><h4 class="pattern-title">"要重做定价"</h4><p class="pattern-desc">→ Command: <strong>redesign-pricing-packages</strong></p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-2)"><div class="pattern-icon" style="background:var(--color-actor-2)">🔄</div><h4 class="pattern-title">"付费用户不续费"</h4><p class="pattern-desc">→ Command: <strong>analyze-paid-retention</strong></p></div>
+          <div class="pattern-card animate-in" style="border-top:3px solid var(--color-actor-3)"><div class="pattern-icon" style="background:var(--color-actor-3)">🎯</div><h4 class="pattern-title">"需求不知道怎么排"</h4><p class="pattern-desc">→ Command: <strong>prioritize</strong></p></div>
+        </div>
+      </section>
+
+      <!-- Screen 3: Final quiz -->
+      <section class="screen animate-in">
+        <h2 class="screen-heading">最终挑战</h2>
+        <div class="quiz-container" id="quiz-m8">
+          <div class="quiz-question-block" data-question="m8q1" data-correct="m8-b">
+            <h3 class="quiz-question">你要做一个"商业化策略评审"，需要从指标、漏斗、定价、留存到实验设计做一次完整评审。该用哪个 Command？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m8-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>commercial-growth-review</span></button>
+              <button class="quiz-option" data-value="m8-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>commercial-strategy-review（最完整的，串联 8 个 skill）</span></button>
+              <button class="quiz-option" data-value="m8-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>write-commercial-prd</span></button>
+            </div>
+            <div class="quiz-feedback" id="m8q1-feedback"></div>
+          </div>
+          <div class="quiz-question-block" data-question="m8q2" data-correct="m8-a">
+            <h3 class="quiz-question">AI 产出了一个没有"成功指标"、没有"Out of Scope"的 PRD。这违反了 Agent 规范层的什么规则？</h3>
+            <div class="quiz-options">
+              <button class="quiz-option" data-value="m8-a" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>OUTPUT_STANDARDS 的成文类禁止规则</span></button>
+              <button class="quiz-option" data-value="m8-b" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>ROUTING 的路由规则</span></button>
+              <button class="quiz-option" data-value="m8-c" onclick="selectOption(this)"><div class="quiz-option-radio"></div><span>SPARSE_CONTEXT_POLICY</span></button>
+            </div>
+            <div class="quiz-feedback" id="m8q2-feedback"></div>
+          </div>
+          <button class="quiz-btn quiz-check-btn" onclick="checkQuiz('quiz-m8')">检查答案</button>
+          <button class="quiz-btn quiz-reset-btn" onclick="resetQuiz('quiz-m8')">重试</button>
+        </div>
+      </section>
+
+      <!-- Screen 4: Summary -->
+      <section class="screen animate-in" style="text-align:center">
+        <h2 class="screen-heading">🎓 恭喜完成课程！</h2>
+        <div class="callout callout-accent" style="max-width:500px;margin:var(--space-6) auto">
+          <div class="callout-icon">☕</div>
+          <div class="callout-content"><strong>记住三件事</strong><p>① 先选 command，单点任务再选 skill<br>② 提真实业务问题，别只给抽象方向<br>③ 默认按 澄清→拆解→产出→审查 推进</p></div>
+        </div>
+        <p style="color:var(--color-text-secondary);margin-top:var(--space-6)">去仓库里开始用吧：<br><code style="font-family:var(--font-mono);font-size:var(--text-sm);background:var(--color-bg-code);color:#89B4FA;padding:4px 10px;border-radius:6px">github.com/yancheng2024/AI_Commercialization--Product-Management-skills</code></p>
+      </section>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  // === INTERSECTION OBSERVER ===
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+  // === STAGGER ===
+  document.querySelectorAll('.stagger-children').forEach(parent => {
+    Array.from(parent.children).forEach((child, i) => {
+      child.style.setProperty('--stagger-index', i);
+    });
+  });
+
+  // === PROGRESS BAR ===
+  const progressBar = document.getElementById('progress-bar');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+  window.addEventListener('scroll', () => requestAnimationFrame(updateProgress), { passive: true });
+
+  // === NAV DOTS ===
+  const modules = document.querySelectorAll('.module');
+  const dots = document.querySelectorAll('.nav-dot');
+  const moduleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        dots.forEach(d => {
+          d.classList.remove('current');
+          if (d.dataset.target === id) d.classList.add('current');
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  modules.forEach(m => moduleObserver.observe(m));
+  dots.forEach(d => {
+    d.addEventListener('click', () => {
+      const target = document.getElementById(d.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // === KEYBOARD NAV ===
+  document.addEventListener('keydown', (e) => {
+    if (['INPUT','TEXTAREA'].includes(e.target.tagName)) return;
+    const currentIdx = Array.from(dots).findIndex(d => d.classList.contains('current'));
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      e.preventDefault();
+      const next = Math.min(currentIdx + 1, modules.length - 1);
+      modules[next].scrollIntoView({ behavior: 'smooth' });
+    }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const prev = Math.max(currentIdx - 1, 0);
+      modules[prev].scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+
+  // === QUIZ ===
+  const explanations = {
+    m1q1: { true: '✅ 正确！prioritize 是一个 Command，它内部会先调用 workshop-facilitation 澄清需求，再用 prioritization-advisor 推荐框架。', false: '❌ prioritize 是 Command 不是 Skill。它串联了 workshop-facilitation 和 prioritization-advisor 两个 skill。' },
+    m2q1: { true: '✅ 正确！shape-ai-feature command 内部第一步就是 workshop-facilitation，不需要你手动先跑。', false: '❌ shape-ai-feature command 内部已经包含了 workshop-facilitation，直接跑 command 就会自动先澄清。' },
+    m3q1: { true: '✅ 正确！pricing-packaging-brief 就是专门用来设计/调整定价与套餐结构的 skill。', false: '❌ 那个 skill 不是用来解决定价结构问题的。pricing-packaging-brief 才是专门做这个的。' },
+    m4q1: { true: '✅ 正确！三个 skill 配合：选模型(model-selection) + 评审风险(ai-risk-review) + 设计评估方案(llm-evaluation-plan)。', false: '❌ 那个组合是解决商业化问题的，不是 AI 模型策略问题。' },
+    m5q1: { true: '✅ 正确！improve-trial-to-paid 就是专门针对 trial→paid 这段漏斗的 command。', false: '❌ 那个 command 覆盖面太广或不对口。improve-trial-to-paid 才是专门针对 trial-to-paid 转化的。' },
+    m6q1: { true: '✅ 正确！SPARSE_CONTEXT_POLICY 要求：先问 1-3 个问题 + 给受限版本的方向判断 + 不臆造数据。', false: '❌ 要么臆造了数据，要么太极端了。正确做法是先澄清再给受限判断。' },
+    m7q1: { true: '✅ 正确！evals 目录提供了标准化的测试用例和评分 rubric，是验证可靠性的推荐方式。', false: '❌ 那种方式不够系统。evals 提供了标准化的 case 和 rubric 来做客观评估。' },
+    m8q1: { true: '✅ 正确！commercial-strategy-review 是最完整的商业化评审 command，串联 8 个 skill。', false: '❌ 那个 command 覆盖面不够。commercial-strategy-review 才是最完整的。' },
+    m8q2: { true: '✅ 正确！OUTPUT_STANDARDS 的成文类禁止规则明确要求 PRD 必须包含 success metrics 和 out of scope。', false: '❌ 这是输出质量问题，不是路由问题。OUTPUT_STANDARDS 的成文类规则要求 PRD 必须有指标和边界。' },
+  };
+
+  window.selectOption = function(btn) {
+    const block = btn.closest('.quiz-question-block');
+    block.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    btn.classList.add('selected');
+  };
+
+  window.checkQuiz = function(sectionId) {
+    const container = document.getElementById(sectionId);
+    const questions = container.querySelectorAll('.quiz-question-block');
+    let correct = 0;
+    questions.forEach(q => {
+      const selected = q.querySelector('.quiz-option.selected');
+      const feedback = q.querySelector('.quiz-feedback');
+      const correctValue = q.dataset.correct;
+      const qId = q.dataset.question;
+      if (!selected) { feedback.textContent = '先选一个答案！'; feedback.className = 'quiz-feedback show warning'; return; }
+      if (selected.dataset.value === correctValue) {
+        correct++; selected.classList.add('correct');
+        feedback.innerHTML = explanations[qId].true; feedback.className = 'quiz-feedback show success';
+      } else {
+        selected.classList.add('incorrect');
+        q.querySelector(`[data-value="${correctValue}"]`).classList.add('correct');
+        feedback.innerHTML = explanations[qId].false; feedback.className = 'quiz-feedback show error';
+      }
+      q.querySelectorAll('.quiz-option').forEach(o => o.disabled = true);
+    });
+  };
+
+  window.resetQuiz = function(sectionId) {
+    const container = document.getElementById(sectionId);
+    container.querySelectorAll('.quiz-question-block').forEach(q => {
+      q.querySelectorAll('.quiz-option').forEach(o => { o.classList.remove('selected','correct','incorrect'); o.disabled = false; });
+      const fb = q.querySelector('.quiz-feedback'); fb.textContent = ''; fb.className = 'quiz-feedback';
+    });
+  };
+
+  // === CHAT ANIMATION ===
+  const chatStates = {};
+  window.playChatNext = function(chatId, typingId, avatarId) {
+    if (!chatStates[chatId]) chatStates[chatId] = 0;
+    const idx = chatStates[chatId];
+    const messages = document.querySelectorAll(`#${chatId} .chat-message`);
+    if (idx >= messages.length) return;
+    const msg = messages[idx];
+    const sender = msg.dataset.sender;
+    const colors = { workshop:'var(--color-actor-1)', task:'var(--color-actor-2)', prd:'var(--color-actor-3)', review:'var(--color-actor-4)' };
+    const initials = { workshop:'W', task:'T', prd:'P', review:'R' };
+    const typing = document.getElementById(typingId);
+    const avatar = document.getElementById(avatarId);
+    avatar.textContent = initials[sender] || '?';
+    avatar.style.background = colors[sender] || 'var(--color-text-muted)';
+    typing.style.display = 'flex';
+    setTimeout(() => {
+      typing.style.display = 'none';
+      msg.style.display = 'flex';
+      chatStates[chatId] = idx + 1;
+      const prog = document.getElementById(chatId.replace('chat-','chat-progress-'));
+      if (prog) prog.textContent = `${chatStates[chatId]} / ${messages.length}`;
+    }, 800);
+  };
+
+  window.playChatAll = function(chatId, typingId, avatarId) {
+    const messages = document.querySelectorAll(`#${chatId} .chat-message`);
+    let count = 0;
+    const interval = setInterval(() => {
+      if (count >= messages.length) { clearInterval(interval); return; }
+      window.playChatNext(chatId, typingId, avatarId);
+      count++;
+    }, 1200);
+  };
+
+  window.resetChat = function(chatId, typingId) {
+    chatStates[chatId] = 0;
+    document.querySelectorAll(`#${chatId} .chat-message`).forEach(m => m.style.display = 'none');
+    document.getElementById(typingId).style.display = 'none';
+    const prog = document.getElementById(chatId.replace('chat-','chat-progress-'));
+    if (prog) prog.textContent = '0 / ' + document.querySelectorAll(`#${chatId} .chat-message`).length;
+  };
+
+  // === FLOW ANIMATION ===
+  const flowSteps = [
+    { actor:'fa-workshop', label:'👤 用户提交 AI 功能想法 → workshop-facilitation 开始澄清需求和边界' },
+    { actor:'fa-problem', label:'📝 澄清完成 → problem-statement 把痛点结构化成问题定义' },
+    { actor:'fa-task', label:'✂️ task-decomposition 把"定义 AI 功能"拆成 5-8 个可检查的小步骤' },
+    { actor:'fa-brief', label:'📄 ai-feature-brief 产出功能简报：用户任务、输入输出、质量标准、fallback' },
+    { actor:'fa-brief', label:'🔬 llm-evaluation-plan 补充评估方案：离线+线上、样本、指标、阻断阈值' },
+    { actor:'fa-brief', label:'⚠️ ai-risk-review 评审五大风险面：质量、信任、运营、滥用、策略' },
+    { actor:'fa-review', label:'✅ review-gates 做交付前审查：Fit Check → Reasoning → Completeness' },
+  ];
+  let flowStepIdx = 0;
+  window.flowNext = function() {
+    if (flowStepIdx >= flowSteps.length) return;
+    const step = flowSteps[flowStepIdx];
+    document.querySelectorAll('.flow-actor').forEach(a => a.classList.remove('active'));
+    document.getElementById(step.actor).classList.add('active');
+    document.getElementById('flow-label').textContent = step.label;
+    flowStepIdx++;
+    document.getElementById('flow-progress').textContent = `${flowStepIdx} / ${flowSteps.length}`;
+  };
+  window.flowReset = function() {
+    flowStepIdx = 0;
+    document.querySelectorAll('.flow-actor').forEach(a => a.classList.remove('active'));
+    document.getElementById('flow-label').textContent = '点击"下一步"开始';
+    document.getElementById('flow-progress').textContent = '0 / ' + flowSteps.length;
+  };
+
+  // === GLOSSARY TOOLTIPS ===
+  let activeTooltip = null;
+  document.querySelectorAll('.term').forEach(term => {
+    const tip = document.createElement('span');
+    tip.className = 'term-tooltip';
+    tip.textContent = term.dataset.definition;
+    term.addEventListener('mouseenter', () => {
+      if (activeTooltip && activeTooltip !== tip) { activeTooltip.classList.remove('visible'); activeTooltip.remove(); }
+      const rect = term.getBoundingClientRect();
+      let left = rect.left + rect.width/2 - 150;
+      left = Math.max(8, Math.min(left, window.innerWidth - 328));
+      tip.style.left = left + 'px';
+      document.body.appendChild(tip);
+      const tipH = tip.offsetHeight;
+      if (rect.top - tipH - 8 < 0) { tip.style.top = (rect.bottom + 8) + 'px'; tip.classList.add('flip'); }
+      else { tip.style.top = (rect.top - tipH - 8) + 'px'; tip.classList.remove('flip'); }
+      requestAnimationFrame(() => tip.classList.add('visible'));
+      activeTooltip = tip;
+    });
+    term.addEventListener('mouseleave', () => { tip.classList.remove('visible'); setTimeout(() => { if (!tip.classList.contains('visible')) tip.remove(); }, 150); activeTooltip = null; });
+    term.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (activeTooltip && activeTooltip !== tip) { activeTooltip.classList.remove('visible'); activeTooltip.remove(); }
+      if (tip.classList.contains('visible')) { tip.classList.remove('visible'); tip.remove(); activeTooltip = null; }
+      else {
+        const rect = term.getBoundingClientRect();
+        let left = rect.left + rect.width/2 - 150;
+        left = Math.max(8, Math.min(left, window.innerWidth - 328));
+        tip.style.left = left + 'px';
+        document.body.appendChild(tip);
+        const tipH = tip.offsetHeight;
+        if (rect.top - tipH - 8 < 0) { tip.style.top = (rect.bottom + 8) + 'px'; tip.classList.add('flip'); }
+        else { tip.style.top = (rect.top - tipH - 8) + 'px'; tip.classList.remove('flip'); }
+        requestAnimationFrame(() => tip.classList.add('visible'));
+        activeTooltip = tip;
+      }
+    });
+  });
+  document.addEventListener('click', () => { if (activeTooltip) { activeTooltip.classList.remove('visible'); activeTooltip.remove(); activeTooltip = null; } });
+})();
+</script>
+</body>
+</html>
