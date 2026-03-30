@@ -115,6 +115,9 @@ Best for:
 - [LAUNCH_POST.md](LAUNCH_POST.md)
 - [Personal Brand Kit](docs/personal-brand-kit.md)
 - [Method Framework](docs/method-framework.md)
+- [Method Map](docs/method-map.md)
+- [Signature Case: Commercialization Judgment](docs/signature-case-commercialization.md)
+- [Signature Case: Why Not A Prompt Library](docs/signature-case-pm-system.md)
 
 ## What Makes This Different
 

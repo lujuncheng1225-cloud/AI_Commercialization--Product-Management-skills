@@ -49,6 +49,9 @@
 - [LAUNCH_POST.zh-CN.md](LAUNCH_POST.zh-CN.md)
 - [个人品牌资料包](docs/personal-brand-kit.zh-CN.md)
 - [方法论介绍](docs/method-framework.zh-CN.md)
+- [方法图](docs/method-map.zh-CN.md)
+- [署名案例：商业化判断](docs/signature-case-commercialization.zh-CN.md)
+- [署名案例：为什么不是提示词库](docs/signature-case-pm-system.zh-CN.md)
 
 ## 这套库的核心差异
 

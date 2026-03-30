@@ -231,3 +231,10 @@ If you want this page to become a real trust-builder, the next high-value additi
 - a paid retention recovery case
 - a prioritization case with conflicting stakeholders
 - a case showing how the same task behaves across different agent platforms
+
+## Signature Cases
+
+If you want to see the author's point of view more directly, start here:
+
+- [Signature Case 01: An Anonymized Commercialization Judgment](docs/signature-case-commercialization.md)
+- [Signature Case 02: Why I Did Not Build A Prompt Library](docs/signature-case-pm-system.md)
