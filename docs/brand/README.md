@@ -8,6 +8,8 @@
 - `WHY_THIS_REPO.md`
 - `LAUNCH_POST.zh-CN.md`
 - `LAUNCH_POST.md`
+- `social-posts.zh-CN.md`
+- `social-posts.md`
 
 ## Personal Brand
 

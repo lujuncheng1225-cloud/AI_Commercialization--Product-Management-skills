@@ -29,6 +29,12 @@ This repo is built to help product managers think better, structure work better,
 
 It is not a prompt dump. It is a reusable PM operating system.
 
+## In 3 Seconds
+
+- What it is: a PM operating system for humans and AI agents
+- What it solves: PM work that is not just faster, but more reliable and reusable
+- What you can do now: run workflows for PRDs, AI feature shaping, and commercialization reviews
+
 If this is your first visit, start with these 3 entry points:
 
 - Try: [Interactive Toolkit](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
@@ -82,6 +88,12 @@ In practice, that means this repo emphasizes:
 - `private/` — optional private context
 - `docs/` — toolkit, guides, brand assets, and updates
 
+## Who This Is For
+
+- PMs who want reusable systems instead of scattered prompts
+- practitioners working on AI PM or commercialization PM
+- teams that want to connect the repo to Codex, Claude Code, Cursor, or internal agents
+
 ## Quick Start
 
 - Write a PRD: [commands/write-prd.md](commands/write-prd.md)
@@ -90,6 +102,7 @@ In practice, that means this repo emphasizes:
 - See reference cases: [CASE_STUDIES.md](docs/core/CASE_STUDIES.md)
 - Brand and author materials: [docs/brand/README.md](docs/brand/README.md)
 - Usage guides: [docs/guides/README.md](docs/guides/README.md)
+- Social post starters: [docs/brand/social-posts.md](docs/brand/social-posts.md)
 
 ## Local Run
 

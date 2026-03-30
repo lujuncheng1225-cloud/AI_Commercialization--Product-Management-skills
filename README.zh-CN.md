@@ -4,6 +4,12 @@
 
 它不是提示词库，而是一套把 PM 判断、工作流和 agent 协作沉淀成系统的仓库。
 
+## 3 秒懂
+
+- 这是什么：给产品经理和 AI agent 共用的 PM 操作系统
+- 解决什么：让 PM 工作不只更快，而是更稳、更可复用
+- 现在能干嘛：直接跑 PRD、AI 功能定义、商业化策略评审等 workflow
+
 如果你第一次来，先看这 3 个入口：
 
 - 上手：[在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
@@ -41,6 +47,12 @@
 - `private/`：私有上下文模板
 - `docs/`：工具箱、指南、品牌资料、更新说明
 
+## 适合谁
+
+- 想把 PM 工作流做成系统的人
+- 正在做 AI PM 或商业化 PM 的人
+- 想把这套库接进 Codex、Claude Code、Cursor 或内部 agent 的团队
+
 ## 快速开始
 
 - 写 PRD：[commands/write-prd.md](commands/write-prd.md)
@@ -49,6 +61,7 @@
 - 参考案例：[CASE_STUDIES.md](docs/core/CASE_STUDIES.md)
 - 品牌与作者资料：[docs/brand/README.md](docs/brand/README.md)
 - 使用指南：[docs/guides/README.md](docs/guides/README.md)
+- 社媒传播文案：[docs/brand/social-posts.zh-CN.md](docs/brand/social-posts.zh-CN.md)
 
 ## 本地运行
 
