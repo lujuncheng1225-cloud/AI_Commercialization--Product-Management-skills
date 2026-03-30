@@ -2224,7 +2224,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <section class="screen animate-in" style="text-align:center">
         <h2 class="screen-heading">🎓 恭喜完成课程！</h2>
         <div class="callout callout-accent" style="max-width:500px;margin:var(--space-6) auto"><div class="callout-icon">☕</div><div class="callout-content"><strong>记住三件事</strong><p>① 先选 command，单点任务再选 skill<br>② 提真实业务问题，别只给抽象方向<br>③ 默认按 澄清→拆解→产出→审查 推进</p></div></div>
-        <p style="color:var(--color-text-secondary);margin-top:var(--space-6)">去仓库里开始用吧：<br><code style="font-family:var(--font-mono);font-size:var(--text-sm);background:var(--color-bg-code);color:#89B4FA;padding:4px 10px;border-radius:6px">github.com/yancheng2024/AI_Commercialization--Product-Management-skills</code></p>
+        <p style="color:var(--color-text-secondary);margin-top:var(--space-6)">去仓库里开始用吧：<br><code style="font-family:var(--font-mono);font-size:var(--text-sm);background:var(--color-bg-code);color:#89B4FA;padding:4px 10px;border-radius:6px">github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills</code></p>
       </section>
     </div>
   </div>
