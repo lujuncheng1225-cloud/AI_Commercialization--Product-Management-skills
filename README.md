@@ -79,6 +79,7 @@ Use the repo as a PM learning and reasoning library if you want to improve how y
 
 - [MANIFESTO.md](MANIFESTO.md)
 - [CASE_STUDIES.md](CASE_STUDIES.md)
+- [Project Update](docs/project-update-2026-03.md)
 - [START_HERE.md](START_HERE.md)
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
