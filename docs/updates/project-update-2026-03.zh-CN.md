@@ -197,8 +197,8 @@
 
 1. [README.zh-CN.md](/Users/yancheng/Documents/AI%20Product%20Management/README.zh-CN.md)
 2. [docs/pm-skills-interactive-course.html](/Users/yancheng/Documents/AI%20Product%20Management/docs/pm-skills-interactive-course.html)
-3. [MANIFESTO.md](/Users/yancheng/Documents/AI%20Product%20Management/MANIFESTO.md)
-4. [CASE_STUDIES.md](/Users/yancheng/Documents/AI%20Product%20Management/CASE_STUDIES.md)
+3. [MANIFESTO.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/MANIFESTO.md)
+4. [CASE_STUDIES.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/CASE_STUDIES.md)
 5. [adapters/CODEX.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CODEX.md)
 
 如果只想用一句话介绍它，可以直接用这句：

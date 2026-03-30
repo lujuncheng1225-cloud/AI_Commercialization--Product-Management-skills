@@ -7,7 +7,7 @@
 如果你第一次来，先看这 3 个入口：
 
 - 上手：[在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
-- 理解：[START_HERE.md](START_HERE.md)
+- 理解：[START_HERE.md](docs/guides/START_HERE.zh-CN.md)
 - 全部文档：[docs/README.md](docs/README.md)
 
 ## 这套库的核心差异
@@ -46,7 +46,7 @@
 - 写 PRD：[commands/write-prd.md](commands/write-prd.md)
 - 定义 AI 功能：[commands/shape-ai-feature.md](commands/shape-ai-feature.md)
 - 商业化策略评审：[commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
-- 参考案例：[CASE_STUDIES.md](CASE_STUDIES.md)
+- 参考案例：[CASE_STUDIES.md](docs/core/CASE_STUDIES.md)
 - 品牌与作者资料：[docs/brand/README.md](docs/brand/README.md)
 - 使用指南：[docs/guides/README.md](docs/guides/README.md)
 
@@ -68,4 +68,4 @@ python3 scripts/generate-catalog.py
 ```
 
 如果你只跑一个入口，先用 [在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)。
-如果你想快速看懂仓库，先看 [START_HERE.md](START_HERE.md)。
+如果你想快速看懂仓库，先看 [START_HERE.md](docs/guides/START_HERE.zh-CN.md)。

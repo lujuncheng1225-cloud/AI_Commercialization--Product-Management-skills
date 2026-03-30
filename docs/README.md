@@ -4,6 +4,8 @@
 
 ## Structure
 
+- `core/`
+  - 核心定位与案例文档
 - `guides/`
   - 使用、维护和扩展仓库时会用到的指南
 - `brand/`
@@ -18,12 +20,7 @@
 ## Key Files
 
 - `pm-skills-interactive-course.html`
+- `core/README.md`
 - `guides/README.md`
 - `brand/README.md`
-- `brand/ABOUT_AUTHOR.md`
-- `brand/WHY_THIS_REPO.md`
-- `brand/LAUNCH_POST.zh-CN.md`
-- `brand/LAUNCH_POST.md`
-- `brand/method-framework.zh-CN.md`
-- `brand/method-map.zh-CN.md`
 - `updates/project-update-2026-03.zh-CN.md`

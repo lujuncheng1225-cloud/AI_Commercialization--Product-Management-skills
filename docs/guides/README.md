@@ -4,6 +4,8 @@
 
 ## Files
 
+- `START_HERE.md`
+- `START_HERE.zh-CN.md`
 - `Using PM Skills with Codex.md`
 - `Using PM Skills with Codex.zh-CN.md`
 - `Building PM Skills.md`

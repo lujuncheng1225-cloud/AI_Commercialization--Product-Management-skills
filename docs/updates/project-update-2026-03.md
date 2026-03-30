@@ -172,8 +172,8 @@ If you want to introduce this repo to someone else, the best order is:
 
 1. [README.md](/Users/yancheng/Documents/AI%20Product%20Management/README.md)
 2. [docs/pm-skills-interactive-course.html](/Users/yancheng/Documents/AI%20Product%20Management/docs/pm-skills-interactive-course.html)
-3. [MANIFESTO.md](/Users/yancheng/Documents/AI%20Product%20Management/MANIFESTO.md)
-4. [CASE_STUDIES.md](/Users/yancheng/Documents/AI%20Product%20Management/CASE_STUDIES.md)
+3. [MANIFESTO.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/MANIFESTO.md)
+4. [CASE_STUDIES.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/CASE_STUDIES.md)
 5. [adapters/CODEX.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CODEX.md)
 
 If you want a one-line description, use this:

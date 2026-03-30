@@ -14,9 +14,9 @@
 <p align="center">
   <a href="https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html">Try the Toolkit</a>
   ·
-  <a href="MANIFESTO.md">Manifesto</a>
+  <a href="docs/core/MANIFESTO.md">Manifesto</a>
   ·
-  <a href="START_HERE.md">Start Here</a>
+  <a href="docs/guides/START_HERE.md">Start Here</a>
   ·
   <a href="README.zh-CN.md">中文</a>
 </p>
@@ -32,7 +32,7 @@ It is not a prompt dump. It is a reusable PM operating system.
 If this is your first visit, start with these 3 entry points:
 
 - Try: [Interactive Toolkit](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
-- Understand: [START_HERE.md](START_HERE.md)
+- Understand: [START_HERE.md](docs/guides/START_HERE.md)
 - Browse docs: [docs/README.md](docs/README.md)
 
 ## Why This Exists
@@ -87,7 +87,7 @@ In practice, that means this repo emphasizes:
 - Write a PRD: [commands/write-prd.md](commands/write-prd.md)
 - Shape an AI feature: [commands/shape-ai-feature.md](commands/shape-ai-feature.md)
 - Review commercialization strategy: [commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
-- See reference cases: [CASE_STUDIES.md](CASE_STUDIES.md)
+- See reference cases: [CASE_STUDIES.md](docs/core/CASE_STUDIES.md)
 - Brand and author materials: [docs/brand/README.md](docs/brand/README.md)
 - Usage guides: [docs/guides/README.md](docs/guides/README.md)
 

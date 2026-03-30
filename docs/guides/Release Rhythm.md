@@ -10,7 +10,7 @@ Use a lightweight release rhythm for this repository.
 
 ## Before a tagged release
 
-1. Update `CHANGELOG.md`
+1. Update `docs/updates/CHANGELOG.md`
 2. Regenerate catalog
 3. Review new or edited metadata for trigger clarity
 4. Spot-check at least one realistic prompt per new skill
@@ -21,4 +21,3 @@ Use a lightweight release rhythm for this repository.
 - `0.x` while the library is still evolving quickly
 - minor release for new skills or commands
 - patch release for fixes and wording improvements
-
