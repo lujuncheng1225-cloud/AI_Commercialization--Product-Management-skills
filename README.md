@@ -79,7 +79,7 @@ Use the repo as a PM learning and reasoning library if you want to improve how y
 
 - [MANIFESTO.md](MANIFESTO.md)
 - [CASE_STUDIES.md](CASE_STUDIES.md)
-- [Project Update](docs/project-update-2026-03.md)
+- [Project Update](docs/updates/project-update-2026-03.md)
 - [START_HERE.md](START_HERE.md)
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
@@ -110,14 +110,14 @@ Best for:
 
 ## Author And Launch
 
-- [ABOUT_AUTHOR.md](ABOUT_AUTHOR.md)
-- [WHY_THIS_REPO.md](WHY_THIS_REPO.md)
-- [LAUNCH_POST.md](LAUNCH_POST.md)
-- [Personal Brand Kit](docs/personal-brand-kit.md)
-- [Method Framework](docs/method-framework.md)
-- [Method Map](docs/method-map.md)
-- [Signature Case: Commercialization Judgment](docs/signature-case-commercialization.md)
-- [Signature Case: Why Not A Prompt Library](docs/signature-case-pm-system.md)
+- [ABOUT_AUTHOR.md](docs/brand/ABOUT_AUTHOR.md)
+- [WHY_THIS_REPO.md](docs/brand/WHY_THIS_REPO.md)
+- [LAUNCH_POST.md](docs/brand/LAUNCH_POST.md)
+- [Personal Brand Kit](docs/brand/personal-brand-kit.md)
+- [Method Framework](docs/brand/method-framework.md)
+- [Method Map](docs/brand/method-map.md)
+- [Signature Case: Commercialization Judgment](docs/brand/signature-case-commercialization.md)
+- [Signature Case: Why Not A Prompt Library](docs/brand/signature-case-pm-system.md)
 
 ## What Makes This Different
 
@@ -149,6 +149,7 @@ In practice, that means this repo emphasizes:
 - `catalog/` — generated indexes
 - `scripts/` — validation and catalog tooling
 - `private/` — optional personalization templates
+- `docs/` — brand assets, updates, and static pages
 
 ## Quick Paths
 

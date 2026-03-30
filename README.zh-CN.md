@@ -24,7 +24,7 @@
 
 - [MANIFESTO.md](MANIFESTO.md)
 - [CASE_STUDIES.md](CASE_STUDIES.md)
-- [本轮更新说明](docs/project-update-2026-03.zh-CN.md)
+- [本轮更新说明](docs/updates/project-update-2026-03.zh-CN.md)
 - [START_HERE.md](START_HERE.md)
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
@@ -44,14 +44,14 @@
 
 ## 作者与发布
 
-- [ABOUT_AUTHOR.md](ABOUT_AUTHOR.md)
-- [WHY_THIS_REPO.md](WHY_THIS_REPO.md)
-- [LAUNCH_POST.zh-CN.md](LAUNCH_POST.zh-CN.md)
-- [个人品牌资料包](docs/personal-brand-kit.zh-CN.md)
-- [方法论介绍](docs/method-framework.zh-CN.md)
-- [方法图](docs/method-map.zh-CN.md)
-- [署名案例：商业化判断](docs/signature-case-commercialization.zh-CN.md)
-- [署名案例：为什么不是提示词库](docs/signature-case-pm-system.zh-CN.md)
+- [ABOUT_AUTHOR.md](docs/brand/ABOUT_AUTHOR.md)
+- [WHY_THIS_REPO.md](docs/brand/WHY_THIS_REPO.md)
+- [LAUNCH_POST.zh-CN.md](docs/brand/LAUNCH_POST.zh-CN.md)
+- [个人品牌资料包](docs/brand/personal-brand-kit.zh-CN.md)
+- [方法论介绍](docs/brand/method-framework.zh-CN.md)
+- [方法图](docs/brand/method-map.zh-CN.md)
+- [署名案例：商业化判断](docs/brand/signature-case-commercialization.zh-CN.md)
+- [署名案例：为什么不是提示词库](docs/brand/signature-case-pm-system.zh-CN.md)
 
 ## 这套库的核心差异
 
@@ -85,6 +85,7 @@
 - `catalog/`：自动生成索引
 - `scripts/`：校验与生成脚本
 - `private/`：可选私有上下文模板
+- `docs/`：品牌资料、更新说明和静态页面
 
 ## 快速路径
 
