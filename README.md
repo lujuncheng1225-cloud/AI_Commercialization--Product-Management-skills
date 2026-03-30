@@ -108,6 +108,12 @@ Best for:
 - reusable team workflows
 - cross-model prompt and output consistency
 
+## Author And Launch
+
+- [ABOUT_AUTHOR.md](ABOUT_AUTHOR.md)
+- [WHY_THIS_REPO.md](WHY_THIS_REPO.md)
+- [LAUNCH_POST.md](LAUNCH_POST.md)
+
 ## What Makes This Different
 
 Most PM AI repos optimize for breadth.

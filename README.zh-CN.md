@@ -42,6 +42,12 @@
 
 适合把这套库接进 Codex、Claude Code、Cursor 或内部 agent 工作流。
 
+## 作者与发布
+
+- [ABOUT_AUTHOR.md](ABOUT_AUTHOR.md)
+- [WHY_THIS_REPO.md](WHY_THIS_REPO.md)
+- [LAUNCH_POST.zh-CN.md](LAUNCH_POST.zh-CN.md)
+
 ## 这套库的核心差异
 
 多数 AI PM 仓库在做“内容堆积”。
