@@ -113,6 +113,8 @@ Best for:
 - [ABOUT_AUTHOR.md](ABOUT_AUTHOR.md)
 - [WHY_THIS_REPO.md](WHY_THIS_REPO.md)
 - [LAUNCH_POST.md](LAUNCH_POST.md)
+- [Personal Brand Kit](docs/personal-brand-kit.md)
+- [Method Framework](docs/method-framework.md)
 
 ## What Makes This Different
 

@@ -47,6 +47,8 @@
 - [ABOUT_AUTHOR.md](ABOUT_AUTHOR.md)
 - [WHY_THIS_REPO.md](WHY_THIS_REPO.md)
 - [LAUNCH_POST.zh-CN.md](LAUNCH_POST.zh-CN.md)
+- [个人品牌资料包](docs/personal-brand-kit.zh-CN.md)
+- [方法论介绍](docs/method-framework.zh-CN.md)
 
 ## 这套库的核心差异
 
