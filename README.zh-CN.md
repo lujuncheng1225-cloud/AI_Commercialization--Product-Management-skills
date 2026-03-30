@@ -1,37 +1,102 @@
-# AI Product Management Skills
+# PM AI Skill 工具箱
 
-这个仓库现在的主 README 已经是中文版本。
+给 AI 时代产品经理使用的开源操作系统。
 
-如果你要快速理解它，建议看这几个入口：
+它不是一个“提示词大全”，而是一个把 PM 工作方式系统化的仓库：
 
-- [README.md](README.md)
+- 给人直接用的交互式工具箱
+- 给学习者用的方法论与工作流
+- 给 agent 用的 skills / commands / routing / evals
+
+如果你要的是“更快生成一份东西”，这个库已经够用。
+如果你要的是“把 PM 判断、结构和工作流沉淀成系统”，这个库更适合你。
+
+## 三个入口
+
+### 1. 先上手
+
+- [在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
+- 20 个高频 PM 场景
+- 中英文双语
+- 适合直接生成高质量 Prompt
+
+### 2. 再理解
+
+- [MANIFESTO.md](MANIFESTO.md)
 - [START_HERE.md](START_HERE.md)
-- [Using PM Skills with Codex.md](docs/Using%20PM%20Skills%20with%20Codex.md)
-
-它现在不是单纯的 skill 仓库，而是：
-
-- 中文主版本 PM 技能库
-- AI PM + 商业化 PM 工作流库
-- 可迁移的 agent 规范层
-- 跨平台 eval 基线
-- 可选私有上下文层
-- 带模板、样例、校验脚本的轻量决策系统
-
-而且这一版开始明显加强“判断质量”，不只追求结构完整：
-
-- 把 `第一性原理 / 苏格拉底提问 / 奥卡姆剃刀` 写成可触发的推理规则
-- 在关键 skill 里加入 `反证检查` 和 `最强替代解释`
-- 用更强的样例输出减少模板味
-- 用更刁钻的 eval case 检查 agent 会不会过早自信
-
-如果你希望把它当成跨电脑、跨工具复用的私人 PM agent 脑，建议优先读：
-
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
-- [agent/DOMAIN_CONTEXT.md](agent/DOMAIN_CONTEXT.md)
-- [agent/SPARSE_CONTEXT_POLICY.md](agent/SPARSE_CONTEXT_POLICY.md)
-- [adapters/CODEX.md](adapters/CODEX.md)
-- [adapters/CLAUDE_CODE.md](adapters/CLAUDE_CODE.md)
-- [adapters/CURSOR.md](adapters/CURSOR.md)
-- [evals/README.md](evals/README.md)
-- [private/README.md](private/README.md)
+
+适合想理解这套系统为什么这样设计、优秀 AI PM 工作应该长什么样的人。
+
+### 3. 再接系统
+
+- `skills/`
+- `commands/`
+- `agent/`
+- `adapters/`
+- `evals/`
+- `private/`
+
+适合把这套库接进 Codex、Claude Code、Cursor 或内部 agent 工作流。
+
+## 这套库的核心差异
+
+多数 AI PM 仓库在做“内容堆积”。
+这套库更想做“专业可靠性”。
+
+它强调的不是把答案写长，而是：
+
+- 先路由对
+- 先澄清对
+- 先下判断
+- 再做产物
+- 最后过 review gate
+
+默认输出关注：
+
+- `Decision`
+- `Evidence`
+- `Assumptions`
+- `Risks`
+- `Next Steps`
+
+## 仓库里有什么
+
+- `docs/pm-skills-interactive-course.html`：交互式 PM 工具箱
+- `skills/`：22 个可复用 PM 技能
+- `commands/`：10 条多技能工作流
+- `agent/`：跨平台路由与输出规范
+- `adapters/`：Codex / Claude Code / Cursor 接入说明
+- `evals/`：质量评估基线
+- `catalog/`：自动生成索引
+- `scripts/`：校验与生成脚本
+- `private/`：可选私有上下文模板
+
+## 快速路径
+
+- 写 PRD：[commands/write-prd.md](commands/write-prd.md)
+- 定义 AI 功能：[commands/shape-ai-feature.md](commands/shape-ai-feature.md)
+- 商业化策略评审：[commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
+- 转化漏斗诊断：[commands/commercial-growth-review.md](commands/commercial-growth-review.md)
+- 接入 Codex：[adapters/CODEX.md](adapters/CODEX.md)
+
+## 本地运行
+
+```bash
+git clone https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills.git
+cd AI_Commercialization--Product-Management-skills/docs
+python3 -m http.server 8888
+# 打开 http://localhost:8888/pm-skills-interactive-course.html
+```
+
+## 校验命令
+
+```bash
+python3 scripts/validate-library.py
+python3 scripts/check-style-consistency.py
+python3 scripts/generate-catalog.py
+```
+
+如果你只看一份文档，先看 [MANIFESTO.md](MANIFESTO.md)。
+如果你只跑一个入口，先用 [在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)。
