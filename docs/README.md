@@ -4,6 +4,8 @@
 
 ## Structure
 
+- `guides/`
+  - 使用、维护和扩展仓库时会用到的指南
 - `brand/`
   - 作者介绍、发布文案、方法论、方法图、署名案例、个人品牌资料包
 - `updates/`
@@ -16,6 +18,8 @@
 ## Key Files
 
 - `pm-skills-interactive-course.html`
+- `guides/README.md`
+- `brand/README.md`
 - `brand/ABOUT_AUTHOR.md`
 - `brand/WHY_THIS_REPO.md`
 - `brand/LAUNCH_POST.zh-CN.md`

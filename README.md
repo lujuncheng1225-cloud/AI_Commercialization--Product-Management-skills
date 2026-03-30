@@ -27,14 +27,13 @@ Most AI-for-PM resources help people write faster.
 
 This repo is built to help product managers think better, structure work better, and make stronger decisions with AI.
 
-It combines three layers in one system:
+It is not a prompt dump. It is a reusable PM operating system.
 
-- `Try`: a guided PM toolkit for immediate use
-- `Learn`: reusable PM reasoning, workflows, and examples
-- `System`: portable skills, commands, routing rules, and evals for agents
+If this is your first visit, start with these 3 entry points:
 
-If you want a pile of prompts, this repo is overbuilt.
-If you want a reusable PM operating system, this repo is for you.
+- Try: [Interactive Toolkit](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
+- Understand: [START_HERE.md](START_HERE.md)
+- Browse docs: [docs/README.md](docs/README.md)
 
 ## Why This Exists
 
@@ -53,71 +52,6 @@ This library is designed to fix that by encoding not just prompts, but:
 - review gates
 - evaluation discipline
 - commercialization and growth judgment
-
-## Three Ways To Use It
-
-### 1. Try
-
-Use the interactive toolkit if you want a fast starting point for real PM tasks.
-
-- [Live Demo](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
-- 20 guided PM scenarios
-- bilingual UI
-- mobile-friendly and copy-ready output
-
-Best for:
-
-- competitor analysis
-- PRD drafting
-- pricing strategy
-- growth experiments
-- PM communication
-
-### 2. Learn
-
-Use the repo as a PM learning and reasoning library if you want to improve how you work with AI.
-
-- [MANIFESTO.md](MANIFESTO.md)
-- [CASE_STUDIES.md](CASE_STUDIES.md)
-- [Project Update](docs/updates/project-update-2026-03.md)
-- [START_HERE.md](START_HERE.md)
-- [agent/ROUTING.md](agent/ROUTING.md)
-- [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
-
-Best for:
-
-- learning how strong AI-native PM work should be structured
-- understanding when to clarify, diagnose, decide, and document
-- building a more opinionated PM practice
-
-### 3. System
-
-Use the repo as a portable PM agent brain if you want reusable workflows across tools and models.
-
-- `skills/` for single capabilities
-- `commands/` for orchestrated PM workflows
-- `agent/` for cross-platform policy
-- `adapters/` for Codex / Claude Code / Cursor setup
-- `evals/` for quality baselines
-- `private/` for optional personal context
-
-Best for:
-
-- AI PM copilots
-- internal PM agents
-- reusable team workflows
-- cross-model prompt and output consistency
-
-## Author And Launch
-
-- [ABOUT_AUTHOR.md](docs/brand/ABOUT_AUTHOR.md)
-- [WHY_THIS_REPO.md](docs/brand/WHY_THIS_REPO.md)
-- [LAUNCH_POST.md](docs/brand/LAUNCH_POST.md)
-- [Personal Brand Kit](docs/brand/personal-brand-kit.md)
-- [Method Framework](docs/brand/method-framework.md)
-- [Method Map](docs/brand/method-map.md)
-- [Signature Case: Commercialization Judgment](docs/brand/signature-case-commercialization.md)
-- [Signature Case: Why Not A Prompt Library](docs/brand/signature-case-pm-system.md)
 
 ## What Makes This Different
 
@@ -138,29 +72,24 @@ In practice, that means this repo emphasizes:
 - commercialization depth, not just generic product advice
 - evals and validation, not just content volume
 
-## What's Inside
+## Structure
 
-- `docs/pm-skills-interactive-course.html` — interactive PM toolkit
-- `skills/` — 22 PM skill files usable by humans and agents
-- `commands/` — 10 multi-skill workflows
-- `agent/` — routing, output standards, sparse-context policy
-- `adapters/` — tool-specific setup for Codex, Claude Code, Cursor
-- `evals/` — routing and output quality baselines
-- `catalog/` — generated indexes
-- `scripts/` — validation and catalog tooling
-- `private/` — optional personalization templates
-- `docs/` — brand assets, updates, and static pages
+- `skills/` — single capabilities
+- `commands/` — multi-step workflows
+- `agent/` — routing and output policy
+- `adapters/` — setup for different agent tools
+- `evals/` — evaluation baselines
+- `private/` — optional private context
+- `docs/` — toolkit, guides, brand assets, and updates
 
-## Quick Paths
-
-If you want the fastest path, start here:
+## Quick Start
 
 - Write a PRD: [commands/write-prd.md](commands/write-prd.md)
 - Shape an AI feature: [commands/shape-ai-feature.md](commands/shape-ai-feature.md)
 - Review commercialization strategy: [commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
-- Diagnose funnel drops: [commands/commercial-growth-review.md](commands/commercial-growth-review.md)
 - See reference cases: [CASE_STUDIES.md](CASE_STUDIES.md)
-- Build with Codex: [adapters/CODEX.md](adapters/CODEX.md)
+- Brand and author materials: [docs/brand/README.md](docs/brand/README.md)
+- Usage guides: [docs/guides/README.md](docs/guides/README.md)
 
 ## Local Run
 

@@ -2,56 +2,13 @@
 
 给 AI 时代产品经理使用的开源操作系统。
 
-它不是一个“提示词大全”，而是一个把 PM 工作方式系统化的仓库：
+它不是提示词库，而是一套把 PM 判断、工作流和 agent 协作沉淀成系统的仓库。
 
-- 给人直接用的交互式工具箱
-- 给学习者用的方法论与工作流
-- 给 agent 用的 skills / commands / routing / evals
+如果你第一次来，先看这 3 个入口：
 
-如果你要的是“更快生成一份东西”，这个库已经够用。
-如果你要的是“把 PM 判断、结构和工作流沉淀成系统”，这个库更适合你。
-
-## 三个入口
-
-### 1. 先上手
-
-- [在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
-- 20 个高频 PM 场景
-- 中英文双语
-- 适合直接生成高质量 Prompt
-
-### 2. 再理解
-
-- [MANIFESTO.md](MANIFESTO.md)
-- [CASE_STUDIES.md](CASE_STUDIES.md)
-- [本轮更新说明](docs/updates/project-update-2026-03.zh-CN.md)
-- [START_HERE.md](START_HERE.md)
-- [agent/ROUTING.md](agent/ROUTING.md)
-- [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
-
-适合想理解这套系统为什么这样设计、优秀 AI PM 工作应该长什么样的人。
-
-### 3. 再接系统
-
-- `skills/`
-- `commands/`
-- `agent/`
-- `adapters/`
-- `evals/`
-- `private/`
-
-适合把这套库接进 Codex、Claude Code、Cursor 或内部 agent 工作流。
-
-## 作者与发布
-
-- [ABOUT_AUTHOR.md](docs/brand/ABOUT_AUTHOR.md)
-- [WHY_THIS_REPO.md](docs/brand/WHY_THIS_REPO.md)
-- [LAUNCH_POST.zh-CN.md](docs/brand/LAUNCH_POST.zh-CN.md)
-- [个人品牌资料包](docs/brand/personal-brand-kit.zh-CN.md)
-- [方法论介绍](docs/brand/method-framework.zh-CN.md)
-- [方法图](docs/brand/method-map.zh-CN.md)
-- [署名案例：商业化判断](docs/brand/signature-case-commercialization.zh-CN.md)
-- [署名案例：为什么不是提示词库](docs/brand/signature-case-pm-system.zh-CN.md)
+- 上手：[在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
+- 理解：[START_HERE.md](START_HERE.md)
+- 全部文档：[docs/README.md](docs/README.md)
 
 ## 这套库的核心差异
 
@@ -74,27 +31,24 @@
 - `Risks`
 - `Next Steps`
 
-## 仓库里有什么
+## 仓库结构
 
-- `docs/pm-skills-interactive-course.html`：交互式 PM 工具箱
-- `skills/`：22 个可复用 PM 技能
-- `commands/`：10 条多技能工作流
-- `agent/`：跨平台路由与输出规范
-- `adapters/`：Codex / Claude Code / Cursor 接入说明
-- `evals/`：质量评估基线
-- `catalog/`：自动生成索引
-- `scripts/`：校验与生成脚本
-- `private/`：可选私有上下文模板
-- `docs/`：品牌资料、更新说明和静态页面
+- `skills/`：单点能力
+- `commands/`：多阶段工作流
+- `agent/`：路由和输出标准
+- `adapters/`：不同 agent 平台接入方式
+- `evals/`：评估基线
+- `private/`：私有上下文模板
+- `docs/`：工具箱、指南、品牌资料、更新说明
 
-## 快速路径
+## 快速开始
 
 - 写 PRD：[commands/write-prd.md](commands/write-prd.md)
 - 定义 AI 功能：[commands/shape-ai-feature.md](commands/shape-ai-feature.md)
 - 商业化策略评审：[commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
-- 转化漏斗诊断：[commands/commercial-growth-review.md](commands/commercial-growth-review.md)
 - 参考案例：[CASE_STUDIES.md](CASE_STUDIES.md)
-- 接入 Codex：[adapters/CODEX.md](adapters/CODEX.md)
+- 品牌与作者资料：[docs/brand/README.md](docs/brand/README.md)
+- 使用指南：[docs/guides/README.md](docs/guides/README.md)
 
 ## 本地运行
 
@@ -113,5 +67,5 @@ python3 scripts/check-style-consistency.py
 python3 scripts/generate-catalog.py
 ```
 
-如果你只看一份文档，先看 [MANIFESTO.md](MANIFESTO.md)。
 如果你只跑一个入口，先用 [在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)。
+如果你想快速看懂仓库，先看 [START_HERE.md](START_HERE.md)。
