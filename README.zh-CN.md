@@ -23,6 +23,7 @@
 ### 2. 再理解
 
 - [MANIFESTO.md](MANIFESTO.md)
+- [CASE_STUDIES.md](CASE_STUDIES.md)
 - [START_HERE.md](START_HERE.md)
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
@@ -79,6 +80,7 @@
 - 定义 AI 功能：[commands/shape-ai-feature.md](commands/shape-ai-feature.md)
 - 商业化策略评审：[commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
 - 转化漏斗诊断：[commands/commercial-growth-review.md](commands/commercial-growth-review.md)
+- 参考案例：[CASE_STUDIES.md](CASE_STUDIES.md)
 - 接入 Codex：[adapters/CODEX.md](adapters/CODEX.md)
 
 ## 本地运行

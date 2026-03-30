@@ -78,6 +78,7 @@ Best for:
 Use the repo as a PM learning and reasoning library if you want to improve how you work with AI.
 
 - [MANIFESTO.md](MANIFESTO.md)
+- [CASE_STUDIES.md](CASE_STUDIES.md)
 - [START_HERE.md](START_HERE.md)
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
@@ -145,6 +146,7 @@ If you want the fastest path, start here:
 - Shape an AI feature: [commands/shape-ai-feature.md](commands/shape-ai-feature.md)
 - Review commercialization strategy: [commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
 - Diagnose funnel drops: [commands/commercial-growth-review.md](commands/commercial-growth-review.md)
+- See reference cases: [CASE_STUDIES.md](CASE_STUDIES.md)
 - Build with Codex: [adapters/CODEX.md](adapters/CODEX.md)
 
 ## Local Run
