@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/sitemap.xml

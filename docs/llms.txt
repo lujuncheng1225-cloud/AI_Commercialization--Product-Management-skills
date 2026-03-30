@@ -1,0 +1,24 @@
+# PM AI Skill Toolkit
+
+PM AI Skill Toolkit is a reusable PM operating system for product managers and AI agents.
+
+It includes:
+- PM workflow skills
+- multi-step command workflows
+- AI PM and commercialization PM use cases
+- routing and output standards for agents
+- examples, cases, and brand materials
+
+Key pages:
+- / -> landing page
+- /pm-skills-interactive-course.html -> interactive toolkit
+- /core/MANIFESTO.html -> project manifesto
+- /core/CASE_STUDIES.html -> case studies
+- /guides/START_HERE.html -> fastest onboarding path
+- /brand/WHY_THIS_REPO.html -> positioning
+- /brand/method-framework.html -> framework
+
+Suggested use:
+- start with the landing page or interactive toolkit
+- use the manifesto and case studies for positioning and method
+- use guides for onboarding
