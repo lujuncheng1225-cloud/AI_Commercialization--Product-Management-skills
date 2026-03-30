@@ -24,6 +24,7 @@
 
 - [MANIFESTO.md](MANIFESTO.md)
 - [CASE_STUDIES.md](CASE_STUDIES.md)
+- [本轮更新说明](docs/project-update-2026-03.zh-CN.md)
 - [START_HERE.md](START_HERE.md)
 - [agent/ROUTING.md](agent/ROUTING.md)
 - [agent/OUTPUT_STANDARDS.md](agent/OUTPUT_STANDARDS.md)
