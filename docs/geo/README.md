@@ -13,3 +13,5 @@ This directory contains search-friendly, single-intent pages for discovery throu
 - [AI PM Workflow For PRDs And Feature Shaping](ai-pm-workflow.md)
 - [Commercialization Review Framework](commercialization-review-framework.md)
 - [Search Submission Checklist](search-submission-checklist.md)
+- [Google Search Console 提交清单](google-search-console-checklist.zh-CN.md)
+- [Bing Webmaster 提交清单](bing-webmaster-checklist.zh-CN.md)
