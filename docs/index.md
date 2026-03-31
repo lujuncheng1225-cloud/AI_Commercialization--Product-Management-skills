@@ -31,9 +31,10 @@ A reusable PM operating system for product managers and AI agents.
 
 ## Core Paths
 
-- PRD workflow: [commands/write-prd.md](../commands/write-prd.md)
-- AI feature workflow: [commands/shape-ai-feature.md](../commands/shape-ai-feature.md)
-- Commercial strategy review: [commands/commercial-strategy-review.md](../commands/commercial-strategy-review.md)
+- PRD workflow: [write-prd](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/write-prd.md)
+- AI feature workflow: [shape-ai-feature](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/shape-ai-feature.md)
+- Commercial strategy review: [commercial-strategy-review](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/commercial-strategy-review.md)
+- Search-friendly GEO pages: [GEO Pages](geo/README.md)
 - Brand and author materials: [Brand Index](brand/README.md)
 - Guides: [Guides Index](guides/README.md)
 

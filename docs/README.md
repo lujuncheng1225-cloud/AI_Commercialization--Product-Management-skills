@@ -6,6 +6,8 @@
 
 - `core/`
   - 核心定位与案例文档
+- `geo/`
+  - 面向搜索引擎和 AI answer engines 的单意图页面
 - `guides/`
   - 使用、维护和扩展仓库时会用到的指南
 - `brand/`
@@ -21,6 +23,7 @@
 
 - `pm-skills-interactive-course.html`
 - `core/README.md`
+- `geo/README.md`
 - `guides/README.md`
 - `brand/README.md`
 - `updates/project-update-2026-03.zh-CN.md`

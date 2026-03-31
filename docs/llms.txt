@@ -14,6 +14,9 @@ Key pages:
 - /pm-skills-interactive-course.html -> interactive toolkit
 - /core/MANIFESTO.html -> project manifesto
 - /core/CASE_STUDIES.html -> case studies
+- /geo/pm-ai-operating-system.html -> PM AI operating system definition
+- /geo/ai-pm-workflow.html -> AI PM workflow explanation
+- /geo/commercialization-review-framework.html -> commercialization review page
 - /guides/START_HERE.html -> fastest onboarding path
 - /brand/WHY_THIS_REPO.html -> positioning
 - /brand/method-framework.html -> framework

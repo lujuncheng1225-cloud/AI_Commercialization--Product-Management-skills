@@ -36,7 +36,7 @@ Should the team write a PRD now, or go back for more discovery first?
 
 ### Best Entry
 
-- [commands/write-prd.md](commands/write-prd.md)
+- [commands/write-prd.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/write-prd.md)
 
 ### Why This Case Matters
 
@@ -61,7 +61,7 @@ A strong workflow should force:
 
 ### Sample
 
-- [commands/examples/write-prd-sample.md](commands/examples/write-prd-sample.md)
+- [commands/examples/write-prd-sample.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/examples/write-prd-sample.md)
 
 ## Case 2: Shape An AI Research Assistant
 
@@ -76,7 +76,7 @@ Should this go straight into a full feature PRD, or first become a scoped PoC?
 
 ### Best Entry
 
-- [commands/shape-ai-feature.md](commands/shape-ai-feature.md)
+- [commands/shape-ai-feature.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/shape-ai-feature.md)
 
 ### Why This Case Matters
 
@@ -97,7 +97,7 @@ The best answer is not "AI summary is cool"; it is a disciplined combination of:
 
 ### Sample
 
-- [commands/examples/shape-ai-feature-sample.md](commands/examples/shape-ai-feature-sample.md)
+- [commands/examples/shape-ai-feature-sample.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/examples/shape-ai-feature-sample.md)
 
 ## Case 3: Review A Commercial Strategy
 
@@ -111,7 +111,7 @@ What is the main commercialization move, and why is it stronger than the alterna
 
 ### Best Entry
 
-- [commands/commercial-strategy-review.md](commands/commercial-strategy-review.md)
+- [commands/commercial-strategy-review.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/commercial-strategy-review.md)
 
 ### Why This Case Matters
 
@@ -133,7 +133,7 @@ This case shows whether the repo can support more serious business judgment:
 
 ### Sample
 
-- [commands/examples/commercial-strategy-review-sample.md](commands/examples/commercial-strategy-review-sample.md)
+- [commands/examples/commercial-strategy-review-sample.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/examples/commercial-strategy-review-sample.md)
 
 ## Case 4: Improve Trial-To-Paid Conversion
 
@@ -148,7 +148,7 @@ Where is the most likely leak, and what should the team test first?
 
 ### Best Entry
 
-- [commands/improve-trial-to-paid.md](commands/improve-trial-to-paid.md)
+- [commands/improve-trial-to-paid.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/improve-trial-to-paid.md)
 
 ### Why This Case Matters
 
@@ -168,7 +168,7 @@ It shows whether the repo can connect:
 
 ### Sample
 
-- [commands/examples/improve-trial-to-paid-sample.md](commands/examples/improve-trial-to-paid-sample.md)
+- [commands/examples/improve-trial-to-paid-sample.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/examples/improve-trial-to-paid-sample.md)
 
 ## Case 5: Prepare An AI Launch
 
@@ -182,7 +182,7 @@ Is this feature ready to launch, blocked, or only safe for limited release?
 
 ### Best Entry
 
-- [commands/prepare-ai-launch.md](commands/prepare-ai-launch.md)
+- [commands/prepare-ai-launch.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/prepare-ai-launch.md)
 
 ### Why This Case Matters
 
@@ -203,7 +203,7 @@ This case shows whether the repo can drive:
 
 ### Sample
 
-- [commands/examples/prepare-ai-launch-sample.md](commands/examples/prepare-ai-launch-sample.md)
+- [commands/examples/prepare-ai-launch-sample.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/examples/prepare-ai-launch-sample.md)
 
 ## What A Strong New Case Should Include
 
