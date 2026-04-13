@@ -80,7 +80,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 <div class="container">
 <div id="home">
-<div class="header"><h1 id="pageTitle">PM AI Skill 工具箱</h1><p id="pageSubtitle">产品经理的 AI 技能库 · 选场景，答问题，生成专属 Prompt</p></div>
+<div class="header"><h1 id="pageTitle">PM AI Skill 工具箱</h1><p id="pageSubtitle">产品经理的 AI 技能库 · 选场景，答问题，生成结构化推演</p></div>
 <div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" id="search" placeholder="搜索场景…" oninput="filterCards()"></div>
 <div class="categories" id="cats"></div>
 <div class="grid" id="grid"></div>
@@ -90,8 +90,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 </div>
 <script>
 const i18n={
-  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，生成专属 Prompt',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'生成 Prompt →',copy:'📋 复制到剪贴板',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'你的专属 Prompt 已生成',tipsTitle:'💡 使用提示',cardMeta:(n)=>`${n} 个问题 → 生成 Prompt`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
-  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, generate your Prompt',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Generate Prompt →',copy:'📋 Copy to clipboard',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your custom Prompt is ready',tipsTitle:'💡 Tips',cardMeta:(n)=>`${n} questions → Generate Prompt`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
+  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，生成结构化推演',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'生成推演 →',copy:'📋 复制到剪贴板',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'结构化推演已生成',tipsTitle:'💡 使用提示',cardMeta:(n)=>`${n} 个问题 → 生成推演`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
+  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, generate structured reasoning',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Generate Brief →',copy:'📋 Copy to clipboard',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your structured brief is ready',tipsTitle:'💡 Tips',cardMeta:(n)=>`${n} questions → Generate brief`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
 };
 
 let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh')?'zh':'en');
@@ -189,14 +189,15 @@ steps:[
 prompt:d=>`你是一个严格但建设性的需求评审专家。请对以下需求进行评审：\n\n${d.requirement}\n\n评审角度：\n${d.angles.map(v=>'· '+v).join('\n')}\n\n请输出：\n1. 需求理解确认\n2. 发现的问题（P0 致命 / P1 重要 / P2 建议）\n3. 遗漏的场景和边界条件\n4. 潜在的技术风险\n5. 改进建议\n6. 评审结论：通过 / 有条件通过 / 需要修改`,
 tips:['这个 Skill 相当于免费的评审预演','追问"如果我是评审委员会成员，我会怎么提问"']},
 
-{id:'pricing-strategy',category:'定价策略',title:'定价方案建议',titleEn:'Pricing Strategy',desc:'根据产品价值和市场情况，获得定价方案建议',descEn:'Get pricing recommendations based on product value and market',level:'进阶',
+{id:'pricing-strategy',category:'定价策略',title:'定价方案建议',titleEn:'Pricing Strategy',desc:'把产品价值、价值指标、免费层边界和升级触发点拆成可执行的定价推演',descEn:'Turn product value, value metric, free tier boundary, and upgrade triggers into a pricing brief',level:'进阶',
 steps:[
-{title:'你的产品是什么？',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：SaaS 项目管理工具，核心功能是看板、甘特图、团队协作'}]},
-{title:'用户能获得什么价值？',fields:[{key:'value',label:'核心价值',type:'textarea',placeholder:'如：提升团队协作效率 30%，减少会议时间'}]},
-{title:'你知道的竞品定价',fields:[{key:'competitors',label:'竞品定价',type:'textarea',placeholder:'如：\nJira：$7.75/人/月起\nAsana：$10.99/人/月起'}]}
+{title:'产品形态和目标用户',fields:[{key:'product',label:'产品描述',type:'textarea',placeholder:'如：SaaS 项目管理工具，核心功能是看板、甘特图、团队协作'},{key:'deliverable',label:'核心交付物',type:'text',placeholder:'如：项目空间 / 自动化报表 / 生成次数 / 专家服务结果'},{key:'target',label:'目标用户',type:'text',placeholder:'如：独立创作者、小团队负责人、企业管理员'}]},
+{title:'用户如何使用并获得价值？',fields:[{key:'usageMetric',label:'可能的使用维度',type:'checkbox',options:['按座席','按项目数','按生成量/用量','按存储/时长','按结果交付','混合模式','不确定'],defaults:['不确定']},{key:'frequency',label:'使用频率',type:'radio',options:['高频日常使用','周期性项目使用','低频但高价值使用','一次性消耗使用','不确定'],defaults:'不确定'},{key:'value',label:'核心价值',type:'textarea',placeholder:'如：提升团队协作效率 30%，减少会议时间'}]},
+{title:'免费层和升级触发点',fields:[{key:'freeBoundary',label:'当前或设想的免费/付费边界',type:'textarea',placeholder:'如：免费版支持 3 个项目，付费版解锁团队协作、高级报表和导出'},{key:'upgradeSignals',label:'可能的升级触发点',type:'checkbox',options:['用量触顶','高级模型/高级功能','多人协作','商用授权','导出/去水印','速度/优先队列','数据/权限/安全','不确定'],defaults:['不确定']}]},
+{title:'竞品锚点和业务约束',fields:[{key:'competitors',label:'竞品定价',type:'textarea',placeholder:'如：\nJira：$7.75/人/月起\nAsana：$10.99/人/月起'},{key:'constraints',label:'业务约束（可选）',type:'textarea',placeholder:'如：收入目标、成本限制、不能影响老用户、需要先小流量灰度'}]}
 ],
-prompt:d=>`你是一个资深的定价策略专家。\n\n产品：${d.product}\n\n用户核心价值：\n${d.value}\n\n竞品定价：\n${d.competitors}\n\n请输出：\n1. 定价模型建议（订阅制/按量计费/阶梯定价/…）\n2. 建议价格区间（含理由）\n3. 版本划分建议（免费版/专业版/企业版）\n4. 每个版本的功能与定价\n5. 定价心理学技巧建议\n6. 上线定价策略`,
-tips:['定价是动态的，建议定期回顾调整','追问"如果我要做免费增值模式，怎么设计免费版边界"']},
+prompt:d=>`你是一个负责商业化定价的产品负责人。\n\n请不要直接报一个价格。先把定价问题拆成可推演的商业结构。\n\n产品描述：\n${d.product}\n\n核心交付物：${d.deliverable}\n目标用户：${d.target}\n\n可能的使用维度：\n${d.usageMetric.map(v=>'· '+v).join('\n')}\n\n使用频率：${d.frequency}\n\n用户核心价值：\n${d.value}\n\n当前或设想的免费/付费边界：\n${d.freeBoundary}\n\n可能的升级触发点：\n${d.upgradeSignals.map(v=>'· '+v).join('\n')}\n\n竞品定价：\n${d.competitors}\n\n业务约束：\n${d.constraints}\n\n请按以下结构输出：\n1. 信息缺口与关键假设：哪些结论依赖假设，哪些信息必须补齐\n2. 目标客群与购买动机：谁最可能付费，为什么现在付费\n3. Value metric 建议：主价值指标、备选指标、不建议使用的指标，以及理由\n4. 套餐结构建议：Free / Pro / Team 或 Studio，每档覆盖的用户、功能边界和建议价格区间\n5. 免费层边界：哪些能力应该免费，哪些能力必须付费，为什么\n6. 升级触发点：用户在什么使用节点、价值节点或组织节点会升级\n7. 竞品锚点与定位空间：哪些价格可以参考，哪些不能照抄\n8. 上线策略：小范围实验、价格展示方式、老用户保护和指标 guardrails\n9. 风险与取舍：这个定价方案可能伤害什么，需要保护什么\n\n要求：\n- 不要输出 SWOT\n- 不要给通用定价理论\n- 每个建议都要回扣到上面的输入信息\n- 如果信息不足，明确标注为假设，不要伪装成结论`,
+tips:['如果输出不对，优先重填核心交付物、价值指标和免费层边界','追问"如果只做小范围价格实验，第一版该怎么设计"']},
 
 {id:'ab-pricing',category:'定价策略',title:'AB 定价实验设计',titleEn:'Pricing Experiment',desc:'科学设计定价实验，用数据驱动定价决策',descEn:'Design scientific pricing experiments with data-driven decisions',level:'高级',
 steps:[

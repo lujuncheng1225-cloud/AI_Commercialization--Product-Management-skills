@@ -1,18 +1,35 @@
 # Pricing and Packaging Brief Template
 
-## Target Segment
+## Input Snapshot
 
-- 核心目标客群
+- Product / core deliverable:
+- Target segment:
+- Core value:
+- Competitor anchor:
 
-## Value Metric
+## Value Metric Hypothesis
 
-- 按什么收费最合理
+- Primary metric:
+- Why this metric:
+- Do not use:
 
 ## Plan Structure
 
-- Free
-- Pro
-- Team / Studio
+- Free:
+- Pro:
+- Team / Studio:
+
+## Free Tier Boundary
+
+- What stays free:
+- What becomes paid:
+- Why:
+
+## Upgrade Trigger
+
+- Usage trigger:
+- Value trigger:
+- Segment trigger:
 
 ## Packaging Logic
 
@@ -27,3 +44,8 @@
 - 可能伤害什么
 - 需要保护什么
 
+## Validation Plan
+
+- 小范围实验:
+- 指标 guardrails:
+- 老用户保护:
