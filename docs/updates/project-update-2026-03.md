@@ -79,7 +79,7 @@ This moves the repo closer to a portable PM agent system rather than a single-to
 We added:
 
 - [evals/README.md](../../evals/README.md)
-- `7` eval cases
+- `8` eval cases
 - routing and output rubrics
 - a scorecard template
 
@@ -123,7 +123,7 @@ As of this update, the repo includes:
 - `22` skills
 - `10` commands
 - `10` command sample outputs
-- `7` eval cases
+- `8` eval cases
 
 The main system layers now include:
 

@@ -92,7 +92,7 @@
 新增了 `evals/` 目录，包括：
 
 - [evals/README.md](../../evals/README.md)
-- `7` 个评估 case
+- `8` 个评估 case
 - routing rubric
 - output rubric
 - scorecard template
@@ -148,7 +148,7 @@
 - `22` 个 skills
 - `10` 个 commands
 - `10` 份 command sample outputs
-- `7` 个 eval cases
+- `8` 个 eval cases
 
 核心目录包括：
 

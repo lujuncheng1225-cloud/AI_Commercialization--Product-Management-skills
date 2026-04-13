@@ -61,6 +61,8 @@
 ### 我需要商业化分析
 
 - `commands/commercial-growth-review.md`
+- `commands/redesign-pricing-packages.md`
+- `commands/improve-trial-to-paid.md`
 - `skills/growth-experiment-design/SKILL.md`
 
 ## 推荐起手式

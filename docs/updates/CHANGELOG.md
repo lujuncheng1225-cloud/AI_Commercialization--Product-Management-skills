@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- 暂无未发布变更
+- 新增 `evals/cases/08-pricing-packaging-boundary.md`，覆盖定价套餐边界、value metric 和升级触发点评估。
+- 强化 `scripts/validate-library.py`，增加 catalog 同步检查和关键定价工具卡片漂移检查。
 
 ## 2026-03 PM AI Skill Toolkit 升级
 
@@ -17,7 +18,7 @@
 - 新增 `private/`，提供产品上下文、指标、决策偏好和术语模板
 - 新增 `skills/task-decomposition` 和 `skills/review-gates`
 - 强化 workflow commands、sample outputs 和商业化策略评审工作流
-- 当前仓库规模更新为 `22` 个 skills、`10` 个 commands、`10` 份 samples、`7` 个 eval cases
+- 当前仓库规模更新为 `22` 个 skills、`10` 个 commands、`10` 份 samples、`8` 个 eval cases
 
 ## 0.1.0
 

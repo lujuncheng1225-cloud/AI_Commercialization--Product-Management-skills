@@ -11,7 +11,7 @@
 
 ## What To Evaluate / 评什么
 
-这套 evals 默认评 3 件事：
+这套 evals 默认评这些事：
 
 1. `Routing`
    - 任务是否命中了正确的 `command` 或 `skill`
@@ -21,6 +21,8 @@
    - 是否出现阶段错配、臆造、空话或错误自信
 4. `Sparse-Context Robustness`
    - 在信息很少时是否仍然稳健
+5. `Commercial Reasoning`
+   - 在定价、套餐、转化等商业化场景里是否避免假精确和单点归因
 
 ## How To Use / 怎么用
 
@@ -65,9 +67,10 @@
 
 1. 先跑 `4` 个基础 case
 2. 再跑 `1` 个稀疏上下文 case
-3. 记录 route、结论和主要缺陷
-4. 如果有系统性错误，先改 adapter 或启动 prompt
-5. 修完后再重跑同一批 case
+3. 商业化场景再跑 `06` 和 `08`，检查是否会假精确或直接跳到价格结论
+4. 记录 route、结论和主要缺陷
+5. 如果有系统性错误，先改 adapter 或启动 prompt
+6. 修完后再重跑同一批 case
 
 ## Related Files / 相关文件
 

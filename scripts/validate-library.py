@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import importlib.util
 import re
 import sys
 from pathlib import Path
@@ -10,6 +11,8 @@ from urllib.parse import unquote
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ROOT / "skills"
 COMMANDS_DIR = ROOT / "commands"
+CATALOG_DIR = ROOT / "catalog"
+TOOLKIT_HTML = ROOT / "docs" / "pm-skills-interactive-course.html"
 DOC_LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 SAMPLE_OUTPUT_PATTERN = re.compile(r"## Sample Output .*?(?=\n## |\Z)", re.S)
 INLINE_CODE_PATH_PATTERN = re.compile(r"`([^`\n]+\.md)`")
@@ -18,6 +21,14 @@ REQUIRED_SKILL_FIELDS = {"name", "description", "type"}
 REQUIRED_COMMAND_FIELDS = {"name", "description", "uses", "outputs"}
 VALID_TYPES = {"component", "interactive", "workflow"}
 REFERENCE_PATTERN = re.compile(r"`(\.\./[^`]+)`")
+CRITICAL_TOOLKIT_CHECKS = {
+    "pricing-strategy": [
+        "Value metric",
+        "免费层边界",
+        "升级触发点",
+        "不要输出 SWOT",
+    ],
+}
 
 
 def parse_frontmatter(path: Path) -> dict[str, object]:
@@ -150,6 +161,52 @@ def validate_command(path: Path, skill_names: set[str], errors: list[str]) -> No
     validate_sample_output_paths(path, errors)
 
 
+def load_catalog_generator():
+    generator_path = ROOT / "scripts" / "generate-catalog.py"
+    spec = importlib.util.spec_from_file_location("generate_catalog", generator_path)
+    if not spec or not spec.loader:
+        raise RuntimeError(f"could not load catalog generator: {generator_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def validate_generated_catalog(errors: list[str]) -> None:
+    generator = load_catalog_generator()
+    expected = {
+        CATALOG_DIR / "skills.md": generator.render_skills(generator.collect_entries(SKILLS_DIR)),
+        CATALOG_DIR / "commands.md": generator.render_commands(generator.collect_entries(COMMANDS_DIR)),
+    }
+
+    for path, content in expected.items():
+        if not path.exists():
+            errors.append(f"{path}: missing generated catalog; run python3 scripts/generate-catalog.py")
+            continue
+        if path.read_text(encoding="utf-8") != content:
+            errors.append(f"{path}: generated catalog is stale; run python3 scripts/generate-catalog.py")
+
+
+def validate_interactive_toolkit(errors: list[str]) -> None:
+    if not TOOLKIT_HTML.exists():
+        errors.append(f"{TOOLKIT_HTML}: missing interactive toolkit")
+        return
+
+    text = TOOLKIT_HTML.read_text(encoding="utf-8")
+    for skill_id, required_terms in CRITICAL_TOOLKIT_CHECKS.items():
+        start = text.find(f"id:'{skill_id}'")
+        if start == -1:
+            errors.append(f"{TOOLKIT_HTML}: missing toolkit card {skill_id}")
+            continue
+
+        next_card = text.find("\n\n{id:", start + 1)
+        end = next_card if next_card != -1 else text.find("\n];", start)
+        block = text[start:end if end != -1 else len(text)]
+
+        for term in required_terms:
+            if term not in block:
+                errors.append(f"{TOOLKIT_HTML}: toolkit card {skill_id} missing required term '{term}'")
+
+
 def collect_skill_files() -> list[Path]:
     return sorted(SKILLS_DIR.rglob("SKILL.md"))
 
@@ -190,6 +247,9 @@ def main() -> int:
 
     for doc_file in sorted((ROOT / "private").rglob("*.md")):
         validate_markdown_links(doc_file, errors)
+
+    validate_generated_catalog(errors)
+    validate_interactive_toolkit(errors)
 
     if errors:
         print("Validation failed:")

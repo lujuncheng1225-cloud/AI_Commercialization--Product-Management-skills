@@ -68,6 +68,7 @@
 - `commands/prepare-ai-launch.md`
 - `commands/commercial-strategy-review.md`
 - `commands/commercial-growth-review.md`
+- `commands/redesign-pricing-packages.md`
 - `commands/write-commercial-prd.md`
 
 ## 推荐用法
