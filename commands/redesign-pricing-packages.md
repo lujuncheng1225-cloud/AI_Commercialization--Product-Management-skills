@@ -60,4 +60,4 @@ outputs:
 
 ## Sample Output / 样例输出
 
-- `commands/examples/redesign-pricing-packages-sample.md`
+- `examples/redesign-pricing-packages-sample.md`

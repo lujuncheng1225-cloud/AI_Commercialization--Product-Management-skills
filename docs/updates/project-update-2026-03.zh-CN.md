@@ -37,7 +37,7 @@
 
 本次新增了交互式页面：
 
-- [PM Skills Interactive Course](/Users/yancheng/Documents/AI%20Product%20Management/docs/pm-skills-interactive-course.html)
+- [PM Skills Interactive Course](../pm-skills-interactive-course.html)
 
 这一层解决的是“第一次接触仓库时门槛太高”的问题。现在可以先从场景化页面上手，再逐步深入到底层 skill 和 command。
 
@@ -56,10 +56,10 @@
 
 新增了完整的 `agent/` 目录，核心文件包括：
 
-- [ROUTING.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/ROUTING.md)
-- [OUTPUT_STANDARDS.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/OUTPUT_STANDARDS.md)
-- [DOMAIN_CONTEXT.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/DOMAIN_CONTEXT.md)
-- [SPARSE_CONTEXT_POLICY.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/SPARSE_CONTEXT_POLICY.md)
+- [ROUTING.md](../../agent/ROUTING.md)
+- [OUTPUT_STANDARDS.md](../../agent/OUTPUT_STANDARDS.md)
+- [DOMAIN_CONTEXT.md](../../agent/DOMAIN_CONTEXT.md)
+- [SPARSE_CONTEXT_POLICY.md](../../agent/SPARSE_CONTEXT_POLICY.md)
 
 这一层的目标不是让 agent “自由发挥”，而是让不同平台上的 agent 尽量做出一致的路由、输出和判断。
 
@@ -74,9 +74,9 @@
 
 新增了 `adapters/`：
 
-- [CODEX.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CODEX.md)
-- [CLAUDE_CODE.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CLAUDE_CODE.md)
-- [CURSOR.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CURSOR.md)
+- [CODEX.md](../../adapters/CODEX.md)
+- [CLAUDE_CODE.md](../../adapters/CLAUDE_CODE.md)
+- [CURSOR.md](../../adapters/CURSOR.md)
 
 这让仓库从“某一个环境里能用”，变成“更容易在不同 agent 平台上复用”。
 
@@ -91,7 +91,7 @@
 
 新增了 `evals/` 目录，包括：
 
-- [evals/README.md](/Users/yancheng/Documents/AI%20Product%20Management/evals/README.md)
+- [evals/README.md](../../evals/README.md)
 - `7` 个评估 case
 - routing rubric
 - output rubric
@@ -195,11 +195,11 @@
 
 如果第一次对外介绍这个项目，建议按下面顺序给别人看：
 
-1. [README.zh-CN.md](/Users/yancheng/Documents/AI%20Product%20Management/README.zh-CN.md)
-2. [docs/pm-skills-interactive-course.html](/Users/yancheng/Documents/AI%20Product%20Management/docs/pm-skills-interactive-course.html)
-3. [MANIFESTO.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/MANIFESTO.md)
-4. [CASE_STUDIES.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/CASE_STUDIES.md)
-5. [adapters/CODEX.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CODEX.md)
+1. [README.zh-CN.md](../../README.zh-CN.md)
+2. [docs/pm-skills-interactive-course.html](../pm-skills-interactive-course.html)
+3. [MANIFESTO.md](../core/MANIFESTO.md)
+4. [CASE_STUDIES.md](../core/CASE_STUDIES.md)
+5. [adapters/CODEX.md](../../adapters/CODEX.md)
 
 如果只想用一句话介绍它，可以直接用这句：
 

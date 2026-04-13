@@ -110,8 +110,8 @@ Generated from `skills`.
 
 - Path: `skills/pricing-packaging-brief/SKILL.md`
 - Type: `component`
-- Description: 定义或调整定价与套餐结构，明确目标客户、价值指标、套餐层级与取舍。适用于商业化设计或改版场景。
-- Best for: 设计 SaaS 定价和套餐, 重做 plan 结构, 把产品价值和商业模式连起来
+- Description: 用结构化输入定义或调整定价与套餐结构，明确目标客户、价值指标、免费层边界、套餐层级、升级触发点与风险取舍。适用于定价新建、改版、AI 增值包或商业化实验前的推演。
+- Best for: 设计 SaaS 定价和套餐, 重做 plan 结构, 把产品价值和商业模式连起来, 把模糊的定价问题拆成可推演的商业 brief
 - Example: 重做 free、pro、team 套餐
 
 ## prioritization-advisor

@@ -20,7 +20,7 @@ Generated from `commands`.
 
 - Path: `commands/commercial-strategy-review.md`
 - Description: 通过指标、漏斗、定价、留存和实验设计来完成一次完整的商业化策略评审。
-- Uses: revenue-metrics-scorecard, conversion-funnel-diagnostic, pricing-packaging-brief, retention-levers-review, growth-experiment-design, commercial-prd
+- Uses: revenue-metrics-scorecard, conversion-funnel-diagnostic, pricing-packaging-brief, retention-levers-review, task-decomposition, growth-experiment-design, commercial-prd, review-gates
 - Outputs: 商业化诊断, 核心策略判断, 实验优先级, 执行文档方向
 
 ## improve-trial-to-paid
@@ -47,7 +47,7 @@ Generated from `commands`.
 ## redesign-pricing-packages
 
 - Path: `commands/redesign-pricing-packages.md`
-- Description: 通过价值指标、套餐结构、商业指标和 PRD 规划来重做定价与套餐。
+- Description: 通过价值指标、免费层边界、套餐结构、商业指标和 PRD 规划来重做定价与套餐。
 - Uses: pricing-packaging-brief, revenue-metrics-scorecard, conversion-funnel-diagnostic, commercial-prd
 - Outputs: 定价与套餐方案, 指标影响假设, 商业化 PRD
 

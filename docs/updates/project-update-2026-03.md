@@ -32,7 +32,7 @@ It is framed as a reusable working system.
 
 We added:
 
-- [PM Skills Interactive Course](/Users/yancheng/Documents/AI%20Product%20Management/docs/pm-skills-interactive-course.html)
+- [PM Skills Interactive Course](../pm-skills-interactive-course.html)
 
 This makes the repo much easier to approach for first-time users.
 Instead of reading the whole structure first, people can start from guided scenarios and work backward into the system.
@@ -51,10 +51,10 @@ The toolkit layer now includes:
 
 We added a full `agent/` layer, including:
 
-- [agent/ROUTING.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/ROUTING.md)
-- [agent/OUTPUT_STANDARDS.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/OUTPUT_STANDARDS.md)
-- [agent/DOMAIN_CONTEXT.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/DOMAIN_CONTEXT.md)
-- [agent/SPARSE_CONTEXT_POLICY.md](/Users/yancheng/Documents/AI%20Product%20Management/agent/SPARSE_CONTEXT_POLICY.md)
+- [agent/ROUTING.md](../../agent/ROUTING.md)
+- [agent/OUTPUT_STANDARDS.md](../../agent/OUTPUT_STANDARDS.md)
+- [agent/DOMAIN_CONTEXT.md](../../agent/DOMAIN_CONTEXT.md)
+- [agent/SPARSE_CONTEXT_POLICY.md](../../agent/SPARSE_CONTEXT_POLICY.md)
 
 This is one of the biggest upgrades in the repo.
 It means the system now specifies:
@@ -68,9 +68,9 @@ It means the system now specifies:
 
 We added:
 
-- [adapters/CODEX.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CODEX.md)
-- [adapters/CLAUDE_CODE.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CLAUDE_CODE.md)
-- [adapters/CURSOR.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CURSOR.md)
+- [adapters/CODEX.md](../../adapters/CODEX.md)
+- [adapters/CLAUDE_CODE.md](../../adapters/CLAUDE_CODE.md)
+- [adapters/CURSOR.md](../../adapters/CURSOR.md)
 
 This moves the repo closer to a portable PM agent system rather than a single-tool setup.
 
@@ -78,7 +78,7 @@ This moves the repo closer to a portable PM agent system rather than a single-to
 
 We added:
 
-- [evals/README.md](/Users/yancheng/Documents/AI%20Product%20Management/evals/README.md)
+- [evals/README.md](../../evals/README.md)
 - `7` eval cases
 - routing and output rubrics
 - a scorecard template
@@ -170,11 +170,11 @@ The next high-value upgrades would likely be:
 
 If you want to introduce this repo to someone else, the best order is:
 
-1. [README.md](/Users/yancheng/Documents/AI%20Product%20Management/README.md)
-2. [docs/pm-skills-interactive-course.html](/Users/yancheng/Documents/AI%20Product%20Management/docs/pm-skills-interactive-course.html)
-3. [MANIFESTO.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/MANIFESTO.md)
-4. [CASE_STUDIES.md](/Users/yancheng/Documents/AI%20Product%20Management/docs/core/CASE_STUDIES.md)
-5. [adapters/CODEX.md](/Users/yancheng/Documents/AI%20Product%20Management/adapters/CODEX.md)
+1. [README.md](../../README.md)
+2. [docs/pm-skills-interactive-course.html](../pm-skills-interactive-course.html)
+3. [MANIFESTO.md](../core/MANIFESTO.md)
+4. [CASE_STUDIES.md](../core/CASE_STUDIES.md)
+5. [adapters/CODEX.md](../../adapters/CODEX.md)
 
 If you want a one-line description, use this:
 

@@ -1,0 +1,33 @@
+name: Validate library
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate skills, commands, and links
+        run: python3 scripts/validate-library.py
+
+      - name: Check style consistency
+        run: python3 scripts/check-style-consistency.py
+
+      - name: Check generated catalog is up to date
+        run: |
+          python3 scripts/generate-catalog.py
+          git diff --exit-code -- catalog/skills.md catalog/commands.md
+
+      - name: Check patch whitespace
+        run: git diff --check
