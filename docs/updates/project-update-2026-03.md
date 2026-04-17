@@ -43,8 +43,7 @@ The toolkit layer now includes:
 - scenario-based navigation
 - homepage search
 - mobile-friendly layout
-- copy-ready prompts
-- PDF export
+- copy-ready structured briefs
 - dark mode
 
 ### 3. The agent layer is now explicit

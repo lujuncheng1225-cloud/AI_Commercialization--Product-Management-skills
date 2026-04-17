@@ -1,8 +1,8 @@
-# Using PM Skills with Codex
+# Using PM Skills With Codex
 
-你可以直接让 Codex 读取这个仓库里的文件来工作。
+Codex can read this repository directly and follow the skill and command files.
 
-如果你希望 Codex 不只是“读一个 skill 文件”，而是表现得像你跨设备可迁移的私人 PM agent，先读：
+If you want Codex to behave like a portable PM agent instead of reading one file and improvising, start with:
 
 - `AGENTS.md`
 - `agent/ROUTING.md`
@@ -13,31 +13,38 @@
 - `evals/README.md`
 - `private/README.md`
 
-## 基本模式
+## Basic Pattern
 
-明确指定某个 skill 或 command 文件，然后说明工作方式。
+Point Codex to one skill or command file, then describe the task and output rules.
 
-例如：
-
-```text
-Using skills/problem-statement/SKILL.md，帮我定义新用户激活率低的问题。先问不超过 3 个澄清问题，再用 markdown 输出结果。
-```
-
-## Skill 类型
-
-- `component`：产出一个东西
-- `interactive`：先提问再推荐
-- `workflow`：分阶段完成一类 PM 工作
-
-## Command 用法
-
-如果你不想一个 skill 一个 skill 地调用，可以直接跑 command：
+Example:
 
 ```text
-Run commands/write-prd.md for this request: 为 onboarding completion 提升写一份 PRD。
+Using skills/problem-statement/SKILL.md, help me define why new-user activation is low. Ask up to 3 clarifying questions first, then return the final output in markdown.
 ```
 
-## 推荐提示结构
+## Skill Types
+
+- `component`: produces one artifact.
+- `interactive`: asks questions before making a recommendation.
+- `workflow`: completes a multi-stage PM task.
+
+## Command Workflows
+
+When you do not want to call skills one by one, run a command file:
+
+```text
+Run commands/write-prd.md for this request: write a PRD for improving onboarding completion.
+```
+
+For monetization work, start with one of these:
+
+- `commands/commercial-growth-review.md`
+- `commands/commercial-strategy-review.md`
+- `commands/redesign-pricing-packages.md`
+- `commands/write-commercial-prd.md`
+
+## Recommended Prompt Shape
 
 ```text
 Using skills/<skill-name>/SKILL.md:
@@ -47,8 +54,16 @@ Using skills/<skill-name>/SKILL.md:
 4. End with assumptions, risks, and next steps.
 ```
 
-## 常见问题
+For a larger request:
 
-- 输出太泛：补充产品阶段、用户分群、KPI、时间范围和约束
-- 结构跑偏：明确要求按 skill 的章节来输出
-- 任务太大：先跑一阶段，不要一次要全部
+```text
+Run commands/<command-name>.md for this request:
+<Describe the product, user, goal, data, constraints, and required output.>
+```
+
+## Troubleshooting
+
+- If the output is too generic, add product stage, user segment, KPI, timeframe, and constraints.
+- If the structure drifts, ask Codex to follow the sections in the skill file exactly.
+- If the task is too large, run one stage first instead of asking for everything in one pass.
+- If business context is sensitive, put reusable context in `private/` and provide only the minimum needed for the current task.

@@ -11,7 +11,7 @@
 - 新增 [MANIFESTO.md](../core/MANIFESTO.md) 和 [CASE_STUDIES.md](../core/CASE_STUDIES.md)
 - README 与中文 README 重写，对外定位更清晰
 - 新增交互式工具箱 [docs/pm-skills-interactive-course.html](../pm-skills-interactive-course.html)
-- 工具箱支持双语、搜索、场景入口、移动端适配、Prompt 复制、PDF 导出和暗色模式
+- 工具箱支持双语、搜索、场景入口、移动端适配、结构化推演复制和暗色模式
 - 新增 `agent/` 目录，补齐 routing、output standards、domain context 和 sparse-context policy
 - 新增 `adapters/`，支持 Codex、Claude Code、Cursor 接入
 - 新增 `evals/`，补齐评估用例、rubrics 和 scorecard template

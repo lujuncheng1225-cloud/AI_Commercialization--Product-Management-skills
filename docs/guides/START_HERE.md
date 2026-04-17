@@ -1,34 +1,34 @@
 # Start Here
 
-这是这个仓库的中文主入口。
+This is the main English entry point for the repository.
 
-如果你只记住三件事：
+If you remember only three things:
 
-1. 先选一个 `command`，只有单点任务才直接选 `skill`
-2. 给一个真实业务问题，而不是一句空泛方向
-3. 默认按 `澄清 -> 拆解 -> 产出 -> 审查` 的顺序推进
+1. Start with a `command`; use a single `skill` only for narrow tasks.
+2. Bring a real business or product problem, not a vague direction.
+3. Default to `Clarify -> Decompose -> Produce -> Review`.
 
-## 一条默认工作流
+## Default Workflow
 
-如果你不确定怎么用，默认按这条顺序：
+If you are not sure how to use the library, start with this sequence:
 
 1. `workshop-facilitation`
-   用来把模糊需求问清楚
+   Clarify the request, audience, constraints, and missing context.
 2. `task-decomposition`
-   用来把大任务拆成可检查的小步骤
-3. 目标 `skill` 或 `command`
-   用来真正产出文档、判断或方案
+   Break a large task into checkable steps.
+3. Target `skill` or `command`
+   Produce the artifact, decision, diagnosis, or plan.
 4. `review-gates`
-   用来在交付前检查是否真的能用
+   Check whether the output is usable before delivery.
 
-这套节奏特别适合：
+This rhythm is especially useful for:
 
-- 写 PRD
-- 定义 AI 功能
-- 做商业化诊断
-- 做复杂分析或评审
+- Writing PRDs
+- Defining AI features
+- Diagnosing monetization problems
+- Running complex analysis or reviews
 
-如果你要把这个仓库接到不同电脑、不同 agent 上，先读：
+If you want to connect this repo to different agents or machines, read:
 
 - `agent/ROUTING.md`
 - `agent/OUTPUT_STANDARDS.md`
@@ -40,9 +40,9 @@
 - `evals/README.md`
 - `private/README.md`
 
-## 从哪里开始
+## Where To Start
 
-### 我需要一个 PM 产物
+### I Need A PM Artifact
 
 - `skills/problem-statement/SKILL.md`
 - `skills/prd-development/SKILL.md`
@@ -53,7 +53,7 @@
 - `skills/task-decomposition/SKILL.md`
 - `skills/review-gates/SKILL.md`
 
-### 我需要一个判断或诊断
+### I Need A Judgment Or Diagnosis
 
 - `skills/prioritization-advisor/SKILL.md`
 - `skills/model-selection-advisor/SKILL.md`
@@ -61,7 +61,7 @@
 - `skills/conversion-funnel-diagnostic/SKILL.md`
 - `skills/retention-levers-review/SKILL.md`
 
-### 我需要一条完整工作流
+### I Need A Full Workflow
 
 - `commands/write-prd.md`
 - `commands/shape-ai-feature.md`
@@ -71,46 +71,46 @@
 - `commands/redesign-pricing-packages.md`
 - `commands/write-commercial-prd.md`
 
-## 推荐用法
+## Recommended Usage
 
 ```text
-Using skills/problem-statement/SKILL.md，帮我定义试用到付费转化下降的问题。先问澄清问题，再给出 markdown 输出。
+Using skills/problem-statement/SKILL.md, help me define why trial-to-paid conversion is declining. Ask clarifying questions first, then return the output in markdown.
 ```
 
 ```text
-Using skills/task-decomposition/SKILL.md，帮我把“写 onboarding 改版 PRD”拆成一串可检查的小步骤。
+Using skills/task-decomposition/SKILL.md, help me break "rewrite the onboarding PRD" into checkable steps.
 ```
 
 ```text
-Run commands/shape-ai-feature.md for this request: 为 PM 团队设计一个 AI copilot，帮他们把访谈记录整理成 insight。
+Run commands/shape-ai-feature.md for this request: design an AI copilot that turns interview notes into product insights for PM teams.
 ```
 
 ```text
-Run commands/write-prd.md for this request: 为 self-serve 新用户 onboarding 改版写一份 PRD。先拆解，再成文，最后做 review gates。
+Run commands/write-prd.md for this request: write a PRD for improving self-serve onboarding completion. Decompose first, draft the PRD, then run review gates.
 ```
 
 ```text
-Run commands/commercial-growth-review.md for this request: 诊断为什么激活用户没有转成付费。
+Run commands/commercial-growth-review.md for this request: diagnose why activated users are not converting to paid plans.
 ```
 
 ```text
-Run commands/commercial-strategy-review.md for this request: 评审我们下一个季度的商业化增长策略。
+Run commands/commercial-strategy-review.md for this request: review our monetization growth strategy for next quarter.
 ```
 
-## 仓库里的组织方式
+## Repository Structure
 
-- `component`：做好一个产物
-- `interactive`：通过提问来判断和推荐
-- `workflow`：把一类 PM 工作拆成多阶段
-- `command`：把多个 skill 串起来变成复用流程
+- `component`: produces one concrete artifact.
+- `interactive`: asks questions before making recommendations.
+- `workflow`: handles a multi-stage PM task.
+- `command`: chains multiple skills into a reusable workflow.
 
-当前最推荐的不是“随机挑 skill”，而是：
+The recommended pattern is not to pick skills at random:
 
-- 模糊任务优先走 `command`
-- 大任务优先加上 `task-decomposition`
-- 交付前优先过 `review-gates`
+- Use a `command` first for ambiguous tasks.
+- Add `task-decomposition` for large tasks.
+- Run `review-gates` before delivery.
 
-## 常用脚本
+## Common Scripts
 
 ```bash
 bash ./scripts/find-a-skill.sh --list-all

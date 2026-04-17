@@ -13,6 +13,7 @@ SKILLS_DIR = ROOT / "skills"
 COMMANDS_DIR = ROOT / "commands"
 CATALOG_DIR = ROOT / "catalog"
 TOOLKIT_HTML = ROOT / "docs" / "pm-skills-interactive-course.html"
+TOOLKIT_DATA_JS = ROOT / "docs" / "toolkit-skills.js"
 DOC_LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 SAMPLE_OUTPUT_PATTERN = re.compile(r"## Sample Output .*?(?=\n## |\Z)", re.S)
 INLINE_CODE_PATH_PATTERN = re.compile(r"`([^`\n]+\.md)`")
@@ -192,19 +193,30 @@ def validate_interactive_toolkit(errors: list[str]) -> None:
         return
 
     text = TOOLKIT_HTML.read_text(encoding="utf-8")
+    if "toolkit-skills.js" not in text:
+        errors.append(f"{TOOLKIT_HTML}: interactive toolkit must load docs/toolkit-skills.js")
+
+    if "const skills=[" in text:
+        errors.append(f"{TOOLKIT_HTML}: toolkit data should live in docs/toolkit-skills.js")
+
+    if not TOOLKIT_DATA_JS.exists():
+        errors.append(f"{TOOLKIT_DATA_JS}: missing interactive toolkit data")
+        return
+
+    data_text = TOOLKIT_DATA_JS.read_text(encoding="utf-8")
     for skill_id, required_terms in CRITICAL_TOOLKIT_CHECKS.items():
-        start = text.find(f"id:'{skill_id}'")
+        start = data_text.find(f"id:'{skill_id}'")
         if start == -1:
-            errors.append(f"{TOOLKIT_HTML}: missing toolkit card {skill_id}")
+            errors.append(f"{TOOLKIT_DATA_JS}: missing toolkit card {skill_id}")
             continue
 
-        next_card = text.find("\n\n{id:", start + 1)
-        end = next_card if next_card != -1 else text.find("\n];", start)
-        block = text[start:end if end != -1 else len(text)]
+        next_card = data_text.find("\n\n{id:", start + 1)
+        end = next_card if next_card != -1 else data_text.find("\n];", start)
+        block = data_text[start:end if end != -1 else len(data_text)]
 
         for term in required_terms:
             if term not in block:
-                errors.append(f"{TOOLKIT_HTML}: toolkit card {skill_id} missing required term '{term}'")
+                errors.append(f"{TOOLKIT_DATA_JS}: toolkit card {skill_id} missing required term '{term}'")
 
 
 def collect_skill_files() -> list[Path]:
