@@ -2,20 +2,21 @@
 
 ## Now
 
-- 扩展核心 AI PM skills
-- 扩展商业化和增长 PM skills
-- 收紧 command 工作流
-- 提高中文主版本覆盖率
-- 增加更多 catalog 输出
+- 发布第一期公开 benchmark
+- 固化主词：`PM Operating System`
+- 打磨 3 个代表作入口
+- 把分发飞轮落成每周执行板
+- 补真实使用与传播数据入口
 
 ## Next
 
-- 增加 discovery 和 strategy workflows
-- 增加领域型参考资料
-- 增加 frontmatter 一致性校验脚本
+- 增加 benchmark 历史与 leaderboard
+- 增加团队化 workspace 入口
+- 增加更多高信号 case，而不是更多泛 skill
+- 把 discovery 和 strategy workflow 补齐成代表作级别样例
 
 ## Later
 
-- 为 skill 示例增加测试样本
-- 增加发版自动化辅助
-- 增加 skill 质量评分机制
+- 为公开 benchmark 增加持续更新节奏
+- 为工具箱补更真实的产品数据回流
+- 增加分发动作和结果的沉淀机制

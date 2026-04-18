@@ -37,6 +37,9 @@ Use when referring to the deeper layer:
 
 This term means a working system, not a folder of content.
 
+This is the category term.
+Lead with it when defining what this project is.
+
 ### Agent-native PM Workflow
 
 Use when the workflow is designed for:
@@ -100,8 +103,8 @@ These phrases shrink the project back into the old category.
 
 When writing README copy, launch posts, benchmark summaries, or directory descriptions:
 
-1. lead with one canonical term
-2. explain it in plain language
-3. repeat it until readers start to mirror it back
+1. lead with `PM Operating System` as the category term
+2. name `PM AI Skill Toolkit` as the product
+3. use benchmark and workflow terms only after the main frame is clear
 
 If the audience remembers only one phrase, it should be one of the canonical terms above.

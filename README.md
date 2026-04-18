@@ -33,6 +33,9 @@ This repo is built to help product managers think better, structure work better,
 
 It is not a prompt dump. It is a reusable PM operating system.
 
+Category: `PM Operating System`<br>
+Product: `PM AI Skill Toolkit`
+
 ## In 3 Seconds
 
 - What it is: a PM operating system for humans and AI agents
@@ -90,6 +93,7 @@ In practice, that means this repo emphasizes:
 - Benchmark layer: [Benchmark Center](docs/benchmarks/README.md)
 - Category language: [Category Language](docs/core/CATEGORY_LANGUAGE.md)
 - Distribution rhythm: [Distribution Engine](docs/brand/DISTRIBUTION_ENGINE.md)
+- Flagship proof: [Flagship Cases](docs/core/FLAGSHIP_CASES.md)
 
 ## Structure
 

@@ -2,6 +2,8 @@
 
 这个目录提供一套跨平台、可迁移的 agent 评估基线。
 
+它对应的是这套 `PM Operating System` 的公开评估层：`PM Agent Benchmark`。
+
 目标不是测“哪个模型更聪明”，而是测：
 
 - 是否命中了正确的 `command` 或 `skill`

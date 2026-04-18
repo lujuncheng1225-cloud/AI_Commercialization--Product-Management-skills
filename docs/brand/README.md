@@ -6,6 +6,7 @@
 
 - `ABOUT_AUTHOR.md`
 - `WHY_THIS_REPO.md`
+- `MESSAGING_HIERARCHY.md`
 - `LAUNCH_POST.zh-CN.md`
 - `LAUNCH_POST.md`
 - `social-posts.zh-CN.md`
@@ -23,6 +24,7 @@
 - `method-map.zh-CN.md`
 - `method-map.md`
 - `DISTRIBUTION_ENGINE.md`
+- `DISTRIBUTION_BOARD.md`
 
 ## Signature Cases
 

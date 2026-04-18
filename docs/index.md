@@ -31,6 +31,7 @@ A reusable PM operating system for product managers and AI agents.
 - Benchmark layer: [Benchmark Center](benchmarks/README.md)
 - Category language: [Category Language](core/CATEGORY_LANGUAGE.md)
 - Distribution rhythm: [Distribution Engine](brand/DISTRIBUTION_ENGINE.md)
+- Flagship proof: [Flagship Cases](core/FLAGSHIP_CASES.md)
 
 ## Who This Is For
 
@@ -46,6 +47,7 @@ A reusable PM operating system for product managers and AI agents.
 - Search-friendly GEO pages: [GEO Pages](geo/README.md)
 - Product onboarding: [Product Surface](product/README.md)
 - Benchmark publication: [Benchmark Center](benchmarks/README.md)
+- Flagship proof: [Flagship Cases](core/FLAGSHIP_CASES.md)
 - Brand and author materials: [Brand Index](brand/README.md)
 - Guides: [Guides Index](guides/README.md)
 

@@ -14,8 +14,12 @@ Key pages:
 - /pm-skills-interactive-course.html -> interactive toolkit
 - /product/ -> zero-friction product entry
 - /benchmarks/ -> public PM agent benchmark layer
+- /benchmarks/leaderboard/ -> public benchmark scoreboard
+- /benchmarks/first-public-run/ -> fixed first benchmark pack
 - /core/category-language/ -> category language definitions
+- /core/flagship-cases/ -> strongest proof points
 - /brand/distribution-engine/ -> distribution loop and release cadence
+- /brand/distribution-board/ -> weekly execution board
 - /core/MANIFESTO.html -> project manifesto
 - /core/CASE_STUDIES.html -> case studies
 - /geo/pm-ai-operating-system.html -> PM AI operating system definition

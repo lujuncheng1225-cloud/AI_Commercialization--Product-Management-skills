@@ -28,10 +28,15 @@
 - `pm-skills-interactive-course.html`
 - `product/README.md`
 - `benchmarks/README.md`
+- `benchmarks/FIRST_PUBLIC_RUN.md`
+- `benchmarks/LEADERBOARD.md`
 - `core/README.md`
 - `core/CATEGORY_LANGUAGE.md`
+- `core/FLAGSHIP_CASES.md`
 - `geo/README.md`
 - `guides/README.md`
 - `brand/README.md`
 - `brand/DISTRIBUTION_ENGINE.md`
+- `brand/DISTRIBUTION_BOARD.md`
+- `brand/MESSAGING_HIERARCHY.md`
 - `updates/project-update-2026-03.zh-CN.md`

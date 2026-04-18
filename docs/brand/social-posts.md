@@ -22,7 +22,7 @@ But I increasingly think the real value of AI for product managers is not writin
 - separating evidence from assumption
 - making workflows reusable
 
-That is why I built a `PM AI Skill Toolkit`.
+That is why I built `PM AI Skill Toolkit`, a `PM Operating System`.
 
 It is not a prompt library.
 It is a PM operating system for product managers and AI agents.
@@ -32,7 +32,7 @@ It is a PM operating system for product managers and AI agents.
 
 ## Post 2: Outcome
 
-I turned what started as an internal PM skills repo into a more complete `PM AI Skill Toolkit`.
+I turned what started as an internal PM skills repo into a more complete `PM Operating System` product: `PM AI Skill Toolkit`.
 
 It now includes:
 
@@ -55,7 +55,7 @@ I increasingly think the most valuable thing to systematize for PMs in the AI er
 
 If a system cannot help make that chain more reliable, it probably only helps people sound more polished, not work more professionally.
 
-That is why I built a `PM AI Skill Toolkit` instead of a prompt library.
+That is why I built a `PM Operating System` instead of a prompt library: `PM AI Skill Toolkit`.
 
 - Method map: [Method Map](method-map.md)
 - Repo: [PM AI Skill Toolkit](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills)

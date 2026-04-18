@@ -1,15 +1,17 @@
 ---
 title: Benchmark Center
-description: Public benchmark layer for PM AI Skill Toolkit.
+description: Public benchmark layer for PM Agent Benchmark.
 permalink: /benchmarks/
 ---
 
 # Benchmark Center
 
-This is the public benchmark layer for PM AI Skill Toolkit.
+This is the public benchmark layer for `PM Agent Benchmark`.
 
 The goal is not to argue that one model is “smart”.
 The goal is to make PM agent quality visible and comparable.
+
+It is the benchmark layer of the broader `PM Operating System`.
 
 ## What Gets Benchmarked
 
@@ -50,6 +52,11 @@ We will publish only runs with:
 - clear route log
 - scoring notes
 - failure pattern summary
+
+## Public Assets
+
+- [Leaderboard](LEADERBOARD.md)
+- [First Public Run](FIRST_PUBLIC_RUN.md)
 
 ## Publication Cadence
 

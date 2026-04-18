@@ -238,3 +238,9 @@ If you want to see the author's point of view more directly, start here:
 
 - [Signature Case 01: An Anonymized Commercialization Judgment](../brand/signature-case-commercialization.md)
 - [Signature Case 02: Why I Did Not Build A Prompt Library](../brand/signature-case-pm-system.md)
+
+## Fastest Proof
+
+If someone asks “what should I read first,” send:
+
+- [Flagship Cases](FLAGSHIP_CASES.md)

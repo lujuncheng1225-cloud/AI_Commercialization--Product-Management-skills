@@ -4,6 +4,9 @@
 
 它不是提示词库，而是一套把 PM 判断、工作流和 agent 协作沉淀成系统的仓库。
 
+类目词：`PM Operating System`<br>
+产品名：`PM AI Skill Toolkit`
+
 ## 3 秒懂
 
 - 这是什么：给产品经理和 AI agent 共用的 PM 操作系统
@@ -45,6 +48,7 @@
 - Benchmark 层：[Benchmark Center](docs/benchmarks/README.md)
 - 类目语言：[CATEGORY_LANGUAGE.md](docs/core/CATEGORY_LANGUAGE.md)
 - 分发飞轮：[DISTRIBUTION_ENGINE.md](docs/brand/DISTRIBUTION_ENGINE.md)
+- 代表作入口：[FLAGSHIP_CASES.md](docs/core/FLAGSHIP_CASES.md)
 
 ## 仓库结构
 

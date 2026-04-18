@@ -41,14 +41,21 @@ TOOLKIT_BANNED_TERMS = [
 REQUIRED_PUBLIC_PAGES = [
     ROOT / "docs" / "product" / "README.md",
     ROOT / "docs" / "benchmarks" / "README.md",
+    ROOT / "docs" / "benchmarks" / "FIRST_PUBLIC_RUN.md",
+    ROOT / "docs" / "benchmarks" / "LEADERBOARD.md",
     ROOT / "docs" / "core" / "CATEGORY_LANGUAGE.md",
+    ROOT / "docs" / "core" / "FLAGSHIP_CASES.md",
     ROOT / "docs" / "brand" / "DISTRIBUTION_ENGINE.md",
 ]
 REQUIRED_LLM_PATHS = [
     "/product/",
     "/benchmarks/",
+    "/benchmarks/leaderboard/",
+    "/benchmarks/first-public-run/",
     "/core/category-language/",
+    "/core/flagship-cases/",
     "/brand/distribution-engine/",
+    "/brand/distribution-board/",
 ]
 
 
@@ -287,7 +294,13 @@ def validate_public_layers(errors: list[str]) -> None:
         if needle not in readme_zh_text:
             errors.append(f"{ROOT / 'README.zh-CN.md'}: missing public layer link {needle}")
 
-    for needle in ("product/README.md", "benchmarks/README.md", "core/CATEGORY_LANGUAGE.md", "brand/DISTRIBUTION_ENGINE.md"):
+    for needle in (
+        "product/README.md",
+        "benchmarks/README.md",
+        "core/CATEGORY_LANGUAGE.md",
+        "core/FLAGSHIP_CASES.md",
+        "brand/DISTRIBUTION_ENGINE.md",
+    ):
         if needle not in docs_index_text:
             errors.append(f"{ROOT / 'docs' / 'index.md'}: missing docs entry {needle}")
 

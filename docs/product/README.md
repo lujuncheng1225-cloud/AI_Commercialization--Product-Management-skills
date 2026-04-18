@@ -86,3 +86,4 @@ It should let them:
 - [Benchmark Center](../benchmarks/README.md)
 - [Category Language](../core/CATEGORY_LANGUAGE.md)
 - [Distribution Engine](../brand/DISTRIBUTION_ENGINE.md)
+- [Flagship Cases](../core/FLAGSHIP_CASES.md)

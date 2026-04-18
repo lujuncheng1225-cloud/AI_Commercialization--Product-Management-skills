@@ -2,6 +2,8 @@
 
 ## 中文
 
+`PM AI Skill Toolkit` 是一套给产品经理和 AI agent 使用的 `PM Operating System`。
+
 市面上已经有很多 AI for PM 的资源了。
 
 但大多数内容都卡在这几种形态里：
@@ -89,6 +91,8 @@
 那这套仓库就更接近你真正需要的东西。
 
 ## English
+
+`PM AI Skill Toolkit` is a `PM Operating System` for product managers and AI agents.
 
 There are already many AI-for-PM resources out there.
 

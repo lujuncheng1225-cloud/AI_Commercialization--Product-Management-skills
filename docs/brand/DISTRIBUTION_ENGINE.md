@@ -111,3 +111,9 @@ Before each week ends:
 - did we push one directory or discovery action?
 
 If not, distribution has stalled.
+
+## Execution Layer
+
+Run the weekly work from:
+
+- [Distribution Board](DISTRIBUTION_BOARD.md)
