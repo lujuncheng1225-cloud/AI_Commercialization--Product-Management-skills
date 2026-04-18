@@ -23,6 +23,9 @@ It is a judgment-first PM system that turns messy work into reusable decision br
 ## Start Here
 
 - Try the toolkit: [PM Skills Interactive Course](pm-skills-interactive-course.html)
+- Start with pricing: [Pricing Strategy](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy)
+- Start with PRD: [PRD Draft](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=prd-draft)
+- Start with monetization: [Monetization Plan](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=monetization)
 - Start fast: [Product Surface](product/README.md)
 - Benchmark quality: [Benchmark Center](benchmarks/README.md)
 - Read the guide: [START_HERE.md](guides/START_HERE.md)

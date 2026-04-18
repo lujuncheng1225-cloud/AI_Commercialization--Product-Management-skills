@@ -27,6 +27,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .positioning-note{max-width:860px;margin:0 auto 20px;padding:16px 18px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(135deg,var(--brand-bg),transparent 70%),var(--card);box-shadow:var(--shadow)}
 .positioning-note strong{display:block;font-size:15px;margin-bottom:6px}
 .positioning-note p{font-size:14px;color:var(--text2);line-height:1.7}
+.home-section{max-width:860px;margin:0 auto 24px}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
+.section-header h3{font-size:17px}
+.section-header p{font-size:13px;color:var(--text2);max-width:540px}
+.guided-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.guided-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.guided-card strong{display:block;font-size:16px;margin-bottom:8px}
+.guided-card p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+.guided-actions{display:flex;flex-wrap:wrap;gap:8px}
+.guided-btn{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);color:var(--text);font-size:13px;cursor:pointer;transition:all .2s}
+.guided-btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.guided-btn:hover{transform:translateY(-1px);border-color:var(--brand-light)}
+.flagship-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.flagship-pill{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;background:var(--brand-bg);color:var(--brand);font-size:12px;font-weight:700}
 .usage-list{display:grid;gap:10px}
 .usage-item{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--bg2);text-align:left;cursor:pointer;transition:all .2s}
 .usage-item:hover{border-color:var(--brand-light);transform:translateY(-1px)}
@@ -138,6 +152,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <div class="panel"><h3 id="entryTitle">零门槛入口</h3><ul class="panel-list" id="entryList"></ul></div>
 <div class="panel"><h3 id="usageTitle">最近使用</h3><div id="recentUsage"></div></div>
 </div>
+<div class="home-section">
+<div class="section-header"><h3 id="guidedTitle">按目标开始</h3><p id="guidedSubtitle"></p></div>
+<div class="guided-grid" id="guidedGrid"></div>
+</div>
+<div class="home-section">
+<div class="section-header"><h3 id="flagshipTitle">旗舰场景</h3><p id="flagshipSubtitle"></p></div>
+<div class="guided-grid" id="flagshipGrid"></div>
+</div>
 <div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" id="search" placeholder="搜索场景…" oninput="filterCards()"></div>
 <div class="categories" id="cats"></div>
 <div class="grid" id="grid"></div>
@@ -148,8 +170,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <script src="toolkit-skills.js"></script>
 <script>
 const i18n={
-  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，形成结构化判断',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'📋 复制判断简报',copyCodex:'复制 Codex 启动稿',copyClaude:'复制 Claude Code 启动稿',copyCursor:'复制 Cursor 启动稿',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'结构化判断已就绪',resultSubtitle:'先看判断视图，再决定是否交给 agent 继续执行。',tipsTitle:'💡 使用提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。先打开一个场景。',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'它先帮你把问题拆开，形成判断，再把判断草案交给 Codex、Claude Code 或 Cursor 接着做。',briefIntent:'任务意图',inputSnapshot:'输入快照',outputContract:'输出契约',rawBrief:'查看原始判断简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'输出段落',contextLabel:'背景块',emptyInputs:'当前没有可展示的输入项。',emptySections:'当前没有解析到明确的输出段落，建议查看原始判断简报。',cardMeta:(n)=>`${n} 个问题 → 形成判断草案`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
-  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, form structured judgment',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build Decision Brief →',copy:'📋 Copy decision brief',copyCodex:'Copy Codex kickoff',copyClaude:'Copy Claude Code kickoff',copyCursor:'Copy Cursor kickoff',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your decision brief is ready',resultSubtitle:'Review the decision view first, then hand it to an agent if needed.',tipsTitle:'💡 Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet. Open one scenario to get started.',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'It helps you decompose the problem first, form judgment second, and hand a kickoff brief to Codex, Claude Code, or Cursor only after that.',briefIntent:'Brief Intent',inputSnapshot:'Input Snapshot',outputContract:'Output Contract',rawBrief:'Show raw decision brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context Block',emptyInputs:'No filled inputs to show yet.',emptySections:'No structured output sections were parsed. Open the raw brief instead.',cardMeta:(n)=>`${n} questions → Build a decision brief`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
+  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，形成结构化判断',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'📋 复制判断简报',copyCodex:'复制 Codex 启动稿',copyClaude:'复制 Claude Code 启动稿',copyCursor:'复制 Cursor 启动稿',shareScenario:'复制场景链接',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'结构化判断已就绪',resultSubtitle:'先看判断视图，再决定是否交给 agent 继续执行。',tipsTitle:'💡 使用提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。先打开一个场景。',guidedTitle:'按目标开始',guidedSubtitle:'如果你只想先点对第一张卡，从这里开始。',flagshipTitle:'旗舰场景',flagshipSubtitle:'最适合对外演示、截图和验证差异的 3 条路径。',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'它先帮你把问题拆开，形成判断，再把判断草案交给 Codex、Claude Code 或 Cursor 接着做。',briefIntent:'任务意图',inputSnapshot:'输入快照',outputContract:'输出契约',rawBrief:'查看原始判断简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'输出段落',contextLabel:'背景块',emptyInputs:'当前没有可展示的输入项。',emptySections:'当前没有解析到明确的输出段落，建议查看原始判断简报。',startNow:'立即试跑',alternatePaths:'替代路径',whyThisPath:'为什么先走这条路',sharePath:'分享路径',featuredReason:'为什么它是旗舰场景',cardMeta:(n)=>`${n} 个问题 → 形成判断草案`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
+  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, form structured judgment',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build Decision Brief →',copy:'📋 Copy decision brief',copyCodex:'Copy Codex kickoff',copyClaude:'Copy Claude Code kickoff',copyCursor:'Copy Cursor kickoff',shareScenario:'Copy scenario link',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your decision brief is ready',resultSubtitle:'Review the decision view first, then hand it to an agent if needed.',tipsTitle:'💡 Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet. Open one scenario to get started.',guidedTitle:'Start By Goal',guidedSubtitle:'If you only want the right first click, start here.',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'The 3 strongest paths for demos, screenshots, and external proof.',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'It helps you decompose the problem first, form judgment second, and hand a kickoff brief to Codex, Claude Code, or Cursor only after that.',briefIntent:'Brief Intent',inputSnapshot:'Input Snapshot',outputContract:'Output Contract',rawBrief:'Show raw decision brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context Block',emptyInputs:'No filled inputs to show yet.',emptySections:'No structured output sections were parsed. Open the raw brief instead.',startNow:'Start now',alternatePaths:'Alternate paths',whyThisPath:'Why start here',sharePath:'Share path',featuredReason:'Why this is a flagship scenario',cardMeta:(n)=>`${n} questions → Build a decision brief`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
 };
 
 let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh')?'zh':'en');
@@ -158,11 +180,29 @@ const REPO_BLOB_BASE='https://github.com/lujuncheng1225-cloud/AI_Commercializati
 const RECENT_USAGE_KEY='pm-toolkit-recent-usage';
 const EVENT_LOG_KEY='pm-toolkit-event-log';
 const MAX_EVENT_LOG=300;
+const GUIDED_PATHS=[
+  {key:'revenue',titleZh:'先解决收入',titleEn:'Fix revenue first',descZh:'如果你最关心定价、付费边界和升级触发点，先走这条路。',descEn:'Start here if pricing, paywalls, and upgrade triggers matter most.',primary:'pricing-strategy',alternates:['monetization','retention-strategy']},
+  {key:'product',titleZh:'先把需求做清楚',titleEn:'Clarify the product first',descZh:'如果你在做新功能或要进评审，先走这条路。',descEn:'Start here if you are shaping a feature or preparing a review.',primary:'prd-draft',alternates:['req-review','req-priority']},
+  {key:'strategy',titleZh:'先看外部与增长',titleEn:'Start with strategy',descZh:'如果你要判断竞品、进入市场或验证增长实验，先走这条路。',descEn:'Start here for competitive moves, market entry, or growth experiments.',primary:'competitor-pricing',alternates:['growth-experiment','market-entry']}
+];
+const FLAGSHIP_SCENARIOS=[
+  {id:'pricing-strategy',reasonZh:'最能证明这不是写 prompt，而是在做收入结构判断。',reasonEn:'Best proof that this is revenue reasoning, not prompt generation.'},
+  {id:'prd-draft',reasonZh:'最能体现问题定义、范围取舍和 review gate。',reasonEn:'Best proof of problem framing, scope control, and review gates.'},
+  {id:'monetization',reasonZh:'最能体现主约束判断，而不是平均发建议。',reasonEn:'Best proof of constraint-first commercialization judgment.'}
+];
 
 function t(key){return i18n[currentLang][key];}
 function catLabel(c){return i18n[currentLang].categories[c]||c;}
 function levelLabel(l){return i18n[currentLang].levels[l]||l;}
+function getSkill(id){return skills.find(skill=>skill.id===id);}
 function sourceUrl(s){return`${REPO_BLOB_BASE}${s.sourceRef}`;}
+function scenarioUrl(id){
+  if(typeof window==='undefined'||!window.location?.href)return`${SITE_BASE}pm-skills-interactive-course.html?scenario=${encodeURIComponent(id)}`;
+  const url=new URL(window.location.href);
+  url.searchParams.set('scenario',id);
+  url.searchParams.set('lang',currentLang);
+  return url.toString();
+}
 function previewLabel(s){return s.sourceRef.startsWith('commands/')?t('previewCommand'):t('previewSkill');}
 function sourceMeta(s){
   if(!s.sourceRef)return'';
@@ -200,6 +240,7 @@ function setLang(lang){
   document.getElementById('langZh').classList.toggle('active',lang==='zh');
   document.getElementById('langEn').classList.toggle('active',lang==='en');
   document.documentElement.lang=lang==='zh'?'zh-CN':'en';
+  syncUrlState(currentSkill?.id||null);
   if(currentSkill){
     if(document.getElementById('result').classList.contains('hidden'))renderStep(); else renderResult();
   }else{
@@ -230,6 +271,8 @@ function trackQuickLink(id){trackEvent('quick_link_click',{id});}
 function trackSourcePreview(skillId,placement){trackEvent('source_preview',{skillId,placement});}
 function trackRecentOpen(skillId){trackEvent('recent_usage_open',{skillId});}
 function trackRawBrief(open){trackEvent('raw_brief_toggle',{skillId:currentSkill?.id,open});}
+function trackScenarioLaunch(skillId,source){trackEvent('scenario_launch',{skillId,source});}
+function trackScenarioShare(skillId,source){trackEvent('scenario_share',{skillId,source});}
 
 function toggleTheme(){
   document.body.classList.toggle('dark');
@@ -246,14 +289,62 @@ function init(){
   document.querySelector('.header p').textContent=t('pageSubtitle');
   document.getElementById('entryTitle').textContent=t('entryTitle');
   document.getElementById('usageTitle').textContent=t('usageTitle');
+  document.getElementById('guidedTitle').textContent=t('guidedTitle');
+  document.getElementById('guidedSubtitle').textContent=t('guidedSubtitle');
+  document.getElementById('flagshipTitle').textContent=t('flagshipTitle');
+  document.getElementById('flagshipSubtitle').textContent=t('flagshipSubtitle');
   document.getElementById('positioningNote').innerHTML=`<strong>${t('positioningTitle')}</strong><p>${t('positioningBody')}</p>`;
   document.getElementById('heroLinks').innerHTML=homeLinks().map(link=>`<a class="quick-link" href="${link.href}" onclick="trackQuickLink('${link.id}')"><strong>${link.title}</strong><span>${link.desc}</span></a>`).join('');
   document.getElementById('entryList').innerHTML=entryBullets().map(item=>`<li>${item}</li>`).join('');
+  renderGuidedGrid();
+  renderFlagshipGrid();
   document.getElementById('search').placeholder=t('searchPlaceholder');
   document.title=t('pageTitle');
   trackEvent('toolkit_page_view',{surface:'home'});
   renderRecentUsage();
   filterCards();
+  applyScenarioFromUrl();
+}
+
+function renderGuidedGrid(){
+  document.getElementById('guidedGrid').innerHTML=GUIDED_PATHS.map(path=>{
+    const primary=getSkill(path.primary);
+    const alternates=path.alternates.map(getSkill).filter(Boolean);
+    if(!primary)return'';
+    const title=currentLang==='zh'?path.titleZh:path.titleEn;
+    const desc=currentLang==='zh'?path.descZh:path.descEn;
+    return`<div class="guided-card">
+      <strong>${title}</strong>
+      <p>${desc}</p>
+      <div class="flagship-meta"><span class="flagship-pill">${catLabel(primary.category)}</span><span class="flagship-pill">${levelLabel(primary.level)}</span></div>
+      <p><strong>${t('whyThisPath')}</strong><br>${currentLang==='zh'?primary.desc:primary.descEn}</p>
+      <div class="guided-actions">
+        <button class="guided-btn primary" onclick="launchScenario('${primary.id}','guided:${path.key}')">${t('startNow')}</button>
+        <button class="guided-btn" onclick="copyScenarioLink('${primary.id}',this,'guided:${path.key}')">${t('sharePath')}</button>
+      </div>
+      <div class="guided-actions">
+        ${alternates.map(skill=>`<button class="guided-btn" onclick="launchScenario('${skill.id}','guided-alt:${path.key}')">${currentLang==='zh'?skill.title:skill.titleEn}</button>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderFlagshipGrid(){
+  document.getElementById('flagshipGrid').innerHTML=FLAGSHIP_SCENARIOS.map(item=>{
+    const skill=getSkill(item.id);
+    if(!skill)return'';
+    const reason=currentLang==='zh'?item.reasonZh:item.reasonEn;
+    return`<div class="guided-card">
+      <strong>${currentLang==='zh'?skill.title:skill.titleEn}</strong>
+      <p>${currentLang==='zh'?skill.desc:skill.descEn}</p>
+      <div class="flagship-meta"><span class="flagship-pill">${catLabel(skill.category)}</span><span class="flagship-pill">${levelLabel(skill.level)}</span><span class="flagship-pill">${t('featuredReason')}</span></div>
+      <p>${reason}</p>
+      <div class="guided-actions">
+        <button class="guided-btn primary" onclick="launchScenario('${skill.id}','flagship')">${t('startNow')}</button>
+        <button class="guided-btn" onclick="copyScenarioLink('${skill.id}',this,'flagship')">${t('sharePath')}</button>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 function setCat(c){activeCategory=c;trackEvent('category_filter',{category:c});document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));filterCards();}
@@ -266,6 +357,7 @@ function filterCards(){
 
 function openSkill(id){
   currentSkill=skills.find(s=>s.id===id);currentStep=0;formData={};
+  syncUrlState(id);
   trackEvent('skill_open',{skillId:id,sourceRef:currentSkill.sourceRef});
   currentSkill.steps.forEach(step=>step.fields.forEach(f=>{
     if(f.type==='checkbox')formData[f.key]=[...(f.defaults||[])];
@@ -273,6 +365,31 @@ function openSkill(id){
     else formData[f.key]='';
   }));
   show('detail');hide('home');hide('result');renderStep();
+}
+
+function launchScenario(id,source){
+  trackScenarioLaunch(id,source);
+  openSkill(id);
+}
+
+function copyScenarioLink(id,btn,source='share'){
+  trackScenarioShare(id,source);
+  copyText(scenarioUrl(id),btn);
+}
+
+function syncUrlState(id){
+  if(typeof window==='undefined'||!window.location?.href||!window.history?.replaceState)return;
+  const url=new URL(window.location.href);
+  if(id)url.searchParams.set('scenario',id);
+  else url.searchParams.delete('scenario');
+  url.searchParams.set('lang',currentLang);
+  window.history.replaceState({},'',url.toString());
+}
+
+function applyScenarioFromUrl(){
+  if(typeof window==='undefined'||!window.location?.search)return;
+  const id=new URLSearchParams(window.location.search).get('scenario');
+  if(id&&getSkill(id))openSkill(id);
 }
 
 function renderStep(){
@@ -335,6 +452,7 @@ function renderResult(){
       <button class="btn btn-primary" onclick="copyAgent('codex',this)">${t('copyCodex')}</button>
       <button class="btn btn-secondary" onclick="copyAgent('claude',this)">${t('copyClaude')}</button>
       <button class="btn btn-secondary" onclick="copyAgent('cursor',this)">${t('copyCursor')}</button>
+      <button class="btn btn-secondary" onclick="copyScenarioLink('${currentSkill.id}',this,'result')">${t('shareScenario')}</button>
       <button class="btn btn-secondary" onclick="copyPrompt(this)">${t('copy')}</button>
       <a class="btn btn-secondary btn-link" href="${sourceUrl(currentSkill)}" target="_blank" rel="noopener" onclick="trackSourcePreview('${currentSkill.id}','result')">${previewLabel(currentSkill)}</a>
       <button class="btn btn-secondary" onclick="backToForm()">${t('modify')}</button>
@@ -475,7 +593,7 @@ function formatTime(iso){
 }
 
 function backToForm(){show('detail');hide('result');renderStep();}
-function goHome(){currentSkill=null;show('home');hide('detail');hide('result');renderRecentUsage();}
+function goHome(){currentSkill=null;syncUrlState(null);show('home');hide('detail');hide('result');renderRecentUsage();}
 function show(id){document.getElementById(id).classList.remove('hidden');}
 function hide(id){document.getElementById(id).classList.add('hidden');}
 
