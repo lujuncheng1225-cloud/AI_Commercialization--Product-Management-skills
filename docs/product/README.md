@@ -8,11 +8,15 @@ permalink: /product/
 
 This page is the zero-friction entry for people who do not want to understand the repository first.
 
+It is not meant to behave like a prompt generator.
+It is meant to behave like a judgment layer that starts a PM workflow cleanly.
+
 The goal is simple:
 
 - start in under 3 minutes
 - use the toolkit online
-- copy directly into Codex, Claude Code, or Cursor
+- form a decision brief before touching an agent
+- hand a kickoff brief to Codex, Claude Code, or Cursor
 - preview the underlying skill or command
 - move into a reusable team workspace when needed
 
@@ -22,13 +26,13 @@ The goal is simple:
 
 - [Interactive Toolkit](../pm-skills-interactive-course.html)
 
-Pick a scenario, answer the questions, and generate a structured brief.
+Pick a scenario, answer the questions, and form a structured decision brief.
 
 ### 2. Copy To Your Agent
 
 The toolkit now exposes the underlying `skill` or `command` path for every scenario.
 
-Use the built-in copy actions in the toolkit result page to generate agent-ready kickoff text for:
+Use the built-in copy actions in the toolkit result page to hand agent-ready kickoff text to:
 
 - Codex
 - Claude Code
@@ -50,6 +54,7 @@ Use that mapping to inspect the source and move from “web use” to “repo us
 - best for first-time users
 - no Git knowledge required
 - guided questions instead of free-form prompting
+- decision briefs instead of loose prompt fragments
 
 ### Layer 2: Reusable System Files
 
@@ -91,6 +96,7 @@ This project should not require users to:
 It should let them:
 
 - start with a scenario
+- form a judgment brief with assumptions, risks, and next steps
 - copy a ready-to-run instruction
 - preview the source system file
 - escalate into commands, evals, and team context only when needed

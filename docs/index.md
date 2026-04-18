@@ -10,10 +10,14 @@ A reusable PM operating system for product managers and AI agents.
 
 一套给产品经理和 AI agent 共用的 PM 操作系统。
 
+This is not a prompt builder.
+It is a judgment-first PM system that turns messy work into reusable decision briefs.
+
 ## In 3 Seconds
 
 - What it is: a PM workflow and decision system
 - What it helps with: PRDs, AI feature shaping, commercialization reviews, and reusable PM workflows
+- What comes out: decision briefs with evidence, assumptions, risks, and next steps
 - What makes it different: it emphasizes routing, judgment, review gates, and reusable systems instead of prompt dumping
 
 ## Start Here
@@ -63,6 +67,14 @@ This project is built to help product managers:
 - make stronger decisions
 - separate evidence from assumption
 - turn repeated work into reusable systems
+
+The toolkit layer is only the entry point.
+The deeper system is the operating logic behind it:
+
+- route to the right workflow
+- force sharper framing before output
+- keep assumptions, risks, and next steps visible
+- make the result portable across agents
 
 ## Keywords
 

@@ -3,6 +3,7 @@
 给 AI 时代产品经理使用的开源操作系统。
 
 它不是提示词库，而是一套把 PM 判断、工作流和 agent 协作沉淀成系统的仓库。
+它的在线工具箱也不是提示词生成器，而是先帮你形成判断草案，再把任务交给 agent 往下做。
 
 类目词：`PM Operating System`<br>
 产品名：`PM AI Skill Toolkit`
@@ -11,6 +12,7 @@
 
 - 这是什么：给产品经理和 AI agent 共用的 PM 操作系统
 - 解决什么：让 PM 工作不只更快，而是更稳、更可复用
+- 输出什么：带有 Evidence、Assumptions、Risks、Next Steps 的判断简报
 - 现在能干嘛：直接跑 PRD、AI 功能定义、商业化策略评审等 workflow
 
 如果你第一次来，先看这 4 个入口：
@@ -41,7 +43,10 @@
 - `Risks`
 - `Next Steps`
 
-## 现在的 4 个公开层
+在线工具箱只是入口层。
+更深的一层，是后面的路由规则、输出标准、评估基线和可复用工作流。
+
+## 现在的 6 个公开层
 
 - 在线使用：[在线工具箱](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
 - 产品入口：[Product Surface](docs/product/README.md)

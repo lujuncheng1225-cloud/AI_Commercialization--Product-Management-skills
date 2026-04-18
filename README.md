@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  Guided toolkit for humans · Structured skills for agents · Opinionated PM workflows
+  Judgment-first system for humans · Structured execution for agents · Opinionated PM workflows
 </p>
 
 <p align="center">
@@ -40,6 +40,7 @@ Product: `PM AI Skill Toolkit`
 
 - What it is: a PM operating system for humans and AI agents
 - What it solves: PM work that is not just faster, but more reliable and reusable
+- What comes out: decision briefs with evidence, assumptions, risks, and next steps
 - What you can do now: run workflows for PRDs, AI feature shaping, and commercialization reviews
 
 If this is your first visit, start with these 4 entry points:
@@ -85,6 +86,9 @@ In practice, that means this repo emphasizes:
 - assumptions / risks / next steps as defaults
 - commercialization depth, not just generic product advice
 - evals and validation, not just content volume
+
+The toolkit page is only the visible surface.
+The deeper product is the routing, judgment, and evaluation system behind it.
 
 ## Product Layers
 
