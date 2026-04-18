@@ -14,9 +14,13 @@ COMMANDS_DIR = ROOT / "commands"
 CATALOG_DIR = ROOT / "catalog"
 TOOLKIT_HTML = ROOT / "docs" / "pm-skills-interactive-course.html"
 TOOLKIT_DATA_JS = ROOT / "docs" / "toolkit-skills.js"
+DOCS_ARCHIVE_DIR = ROOT / "docs" / "archive"
 DOC_LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 SAMPLE_OUTPUT_PATTERN = re.compile(r"## Sample Output .*?(?=\n## |\Z)", re.S)
 INLINE_CODE_PATH_PATTERN = re.compile(r"`([^`\n]+\.md)`")
+TOOLKIT_ID_PATTERN = re.compile(r"\{id:'([^']+)'")
+TOOLKIT_SOURCE_REF_PATTERN = re.compile(r"sourceRef:'([^']+)'")
+TOOLKIT_SOURCE_FIT_PATTERN = re.compile(r"sourceFit:'(direct|adjacent)'")
 
 REQUIRED_SKILL_FIELDS = {"name", "description", "type"}
 REQUIRED_COMMAND_FIELDS = {"name", "description", "uses", "outputs"}
@@ -30,6 +34,9 @@ CRITICAL_TOOLKIT_CHECKS = {
         "不要输出 SWOT",
     ],
 }
+TOOLKIT_BANNED_TERMS = [
+    "资深",
+]
 
 
 def parse_frontmatter(path: Path) -> dict[str, object]:
@@ -204,19 +211,50 @@ def validate_interactive_toolkit(errors: list[str]) -> None:
         return
 
     data_text = TOOLKIT_DATA_JS.read_text(encoding="utf-8")
+    ids = [(match.group(1), match.start()) for match in TOOLKIT_ID_PATTERN.finditer(data_text)]
+    seen_ids: set[str] = set()
+    blocks: dict[str, str] = {}
+
+    for index, (skill_id, start) in enumerate(ids):
+        if skill_id in seen_ids:
+            errors.append(f"{TOOLKIT_DATA_JS}: duplicate toolkit card id {skill_id}")
+        seen_ids.add(skill_id)
+
+        end = ids[index + 1][1] if index + 1 < len(ids) else data_text.find("\n];", start)
+        block = data_text[start:end if end != -1 else len(data_text)]
+        blocks[skill_id] = block
+
+        source_ref = TOOLKIT_SOURCE_REF_PATTERN.search(block)
+        if not source_ref:
+            errors.append(f"{TOOLKIT_DATA_JS}: toolkit card {skill_id} missing sourceRef")
+        else:
+            source_path = ROOT / source_ref.group(1)
+            if not source_path.exists():
+                errors.append(f"{TOOLKIT_DATA_JS}: toolkit card {skill_id} has missing sourceRef {source_ref.group(1)}")
+            if not source_ref.group(1).startswith(("skills/", "commands/")):
+                errors.append(f"{TOOLKIT_DATA_JS}: toolkit card {skill_id} sourceRef must point to skills/ or commands/")
+
+        if not TOOLKIT_SOURCE_FIT_PATTERN.search(block):
+            errors.append(f"{TOOLKIT_DATA_JS}: toolkit card {skill_id} missing sourceFit direct/adjacent")
+
+    for term in TOOLKIT_BANNED_TERMS:
+        if term in data_text:
+            errors.append(f"{TOOLKIT_DATA_JS}: banned toolkit wording found: {term}")
+
     for skill_id, required_terms in CRITICAL_TOOLKIT_CHECKS.items():
-        start = data_text.find(f"id:'{skill_id}'")
-        if start == -1:
+        block = blocks.get(skill_id)
+        if block is None:
             errors.append(f"{TOOLKIT_DATA_JS}: missing toolkit card {skill_id}")
             continue
-
-        next_card = data_text.find("\n\n{id:", start + 1)
-        end = next_card if next_card != -1 else data_text.find("\n];", start)
-        block = data_text[start:end if end != -1 else len(data_text)]
 
         for term in required_terms:
             if term not in block:
                 errors.append(f"{TOOLKIT_DATA_JS}: toolkit card {skill_id} missing required term '{term}'")
+
+
+def validate_docs_archive(errors: list[str]) -> None:
+    if DOCS_ARCHIVE_DIR.exists() and any(DOCS_ARCHIVE_DIR.iterdir()):
+        errors.append(f"{DOCS_ARCHIVE_DIR}: archive files must not live under docs/ because they can be published")
 
 
 def collect_skill_files() -> list[Path]:
@@ -262,6 +300,7 @@ def main() -> int:
 
     validate_generated_catalog(errors)
     validate_interactive_toolkit(errors)
+    validate_docs_archive(errors)
 
     if errors:
         print("Validation failed:")

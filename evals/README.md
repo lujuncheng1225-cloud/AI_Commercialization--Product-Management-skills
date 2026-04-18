@@ -72,11 +72,14 @@
 5. 如果有系统性错误，先改 adapter 或启动 prompt
 6. 修完后再重跑同一批 case
 
+每次正式评估都应记录到 `evals/results/`。记录格式见 `evals/results/README.md`。
+
 ## Related Files / 相关文件
 
 - `agent/ROUTING.md`
 - `agent/OUTPUT_STANDARDS.md`
 - `agent/SPARSE_CONTEXT_POLICY.md`
+- `evals/results/README.md`
 - `evals/rubrics/routing-rubric.md`
 - `evals/rubrics/output-rubric.md`
 - `evals/SCORECARD_TEMPLATE.md`

@@ -14,10 +14,10 @@
   - 作者介绍、发布文案、方法论、方法图、署名案例、个人品牌资料包
 - `updates/`
   - 对外更新说明
-- `archive/`
-  - 历史备份文件
 - `images/`
   - README 和展示资源
+
+历史备份文件不要放在 `docs/` 下，避免被 GitHub Pages 发布。需要保留时放在仓库根目录的 `archive/`。
 
 ## Key Files
 

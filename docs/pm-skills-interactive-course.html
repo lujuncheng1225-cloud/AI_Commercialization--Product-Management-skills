@@ -38,7 +38,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--text2);font-size:14px;cursor:pointer;margin-bottom:24px;background:none;border:none}
 .back-btn:hover{color:var(--brand)}
 .detail h2{font-size:24px;font-weight:700;margin-bottom:8px}
-.detail .detail-desc{color:var(--text2);font-size:15px;margin-bottom:28px}
+.detail .detail-desc{color:var(--text2);font-size:15px;margin-bottom:12px}
+.system-ref{display:inline-flex;align-items:center;gap:6px;max-width:100%;margin-bottom:28px;padding:6px 10px;border-radius:8px;background:var(--brand-bg);color:var(--text2);font-size:12px}
+.system-ref code{color:var(--brand);font-size:12px;word-break:break-all}
 .step-indicator{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:14px;color:var(--text3)}
 .step-indicator .current{color:var(--brand);font-weight:600}
 .step-bar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
@@ -100,6 +102,12 @@ let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh
 function t(key){return i18n[currentLang][key];}
 function catLabel(c){return i18n[currentLang].categories[c]||c;}
 function levelLabel(l){return i18n[currentLang].levels[l]||l;}
+function sourceMeta(s){
+  if(!s.sourceRef)return'';
+  const label=currentLang==='zh'?'系统映射':'System path';
+  const fit=currentLang==='zh'?(s.sourceFit==='direct'?'直接':'相邻'):(s.sourceFit==='direct'?'direct':'adjacent');
+  return`<div class="system-ref">${label}: <code>${s.sourceRef}</code> · ${fit}</div>`;
+}
 function setLang(lang){
   currentLang=lang;localStorage.setItem('lang',lang);
   document.getElementById('langZh').classList.toggle('active',lang==='zh');
@@ -161,6 +169,7 @@ function renderStep(){
     <button class="back-btn" onclick="goHome()">${t('back')}</button>
     <h2>${currentLang==='zh'?s.title:s.titleEn}</h2>
     <div class="detail-desc">${currentLang==='zh'?s.desc:s.descEn}</div>
+    ${sourceMeta(s)}
     <div class="step-indicator"><span class="current">${t('stepOf')(currentStep+1,s.steps.length)}</span><div class="step-bar"><div class="fill" style="width:${pct}%"></div></div></div>
     <div class="step-title">${step.title}</div>
     ${step.fields.map(f=>renderField(f)).join('')}
