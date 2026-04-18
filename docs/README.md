@@ -6,6 +6,10 @@
 
 - `core/`
   - 核心定位与案例文档
+- `product/`
+  - 对外产品入口、3 分钟上手路径、团队接入入口
+- `benchmarks/`
+  - 公开 benchmark 层、评分表、发布节奏
 - `geo/`
   - 面向搜索引擎和 AI answer engines 的单意图页面
 - `guides/`
@@ -22,8 +26,12 @@
 ## Key Files
 
 - `pm-skills-interactive-course.html`
+- `product/README.md`
+- `benchmarks/README.md`
 - `core/README.md`
+- `core/CATEGORY_LANGUAGE.md`
 - `geo/README.md`
 - `guides/README.md`
 - `brand/README.md`
+- `brand/DISTRIBUTION_ENGINE.md`
 - `updates/project-update-2026-03.zh-CN.md`

@@ -12,6 +12,10 @@ It includes:
 Key pages:
 - / -> landing page
 - /pm-skills-interactive-course.html -> interactive toolkit
+- /product/ -> zero-friction product entry
+- /benchmarks/ -> public PM agent benchmark layer
+- /core/category-language/ -> category language definitions
+- /brand/distribution-engine/ -> distribution loop and release cadence
 - /core/MANIFESTO.html -> project manifesto
 - /core/CASE_STUDIES.html -> case studies
 - /geo/pm-ai-operating-system.html -> PM AI operating system definition
@@ -22,6 +26,7 @@ Key pages:
 - /brand/method-framework.html -> framework
 
 Suggested use:
-- start with the landing page or interactive toolkit
+- start with the landing page, product surface, or interactive toolkit
 - use the manifesto and case studies for positioning and method
+- use the benchmark center for evaluation framing
 - use guides for onboarding

@@ -6,3 +6,4 @@
 
 - `MANIFESTO.md`
 - `CASE_STUDIES.md`
+- `CATEGORY_LANGUAGE.md`

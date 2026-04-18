@@ -15,6 +15,7 @@ CATALOG_DIR = ROOT / "catalog"
 TOOLKIT_HTML = ROOT / "docs" / "pm-skills-interactive-course.html"
 TOOLKIT_DATA_JS = ROOT / "docs" / "toolkit-skills.js"
 DOCS_ARCHIVE_DIR = ROOT / "docs" / "archive"
+LLMS_TXT = ROOT / "docs" / "llms.txt"
 DOC_LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 SAMPLE_OUTPUT_PATTERN = re.compile(r"## Sample Output .*?(?=\n## |\Z)", re.S)
 INLINE_CODE_PATH_PATTERN = re.compile(r"`([^`\n]+\.md)`")
@@ -36,6 +37,18 @@ CRITICAL_TOOLKIT_CHECKS = {
 }
 TOOLKIT_BANNED_TERMS = [
     "资深",
+]
+REQUIRED_PUBLIC_PAGES = [
+    ROOT / "docs" / "product" / "README.md",
+    ROOT / "docs" / "benchmarks" / "README.md",
+    ROOT / "docs" / "core" / "CATEGORY_LANGUAGE.md",
+    ROOT / "docs" / "brand" / "DISTRIBUTION_ENGINE.md",
+]
+REQUIRED_LLM_PATHS = [
+    "/product/",
+    "/benchmarks/",
+    "/core/category-language/",
+    "/brand/distribution-engine/",
 ]
 
 
@@ -257,6 +270,37 @@ def validate_docs_archive(errors: list[str]) -> None:
         errors.append(f"{DOCS_ARCHIVE_DIR}: archive files must not live under docs/ because they can be published")
 
 
+def validate_public_layers(errors: list[str]) -> None:
+    for page in REQUIRED_PUBLIC_PAGES:
+        if not page.exists():
+            errors.append(f"{page}: missing required public layer page")
+
+    readme_text = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_zh_text = (ROOT / "README.zh-CN.md").read_text(encoding="utf-8")
+    docs_index_text = (ROOT / "docs" / "index.md").read_text(encoding="utf-8")
+
+    for needle in ("docs/product/README.md", "docs/benchmarks/README.md"):
+        if needle not in readme_text:
+            errors.append(f"{ROOT / 'README.md'}: missing public layer link {needle}")
+
+    for needle in ("docs/product/README.md", "docs/benchmarks/README.md"):
+        if needle not in readme_zh_text:
+            errors.append(f"{ROOT / 'README.zh-CN.md'}: missing public layer link {needle}")
+
+    for needle in ("product/README.md", "benchmarks/README.md", "core/CATEGORY_LANGUAGE.md", "brand/DISTRIBUTION_ENGINE.md"):
+        if needle not in docs_index_text:
+            errors.append(f"{ROOT / 'docs' / 'index.md'}: missing docs entry {needle}")
+
+    if not LLMS_TXT.exists():
+        errors.append(f"{LLMS_TXT}: missing llms.txt")
+        return
+
+    llms_text = LLMS_TXT.read_text(encoding="utf-8")
+    for path in REQUIRED_LLM_PATHS:
+        if path not in llms_text:
+            errors.append(f"{LLMS_TXT}: missing public discovery path {path}")
+
+
 def collect_skill_files() -> list[Path]:
     return sorted(SKILLS_DIR.rglob("SKILL.md"))
 
@@ -301,6 +345,7 @@ def main() -> int:
     validate_generated_catalog(errors)
     validate_interactive_toolkit(errors)
     validate_docs_archive(errors)
+    validate_public_layers(errors)
 
     if errors:
         print("Validation failed:")

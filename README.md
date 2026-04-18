@@ -14,6 +14,10 @@
 <p align="center">
   <a href="https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html">Try the Toolkit</a>
   ·
+  <a href="https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/product/">Product Surface</a>
+  ·
+  <a href="https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/benchmarks/">Benchmark Center</a>
+  ·
   <a href="docs/core/MANIFESTO.md">Manifesto</a>
   ·
   <a href="docs/guides/START_HERE.md">Start Here</a>
@@ -35,11 +39,12 @@ It is not a prompt dump. It is a reusable PM operating system.
 - What it solves: PM work that is not just faster, but more reliable and reusable
 - What you can do now: run workflows for PRDs, AI feature shaping, and commercialization reviews
 
-If this is your first visit, start with these 3 entry points:
+If this is your first visit, start with these 4 entry points:
 
 - Try: [Interactive Toolkit](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
+- Start fast: [Product Surface](docs/product/README.md)
 - Understand: [START_HERE.md](docs/guides/START_HERE.md)
-- Browse docs: [docs/README.md](docs/README.md)
+- Benchmark quality: [Benchmark Center](docs/benchmarks/README.md)
 
 ## Why This Exists
 
@@ -78,6 +83,14 @@ In practice, that means this repo emphasizes:
 - commercialization depth, not just generic product advice
 - evals and validation, not just content volume
 
+## Product Layers
+
+- Online entry: [Interactive Toolkit](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html)
+- Product layer: [Product Surface](docs/product/README.md)
+- Benchmark layer: [Benchmark Center](docs/benchmarks/README.md)
+- Category language: [Category Language](docs/core/CATEGORY_LANGUAGE.md)
+- Distribution rhythm: [Distribution Engine](docs/brand/DISTRIBUTION_ENGINE.md)
+
 ## Structure
 
 - `skills/` — single capabilities
@@ -86,6 +99,8 @@ In practice, that means this repo emphasizes:
 - `adapters/` — setup for different agent tools
 - `evals/` — evaluation baselines
 - `private/` — optional private context
+- `docs/product/` — zero-friction public entry layer
+- `docs/benchmarks/` — public benchmark and scorecard layer
 - `docs/` — toolkit, guides, brand assets, and updates
 
 ## Who This Is For

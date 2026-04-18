@@ -22,6 +22,7 @@
 - `method-framework.md`
 - `method-map.zh-CN.md`
 - `method-map.md`
+- `DISTRIBUTION_ENGINE.md`
 
 ## Signature Cases
 

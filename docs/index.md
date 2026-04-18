@@ -19,9 +19,18 @@ A reusable PM operating system for product managers and AI agents.
 ## Start Here
 
 - Try the toolkit: [PM Skills Interactive Course](pm-skills-interactive-course.html)
+- Start fast: [Product Surface](product/README.md)
+- Benchmark quality: [Benchmark Center](benchmarks/README.md)
 - Read the guide: [START_HERE.md](guides/START_HERE.md)
 - Read the manifesto: [MANIFESTO.md](core/MANIFESTO.md)
 - See case studies: [CASE_STUDIES.md](core/CASE_STUDIES.md)
+
+## Public Layers
+
+- Product layer: [Product Surface](product/README.md)
+- Benchmark layer: [Benchmark Center](benchmarks/README.md)
+- Category language: [Category Language](core/CATEGORY_LANGUAGE.md)
+- Distribution rhythm: [Distribution Engine](brand/DISTRIBUTION_ENGINE.md)
 
 ## Who This Is For
 
@@ -35,6 +44,8 @@ A reusable PM operating system for product managers and AI agents.
 - AI feature workflow: [shape-ai-feature](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/shape-ai-feature.md)
 - Commercial strategy review: [commercial-strategy-review](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/commercial-strategy-review.md)
 - Search-friendly GEO pages: [GEO Pages](geo/README.md)
+- Product onboarding: [Product Surface](product/README.md)
+- Benchmark publication: [Benchmark Center](benchmarks/README.md)
 - Brand and author materials: [Brand Index](brand/README.md)
 - Guides: [Guides Index](guides/README.md)
 
@@ -52,4 +63,4 @@ This project is built to help product managers:
 
 ## Keywords
 
-AI PM workflow, PRD prompt system, commercialization review, PM operating system, reusable PM workflows, product manager AI toolkit.
+AI PM workflow, PM AI Skill Toolkit, PM operating system, Agent-native PM workflow, commercialization review framework, PM agent benchmark.

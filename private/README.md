@@ -21,6 +21,7 @@
 - `METRICS_CONTEXT_STARTER.md`
 - `DECISION_PREFERENCES_STARTER.md`
 - `TERMS_GLOSSARY_STARTER.md`
+- `TEAM_WORKSPACE_TEMPLATE.md`
 
 ## Starter vs Template / Starter 和 Template 的区别
 
@@ -55,6 +56,16 @@
 - 只填决策偏好
 
 不要因为无法提供全量背景，就放弃整个私有层。
+
+### 方式 3：团队共用
+
+如果这套库已经不只是你个人在用，而是开始进入团队：
+
+- 先复制 `TEAM_WORKSPACE_TEMPLATE.md`
+- 再统一命令入口、指标定义、术语和 review 规则
+- 最后再补具体产品上下文
+
+这样可以先把团队工作方式对齐，再慢慢把业务事实填满。
 
 ## Robustness Rule / 鲁棒性规则
 
