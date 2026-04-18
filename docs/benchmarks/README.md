@@ -43,10 +43,11 @@ Every public run should publish:
 
 ## Current Status
 
-No public benchmark run has been published yet.
+The first visible baseline has been published on 2026-04-18.
 
-That is intentional.
-We will publish only runs with:
+It is a self-run baseline from the current Codex App session, not an independent external benchmark.
+
+That is acceptable as a starting point because it includes:
 
 - explicit case set
 - clear route log

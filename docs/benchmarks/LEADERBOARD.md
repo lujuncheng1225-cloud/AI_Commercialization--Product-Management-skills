@@ -12,22 +12,17 @@ It should stay small and credible.
 
 ## Current Status
 
-No public benchmark runs have been published yet.
+The first visible baseline has now been published.
 
-That is acceptable.
+It is a self-run baseline, not an independent external benchmark.
 
-The bar is:
-
-- fixed case set
-- visible route log
-- visible failure patterns
-- visible next action
+That is acceptable for a first public seed, as long as the limitation stays explicit.
 
 ## Scoreboard
 
 | Date | Platform | Model | Adapter | Cases | Routing | Output | Total | Notes |
 |------|----------|-------|---------|-------|---------|--------|-------|-------|
-| _No public runs yet_ |  |  |  |  |  |  |  |  |
+| 2026-04-18 | Codex App | GPT-5 Codex runtime | `AGENTS.md` + `agent/` | 4 | 12 / 12 | 25 / 28 | 37 / 40 | self-run baseline; sparse-context can still structure too early |
 
 ## First Planned Run
 
@@ -50,3 +45,7 @@ Always compare:
 - output quality
 - failure pattern type
 - whether the adapter was changed between runs
+
+## Result File
+
+- [2026-04-18 Codex App Self-Run](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/evals/results/2026-04-18-codex-app-gpt-5-self-run.md)
