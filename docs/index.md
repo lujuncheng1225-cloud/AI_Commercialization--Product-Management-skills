@@ -48,6 +48,7 @@ A reusable PM operating system for product managers and AI agents.
 - Product onboarding: [Product Surface](product/README.md)
 - Benchmark publication: [Benchmark Center](benchmarks/README.md)
 - Flagship proof: [Flagship Cases](core/FLAGSHIP_CASES.md)
+- Operator debug: [Toolkit Usage Dashboard](toolkit-usage-dashboard.html)
 - Brand and author materials: [Brand Index](brand/README.md)
 - Guides: [Guides Index](guides/README.md)
 

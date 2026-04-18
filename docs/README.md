@@ -26,6 +26,7 @@
 ## Key Files
 
 - `pm-skills-interactive-course.html`
+- `toolkit-usage-dashboard.html`
 - `product/README.md`
 - `benchmarks/README.md`
 - `benchmarks/FIRST_PUBLIC_RUN.md`

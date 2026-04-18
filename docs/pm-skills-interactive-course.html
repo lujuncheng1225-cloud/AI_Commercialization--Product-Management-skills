@@ -127,6 +127,8 @@ let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh
 const SITE_BASE='https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/';
 const REPO_BLOB_BASE='https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/';
 const RECENT_USAGE_KEY='pm-toolkit-recent-usage';
+const EVENT_LOG_KEY='pm-toolkit-event-log';
+const MAX_EVENT_LOG=300;
 
 function t(key){return i18n[currentLang][key];}
 function catLabel(c){return i18n[currentLang].categories[c]||c;}
@@ -136,19 +138,19 @@ function previewLabel(s){return s.sourceRef.startsWith('commands/')?t('previewCo
 function sourceMeta(s){
   if(!s.sourceRef)return'';
   const fit=s.sourceFit==='direct'?t('fitDirect'):t('fitAdjacent');
-  return`<div class="system-ref">${t('systemPath')}: <code>${s.sourceRef}</code> · ${fit} · <a href="${sourceUrl(s)}" target="_blank" rel="noopener">${previewLabel(s)}</a></div>`;
+  return`<div class="system-ref">${t('systemPath')}: <code>${s.sourceRef}</code> · ${fit} · <a href="${sourceUrl(s)}" target="_blank" rel="noopener" onclick="trackSourcePreview('${s.id}','detail')">${previewLabel(s)}</a></div>`;
 }
 function homeLinks(){
   return currentLang==='zh'?[
-    {href:`${SITE_BASE}product/`,title:'产品入口',desc:'零门槛上手、在线使用、团队接入'},
-    {href:`${SITE_BASE}benchmarks/`,title:'Benchmark Center',desc:'公开 benchmark、路由和输出标准'},
-    {href:`${SITE_BASE}core/category-language/`,title:'Category Language',desc:'把项目定位词变成固定说法'},
-    {href:`${SITE_BASE}brand/distribution-engine/`,title:'分发飞轮',desc:'每周案例、benchmark、demo、月度更新'}
+    {id:'product-surface',href:`${SITE_BASE}product/`,title:'产品入口',desc:'零门槛上手、在线使用、团队接入'},
+    {id:'benchmark-center',href:`${SITE_BASE}benchmarks/`,title:'Benchmark Center',desc:'公开 benchmark、路由和输出标准'},
+    {id:'category-language',href:`${SITE_BASE}core/category-language/`,title:'Category Language',desc:'把项目定位词变成固定说法'},
+    {id:'distribution-engine',href:`${SITE_BASE}brand/distribution-engine/`,title:'分发飞轮',desc:'每周案例、benchmark、demo、月度更新'}
   ]:[
-    {href:`${SITE_BASE}product/`,title:'Product Surface',desc:'Zero-friction onboarding, online use, team setup'},
-    {href:`${SITE_BASE}benchmarks/`,title:'Benchmark Center',desc:'Public benchmark, routing, and output standards'},
-    {href:`${SITE_BASE}core/category-language/`,title:'Category Language',desc:'Own the terms that define the category'},
-    {href:`${SITE_BASE}brand/distribution-engine/`,title:'Distribution Engine',desc:'Weekly case, benchmark, demo, and monthly release rhythm'}
+    {id:'product-surface',href:`${SITE_BASE}product/`,title:'Product Surface',desc:'Zero-friction onboarding, online use, team setup'},
+    {id:'benchmark-center',href:`${SITE_BASE}benchmarks/`,title:'Benchmark Center',desc:'Public benchmark, routing, and output standards'},
+    {id:'category-language',href:`${SITE_BASE}core/category-language/`,title:'Category Language',desc:'Own the terms that define the category'},
+    {id:'distribution-engine',href:`${SITE_BASE}brand/distribution-engine/`,title:'Distribution Engine',desc:'Weekly case, benchmark, demo, and monthly release rhythm'}
   ];
 }
 function entryBullets(){
@@ -182,6 +184,23 @@ document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';
 // ── APP ──────────────────────────────────────────────
 let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='';
 
+function getEventLog(){
+  try{return JSON.parse(localStorage.getItem(EVENT_LOG_KEY)||'[]');}
+  catch(_){return [];}
+}
+function trackEvent(name,props={}){
+  try{
+    const next=[...getEventLog(),{name,props,lang:currentLang,time:new Date().toISOString()}].slice(-MAX_EVENT_LOG);
+    localStorage.setItem(EVENT_LOG_KEY,JSON.stringify(next));
+  }catch(_){}
+  if(typeof window.plausible==='function'){
+    window.plausible(name,{props});
+  }
+}
+function trackQuickLink(id){trackEvent('quick_link_click',{id});}
+function trackSourcePreview(skillId,placement){trackEvent('source_preview',{skillId,placement});}
+function trackRecentOpen(skillId){trackEvent('recent_usage_open',{skillId});}
+
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.querySelector('.theme-toggle').textContent=document.body.classList.contains('dark')?'☀️':'🌙';
@@ -197,15 +216,16 @@ function init(){
   document.querySelector('.header p').textContent=t('pageSubtitle');
   document.getElementById('entryTitle').textContent=t('entryTitle');
   document.getElementById('usageTitle').textContent=t('usageTitle');
-  document.getElementById('heroLinks').innerHTML=homeLinks().map(link=>`<a class="quick-link" href="${link.href}"><strong>${link.title}</strong><span>${link.desc}</span></a>`).join('');
+  document.getElementById('heroLinks').innerHTML=homeLinks().map(link=>`<a class="quick-link" href="${link.href}" onclick="trackQuickLink('${link.id}')"><strong>${link.title}</strong><span>${link.desc}</span></a>`).join('');
   document.getElementById('entryList').innerHTML=entryBullets().map(item=>`<li>${item}</li>`).join('');
   document.getElementById('search').placeholder=t('searchPlaceholder');
   document.title=t('pageTitle');
+  trackEvent('toolkit_page_view',{surface:'home'});
   renderRecentUsage();
   filterCards();
 }
 
-function setCat(c){activeCategory=c;document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));filterCards();}
+function setCat(c){activeCategory=c;trackEvent('category_filter',{category:c});document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));filterCards();}
 function filterCards(){
   const q=document.getElementById('search').value.toLowerCase();
   const filtered=skills.filter(s=>(activeCategory==='all'||s.category===activeCategory)&&(s.title.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)||(s.titleEn||'').toLowerCase().includes(q)||(s.descEn||'').toLowerCase().includes(q)||s.category.toLowerCase().includes(q)||catLabel(s.category).toLowerCase().includes(q)));
@@ -215,6 +235,7 @@ function filterCards(){
 
 function openSkill(id){
   currentSkill=skills.find(s=>s.id===id);currentStep=0;formData={};
+  trackEvent('skill_open',{skillId:id,sourceRef:currentSkill.sourceRef});
   currentSkill.steps.forEach(step=>step.fields.forEach(f=>{
     if(f.type==='checkbox')formData[f.key]=[...(f.defaults||[])];
     else if(f.type==='radio')formData[f.key]=f.defaults||'';
@@ -257,6 +278,7 @@ function prevStep(){currentStep--;renderStep();}
 
 function generate(){
   lastGeneratedPrompt=currentSkill.prompt(formData);
+  trackEvent('brief_generate',{skillId:currentSkill.id,sourceRef:currentSkill.sourceRef,stepCount:currentSkill.steps.length});
   saveUsage(currentSkill);
   show('result');hide('detail');hide('home');
   renderResult();
@@ -273,7 +295,7 @@ function renderResult(){
       <button class="btn btn-secondary" onclick="copyAgent('codex',this)">${t('copyCodex')}</button>
       <button class="btn btn-secondary" onclick="copyAgent('claude',this)">${t('copyClaude')}</button>
       <button class="btn btn-secondary" onclick="copyAgent('cursor',this)">${t('copyCursor')}</button>
-      <a class="btn btn-secondary btn-link" href="${sourceUrl(currentSkill)}" target="_blank" rel="noopener">${previewLabel(currentSkill)}</a>
+      <a class="btn btn-secondary btn-link" href="${sourceUrl(currentSkill)}" target="_blank" rel="noopener" onclick="trackSourcePreview('${currentSkill.id}','result')">${previewLabel(currentSkill)}</a>
       <button class="btn btn-secondary" onclick="backToForm()">${t('modify')}</button>
       <button class="btn btn-secondary" onclick="generate()">${t('regenerate')}</button>
     </div>
@@ -281,10 +303,11 @@ function renderResult(){
 }
 
 function copyPrompt(btn){
+  trackEvent('brief_copy',{skillId:currentSkill.id});
   copyText(lastGeneratedPrompt,btn);
 }
 
-function copyAgent(platform,btn){copyText(buildAgentPrompt(platform),btn);}
+function copyAgent(platform,btn){trackEvent('agent_copy',{skillId:currentSkill.id,platform});copyText(buildAgentPrompt(platform),btn);}
 function copyText(text,btn){
   const original=btn.textContent;
   navigator.clipboard.writeText(text).then(()=>{btn.textContent=t('copied');setTimeout(()=>btn.textContent=original,2000);});
@@ -322,7 +345,7 @@ function renderRecentUsage(){
     const skill=skills.find(s=>s.id===item.id);
     if(!skill)return'';
     const title=currentLang==='zh'?skill.title:skill.titleEn;
-    return`<button class="usage-item" onclick="openSkill('${skill.id}')"><strong>${title}</strong><span>${formatTime(item.time)}</span></button>`;
+    return`<button class="usage-item" onclick="trackRecentOpen('${skill.id}');openSkill('${skill.id}')"><strong>${title}</strong><span>${formatTime(item.time)}</span></button>`;
   }).join('')}</div>`;
 }
 function formatTime(iso){

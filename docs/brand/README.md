@@ -12,6 +12,15 @@
 - `social-posts.zh-CN.md`
 - `social-posts.md`
 
+## Active Assets
+
+- `benchmark-baseline-post.zh-CN.md`
+- `benchmark-baseline-post.md`
+- `pricing-flagship-post.zh-CN.md`
+- `pricing-flagship-post.md`
+- `pm-operating-system-post.zh-CN.md`
+- `pm-operating-system-post.md`
+
 ## Personal Brand
 
 - `personal-brand-kit.zh-CN.md`

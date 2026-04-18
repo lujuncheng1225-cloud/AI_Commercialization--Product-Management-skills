@@ -65,6 +65,20 @@ Best for users who want repeatability and agent execution.
 
 Best for teams that want shared context, shared terms, and more stable output across agents.
 
+### Operator Layer: Instrumentation
+
+- [Toolkit Usage Dashboard](../toolkit-usage-dashboard.html)
+
+This is a browser-local debug dashboard for:
+
+- page views
+- scenario opens
+- brief generations
+- copy actions into agents
+- quick-link clicks
+
+It is useful before shared analytics is wired in.
+
 ## What This Product Layer Must Do
 
 This project should not require users to:

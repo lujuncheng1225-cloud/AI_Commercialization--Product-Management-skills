@@ -12,6 +12,7 @@ It includes:
 Key pages:
 - / -> landing page
 - /pm-skills-interactive-course.html -> interactive toolkit
+- /toolkit-usage-dashboard.html -> browser-local usage instrumentation dashboard
 - /product/ -> zero-friction product entry
 - /benchmarks/ -> public PM agent benchmark layer
 - /benchmarks/leaderboard/ -> public benchmark scoreboard

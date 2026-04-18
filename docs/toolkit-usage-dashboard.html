@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toolkit Usage Dashboard</title>
+<style>
+:root{--bg:#f7f7fb;--card:#fff;--text:#171717;--muted:#666;--border:#e7e7ef;--brand:#6c5ce7;--brand-bg:rgba(108,92,231,.08);--radius:18px;--shadow:0 10px 30px rgba(17,17,26,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:28px 18px 64px}
+.wrap{max-width:1100px;margin:0 auto}
+.hero{margin-bottom:24px}
+.hero h1{font-size:30px;margin-bottom:8px}
+.hero p{color:var(--muted);max-width:760px;line-height:1.6}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);text-decoration:none;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn:hover{box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.card h3{font-size:14px;color:var(--muted);margin-bottom:10px}
+.value{font-size:34px;font-weight:800}
+.section{margin-top:18px}
+.section h2{font-size:18px;margin-bottom:12px}
+.table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.table th,.table td{padding:12px 14px;border-bottom:1px solid var(--border);text-align:left;font-size:14px;vertical-align:top}
+.table th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;background:#fafafe}
+.table tr:last-child td{border-bottom:none}
+.mono{font-family:'SF Mono','Fira Code',monospace;font-size:12px}
+.empty{padding:24px;border:1px dashed var(--border);border-radius:var(--radius);background:var(--card);color:var(--muted)}
+.pill{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;background:var(--brand-bg);color:var(--brand);font-size:12px;font-weight:700}
+@media(max-width:700px){.value{font-size:28px}.table{display:block;overflow:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>Toolkit Usage Dashboard</h1>
+    <p>这是一个浏览器本地的调试与观察面板。它读取 `pm-toolkit-event-log`，用于查看工具箱访问、场景打开、生成、复制到 agent 等行为。当前不是全站聚合分析，只反映这个浏览器里的事件。</p>
+    <div class="actions">
+      <a class="btn primary" href="./pm-skills-interactive-course.html">打开工具箱</a>
+      <button class="btn" onclick="exportJson()">导出 JSON</button>
+      <button class="btn" onclick="clearData()">清空本地事件</button>
+    </div>
+  </div>
+
+  <div class="grid" id="summaryGrid"></div>
+
+  <div class="section">
+    <h2>Top Scenarios</h2>
+    <div id="topScenarios"></div>
+  </div>
+
+  <div class="section">
+    <h2>Copy Actions</h2>
+    <div id="copyActions"></div>
+  </div>
+
+  <div class="section">
+    <h2>Quick Links</h2>
+    <div id="quickLinks"></div>
+  </div>
+
+  <div class="section">
+    <h2>Recent Events</h2>
+    <div id="recentEvents"></div>
+  </div>
+</div>
+<script src="toolkit-skills.js"></script>
+<script>
+const EVENT_LOG_KEY='pm-toolkit-event-log';
+
+function readEvents(){
+  try{return JSON.parse(localStorage.getItem(EVENT_LOG_KEY)||'[]');}
+  catch(_){return [];}
+}
+function countBy(events,keyFn){
+  const map=new Map();
+  events.forEach(event=>{
+    const key=keyFn(event);
+    if(!key)return;
+    map.set(key,(map.get(key)||0)+1);
+  });
+  return [...map.entries()].sort((a,b)=>b[1]-a[1]);
+}
+function skillLabel(id){
+  const skill=skills.find(item=>item.id===id);
+  return skill?`${skill.title} / ${skill.titleEn}`:id;
+}
+function renderSummary(events){
+  const total=events.length;
+  const generated=events.filter(e=>e.name==='brief_generate').length;
+  const copied=events.filter(e=>e.name==='agent_copy'||e.name==='brief_copy').length;
+  const opens=events.filter(e=>e.name==='skill_open').length;
+  document.getElementById('summaryGrid').innerHTML=[
+    ['总事件', total],
+    ['场景打开', opens],
+    ['生成次数', generated],
+    ['复制次数', copied]
+  ].map(([label,value])=>`<div class="card"><h3>${label}</h3><div class="value">${value}</div></div>`).join('');
+}
+function renderSimpleTable(targetId,headers,rows,emptyText){
+  const el=document.getElementById(targetId);
+  if(!rows.length){
+    el.innerHTML=`<div class="empty">${emptyText}</div>`;
+    return;
+  }
+  el.innerHTML=`<table class="table"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(col=>`<td>${col}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+}
+function renderTopScenarios(events){
+  const opens=countBy(events.filter(e=>e.name==='skill_open'),e=>e.props.skillId).slice(0,8);
+  renderSimpleTable('topScenarios',['Scenario','Opens'],opens.map(([id,count])=>[skillLabel(id),`<span class="pill">${count}</span>`]),'还没有场景打开事件。');
+}
+function renderCopyActions(events){
+  const rows=countBy(events.filter(e=>e.name==='agent_copy'||e.name==='brief_copy'),e=>e.name==='brief_copy'?'brief':e.props.platform).map(([key,count])=>[key,`<span class="pill">${count}</span>`]);
+  renderSimpleTable('copyActions',['Target','Copies'],rows,'还没有复制事件。');
+}
+function renderQuickLinks(events){
+  const rows=countBy(events.filter(e=>e.name==='quick_link_click'),e=>e.props.id).map(([key,count])=>[key,`<span class="pill">${count}</span>`]);
+  renderSimpleTable('quickLinks',['Quick Link','Clicks'],rows,'还没有 quick link 点击事件。');
+}
+function renderRecentEvents(events){
+  const rows=[...events].slice(-20).reverse().map(event=>[
+    event.time||'',
+    event.name,
+    `<span class="mono">${JSON.stringify(event.props||{})}</span>`
+  ]);
+  renderSimpleTable('recentEvents',['Time','Event','Props'],rows,'还没有事件。');
+}
+function exportJson(){
+  const blob=new Blob([JSON.stringify(readEvents(),null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='pm-toolkit-event-log.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function clearData(){
+  const ok=window.confirm('清空当前浏览器里的工具箱事件记录？');
+  if(!ok)return;
+  localStorage.removeItem(EVENT_LOG_KEY);
+  render();
+}
+function render(){
+  const events=readEvents();
+  renderSummary(events);
+  renderTopScenarios(events);
+  renderCopyActions(events);
+  renderQuickLinks(events);
+  renderRecentEvents(events);
+}
+render();
+</script>
+</body>
+</html>
