@@ -31,6 +31,7 @@ Pick a scenario, answer the questions, and form a structured decision brief.
 ### 2. Copy To Your Agent
 
 The toolkit now exposes the underlying `skill` or `command` path for every scenario.
+The result page now renders a decision view first, with the raw brief tucked behind a disclosure block.
 
 Use the built-in copy actions in the toolkit result page to hand agent-ready kickoff text to:
 
