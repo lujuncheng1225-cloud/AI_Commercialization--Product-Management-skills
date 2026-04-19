@@ -27,6 +27,13 @@ Those three routes make the system legible fast:
 - PRD proves workflow structure
 - monetization proves constraint-first judgment
 
+The demo result routes are the strongest first click because they show:
+
+- the preloaded case
+- the scenario-specific lens
+- the shareable proof card
+- the agent kickoff surface
+
 ## Case 1: Pricing Packaging Redesign
 
 Why this matters:
@@ -48,6 +55,11 @@ Start here:
 1. open the live pricing scenario
 2. fill only the core deliverable, value metric, free boundary, and upgrade trigger
 3. check whether the result talks about value metric, package boundaries, and risk instead of generic pricing theory
+
+Fastest external route:
+
+- send the `demo result` URL when you need proof in one click
+- send the `live` URL when you want someone to test with their own inputs
 
 ## Case 2: PM Operating System Positioning
 

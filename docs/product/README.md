@@ -34,6 +34,9 @@ The goal is simple:
 
 Pick a scenario, answer the questions, and form a structured decision brief.
 
+If you want the fastest external proof, open a `demo result` route first.
+Those routes preload a realistic case, render the judgment-first result view, and expose a shareable proof surface without requiring any setup.
+
 ### 2. Copy To Your Agent
 
 The toolkit now exposes the underlying `skill` or `command` path for every scenario.
@@ -86,6 +89,8 @@ This is a browser-local debug dashboard for:
 - page views
 - scenario opens
 - brief generations
+- demo preset launches
+- proof note copies
 - copy actions into agents
 - quick-link clicks
 
