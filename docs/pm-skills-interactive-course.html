@@ -87,6 +87,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .field input[type="text"],.field textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius2);background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s;font-family:inherit}
 .field input:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
 .field textarea{min-height:100px;resize:vertical}
+.detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}
 .tag-group{display:flex;flex-wrap:wrap;gap:8px}
 .tag-option{padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:14px;cursor:pointer;transition:all .2s;user-select:none}
 .tag-option:hover{border-color:var(--brand-light);color:var(--brand)}
@@ -124,6 +125,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .section-card[data-tone="risk"] .section-index{background:rgba(239,68,68,.12);color:#EF4444}
 .section-card[data-tone="assumption"] .section-index{background:rgba(245,158,11,.14);color:#D97706}
 .section-card[data-tone="next"] .section-index{background:rgba(16,185,129,.14);color:#059669}
+.spotlight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.spotlight-card{border:1px solid var(--border);border-radius:12px;background:var(--bg2);padding:14px}
+.spotlight-card strong{display:block;font-size:12px;color:var(--text2);margin-bottom:6px}
+.spotlight-card span{display:block;font-size:14px;line-height:1.6}
+.proof-card{background:linear-gradient(135deg,var(--brand-bg),transparent 70%),var(--card)}
+.proof-card p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:12px}
+.proof-card ul{margin:0 0 12px 18px;color:var(--text2)}
+.proof-card li{margin-bottom:6px;font-size:14px;line-height:1.6}
+.proof-actions{display:flex;gap:10px;flex-wrap:wrap}
 .raw-brief details{border:1px dashed var(--border);border-radius:12px;padding:14px;background:var(--bg2)}
 .raw-brief summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--text)}
 .raw-brief .prompt-block{margin:14px 0 0}
@@ -170,8 +180,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <script src="toolkit-skills.js"></script>
 <script>
 const i18n={
-  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，形成结构化判断',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'📋 复制判断简报',copyCodex:'复制 Codex 启动稿',copyClaude:'复制 Claude Code 启动稿',copyCursor:'复制 Cursor 启动稿',shareScenario:'复制场景链接',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'结构化判断已就绪',resultSubtitle:'先看判断视图，再决定是否交给 agent 继续执行。',tipsTitle:'💡 使用提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。先打开一个场景。',guidedTitle:'按目标开始',guidedSubtitle:'如果你只想先点对第一张卡，从这里开始。',flagshipTitle:'旗舰场景',flagshipSubtitle:'最适合对外演示、截图和验证差异的 3 条路径。',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'它先帮你把问题拆开，形成判断，再把判断草案交给 Codex、Claude Code 或 Cursor 接着做。',briefIntent:'任务意图',inputSnapshot:'输入快照',outputContract:'输出契约',rawBrief:'查看原始判断简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'输出段落',contextLabel:'背景块',emptyInputs:'当前没有可展示的输入项。',emptySections:'当前没有解析到明确的输出段落，建议查看原始判断简报。',startNow:'立即试跑',alternatePaths:'替代路径',whyThisPath:'为什么先走这条路',sharePath:'分享路径',featuredReason:'为什么它是旗舰场景',cardMeta:(n)=>`${n} 个问题 → 形成判断草案`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
-  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, form structured judgment',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build Decision Brief →',copy:'📋 Copy decision brief',copyCodex:'Copy Codex kickoff',copyClaude:'Copy Claude Code kickoff',copyCursor:'Copy Cursor kickoff',shareScenario:'Copy scenario link',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your decision brief is ready',resultSubtitle:'Review the decision view first, then hand it to an agent if needed.',tipsTitle:'💡 Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet. Open one scenario to get started.',guidedTitle:'Start By Goal',guidedSubtitle:'If you only want the right first click, start here.',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'The 3 strongest paths for demos, screenshots, and external proof.',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'It helps you decompose the problem first, form judgment second, and hand a kickoff brief to Codex, Claude Code, or Cursor only after that.',briefIntent:'Brief Intent',inputSnapshot:'Input Snapshot',outputContract:'Output Contract',rawBrief:'Show raw decision brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context Block',emptyInputs:'No filled inputs to show yet.',emptySections:'No structured output sections were parsed. Open the raw brief instead.',startNow:'Start now',alternatePaths:'Alternate paths',whyThisPath:'Why start here',sharePath:'Share path',featuredReason:'Why this is a flagship scenario',cardMeta:(n)=>`${n} questions → Build a decision brief`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
+  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，形成结构化判断',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'📋 复制判断简报',copyCodex:'复制 Codex 启动稿',copyClaude:'复制 Claude Code 启动稿',copyCursor:'复制 Cursor 启动稿',shareScenario:'复制场景链接',shareDemo:'复制演示链接',viewDemo:'一键看演示',loadDemo:'载入演示案例',copyProof:'复制传播文案',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'结构化判断已就绪',resultSubtitle:'先看判断视图，再决定是否交给 agent 继续执行。',tipsTitle:'💡 使用提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。先打开一个场景。',guidedTitle:'按目标开始',guidedSubtitle:'如果你只想先点对第一张卡，从这里开始。',flagshipTitle:'旗舰场景',flagshipSubtitle:'最适合对外演示、截图和验证差异的 3 条路径。',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'它先帮你把问题拆开，形成判断，再把判断草案交给 Codex、Claude Code 或 Cursor 接着做。',briefIntent:'任务意图',inputSnapshot:'输入快照',outputContract:'输出契约',scenarioLens:'场景焦点',proofCard:'传播卡片',rawBrief:'查看原始判断简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'输出段落',contextLabel:'背景块',emptyInputs:'当前没有可展示的输入项。',emptySections:'当前没有解析到明确的输出段落，建议查看原始判断简报。',startNow:'立即试跑',alternatePaths:'替代路径',whyThisPath:'为什么先走这条路',sharePath:'分享路径',featuredReason:'为什么它是旗舰场景',cardMeta:(n)=>`${n} 个问题 → 形成判断草案`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
+  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, form structured judgment',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build Decision Brief →',copy:'📋 Copy decision brief',copyCodex:'Copy Codex kickoff',copyClaude:'Copy Claude Code kickoff',copyCursor:'Copy Cursor kickoff',shareScenario:'Copy scenario link',shareDemo:'Copy demo link',viewDemo:'View demo result',loadDemo:'Load demo case',copyProof:'Copy share note',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your decision brief is ready',resultSubtitle:'Review the decision view first, then hand it to an agent if needed.',tipsTitle:'💡 Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet. Open one scenario to get started.',guidedTitle:'Start By Goal',guidedSubtitle:'If you only want the right first click, start here.',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'The 3 strongest paths for demos, screenshots, and external proof.',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'It helps you decompose the problem first, form judgment second, and hand a kickoff brief to Codex, Claude Code, or Cursor only after that.',briefIntent:'Brief Intent',inputSnapshot:'Input Snapshot',outputContract:'Output Contract',scenarioLens:'Scenario Lens',proofCard:'Proof Card',rawBrief:'Show raw decision brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context Block',emptyInputs:'No filled inputs to show yet.',emptySections:'No structured output sections were parsed. Open the raw brief instead.',startNow:'Start now',alternatePaths:'Alternate paths',whyThisPath:'Why start here',sharePath:'Share path',featuredReason:'Why this is a flagship scenario',cardMeta:(n)=>`${n} questions → Build a decision brief`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
 };
 
 let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh')?'zh':'en');
@@ -190,16 +200,43 @@ const FLAGSHIP_SCENARIOS=[
   {id:'prd-draft',reasonZh:'最能体现问题定义、范围取舍和 review gate。',reasonEn:'Best proof of problem framing, scope control, and review gates.'},
   {id:'monetization',reasonZh:'最能体现主约束判断，而不是平均发建议。',reasonEn:'Best proof of constraint-first commercialization judgment.'}
 ];
+const DEMO_PRESETS={
+  'pricing-strategy':{
+    product:'面向音乐创作者的 AI MV 平台，支持上传歌曲后一键生成可发布 MV。',
+    deliverable:'MV 成片生成次数',
+    target:'独立音乐人、小型厂牌、内容创作者',
+    usageMetric:['按生成量/用量','混合模式'],
+    frequency:'高频日常使用',
+    value:'缩短从音乐完成到可发布 MV 的时间，降低外包剪辑成本。',
+    freeBoundary:'免费版支持低清预览和 2 次基础生成；付费版解锁高清导出、更多镜头风格和商用授权。',
+    upgradeSignals:['用量触顶','高级模型/高级功能','导出/去水印','商用授权'],
+    competitors:'Runway：按点数 / 会员混合\nCapCut：会员解锁高阶素材与导出\nPika：按生成积分计费',
+    constraints:'不能直接伤害当前付费用户体验；希望先通过小流量实验验证。'
+  },
+  'prd-draft':{
+    requirement:'为 AI 协作写作工具增加“多人批注 review mode”，支持评论、版本对比和处理状态。',
+    users:'内容负责人、编辑、营销团队',
+    features:'多人批注\n处理状态流转\n版本差异对比\n评论 @ 提醒',
+    constraints:['有上线时间要求','需要兼容旧版','需要多端适配']
+  },
+  'monetization':{
+    product:'一个面向创作者的 AI 内容生产工具，已有免费用户和少量付费用户，但收入增长开始变慢。',
+    model:'混合模式',
+    market:'北美创作者市场，单人创作者到小型工作室'
+  }
+};
 
 function t(key){return i18n[currentLang][key];}
 function catLabel(c){return i18n[currentLang].categories[c]||c;}
 function levelLabel(l){return i18n[currentLang].levels[l]||l;}
 function getSkill(id){return skills.find(skill=>skill.id===id);}
 function sourceUrl(s){return`${REPO_BLOB_BASE}${s.sourceRef}`;}
-function scenarioUrl(id){
+function scenarioUrl(id,demo=false){
   if(typeof window==='undefined'||!window.location?.href)return`${SITE_BASE}pm-skills-interactive-course.html?scenario=${encodeURIComponent(id)}`;
   const url=new URL(window.location.href);
   url.searchParams.set('scenario',id);
+  if(demo)url.searchParams.set('demo','1');
+  else url.searchParams.delete('demo');
   url.searchParams.set('lang',currentLang);
   return url.toString();
 }
@@ -252,7 +289,7 @@ document.getElementById('langEn').classList.toggle('active',currentLang==='en');
 document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';
 
 // ── APP ──────────────────────────────────────────────
-let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='';
+let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='', activeDemoMode=false;
 
 function getEventLog(){
   try{return JSON.parse(localStorage.getItem(EVENT_LOG_KEY)||'[]');}
@@ -273,6 +310,8 @@ function trackRecentOpen(skillId){trackEvent('recent_usage_open',{skillId});}
 function trackRawBrief(open){trackEvent('raw_brief_toggle',{skillId:currentSkill?.id,open});}
 function trackScenarioLaunch(skillId,source){trackEvent('scenario_launch',{skillId,source});}
 function trackScenarioShare(skillId,source){trackEvent('scenario_share',{skillId,source});}
+function trackDemoApply(skillId,source){trackEvent('scenario_demo_apply',{skillId,source});}
+function trackProofCopy(skillId){trackEvent('proof_copy',{skillId});}
 
 function toggleTheme(){
   document.body.classList.toggle('dark');
@@ -341,6 +380,7 @@ function renderFlagshipGrid(){
       <p>${reason}</p>
       <div class="guided-actions">
         <button class="guided-btn primary" onclick="launchScenario('${skill.id}','flagship')">${t('startNow')}</button>
+        <button class="guided-btn" onclick="launchDemoScenario('${skill.id}','flagship-demo')">${t('viewDemo')}</button>
         <button class="guided-btn" onclick="copyScenarioLink('${skill.id}',this,'flagship')">${t('sharePath')}</button>
       </div>
     </div>`;
@@ -357,6 +397,7 @@ function filterCards(){
 
 function openSkill(id){
   currentSkill=skills.find(s=>s.id===id);currentStep=0;formData={};
+  activeDemoMode=false;
   syncUrlState(id);
   trackEvent('skill_open',{skillId:id,sourceRef:currentSkill.sourceRef});
   currentSkill.steps.forEach(step=>step.fields.forEach(f=>{
@@ -367,14 +408,40 @@ function openSkill(id){
   show('detail');hide('home');hide('result');renderStep();
 }
 
+function hasDemoPreset(id){return Boolean(DEMO_PRESETS[id]);}
+
+function applyDemoPreset(id,source='detail-demo',autoGenerate=false){
+  const preset=DEMO_PRESETS[id];
+  if(!preset)return;
+  currentSkill=currentSkill&&currentSkill.id===id?currentSkill:getSkill(id);
+  if(!currentSkill)return;
+  activeDemoMode=true;
+  Object.entries(preset).forEach(([key,value])=>{
+    formData[key]=Array.isArray(value)?[...value]:value;
+  });
+  trackDemoApply(id,source);
+  syncUrlState(id);
+  if(autoGenerate){
+    generate();
+    return;
+  }
+  renderStep();
+}
+
 function launchScenario(id,source){
   trackScenarioLaunch(id,source);
   openSkill(id);
 }
 
-function copyScenarioLink(id,btn,source='share'){
+function launchDemoScenario(id,source){
+  trackScenarioLaunch(id,source);
+  openSkill(id);
+  applyDemoPreset(id,source,true);
+}
+
+function copyScenarioLink(id,btn,source='share',demo=activeDemoMode){
   trackScenarioShare(id,source);
-  copyText(scenarioUrl(id),btn);
+  copyText(scenarioUrl(id,demo),btn);
 }
 
 function syncUrlState(id){
@@ -382,14 +449,21 @@ function syncUrlState(id){
   const url=new URL(window.location.href);
   if(id)url.searchParams.set('scenario',id);
   else url.searchParams.delete('scenario');
+  if(activeDemoMode)url.searchParams.set('demo','1');
+  else url.searchParams.delete('demo');
   url.searchParams.set('lang',currentLang);
   window.history.replaceState({},'',url.toString());
 }
 
 function applyScenarioFromUrl(){
   if(typeof window==='undefined'||!window.location?.search)return;
-  const id=new URLSearchParams(window.location.search).get('scenario');
-  if(id&&getSkill(id))openSkill(id);
+  const params=new URLSearchParams(window.location.search);
+  const id=params.get('scenario');
+  const demo=params.get('demo')==='1';
+  if(id&&getSkill(id)){
+    openSkill(id);
+    if(demo)applyDemoPreset(id,'deep-link-demo',true);
+  }
 }
 
 function renderStep(){
@@ -401,6 +475,7 @@ function renderStep(){
     <h2>${currentLang==='zh'?s.title:s.titleEn}</h2>
     <div class="detail-desc">${currentLang==='zh'?s.desc:s.descEn}</div>
     ${sourceMeta(s)}
+    ${hasDemoPreset(s.id)?`<div class="detail-actions"><button class="btn btn-secondary" onclick="applyDemoPreset('${s.id}','detail-demo')">${t('loadDemo')}</button><button class="btn btn-secondary" onclick="launchDemoScenario('${s.id}','detail-demo-result')">${t('viewDemo')}</button></div>`:''}
     <div class="step-indicator"><span class="current">${t('stepOf')(currentStep+1,s.steps.length)}</span><div class="step-bar"><div class="fill" style="width:${pct}%"></div></div></div>
     <div class="step-title">${step.title}</div>
     ${step.fields.map(f=>renderField(f)).join('')}
@@ -435,6 +510,7 @@ function generate(){
 function renderResult(){
   const filledInputs=getFilledInputs();
   const briefModel=parseDecisionBrief(lastGeneratedPrompt);
+  const scenarioLens=buildScenarioLens();
   document.getElementById('result').innerHTML=`
     <div class="check">✅</div>
     <h2>${t('promptGenerated')}</h2>
@@ -447,12 +523,15 @@ function renderResult(){
     </div>
     <div class="brief-panel"><h3>${t('briefIntent')}</h3>${renderContextBlocks(briefModel.contextBlocks)}</div>
     <div class="brief-panel"><h3>${t('inputSnapshot')}</h3>${renderInputSnapshot(filledInputs)}</div>
+    ${scenarioLens?`<div class="brief-panel"><h3>${t('scenarioLens')}</h3>${renderScenarioLens(scenarioLens)}</div>`:''}
     <div class="brief-panel"><h3>${t('outputContract')}</h3>${renderSectionCards(briefModel.sections)}</div>
+    ${scenarioLens?`<div class="brief-panel proof-card"><h3>${t('proofCard')}</h3>${renderProofCard(scenarioLens)}</div>`:''}
     <div class="result-actions">
       <button class="btn btn-primary" onclick="copyAgent('codex',this)">${t('copyCodex')}</button>
       <button class="btn btn-secondary" onclick="copyAgent('claude',this)">${t('copyClaude')}</button>
       <button class="btn btn-secondary" onclick="copyAgent('cursor',this)">${t('copyCursor')}</button>
       <button class="btn btn-secondary" onclick="copyScenarioLink('${currentSkill.id}',this,'result')">${t('shareScenario')}</button>
+      ${hasDemoPreset(currentSkill.id)?`<button class="btn btn-secondary" onclick="copyScenarioLink('${currentSkill.id}',this,'result-demo',true)">${t('shareDemo')}</button>`:''}
       <button class="btn btn-secondary" onclick="copyPrompt(this)">${t('copy')}</button>
       <a class="btn btn-secondary btn-link" href="${sourceUrl(currentSkill)}" target="_blank" rel="noopener" onclick="trackSourcePreview('${currentSkill.id}','result')">${previewLabel(currentSkill)}</a>
       <button class="btn btn-secondary" onclick="backToForm()">${t('modify')}</button>
@@ -528,6 +607,101 @@ function renderSectionCards(sections){
   return`<div class="section-grid">${sections.map(section=>`<div class="section-card" data-tone="${sectionTone(section.title)}"><div class="section-head"><span class="section-index">${section.index}</span><div><strong>${esc(section.title)}</strong></div></div><p>${escapeMultiline(section.body||section.title)}</p></div>`).join('')}</div>`;
 }
 
+function buildScenarioLens(){
+  const data=formData;
+  if(currentSkill.id==='pricing-strategy'){
+    const valueMetric=(data.usageMetric||[]).filter(v=>v!=='不确定').join(' / ')||'需要判断';
+    const upgrades=(data.upgradeSignals||[]).filter(v=>v!=='不确定').join(' / ')||'需要判断';
+    return{
+      cards:[
+        {label:currentLang==='zh'?'核心交付物':'Core deliverable',value:data.deliverable||'-'},
+        {label:currentLang==='zh'?'价值指标信号':'Value metric signal',value:valueMetric},
+        {label:currentLang==='zh'?'免费层边界':'Free boundary',value:shorten(data.freeBoundary)},
+        {label:currentLang==='zh'?'升级触发':'Upgrade trigger',value:shorten(upgrades)},
+        {label:currentLang==='zh'?'使用频率':'Usage rhythm',value:data.frequency||'-'}
+      ],
+      proof:{
+        summary:currentLang==='zh'
+          ?'这条场景的价值，不在于替你报价格，而在于强迫你先把 value metric、免费层边界和升级触发点说清楚。'
+          :'The value here is not a price quote. It is forcing value metric, free boundary, and upgrade triggers into the open first.',
+        bullets:currentLang==='zh'
+          ?['先拆 value metric，再谈价格区间。','把 free / paid 边界和 upgrade trigger 明文写出来。','上线策略和 guardrails 会一起进入判断，不把定价当一次性拍板。']
+          :['It decomposes value metric before price range.','It makes free / paid boundaries and upgrade triggers explicit.','It keeps rollout strategy and guardrails in scope instead of treating pricing as a one-shot guess.'],
+        note:currentLang==='zh'
+          ?`我刚用 PM AI Skill Toolkit 跑了一个定价场景。它先拆 value metric、免费层边界和升级触发，再把判断简报交给 Codex，而不是直接生成一段空泛定价建议。`
+          :`I just ran the pricing scenario in PM AI Skill Toolkit. It decomposes value metric, free boundary, and upgrade triggers before handing a decision brief to Codex instead of generating generic pricing advice.`
+      }
+    };
+  }
+  if(currentSkill.id==='prd-draft'){
+    const constraints=(data.constraints||[]).filter(v=>v!=='暂无特殊约束').join(' / ')|| (currentLang==='zh'?'约束较轻':'Light constraints');
+    const features=(data.features||'').split('\n').filter(Boolean);
+    const reviewFocus=constraints.includes('性能')?(currentLang==='zh'?'非功能和性能 gate':'Non-functional and performance gate')
+      :constraints.includes('多端')?(currentLang==='zh'?'多端一致性和 scope gate':'Cross-platform scope gate')
+      :constraints.includes('上线时间')?(currentLang==='zh'?'时间约束下的 scope gate':'Scope gate under time pressure')
+      :(currentLang==='zh'?'问题定义与证据完整性':'Problem framing and evidence completeness');
+    return{
+      cards:[
+        {label:currentLang==='zh'?'需求主题':'Requirement',value:shorten(data.requirement)},
+        {label:currentLang==='zh'?'目标用户':'Target users',value:data.users||'-'},
+        {label:currentLang==='zh'?'核心功能数':'Core features',value:String(features.length||0)},
+        {label:currentLang==='zh'?'主要约束':'Primary constraints',value:shorten(constraints)},
+        {label:currentLang==='zh'?'优先 review gate':'Priority review gate',value:reviewFocus}
+      ],
+      proof:{
+        summary:currentLang==='zh'
+          ?'这条场景不是替你写长 PRD，而是先把问题、范围和 review gate 固定住。'
+          :'This scenario is not about writing a longer PRD. It fixes the problem, scope, and review gates first.',
+        bullets:currentLang==='zh'
+          ?['先写 problem statement，再写 requirements。','Goals / Non-goals 和 scope 会被显式拆开。','风险、依赖和 review gate 默认进入初稿，不让 PRD 只剩功能清单。']
+          :['It starts with the problem statement before requirements.','Goals / non-goals and scope are split explicitly.','Risks, dependencies, and review gates are included by default so the PRD is not just a feature list.'],
+        note:currentLang==='zh'
+          ?`我刚用 PM AI Skill Toolkit 跑了一个 PRD 场景。它先固定问题、范围和 review gate，再把结构化初稿交给 agent，而不是直接吐一篇漂亮文档。`
+          :`I just ran the PRD scenario in PM AI Skill Toolkit. It fixes the problem, scope, and review gates before handing a structured draft to an agent instead of producing a polished document immediately.`
+      }
+    };
+  }
+  if(currentSkill.id==='monetization'){
+    const constraint=data.model==='订阅制'
+      ?(currentLang==='zh'?'重点看 repeat value 与续订逻辑':'Focus on repeat value and renewal logic')
+      :data.model==='按量付费'
+      ?(currentLang==='zh'?'重点看 task completion 与用量价值':'Focus on task completion and usage value')
+      :data.model==='混合模式'
+      ?(currentLang==='zh'?'重点看会员和消耗是否服务不同用户任务':'Focus on whether membership and consumption serve distinct jobs')
+      :data.model==='广告变现'
+      ?(currentLang==='zh'?'重点看流量质量与转化链路':'Focus on traffic quality and conversion chain')
+      :(currentLang==='zh'?'先厘清主收入逻辑和主约束':'Clarify the primary revenue logic and main constraint first');
+    return{
+      cards:[
+        {label:currentLang==='zh'?'产品状态':'Product context',value:shorten(data.product)},
+        {label:currentLang==='zh'?'偏好模型':'Preferred model',value:data.model||'-'},
+        {label:currentLang==='zh'?'目标市场':'Target market',value:data.market||'-'},
+        {label:currentLang==='zh'?'最该先看的主约束':'Primary constraint lens',value:constraint}
+      ],
+      proof:{
+        summary:currentLang==='zh'
+          ?'这条场景不是平均发建议，而是先逼你选出当前最限制收入增长的那个杠杆。'
+          :'This scenario avoids average advice by forcing a choice on the main lever limiting revenue growth right now.',
+        bullets:currentLang==='zh'
+          ?['先判断收入主约束，再谈策略动作。','把证据和信息缺口分开，不把猜测当结论。','免费层、付费层和 guardrails 会一起进入商业化判断。']
+          :['It identifies the main revenue constraint before strategy actions.','It separates evidence from information gaps instead of disguising guesses as conclusions.','Free tier, paid tier, and guardrails stay inside the commercialization judgment.'],
+        note:currentLang==='zh'
+          ?`我刚用 PM AI Skill Toolkit 跑了一个商业化场景。它先抓主约束、证据缺口和优先动作，再把判断简报交给 Codex，不会平均摊一堆建议。`
+          :`I just ran a monetization scenario in PM AI Skill Toolkit. It finds the main constraint, evidence gaps, and priority actions before handing a decision brief to Codex instead of spreading generic advice everywhere.`
+      }
+    };
+  }
+  return null;
+}
+
+function renderScenarioLens(model){
+  return`<div class="spotlight-grid">${model.cards.map(card=>`<div class="spotlight-card"><strong>${esc(card.label)}</strong><span>${escapeMultiline(card.value)}</span></div>`).join('')}</div>`;
+}
+
+function renderProofCard(model){
+  return`<p>${model.proof.summary}</p><ul>${model.proof.bullets.map(item=>`<li>${esc(item)}</li>`).join('')}</ul><div class="proof-actions"><button class="btn btn-secondary" onclick="copyProofNote(this)">${t('copyProof')}</button>${hasDemoPreset(currentSkill.id)?`<button class="btn btn-secondary" onclick="copyScenarioLink('${currentSkill.id}',this,'proof-demo',true)">${t('shareDemo')}</button>`:''}</div>`;
+}
+
 function sectionTone(title){
   const normalized=String(title||'').toLowerCase();
   if(/风险|risk|guardrail/.test(normalized))return'risk';
@@ -540,9 +714,22 @@ function escapeMultiline(text){
   return esc(String(text||'')).replace(/\n/g,'<br>');
 }
 
+function shorten(text,max=88){
+  const value=String(text||'').trim();
+  if(!value)return'-';
+  return value.length>max?`${value.slice(0,max-1)}…`:value;
+}
+
 function copyPrompt(btn){
   trackEvent('brief_copy',{skillId:currentSkill.id});
   copyText(lastGeneratedPrompt,btn);
+}
+
+function copyProofNote(btn){
+  const lens=buildScenarioLens();
+  if(!lens)return;
+  trackProofCopy(currentSkill.id);
+  copyText(lens.proof.note,btn);
 }
 
 function copyAgent(platform,btn){trackEvent('agent_copy',{skillId:currentSkill.id,platform});copyText(buildAgentPrompt(platform),btn);}

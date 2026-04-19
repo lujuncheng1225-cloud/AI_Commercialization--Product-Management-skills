@@ -26,8 +26,11 @@ The goal is simple:
 
 - [Interactive Toolkit](../pm-skills-interactive-course.html)
 - [Start with Pricing Strategy](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy)
+- [Pricing Strategy demo result](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy&demo=1)
 - [Start with PRD Draft](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=prd-draft)
+- [PRD Draft demo result](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=prd-draft&demo=1)
 - [Start with Monetization Plan](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=monetization)
+- [Monetization demo result](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=monetization&demo=1)
 
 Pick a scenario, answer the questions, and form a structured decision brief.
 

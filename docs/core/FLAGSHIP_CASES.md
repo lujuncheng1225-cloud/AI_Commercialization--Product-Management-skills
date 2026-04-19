@@ -15,8 +15,11 @@ These are the 3 strongest proof points in the repository right now.
 If someone wants proof before reading docs, send them to one of these first:
 
 - [Pricing Strategy live](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy)
+- [Pricing Strategy demo result](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy&demo=1)
 - [PRD Draft live](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=prd-draft)
+- [PRD Draft demo result](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=prd-draft&demo=1)
 - [Monetization Plan live](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=monetization)
+- [Monetization demo result](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=monetization&demo=1)
 
 Those three routes make the system legible fast:
 
@@ -35,6 +38,7 @@ Why this matters:
 Start here:
 
 - [Pricing Strategy live](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy)
+- [Pricing Strategy demo result](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy&demo=1)
 - [commands/redesign-pricing-packages.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/redesign-pricing-packages.md)
 - [commands/examples/redesign-pricing-packages-sample.md](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/examples/redesign-pricing-packages-sample.md)
 - [Signature Case 01](../brand/signature-case-commercialization.md)
