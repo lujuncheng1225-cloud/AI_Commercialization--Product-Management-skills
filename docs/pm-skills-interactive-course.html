@@ -13,38 +13,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .header{text-align:center;padding:40px 0 32px}
 .header h1{font-size:28px;font-weight:700;margin-bottom:6px}
 .header p{color:var(--text2);font-size:15px}
-.proof-strip{max-width:860px;margin:0 auto 24px;padding:22px;border:1px solid var(--border);border-radius:28px;background:
+.proof-strip{max-width:860px;margin:0 auto 24px;padding:24px;border:1px solid var(--border);border-radius:30px;background:
   radial-gradient(circle at top left,rgba(108,92,231,.18),transparent 34%),
   radial-gradient(circle at bottom right,rgba(16,185,129,.14),transparent 28%),
   linear-gradient(135deg,var(--card),var(--bg2));box-shadow:var(--shadow-lg)}
-.proof-strip-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
-.proof-strip-head h2{font-size:22px;line-height:1.25;max-width:420px}
-.proof-strip-head p{font-size:14px;color:var(--text2);max-width:360px}
-.proof-strip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.proof-strip-card{padding:18px;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.4);backdrop-filter:blur(10px)}
-.dark .proof-strip-card{background:rgba(20,20,32,.45)}
-.proof-strip-card strong{display:block;font-size:16px;margin-bottom:8px}
-.proof-strip-card p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px}
-.proof-strip-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.proof-mini{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;background:rgba(108,92,231,.12);color:var(--brand);font-size:11px;font-weight:700}
-.hero-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:0 auto 20px;max-width:860px}
-.quick-link{display:block;padding:16px 18px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);color:var(--text);text-decoration:none;transition:all .2s}
-.quick-link:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--brand-light)}
-.quick-link strong{display:block;font-size:15px;margin-bottom:4px}
-.quick-link span{display:block;font-size:13px;color:var(--text2);line-height:1.5}
-.home-panels{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin:0 auto 24px;max-width:860px}
+.hero-shell{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
+.hero-copy{display:grid;gap:14px}
+.hero-kicker{display:inline-flex;align-items:center;width:max-content;padding:6px 10px;border-radius:999px;background:var(--brand-bg);color:var(--brand);font-size:12px;font-weight:700}
+.hero-title{font-size:34px;line-height:1.08;letter-spacing:-.03em;max-width:520px}
+.hero-body{font-size:15px;color:var(--text2);line-height:1.75;max-width:520px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-links{display:flex;gap:12px;flex-wrap:wrap}
+.hero-link{font-size:13px;color:var(--text2);text-decoration:none}
+.hero-link:hover{color:var(--brand)}
+.hero-principles{padding:20px;border-radius:22px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.42);backdrop-filter:blur(10px)}
+.dark .hero-principles{background:rgba(20,20,32,.46)}
+.hero-principles strong{display:block;font-size:13px;color:var(--text2);margin-bottom:10px}
+.hero-principles ul{list-style:none;display:grid;gap:10px}
+.hero-principles li{position:relative;padding-left:14px;font-size:14px;color:var(--text);line-height:1.7}
+.hero-principles li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--brand)}
 .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
 .panel h3{font-size:16px;font-weight:700;margin-bottom:12px}
 .panel-list{list-style:none;display:grid;gap:10px}
 .panel-list li{color:var(--text2);font-size:14px;padding-left:14px;position:relative}
 .panel-list li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--brand)}
-.positioning-note{max-width:860px;margin:0 auto 20px;padding:16px 18px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(135deg,var(--brand-bg),transparent 70%),var(--card);box-shadow:var(--shadow)}
-.positioning-note strong{display:block;font-size:15px;margin-bottom:6px}
-.positioning-note p{font-size:14px;color:var(--text2);line-height:1.7}
 .home-section{max-width:860px;margin:0 auto 24px}
 .section-header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
 .section-header h3{font-size:17px}
 .section-header p{font-size:13px;color:var(--text2);max-width:540px}
+.library-shell{padding:18px 18px 20px;border:1px solid var(--border);border-radius:24px;background:var(--card);box-shadow:var(--shadow)}
+.library-toggle{white-space:nowrap}
+.library-body{margin-top:8px}
 .guided-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .guided-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
 .guided-card strong{display:block;font-size:16px;margin-bottom:8px}
@@ -75,7 +74,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .workspace-item-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .workspace-item-actions{display:flex;gap:8px;flex-wrap:wrap}
 .workspace-empty{padding:22px;border-radius:16px;border:1px dashed var(--border);background:var(--bg2);font-size:14px;color:var(--text2);line-height:1.7}
-.search-box{max-width:480px;margin:0 auto 24px;position:relative}
+.search-box{max-width:480px;margin:0 auto 20px;position:relative}
 .search-box input{width:100%;padding:12px 16px 12px 44px;border:1px solid var(--border);border-radius:var(--radius2);background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s}
 .search-box input:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
 .search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}
@@ -197,9 +196,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .tips h4{font-size:14px;margin-bottom:10px;color:var(--brand)}
 .tips li{font-size:13px;color:var(--text2);margin-bottom:4px;padding-left:4px}
 .empty{text-align:center;padding:60px 20px;color:var(--text3);font-size:15px}
-@media(max-width:900px){.workspace-shell{grid-template-columns:1fr}}
-@media(max-width:760px){.home-panels{grid-template-columns:1fr}.proof-strip-head{flex-direction:column}}
-@media(max-width:640px){.header h1{font-size:22px}.grid{grid-template-columns:1fr}.container{padding:16px 16px 40px}.header{padding:24px 0 20px}.btn-row{flex-direction:column;gap:10px}.btn{width:100%;text-align:center}.result-actions{flex-direction:column}.hero-links{grid-template-columns:1fr}.proof-strip{padding:18px}.proof-strip-head h2{font-size:18px}.demo-banner{flex-direction:column}.workflow-rail{grid-template-columns:1fr}.compare-row{grid-template-columns:1fr}.workspace-toolbar{flex-direction:column}}
+@media(max-width:900px){.workspace-shell,.hero-shell{grid-template-columns:1fr}}
+@media(max-width:640px){.header h1{font-size:22px}.grid{grid-template-columns:1fr}.container{padding:16px 16px 40px}.header{padding:20px 0 18px}.btn-row{flex-direction:column;gap:10px}.btn{width:100%;text-align:center}.result-actions{flex-direction:column}.proof-strip{padding:18px}.hero-title{font-size:26px}.hero-actions{flex-direction:column}.hero-actions .guided-btn{width:100%}.demo-banner{flex-direction:column}.workflow-rail{grid-template-columns:1fr}.compare-row{grid-template-columns:1fr}.workspace-toolbar{flex-direction:column}.section-header{flex-direction:column;align-items:flex-start}}
 .hidden{display:none!important}
 </style>
 </head>
@@ -208,32 +206,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 <div class="container">
 <div id="home">
-<div class="header"><h1 id="pageTitle">PM AI Skill 工具箱</h1><p id="pageSubtitle">产品经理的 AI 技能库 · 选场景，答问题，形成结构化判断</p></div>
+<div class="header"><h1 id="pageTitle">PM AI Skill 工具箱</h1><p id="pageSubtitle">先形成判断，再交给 agent。</p></div>
 <div class="proof-strip" id="proofStrip"></div>
-<div class="hero-links" id="heroLinks"></div>
-<div class="positioning-note" id="positioningNote"></div>
-<div class="home-panels">
-<div class="panel"><h3 id="entryTitle">零门槛入口</h3><ul class="panel-list" id="entryList"></ul></div>
-<div class="panel"><h3 id="usageTitle">最近使用</h3><div id="recentUsage"></div></div>
-</div>
-<div class="home-section">
-<div class="section-header"><h3 id="guidedTitle">按目标开始</h3><p id="guidedSubtitle"></p></div>
-<div class="guided-grid" id="guidedGrid"></div>
-</div>
-<div class="home-section">
-<div class="section-header"><h3 id="flagshipTitle">旗舰场景</h3><p id="flagshipSubtitle"></p></div>
-<div class="guided-grid" id="flagshipGrid"></div>
-</div>
-<div class="home-section">
+<div class="home-section hidden" id="workspaceSection">
 <div class="section-header"><h3 id="workspaceTitle">Brief Workspace</h3><p id="workspaceSubtitle"></p></div>
 <div class="workspace-shell">
 <div class="panel"><div class="workspace-stats" id="workspaceStats"></div></div>
 <div class="panel"><div id="workspaceList"></div></div>
 </div>
 </div>
+<div class="home-section hidden" id="recentSection">
+<div class="section-header"><h3 id="recentTitle">继续刚才的工作</h3><p id="recentSubtitle"></p></div>
+<div id="recentUsage"></div>
+</div>
+<div class="home-section" id="guidedSection">
+<div class="section-header"><h3 id="guidedTitle">按目标开始</h3><p id="guidedSubtitle"></p></div>
+<div class="guided-grid" id="guidedGrid"></div>
+</div>
+<div class="home-section library-shell" id="librarySection">
+<div class="section-header"><div><h3 id="libraryTitle">完整场景库</h3><p id="librarySubtitle"></p></div><button class="guided-btn library-toggle" id="libraryToggle" onclick="toggleLibrary()"></button></div>
+<div id="libraryBody" class="library-body hidden">
 <div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" id="search" placeholder="搜索场景…" oninput="filterCards()"></div>
 <div class="categories" id="cats"></div>
 <div class="grid" id="grid"></div>
+</div>
+</div>
 </div>
 <div id="detail" class="detail hidden"></div>
 <div id="result" class="result hidden"></div>
@@ -244,6 +241,47 @@ const i18n={
   zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，形成结构化判断',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'📋 复制判断简报',copyCodex:'复制 Codex 启动稿',copyClaude:'复制 Claude Code 启动稿',copyCursor:'复制 Cursor 启动稿',shareScenario:'复制场景链接',shareDemo:'复制演示链接',viewDemo:'一键看演示',loadDemo:'载入演示案例',copyProof:'复制传播文案',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'结构化判断已就绪',resultSubtitle:'先看判断视图，再决定是否交给 agent 继续执行。',tipsTitle:'💡 使用提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。先打开一个场景。',guidedTitle:'按目标开始',guidedSubtitle:'如果你只想先点对第一张卡，从这里开始。',flagshipTitle:'旗舰场景',flagshipSubtitle:'最适合对外演示、截图和验证差异的 3 条路径。',workspaceTitle:'Brief Workspace',workspaceSubtitle:'把判断保存成可复用对象。支持回看、复制、比较。',workspaceEmpty:'还没有保存的 brief。先生成一次判断，再存进 workspace。',workspaceSaved:'已保存 Brief',workspaceScenarios:'覆盖场景',workspaceLatest:'最近更新',workspaceSavedStatus:'已保存',workspaceDraftStatus:'未保存',workspaceDemoStatus:'演示',workspacePanelTitle:'当前 Brief',workspacePanelBody:'把一次性的结果变成可回看、可对比、可继续推进的工作对象。',saveBrief:'保存到 Workspace',updateBrief:'更新已保存 Brief',duplicateBrief:'复制为新 Brief',openBrief:'打开 Brief',deleteBrief:'删除',compareLatest:'对比最近版本',compareTitle:'版本比较',compareEmpty:'还没有可比较的同场景 brief。先保存两个版本。',compareCurrent:'当前',compareSaved:'已保存',noDiff:'当前输入与对比版本没有差异，差别可能在上下文细节或输出推演。',deleteConfirm:'删除这个已保存 brief？',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'它先帮你把问题拆开，形成判断，再把判断草案交给 Codex、Claude Code 或 Cursor 接着做。',briefIntent:'任务意图',inputSnapshot:'输入快照',outputContract:'输出契约',scenarioLens:'场景焦点',proofCard:'传播卡片',rawBrief:'查看原始判断简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'输出段落',contextLabel:'背景块',emptyInputs:'当前没有可展示的输入项。',emptySections:'当前没有解析到明确的输出段落，建议查看原始判断简报。',startNow:'立即试跑',alternatePaths:'替代路径',whyThisPath:'为什么先走这条路',sharePath:'分享路径',featuredReason:'为什么它是旗舰场景',proofStripTitle:'3 条可以直接外发的 demo 路线',proofStripBody:'不用先读仓库。直接打开演示结果页，看判断是怎么被拆出来的，再决定要不要交给 agent 接着做。',demoMode:'演示模式',demoModeBody:'当前结果来自预载入案例，适合截图、对外演示和快速理解这个场景会产出什么判断。',workflowTitle:'这个结果页不只是答案，它是一条工作流。',workflowInput:'输入已固定',workflowInputBody:'真实背景和约束已经收进判断草案。',workflowDecision:'判断已成型',workflowDecisionBody:'先看主判断、假设、风险和下一步。',workflowAgent:'再交给 agent',workflowAgentBody:'只在需要扩写、对比或执行时再复制启动稿。',workflowProof:'最后可传播',workflowProofBody:'复制案例链接或传播文案，对外证明这套系统的差异。',cardMeta:(n)=>`${n} 个问题 → 形成判断草案`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
   en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, form structured judgment',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build Decision Brief →',copy:'📋 Copy decision brief',copyCodex:'Copy Codex kickoff',copyClaude:'Copy Claude Code kickoff',copyCursor:'Copy Cursor kickoff',shareScenario:'Copy scenario link',shareDemo:'Copy demo link',viewDemo:'View demo result',loadDemo:'Load demo case',copyProof:'Copy share note',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your decision brief is ready',resultSubtitle:'Review the decision view first, then hand it to an agent if needed.',tipsTitle:'💡 Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet. Open one scenario to get started.',guidedTitle:'Start By Goal',guidedSubtitle:'If you only want the right first click, start here.',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'The 3 strongest paths for demos, screenshots, and external proof.',workspaceTitle:'Brief Workspace',workspaceSubtitle:'Turn one-off judgment into a reusable object. Save, reopen, duplicate, and compare.',workspaceEmpty:'No saved briefs yet. Generate one result first, then save it into the workspace.',workspaceSaved:'Saved briefs',workspaceScenarios:'Active scenarios',workspaceLatest:'Latest update',workspaceSavedStatus:'Saved',workspaceDraftStatus:'Draft',workspaceDemoStatus:'Demo',workspacePanelTitle:'Current Brief',workspacePanelBody:'Turn a one-off result into a reusable work object you can revisit, compare, and continue.',saveBrief:'Save to Workspace',updateBrief:'Update saved brief',duplicateBrief:'Duplicate as new brief',openBrief:'Open brief',deleteBrief:'Delete',compareLatest:'Compare latest version',compareTitle:'Version Comparison',compareEmpty:'No comparable brief for this scenario yet. Save two versions first.',compareCurrent:'Current',compareSaved:'Saved',noDiff:'The current inputs match the compared version. Any difference is likely in context nuance or reasoning output.',deleteConfirm:'Delete this saved brief?',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'It helps you decompose the problem first, form judgment second, and hand a kickoff brief to Codex, Claude Code, or Cursor only after that.',briefIntent:'Brief Intent',inputSnapshot:'Input Snapshot',outputContract:'Output Contract',scenarioLens:'Scenario Lens',proofCard:'Proof Card',rawBrief:'Show raw decision brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context Block',emptyInputs:'No filled inputs to show yet.',emptySections:'No structured output sections were parsed. Open the raw brief instead.',startNow:'Start now',alternatePaths:'Alternate paths',whyThisPath:'Why start here',sharePath:'Share path',featuredReason:'Why this is a flagship scenario',proofStripTitle:'3 demo routes you can share immediately',proofStripBody:'You do not need to read the repo first. Open a demo result route, inspect how the judgment is formed, then decide whether to hand it to an agent.',demoMode:'Demo mode',demoModeBody:'This result comes from a preloaded case. It is designed for screenshots, external demos, and fast understanding of what the scenario actually produces.',workflowTitle:'This result view is not just an answer. It is a workflow.',workflowInput:'Inputs fixed',workflowInputBody:'The real context and constraints are already locked into the brief.',workflowDecision:'Judgment formed',workflowDecisionBody:'Read the decision, assumptions, risks, and next steps first.',workflowAgent:'Then use an agent',workflowAgentBody:'Copy a kickoff only when you want expansion, comparison, or execution.',workflowProof:'Finally, share proof',workflowProofBody:'Copy the case link or share note to make the difference visible outside the repo.',cardMeta:(n)=>`${n} questions → Build a decision brief`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
 };
+
+Object.assign(i18n.zh,{
+  pageSubtitle:'判断先行的 PM 工作台',
+  guidedSubtitle:'三条最值得先点的起跑线。',
+  recentTitle:'继续刚才的工作',
+  recentSubtitle:'如果你已经打开过几个场景，直接从这里接着走。',
+  libraryTitle:'完整场景库',
+  librarySubtitle:'只有真的需要时，再展开全部场景。',
+  showLibrary:'展开完整场景库',
+  hideLibrary:'收起完整场景库',
+  heroEyebrow:'PM Operating System',
+  heroTitle:'先形成判断，再交给 agent。',
+  heroBody:'第一次进来，只需要选一条起跑线。第二次回来，直接回到你的 brief，不再重新上课。',
+  heroPrimary:'从定价开始',
+  heroSecondary:'打开 PRD',
+  heroDemo:'看完整演示',
+  heroWorkspace:'回到 Workspace',
+  heroBrowse:'浏览全部场景',
+  heroProofTitle:'默认输出不是长文，而是判断。',
+  heroLinksTitle:'如果你要看系统层：'
+});
+Object.assign(i18n.en,{
+  pageSubtitle:'A judgment-first PM workspace',
+  guidedSubtitle:'Three starting routes worth clicking first.',
+  recentTitle:'Continue where you left off',
+  recentSubtitle:'If you already opened a few scenarios, jump back in here.',
+  libraryTitle:'Full scenario library',
+  librarySubtitle:'Only expand the full catalog when you actually need it.',
+  showLibrary:'Open full scenario library',
+  hideLibrary:'Hide full scenario library',
+  heroEyebrow:'PM Operating System',
+  heroTitle:'Form judgment first. Use agents second.',
+  heroBody:'On the first visit, you only need one starting route. On the second visit, come straight back to your brief.',
+  heroPrimary:'Start with pricing',
+  heroSecondary:'Open PRD',
+  heroDemo:'See the demo',
+  heroWorkspace:'Return to Workspace',
+  heroBrowse:'Browse the full library',
+  heroProofTitle:'The default output is judgment, not a longer answer.',
+  heroLinksTitle:'If you want the system layer:'
+});
 
 let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh')?'zh':'en');
 const SITE_BASE='https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/';
@@ -257,11 +295,6 @@ const GUIDED_PATHS=[
   {key:'revenue',titleZh:'先解决收入',titleEn:'Fix revenue first',descZh:'如果你最关心定价、付费边界和升级触发点，先走这条路。',descEn:'Start here if pricing, paywalls, and upgrade triggers matter most.',primary:'pricing-strategy',alternates:['monetization','retention-strategy']},
   {key:'product',titleZh:'先把需求做清楚',titleEn:'Clarify the product first',descZh:'如果你在做新功能或要进评审，先走这条路。',descEn:'Start here if you are shaping a feature or preparing a review.',primary:'prd-draft',alternates:['req-review','req-priority']},
   {key:'strategy',titleZh:'先看外部与增长',titleEn:'Start with strategy',descZh:'如果你要判断竞品、进入市场或验证增长实验，先走这条路。',descEn:'Start here for competitive moves, market entry, or growth experiments.',primary:'competitor-pricing',alternates:['growth-experiment','market-entry']}
-];
-const FLAGSHIP_SCENARIOS=[
-  {id:'pricing-strategy',reasonZh:'最能证明这不是写 prompt，而是在做收入结构判断。',reasonEn:'Best proof that this is revenue reasoning, not prompt generation.'},
-  {id:'prd-draft',reasonZh:'最能体现问题定义、范围取舍和 review gate。',reasonEn:'Best proof of problem framing, scope control, and review gates.'},
-  {id:'monetization',reasonZh:'最能体现主约束判断，而不是平均发建议。',reasonEn:'Best proof of constraint-first commercialization judgment.'}
 ];
 const DEMO_PRESETS={
   'pricing-strategy':{
@@ -352,7 +385,7 @@ document.getElementById('langEn').classList.toggle('active',currentLang==='en');
 document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';
 
 // ── APP ──────────────────────────────────────────────
-let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='', activeDemoMode=false, activeBriefId=null, activeCompareId=null;
+let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='', activeDemoMode=false, activeBriefId=null, activeCompareId=null, libraryExpanded=false;
 
 function getEventLog(){
   try{return JSON.parse(localStorage.getItem(EVENT_LOG_KEY)||'[]');}
@@ -394,56 +427,52 @@ function init(){
   document.getElementById('cats').innerHTML=[allLabel,...catKeys.map(c=>catLabel(c))].map((label,i)=>`<button class="cat-btn${i===0?' active':''}" data-cat="${i===0?'all':catKeys[i-1]}" onclick="setCat('${i===0?'all':catKeys[i-1]}')">${label}</button>`).join('');
   document.querySelector('.header h1').textContent=t('pageTitle');
   document.querySelector('.header p').textContent=t('pageSubtitle');
-  document.getElementById('entryTitle').textContent=t('entryTitle');
-  document.getElementById('usageTitle').textContent=t('usageTitle');
   document.getElementById('guidedTitle').textContent=t('guidedTitle');
   document.getElementById('guidedSubtitle').textContent=t('guidedSubtitle');
-  document.getElementById('flagshipTitle').textContent=t('flagshipTitle');
-  document.getElementById('flagshipSubtitle').textContent=t('flagshipSubtitle');
   document.getElementById('workspaceTitle').textContent=t('workspaceTitle');
   document.getElementById('workspaceSubtitle').textContent=t('workspaceSubtitle');
-  document.getElementById('positioningNote').innerHTML=`<strong>${t('positioningTitle')}</strong><p>${t('positioningBody')}</p>`;
+  document.getElementById('recentTitle').textContent=t('recentTitle');
+  document.getElementById('recentSubtitle').textContent=t('recentSubtitle');
+  document.getElementById('libraryTitle').textContent=t('libraryTitle');
+  document.getElementById('librarySubtitle').textContent=t('librarySubtitle');
   renderProofStrip();
-  document.getElementById('heroLinks').innerHTML=homeLinks().map(link=>`<a class="quick-link" href="${link.href}" onclick="trackQuickLink('${link.id}')"><strong>${link.title}</strong><span>${link.desc}</span></a>`).join('');
-  document.getElementById('entryList').innerHTML=entryBullets().map(item=>`<li>${item}</li>`).join('');
   renderGuidedGrid();
-  renderFlagshipGrid();
   renderWorkspaceHome();
+  renderRecentUsage();
+  setLibraryExpanded(false,'init');
   document.getElementById('search').placeholder=t('searchPlaceholder');
   document.title=t('pageTitle');
   trackEvent('toolkit_page_view',{surface:'home'});
-  renderRecentUsage();
   filterCards();
   applyScenarioFromUrl();
 }
 
 function renderProofStrip(){
+  const workspaceCount=getWorkspaceBriefs().length;
+  const links=homeLinks().slice(0,2);
   document.getElementById('proofStrip').innerHTML=`
-    <div class="proof-strip-head">
-      <div>
-        <h2>${t('proofStripTitle')}</h2>
+    <div class="hero-shell">
+      <div class="hero-copy">
+        <span class="hero-kicker">${t('heroEyebrow')}</span>
+        <h2 class="hero-title">${t('heroTitle')}</h2>
+        <p class="hero-body">${t('heroBody')}</p>
+        <div class="hero-actions">
+          <button class="guided-btn primary" onclick="launchScenario('pricing-strategy','hero-primary')">${t('heroPrimary')}</button>
+          <button class="guided-btn" onclick="launchScenario('prd-draft','hero-secondary')">${t('heroSecondary')}</button>
+          <button class="guided-btn" onclick="launchDemoScenario('pricing-strategy','hero-demo')">${t('heroDemo')}</button>
+          ${workspaceCount?`<button class="guided-btn" onclick="scrollToWorkspace()">${t('heroWorkspace')}</button>`:`<button class="guided-btn" onclick="toggleLibrary(true,'hero-browse')">${t('heroBrowse')}</button>`}
+        </div>
+        <div class="hero-links">
+          <span class="hero-link">${t('heroLinksTitle')}</span>
+          ${links.map(link=>`<a class="hero-link" href="${link.href}" onclick="trackQuickLink('${link.id}')">${link.title}</a>`).join('')}
+        </div>
       </div>
-      <p>${t('proofStripBody')}</p>
-    </div>
-    <div class="proof-strip-grid">
-      ${FLAGSHIP_SCENARIOS.map(item=>{
-        const skill=getSkill(item.id);
-        if(!skill)return'';
-        const reason=currentLang==='zh'?item.reasonZh:item.reasonEn;
-        return`<div class="proof-strip-card">
-          <div class="proof-strip-meta">
-            <span class="proof-mini">${catLabel(skill.category)}</span>
-            <span class="proof-mini">${levelLabel(skill.level)}</span>
-          </div>
-          <strong>${currentLang==='zh'?skill.title:skill.titleEn}</strong>
-          <p>${reason}</p>
-          <div class="guided-actions">
-            <button class="guided-btn primary" onclick="launchDemoScenario('${skill.id}','proof-strip-demo')">${t('viewDemo')}</button>
-            <button class="guided-btn" onclick="launchScenario('${skill.id}','proof-strip-live')">${t('startNow')}</button>
-            <button class="guided-btn" onclick="copyScenarioLink('${skill.id}',this,'proof-strip-share',true)">${t('shareDemo')}</button>
-          </div>
-        </div>`;
-      }).join('')}
+      <div class="hero-principles">
+        <strong>${t('heroProofTitle')}</strong>
+        <ul>
+          ${entryBullets().map(item=>`<li>${item}</li>`).join('')}
+        </ul>
+      </div>
     </div>`;
 }
 
@@ -465,25 +494,6 @@ function renderGuidedGrid(){
       </div>
       <div class="guided-actions">
         ${alternates.map(skill=>`<button class="guided-btn" onclick="launchScenario('${skill.id}','guided-alt:${path.key}')">${currentLang==='zh'?skill.title:skill.titleEn}</button>`).join('')}
-      </div>
-    </div>`;
-  }).join('');
-}
-
-function renderFlagshipGrid(){
-  document.getElementById('flagshipGrid').innerHTML=FLAGSHIP_SCENARIOS.map(item=>{
-    const skill=getSkill(item.id);
-    if(!skill)return'';
-    const reason=currentLang==='zh'?item.reasonZh:item.reasonEn;
-    return`<div class="guided-card">
-      <strong>${currentLang==='zh'?skill.title:skill.titleEn}</strong>
-      <p>${currentLang==='zh'?skill.desc:skill.descEn}</p>
-      <div class="flagship-meta"><span class="flagship-pill">${catLabel(skill.category)}</span><span class="flagship-pill">${levelLabel(skill.level)}</span><span class="flagship-pill">${t('featuredReason')}</span></div>
-      <p>${reason}</p>
-      <div class="guided-actions">
-        <button class="guided-btn primary" onclick="launchScenario('${skill.id}','flagship')">${t('startNow')}</button>
-        <button class="guided-btn" onclick="launchDemoScenario('${skill.id}','flagship-demo')">${t('viewDemo')}</button>
-        <button class="guided-btn" onclick="copyScenarioLink('${skill.id}',this,'flagship')">${t('sharePath')}</button>
       </div>
     </div>`;
   }).join('');
@@ -549,18 +559,21 @@ function getFilledInputsFromData(skill,data){
 
 function renderWorkspaceHome(){
   const items=getWorkspaceBriefs();
+  const section=document.getElementById('workspaceSection');
   const latest=items[0];
   const uniqueScenarios=new Set(items.map(item=>item.skillId));
+  section.classList.toggle('hidden',!items.length);
+  if(!items.length){
+    document.getElementById('workspaceStats').innerHTML='';
+    document.getElementById('workspaceList').innerHTML='';
+    return;
+  }
   document.getElementById('workspaceStats').innerHTML=`
     <div class="workspace-stat"><strong>${t('workspaceSaved')}</strong><span>${items.length}</span><small>${items.length?`Top ${Math.min(items.length,MAX_WORKSPACE_BRIEFS)} local briefs`:(currentLang==='zh'?'开始保存第一条判断。':'Save the first judgment object.')}</small></div>
     <div class="workspace-stat"><strong>${t('workspaceScenarios')}</strong><span>${uniqueScenarios.size}</span><small>${currentLang==='zh'?'你已经在哪些场景上形成了可复用判断。':'How many scenario lanes already have reusable judgment.'}</small></div>
     <div class="workspace-stat"><strong>${t('workspaceLatest')}</strong><span>${latest?formatTime(latest.updatedAt):'--'}</span><small>${latest?esc(latest.title):t('workspaceEmpty')}</small></div>`;
   const container=document.getElementById('workspaceList');
-  if(!items.length){
-    container.innerHTML=`<div class="workspace-empty">${t('workspaceEmpty')}</div>`;
-    return;
-  }
-  container.innerHTML=`<div class="workspace-list">${items.slice(0,5).map(item=>{
+  container.innerHTML=`<div class="workspace-list">${items.slice(0,3).map(item=>{
     const skill=getSkill(item.skillId);
     const skillTitle=skill?(currentLang==='zh'?skill.title:skill.titleEn):item.skillId;
     return`<div class="workspace-item">
@@ -612,6 +625,8 @@ function saveCurrentBrief(btn){
   items.unshift(entry);
   activeBriefId=entry.id;
   setWorkspaceBriefs(items.sort((a,b)=>new Date(b.updatedAt)-new Date(a.updatedAt)));
+  renderProofStrip();
+  renderRecentUsage();
   renderWorkspaceHome();
   renderResult();
   trackBriefSave(currentSkill.id,entry.id,existingIndex>=0?'update':'create');
@@ -659,6 +674,8 @@ function duplicateWorkspaceBrief(id,source='workspace'){
   activeBriefId=entry.id;
   activeCompareId=sourceId&&sourceId!==entry.id?sourceId:null;
   setWorkspaceBriefs(items.sort((a,b)=>new Date(b.updatedAt)-new Date(a.updatedAt)));
+  renderProofStrip();
+  renderRecentUsage();
   renderWorkspaceHome();
   if(currentSkill){
     trackBriefDuplicate(currentSkill.id,entry.id,sourceId,source);
@@ -674,6 +691,8 @@ function deleteWorkspaceBrief(id,source='workspace'){
   setWorkspaceBriefs(items);
   if(activeBriefId===id)activeBriefId=null;
   if(activeCompareId===id)activeCompareId=null;
+  renderProofStrip();
+  renderRecentUsage();
   renderWorkspaceHome();
   if(currentSkill&&!document.getElementById('result').classList.contains('hidden'))renderResult();
   trackBriefDelete(entry.skillId,id,source);
@@ -1119,17 +1138,38 @@ function saveUsage(skill){
 }
 function renderRecentUsage(){
   const items=JSON.parse(localStorage.getItem(RECENT_USAGE_KEY)||'[]');
+  const section=document.getElementById('recentSection');
   const container=document.getElementById('recentUsage');
-  if(!items.length){
-    container.innerHTML=`<div class="usage-empty">${t('usageEmpty')}</div>`;
+  if(!items.length||getWorkspaceBriefs().length){
+    section.classList.add('hidden');
+    container.innerHTML='';
     return;
   }
+  section.classList.remove('hidden');
   container.innerHTML=`<div class="usage-list">${items.map(item=>{
     const skill=skills.find(s=>s.id===item.id);
     if(!skill)return'';
     const title=currentLang==='zh'?skill.title:skill.titleEn;
     return`<button class="usage-item" onclick="trackRecentOpen('${skill.id}');openSkill('${skill.id}')"><strong>${title}</strong><span>${formatTime(item.time)}</span></button>`;
   }).join('')}</div>`;
+}
+function setLibraryExpanded(expanded,source='manual'){
+  libraryExpanded=expanded;
+  document.getElementById('libraryBody').classList.toggle('hidden',!expanded);
+  document.getElementById('libraryToggle').textContent=t(expanded?'hideLibrary':'showLibrary');
+  if(source&&source!=='init')trackEvent('library_toggle',{expanded,source});
+}
+function toggleLibrary(nextValue=null,source='manual'){
+  const next=typeof nextValue==='boolean'?nextValue:!libraryExpanded;
+  setLibraryExpanded(next,source);
+  if(next){
+    document.getElementById('librarySection')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+function scrollToWorkspace(){
+  const section=document.getElementById('workspaceSection');
+  if(!section||section.classList.contains('hidden'))return;
+  section.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function formatTime(iso){
   const date=new Date(iso);
@@ -1138,7 +1178,7 @@ function formatTime(iso){
 }
 
 function backToForm(){show('detail');hide('result');renderStep();}
-function goHome(){currentSkill=null;activeBriefId=null;activeCompareId=null;activeDemoMode=false;syncUrlState(null);show('home');hide('detail');hide('result');renderRecentUsage();renderWorkspaceHome();}
+function goHome(){currentSkill=null;activeBriefId=null;activeCompareId=null;activeDemoMode=false;syncUrlState(null);show('home');hide('detail');hide('result');renderProofStrip();renderRecentUsage();renderWorkspaceHome();}
 function show(id){document.getElementById(id).classList.remove('hidden');}
 function hide(id){document.getElementById(id).classList.add('hidden');}
 

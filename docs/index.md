@@ -1,85 +1,42 @@
 ---
 title: PM AI Skill Toolkit
-description: A reusable PM operating system for product managers and AI agents, with workflows for PRDs, AI feature shaping, commercialization reviews, and PM decision systems.
+description: A judgment-first PM operating system for product managers and AI agents.
 permalink: /
 ---
 
 # PM AI Skill Toolkit
 
-A reusable PM operating system for product managers and AI agents.
+A judgment-first PM operating system for product managers and AI agents.
 
-一套给产品经理和 AI agent 共用的 PM 操作系统。
+不是提示词大全。
+是把混乱工作先压成判断简报，再交给 agent 继续推进的 PM 工作台。
 
-This is not a prompt builder.
-It is a judgment-first PM system that turns messy work into reusable decision briefs.
+## Start In 30 Seconds
 
-## In 3 Seconds
+- [直接打开工具箱](pm-skills-interactive-course.html)
+- [先跑定价场景](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy)
+- [先跑 PRD 场景](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=prd-draft)
+- [先看一个完整演示](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy&demo=1)
 
-- What it is: a PM workflow and decision system
-- What it helps with: PRDs, AI feature shaping, commercialization reviews, and reusable PM workflows
-- What comes out: decision briefs with evidence, assumptions, risks, and next steps
-- What now persists: saved briefs you can reopen, duplicate, and compare inside the toolkit
-- What makes it different: it emphasizes routing, judgment, review gates, and reusable systems instead of prompt dumping
+## What You Get
 
-## Start Here
+- `Decision brief` instead of a loose prompt
+- `Evidence / Assumptions / Risks / Next Steps` as the default output shape
+- `Brief Workspace` for save, reopen, duplicate, and compare
+- A clean handoff into Codex, Claude Code, or Cursor only when needed
 
-- Try the toolkit: [PM Skills Interactive Course](pm-skills-interactive-course.html)
-- Start with pricing: [Pricing Strategy](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=pricing-strategy)
-- Start with PRD: [PRD Draft](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=prd-draft)
-- Start with monetization: [Monetization Plan](https://lujuncheng1225-cloud.github.io/AI_Commercialization--Product-Management-skills/pm-skills-interactive-course.html?scenario=monetization)
-- Start fast: [Product Surface](product/README.md)
-- Benchmark quality: [Benchmark Center](benchmarks/README.md)
-- Read the guide: [START_HERE.md](guides/START_HERE.md)
-- Read the manifesto: [MANIFESTO.md](core/MANIFESTO.md)
-- See case studies: [CASE_STUDIES.md](core/CASE_STUDIES.md)
+## Key Surfaces
 
-## Public Layers
+- [Product Surface](product/README.md)
+- [Benchmark Center](benchmarks/README.md)
+- [Flagship Cases](core/FLAGSHIP_CASES.md)
+- [Category Language](core/CATEGORY_LANGUAGE.md)
+- [Distribution Engine](brand/DISTRIBUTION_ENGINE.md)
+- [Toolkit Usage Dashboard](toolkit-usage-dashboard.html)
 
-- Product layer: [Product Surface](product/README.md)
-- Benchmark layer: [Benchmark Center](benchmarks/README.md)
-- Category language: [Category Language](core/CATEGORY_LANGUAGE.md)
-- Distribution rhythm: [Distribution Engine](brand/DISTRIBUTION_ENGINE.md)
-- Flagship proof: [Flagship Cases](core/FLAGSHIP_CASES.md)
+## If You Want The Repo Layer
 
-## Who This Is For
-
-- product managers working on AI PM or commercialization PM
-- teams building PM copilots or internal agents
-- people who want reusable PM workflows instead of scattered prompts
-
-## Core Paths
-
-- PRD workflow: [write-prd](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/write-prd.md)
-- AI feature workflow: [shape-ai-feature](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/shape-ai-feature.md)
-- Commercial strategy review: [commercial-strategy-review](https://github.com/lujuncheng1225-cloud/AI_Commercialization--Product-Management-skills/blob/main/commands/commercial-strategy-review.md)
-- Search-friendly GEO pages: [GEO Pages](geo/README.md)
-- Product onboarding: [Product Surface](product/README.md)
-- Benchmark publication: [Benchmark Center](benchmarks/README.md)
-- Flagship proof: [Flagship Cases](core/FLAGSHIP_CASES.md)
-- Operator debug: [Toolkit Usage Dashboard](toolkit-usage-dashboard.html)
-- Brand and author materials: [Brand Index](brand/README.md)
-- Guides: [Guides Index](guides/README.md)
-
-## Why People Use This
-
-Most AI-for-PM content helps people write faster.
-
-This project is built to help product managers:
-
-- clarify the right problem
-- decompose complex work
-- make stronger decisions
-- separate evidence from assumption
-- turn repeated work into reusable systems
-
-The toolkit layer is only the entry point.
-The deeper system is the operating logic behind it:
-
-- route to the right workflow
-- force sharper framing before output
-- keep assumptions, risks, and next steps visible
-- make the result portable across agents
-
-## Keywords
-
-AI PM workflow, PM AI Skill Toolkit, PM operating system, Agent-native PM workflow, commercialization review framework, PM agent benchmark.
+- [START_HERE.md](guides/START_HERE.md)
+- [MANIFESTO.md](core/MANIFESTO.md)
+- [CASE_STUDIES.md](core/CASE_STUDIES.md)
+- [Brand Index](brand/README.md)
