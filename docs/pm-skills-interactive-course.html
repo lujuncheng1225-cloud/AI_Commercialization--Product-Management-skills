@@ -10,33 +10,47 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;min-height:100vh}
 .container{max-width:1180px;margin:0 auto;padding:24px 20px 60px}
-.header{text-align:center;padding:40px 0 32px}
-.header h1{font-size:28px;font-weight:700;margin-bottom:6px}
-.header p{color:var(--text2);font-size:15px}
-.proof-strip{max-width:860px;margin:0 auto 24px;padding:24px;border:1px solid var(--border);border-radius:30px;background:
-  radial-gradient(circle at top left,rgba(108,92,231,.18),transparent 34%),
-  radial-gradient(circle at bottom right,rgba(16,185,129,.14),transparent 28%),
-  linear-gradient(135deg,var(--card),var(--bg2));box-shadow:var(--shadow-lg)}
-.hero-shell{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}
-.hero-copy{display:grid;gap:14px}
-.hero-kicker{display:inline-flex;align-items:center;width:max-content;padding:6px 10px;border-radius:999px;background:var(--brand-bg);color:var(--brand);font-size:12px;font-weight:700}
-.hero-title{font-size:34px;line-height:1.08;letter-spacing:-.03em;max-width:520px}
-.hero-body{font-size:15px;color:var(--text2);line-height:1.75;max-width:520px}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-.hero-links{display:flex;gap:12px;flex-wrap:wrap}
-.hero-link{font-size:13px;color:var(--text2);text-decoration:none}
-.hero-link:hover{color:var(--brand)}
-.hero-principles{padding:20px;border-radius:22px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.42);backdrop-filter:blur(10px)}
-.dark .hero-principles{background:rgba(20,20,32,.46)}
-.hero-principles strong{display:block;font-size:13px;color:var(--text2);margin-bottom:10px}
-.hero-principles ul{list-style:none;display:grid;gap:10px}
-.hero-principles li{position:relative;padding-left:14px;font-size:14px;color:var(--text);line-height:1.7}
-.hero-principles li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--brand)}
-.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
-.panel h3{font-size:16px;font-weight:700;margin-bottom:12px}
-.panel-list{list-style:none;display:grid;gap:10px}
-.panel-list li{color:var(--text2);font-size:14px;padding-left:14px;position:relative}
-.panel-list li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--brand)}
+.home-bar{max-width:980px;margin:0 auto 16px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:4px 2px}
+.home-brand{display:grid;gap:2px}
+.home-brand-title{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.home-brand-subtitle{font-size:13px;color:var(--text2)}
+.home-bar-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.home-pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:var(--bg2);border:1px solid var(--border);color:var(--text2);font-size:12px;font-weight:700}
+.home-app{max-width:980px;margin:0 auto 24px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px}
+.home-rail{display:grid;gap:10px;padding:14px;border:1px solid var(--border);border-radius:28px;background:linear-gradient(180deg,var(--card),var(--bg2));box-shadow:var(--shadow)}
+.home-rail-label{padding:6px 8px 10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);font-weight:700}
+.home-option{width:100%;text-align:left;padding:14px 16px;border:1px solid transparent;border-radius:20px;background:transparent;color:var(--text);cursor:pointer;transition:all .2s;display:grid;gap:4px}
+.home-option strong{font-size:15px}
+.home-option span{font-size:12px;color:var(--text2)}
+.home-option.active{background:var(--card);border-color:var(--border);box-shadow:var(--shadow)}
+.home-option:hover{background:rgba(255,255,255,.55)}
+.dark .home-option:hover{background:rgba(255,255,255,.03)}
+.home-rail-footer{margin-top:8px}
+.home-stage{position:relative;overflow:hidden;padding:28px;border:1px solid var(--border);border-radius:32px;background:
+  radial-gradient(circle at top right,rgba(37,99,235,.12),transparent 34%),
+  linear-gradient(180deg,var(--card),rgba(37,99,235,.02));box-shadow:var(--shadow-lg);min-height:420px;display:grid;align-content:space-between;gap:24px}
+.home-stage::after{content:'';position:absolute;right:-80px;bottom:-90px;width:260px;height:260px;border-radius:999px;background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%);pointer-events:none}
+.home-stage-head{display:grid;gap:14px;max-width:620px;position:relative;z-index:1}
+.home-stage-kicker{display:inline-flex;align-items:center;width:max-content;padding:6px 10px;border-radius:999px;background:var(--brand-bg);color:var(--brand);font-size:12px;font-weight:700}
+.home-stage-title{font-size:40px;line-height:1.02;letter-spacing:-.04em}
+.home-stage-subtitle{font-size:16px;color:var(--text2);line-height:1.65;max-width:540px}
+.home-stage-meta{display:flex;gap:8px;flex-wrap:wrap}
+.home-chip{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:var(--bg2);color:var(--text2);font-size:12px;font-weight:700}
+.home-stage-actions{display:flex;gap:10px;flex-wrap:wrap}
+.home-stage-foot{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;position:relative;z-index:1}
+.home-output-panel,.home-side-panel{padding:18px;border:1px solid var(--border);border-radius:22px;background:rgba(255,255,255,.62);backdrop-filter:blur(10px)}
+.dark .home-output-panel,.dark .home-side-panel{background:rgba(9,12,18,.46)}
+.home-panel-label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);font-weight:700;margin-bottom:12px}
+.home-output-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.home-output-item{padding:14px;border-radius:18px;background:var(--card);border:1px solid var(--border);font-size:14px;font-weight:600}
+.home-side-stack{display:grid;gap:12px}
+.home-side-stat strong{display:block;font-size:12px;color:var(--text2);margin-bottom:4px}
+.home-side-stat span{display:block;font-size:16px;font-weight:700;line-height:1.4}
+.home-brief-list{display:grid;gap:10px}
+.home-brief-item{padding:14px;border-radius:18px;background:var(--card);border:1px solid var(--border)}
+.home-brief-item strong{display:block;font-size:14px;margin-bottom:4px}
+.home-brief-item span{display:block;font-size:12px;color:var(--text2);line-height:1.5}
+.home-brief-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .home-section{max-width:860px;margin:0 auto 24px}
 .section-header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
 .section-header h3{font-size:17px}
@@ -44,36 +58,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .library-shell{padding:18px 18px 20px;border:1px solid var(--border);border-radius:24px;background:var(--card);box-shadow:var(--shadow)}
 .library-toggle{white-space:nowrap}
 .library-body{margin-top:8px}
-.guided-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.guided-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-.guided-card strong{display:block;font-size:16px;margin-bottom:8px}
-.guided-card p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:14px}
-.guided-actions{display:flex;flex-wrap:wrap;gap:8px}
 .guided-btn{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);color:var(--text);font-size:13px;cursor:pointer;transition:all .2s}
 .guided-btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
 .guided-btn:hover{transform:translateY(-1px);border-color:var(--brand-light)}
-.flagship-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
-.flagship-pill{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;background:var(--brand-bg);color:var(--brand);font-size:12px;font-weight:700}
-.usage-list{display:grid;gap:10px}
-.usage-item{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:var(--bg2);text-align:left;cursor:pointer;transition:all .2s}
-.usage-item:hover{border-color:var(--brand-light);transform:translateY(-1px)}
-.usage-item strong{display:block;font-size:14px;color:var(--text);margin-bottom:4px}
-.usage-item span{display:block;font-size:12px;color:var(--text3)}
-.usage-empty{font-size:14px;color:var(--text3)}
-.workspace-shell{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}
-.workspace-stats{display:grid;gap:12px}
-.workspace-stat{padding:16px;border-radius:16px;border:1px solid var(--border);background:var(--bg2)}
-.workspace-stat strong{display:block;font-size:13px;color:var(--text2);margin-bottom:6px}
-.workspace-stat span{display:block;font-size:24px;font-weight:800;line-height:1.1}
-.workspace-stat small{display:block;font-size:12px;color:var(--text3);margin-top:6px;line-height:1.5}
-.workspace-list{display:grid;gap:12px}
-.workspace-item{padding:16px;border-radius:16px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow)}
-.workspace-item-main{margin-bottom:12px}
-.workspace-item-main strong{display:block;font-size:15px;margin-bottom:4px}
-.workspace-item-main span{display:block;font-size:13px;color:var(--text2);line-height:1.6}
-.workspace-item-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.workspace-item-actions{display:flex;gap:8px;flex-wrap:wrap}
-.workspace-empty{padding:22px;border-radius:16px;border:1px dashed var(--border);background:var(--bg2);font-size:14px;color:var(--text2);line-height:1.7}
 .search-box{max-width:480px;margin:0 auto 20px;position:relative}
 .search-box input{width:100%;padding:12px 16px 12px 44px;border:1px solid var(--border);border-radius:var(--radius2);background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s}
 .search-box input:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
@@ -236,8 +223,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .tips h4{font-size:14px;margin-bottom:10px;color:var(--brand)}
 .tips li{font-size:13px;color:var(--text2);margin-bottom:4px;padding-left:4px}
 .empty{text-align:center;padding:60px 20px;color:var(--text3);font-size:15px}
-@media(max-width:980px){.workspace-shell,.hero-shell,.app-header,.app-layout{grid-template-columns:1fr}.app-side{position:static}.action-dock{position:static}}
-@media(max-width:640px){.header h1{font-size:22px}.grid{grid-template-columns:1fr}.container{padding:16px 16px 40px}.header{padding:20px 0 18px}.btn-row{flex-direction:column;gap:10px}.btn{width:100%;text-align:center}.result-actions{flex-direction:column}.proof-strip{padding:18px}.hero-title{font-size:26px}.hero-actions{flex-direction:column}.hero-actions .guided-btn{width:100%}.app-headline{font-size:28px}.app-header-stats{grid-template-columns:1fr}.action-row .btn,.action-row .btn-link{width:100%}.demo-banner{flex-direction:column}.workflow-rail{grid-template-columns:1fr}.compare-row{grid-template-columns:1fr}.workspace-toolbar{flex-direction:column}.section-header{flex-direction:column;align-items:flex-start}}
+@media(max-width:980px){.home-app,.app-header,.app-layout,.home-stage-foot{grid-template-columns:1fr}.app-side{position:static}.action-dock{position:static}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.container{padding:16px 16px 40px}.home-bar{flex-direction:column;align-items:flex-start;margin-bottom:12px}.home-bar-actions{width:100%;justify-content:flex-start}.btn-row{flex-direction:column;gap:10px}.btn{width:100%;text-align:center}.result-actions{flex-direction:column}.home-stage{padding:22px;min-height:auto}.home-stage-title{font-size:30px}.home-stage-actions .guided-btn{width:100%}.home-output-list{grid-template-columns:1fr}.app-headline{font-size:28px}.app-header-stats{grid-template-columns:1fr}.action-row .btn,.action-row .btn-link{width:100%}.demo-banner{flex-direction:column}.workflow-rail{grid-template-columns:1fr}.compare-row{grid-template-columns:1fr}.workspace-toolbar{flex-direction:column}.section-header{flex-direction:column;align-items:flex-start}}
 .hidden{display:none!important}
 </style>
 </head>
@@ -246,23 +233,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 <div class="container">
 <div id="home">
-<div class="header"><h1 id="pageTitle">PM AI Skill 工具箱</h1><p id="pageSubtitle">先形成判断，再交给 agent。</p></div>
-<div class="proof-strip" id="proofStrip"></div>
-<div class="home-section hidden" id="workspaceSection">
-<div class="section-header"><h3 id="workspaceTitle">Brief Workspace</h3><p id="workspaceSubtitle"></p></div>
-<div class="workspace-shell">
-<div class="panel"><div class="workspace-stats" id="workspaceStats"></div></div>
-<div class="panel"><div id="workspaceList"></div></div>
-</div>
-</div>
-<div class="home-section hidden" id="recentSection">
-<div class="section-header"><h3 id="recentTitle">继续刚才的工作</h3><p id="recentSubtitle"></p></div>
-<div id="recentUsage"></div>
-</div>
-<div class="home-section" id="guidedSection">
-<div class="section-header"><h3 id="guidedTitle">按目标开始</h3><p id="guidedSubtitle"></p></div>
-<div class="guided-grid" id="guidedGrid"></div>
-</div>
+<div class="home-bar" id="homeBar"></div>
+<div class="home-app" id="homeStage"></div>
 <div class="home-section library-shell" id="librarySection">
 <div class="section-header"><div><h3 id="libraryTitle">完整场景库</h3><p id="librarySubtitle"></p></div><button class="guided-btn library-toggle" id="libraryToggle" onclick="toggleLibrary()"></button></div>
 <div id="libraryBody" class="library-body hidden">
@@ -311,7 +283,17 @@ Object.assign(i18n.zh,{
   appProofTitle:'传播',
   appNotesTitle:'原始简报',
   appLive:'实时',
-  openLibrary:'场景库'
+  openLibrary:'场景库',
+  homeRailLabel:'Core',
+  homeBarSubtitle:'判断工作台',
+  homeResumeLabel:'继续最新 brief',
+  homeSavedBadge:(n)=>`${n} 条 brief`,
+  homeOutputsLabel:'产出',
+  homeContextLabel:'概览',
+  homeWorkspaceLabel:'Workspace',
+  homeStartLabel:'开始',
+  homeDemoLabel:'演示',
+  stepsMetric:'步骤'
 });
 Object.assign(i18n.en,{
   pageSubtitle:'Pick one scenario.',
@@ -342,7 +324,17 @@ Object.assign(i18n.en,{
   appProofTitle:'Proof',
   appNotesTitle:'Raw brief',
   appLive:'Live',
-  openLibrary:'Library'
+  openLibrary:'Library',
+  homeRailLabel:'Core',
+  homeBarSubtitle:'Decision workspace',
+  homeResumeLabel:'Continue latest',
+  homeSavedBadge:(n)=>`${n} briefs`,
+  homeOutputsLabel:'Outputs',
+  homeContextLabel:'Overview',
+  homeWorkspaceLabel:'Workspace',
+  homeStartLabel:'Start',
+  homeDemoLabel:'Demo',
+  stepsMetric:'Steps'
 });
 
 let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh')?'zh':'en');
@@ -353,10 +345,10 @@ const BRIEF_WORKSPACE_KEY='pm-toolkit-brief-workspace';
 const EVENT_LOG_KEY='pm-toolkit-event-log';
 const MAX_EVENT_LOG=300;
 const MAX_WORKSPACE_BRIEFS=24;
-const GUIDED_PATHS=[
-  {key:'revenue',titleZh:'收入',titleEn:'Revenue',descZh:'定价 / 付费 / 升级',descEn:'Pricing / paywall / upgrade',primary:'pricing-strategy',alternates:['monetization','retention-strategy']},
-  {key:'product',titleZh:'需求',titleEn:'Product',descZh:'PRD / review / scope',descEn:'PRD / review / scope',primary:'prd-draft',alternates:['req-review','req-priority']},
-  {key:'strategy',titleZh:'策略',titleEn:'Strategy',descZh:'竞品 / 增长 / 进入市场',descEn:'Competition / growth / GTM',primary:'competitor-pricing',alternates:['growth-experiment','market-entry']}
+const HOME_SPOTLIGHTS=[
+  {id:'pricing-strategy',labelZh:'定价',labelEn:'Pricing',summaryZh:'把价格前的判断固定住。',summaryEn:'Lock the reasoning before price.',outputsZh:['Value metric','免费边界','升级触发'],outputsEn:['Value metric','Free boundary','Upgrade trigger']},
+  {id:'prd-draft',labelZh:'PRD',labelEn:'PRD',summaryZh:'先定问题、范围、review gate。',summaryEn:'Lock the problem, scope, and review gate first.',outputsZh:['Problem','Scope','Review gate'],outputsEn:['Problem','Scope','Review gate']},
+  {id:'monetization',labelZh:'商业化',labelEn:'Monetization',summaryZh:'先抓主约束，再定动作。',summaryEn:'Find the main constraint first.',outputsZh:['Constraint','Signals','Action'],outputsEn:['Constraint','Signals','Action']}
 ];
 const DEMO_PRESETS={
   'pricing-strategy':{
@@ -404,30 +396,6 @@ function sourceMeta(s){
   const fit=s.sourceFit==='direct'?t('fitDirect'):t('fitAdjacent');
   return`<div class="system-ref">${t('systemPath')}: <code>${s.sourceRef}</code> · ${fit} · <a href="${sourceUrl(s)}" target="_blank" rel="noopener" onclick="trackSourcePreview('${s.id}','detail')">${previewLabel(s)}</a></div>`;
 }
-function homeLinks(){
-  return currentLang==='zh'?[
-    {id:'product-surface',href:`${SITE_BASE}product/`,title:'产品入口',desc:'零门槛上手、在线使用、团队接入'},
-    {id:'benchmark-center',href:`${SITE_BASE}benchmarks/`,title:'Benchmark Center',desc:'公开 benchmark、路由和输出标准'},
-    {id:'category-language',href:`${SITE_BASE}core/category-language/`,title:'Category Language',desc:'把项目定位词变成固定说法'},
-    {id:'distribution-engine',href:`${SITE_BASE}brand/distribution-engine/`,title:'分发飞轮',desc:'每周案例、benchmark、demo、月度更新'}
-  ]:[
-    {id:'product-surface',href:`${SITE_BASE}product/`,title:'Product Surface',desc:'Zero-friction onboarding, online use, team setup'},
-    {id:'benchmark-center',href:`${SITE_BASE}benchmarks/`,title:'Benchmark Center',desc:'Public benchmark, routing, and output standards'},
-    {id:'category-language',href:`${SITE_BASE}core/category-language/`,title:'Category Language',desc:'Own the terms that define the category'},
-    {id:'distribution-engine',href:`${SITE_BASE}brand/distribution-engine/`,title:'Distribution Engine',desc:'Weekly case, benchmark, demo, and monthly release rhythm'}
-  ];
-}
-function entryBullets(){
-  return currentLang==='zh'?[
-    'Decision first',
-    'Evidence visible',
-    'Risks explicit'
-  ]:[
-    'Decision first',
-    'Evidence visible',
-    'Risks explicit'
-  ];
-}
 function setLang(lang){
   currentLang=lang;localStorage.setItem('lang',lang);
   document.getElementById('langZh').classList.toggle('active',lang==='zh');
@@ -445,7 +413,7 @@ document.getElementById('langEn').classList.toggle('active',currentLang==='en');
 document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';
 
 // ── APP ──────────────────────────────────────────────
-let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='', activeDemoMode=false, activeBriefId=null, activeCompareId=null, libraryExpanded=false;
+let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='', activeDemoMode=false, activeBriefId=null, activeCompareId=null, libraryExpanded=false, homeFocusId='pricing-strategy';
 
 function getEventLog(){
   try{return JSON.parse(localStorage.getItem(EVENT_LOG_KEY)||'[]');}
@@ -460,9 +428,7 @@ function trackEvent(name,props={}){
     window.plausible(name,{props});
   }
 }
-function trackQuickLink(id){trackEvent('quick_link_click',{id});}
 function trackSourcePreview(skillId,placement){trackEvent('source_preview',{skillId,placement});}
-function trackRecentOpen(skillId){trackEvent('recent_usage_open',{skillId});}
 function trackRawBrief(open){trackEvent('raw_brief_toggle',{skillId:currentSkill?.id,open});}
 function trackScenarioLaunch(skillId,source){trackEvent('scenario_launch',{skillId,source});}
 function trackScenarioShare(skillId,source){trackEvent('scenario_share',{skillId,source});}
@@ -485,20 +451,11 @@ function init(){
   const allLabel=t('all');
   const catKeys=[...new Set(skills.map(s=>s.category))];
   document.getElementById('cats').innerHTML=[allLabel,...catKeys.map(c=>catLabel(c))].map((label,i)=>`<button class="cat-btn${i===0?' active':''}" data-cat="${i===0?'all':catKeys[i-1]}" onclick="setCat('${i===0?'all':catKeys[i-1]}')">${label}</button>`).join('');
-  document.querySelector('.header h1').textContent=t('pageTitle');
-  document.querySelector('.header p').textContent=t('pageSubtitle');
-  document.getElementById('guidedTitle').textContent=t('guidedTitle');
-  document.getElementById('guidedSubtitle').textContent=t('guidedSubtitle');
-  document.getElementById('workspaceTitle').textContent=t('workspaceTitle');
-  document.getElementById('workspaceSubtitle').textContent=t('workspaceSubtitle');
-  document.getElementById('recentTitle').textContent=t('recentTitle');
-  document.getElementById('recentSubtitle').textContent=t('recentSubtitle');
   document.getElementById('libraryTitle').textContent=t('libraryTitle');
   document.getElementById('librarySubtitle').textContent=t('librarySubtitle');
-  renderProofStrip();
-  renderGuidedGrid();
-  renderWorkspaceHome();
-  renderRecentUsage();
+  homeFocusId=getWorkspaceBriefs().length?'workspace':'pricing-strategy';
+  renderHomeBar();
+  renderHomeStage();
   setLibraryExpanded(false,'init');
   document.getElementById('search').placeholder=t('searchPlaceholder');
   document.title=t('pageTitle');
@@ -507,57 +464,116 @@ function init(){
   applyScenarioFromUrl();
 }
 
-function renderProofStrip(){
-  const workspaceCount=getWorkspaceBriefs().length;
-  const links=homeLinks().slice(0,2);
-  const heroBody=t('heroBody');
-  const heroLinksTitle=t('heroLinksTitle');
-  document.getElementById('proofStrip').innerHTML=`
-    <div class="hero-shell">
-      <div class="hero-copy">
-        <span class="hero-kicker">${t('heroEyebrow')}</span>
-        <h2 class="hero-title">${t('heroTitle')}</h2>
-        ${heroBody?`<p class="hero-body">${heroBody}</p>`:''}
-        <div class="hero-actions">
-          <button class="guided-btn primary" onclick="launchScenario('pricing-strategy','hero-primary')">${t('heroPrimary')}</button>
-          <button class="guided-btn" onclick="launchScenario('prd-draft','hero-secondary')">${t('heroSecondary')}</button>
-          <button class="guided-btn" onclick="launchDemoScenario('pricing-strategy','hero-demo')">${t('heroDemo')}</button>
-          ${workspaceCount?`<button class="guided-btn" onclick="scrollToWorkspace()">${t('heroWorkspace')}</button>`:`<button class="guided-btn" onclick="toggleLibrary(true,'hero-browse')">${t('heroBrowse')}</button>`}
-        </div>
-        <div class="hero-links">
-          ${heroLinksTitle?`<span class="hero-link">${heroLinksTitle}</span>`:''}
-          ${links.map(link=>`<a class="hero-link" href="${link.href}" onclick="trackQuickLink('${link.id}')">${link.title}</a>`).join('')}
-        </div>
-      </div>
-      <div class="hero-principles">
-        <strong>${t('heroProofTitle')}</strong>
-        <ul>
-          ${entryBullets().map(item=>`<li>${item}</li>`).join('')}
-        </ul>
-      </div>
+function getHomeSpotlight(id){
+  return HOME_SPOTLIGHTS.find(item=>item.id===id)||HOME_SPOTLIGHTS[0];
+}
+
+function setHomeFocus(id,source='home'){
+  homeFocusId=id;
+  trackEvent('home_focus',{id,source});
+  renderHomeStage();
+}
+
+function renderHomeBar(){
+  const items=getWorkspaceBriefs();
+  const latest=items[0];
+  document.getElementById('homeBar').innerHTML=`
+    <div class="home-brand">
+      <div class="home-brand-title">${t('pageTitle')}</div>
+      <div class="home-brand-subtitle">${t('homeBarSubtitle')}</div>
+    </div>
+    <div class="home-bar-actions">
+      ${items.length?`<span class="home-pill">${t('homeSavedBadge')(items.length)}</span>`:''}
+      ${latest?`<button class="guided-btn" onclick="openWorkspaceBrief('${latest.id}','bar-resume')">${t('homeResumeLabel')}</button>`:''}
+      <button class="guided-btn" onclick="toggleLibrary(true,'bar-library')">${t('openLibrary')}</button>
     </div>`;
 }
 
-function renderGuidedGrid(){
-  document.getElementById('guidedGrid').innerHTML=GUIDED_PATHS.map(path=>{
-    const primary=getSkill(path.primary);
-    const alternates=path.alternates.map(getSkill).filter(Boolean);
-    if(!primary)return'';
-    const title=currentLang==='zh'?path.titleZh:path.titleEn;
-    const desc=currentLang==='zh'?path.descZh:path.descEn;
-    return`<div class="guided-card">
-      <strong>${title}</strong>
-      ${desc?`<p>${desc}</p>`:''}
-      <div class="flagship-meta"><span class="flagship-pill">${catLabel(primary.category)}</span><span class="flagship-pill">${levelLabel(primary.level)}</span></div>
-      <div class="guided-actions">
-        <button class="guided-btn primary" onclick="launchScenario('${primary.id}','guided:${path.key}')">${t('startNow')}</button>
-        <button class="guided-btn" onclick="copyScenarioLink('${primary.id}',this,'guided:${path.key}')">${t('sharePath')}</button>
+function renderHomeStage(){
+  const items=getWorkspaceBriefs();
+  if(!items.length&&homeFocusId==='workspace')homeFocusId='pricing-strategy';
+  renderHomeBar();
+  const selectedWorkspace=homeFocusId==='workspace'&&items.length;
+  const spotlight=getHomeSpotlight(homeFocusId);
+  const skill=getSkill(spotlight.id);
+  const label=currentLang==='zh'?spotlight.labelZh:spotlight.labelEn;
+  const summary=currentLang==='zh'?spotlight.summaryZh:spotlight.summaryEn;
+  const outputs=currentLang==='zh'?spotlight.outputsZh:spotlight.outputsEn;
+  const inputCount=skill.steps.reduce((total,step)=>total+step.fields.length,0);
+  const rail=`<div class="home-rail">
+      <div class="home-rail-label">${t('homeRailLabel')}</div>
+      ${HOME_SPOTLIGHTS.map(item=>{
+        const active=homeFocusId===item.id;
+        const optionLabel=currentLang==='zh'?item.labelZh:item.labelEn;
+        const optionSummary=currentLang==='zh'?item.summaryZh:item.summaryEn;
+        return`<button class="home-option ${active?'active':''}" onclick="setHomeFocus('${item.id}','rail')"><strong>${optionLabel}</strong><span>${optionSummary}</span></button>`;
+      }).join('')}
+      ${items.length?`<button class="home-option ${selectedWorkspace?'active':''}" onclick="setHomeFocus('workspace','rail')"><strong>${t('homeWorkspaceLabel')}</strong><span>${t('homeSavedBadge')(items.length)}</span></button>`:''}
+      <button class="guided-btn home-rail-footer" onclick="toggleLibrary(true,'rail-library')">${t('openLibrary')}</button>
+    </div>`;
+  if(selectedWorkspace){
+    const latest=items[0];
+    const scenarioCount=new Set(items.map(item=>item.skillId)).size;
+    document.getElementById('homeStage').innerHTML=`${rail}
+      <div class="home-stage">
+        <div class="home-stage-head">
+          <span class="home-stage-kicker">${t('homeWorkspaceLabel')}</span>
+          <h2 class="home-stage-title">${latest?esc(latest.title):t('workspaceTitle')}</h2>
+          <div class="home-stage-subtitle">${latest?esc(latest.summary||''):t('workspaceEmpty')}</div>
+          <div class="home-stage-actions">
+            ${latest?`<button class="guided-btn primary" onclick="openWorkspaceBrief('${latest.id}','home-stage')">${t('openBrief')}</button>`:''}
+            ${latest?`<button class="guided-btn" onclick="duplicateWorkspaceBrief('${latest.id}','home-stage')">${t('duplicateBrief')}</button>`:''}
+          </div>
+        </div>
+        <div class="home-stage-foot">
+          <div class="home-output-panel">
+            <span class="home-panel-label">${t('workspaceTitle')}</span>
+            <div class="home-brief-list">${items.slice(0,3).map(item=>`<div class="home-brief-item"><strong>${esc(item.title)}</strong><span>${esc(item.summary||'')}</span><div class="home-brief-actions"><button class="guided-btn primary" onclick="openWorkspaceBrief('${item.id}','home-list')">${t('openBrief')}</button></div></div>`).join('')}</div>
+          </div>
+          <div class="home-side-panel">
+            <span class="home-panel-label">${t('homeContextLabel')}</span>
+            <div class="home-side-stack">
+              <div class="home-side-stat"><strong>${t('workspaceSaved')}</strong><span>${items.length}</span></div>
+              <div class="home-side-stat"><strong>${t('workspaceLatest')}</strong><span>${latest?formatTime(latest.updatedAt):'--'}</span></div>
+              <div class="home-side-stat"><strong>${t('workspaceScenarios')}</strong><span>${scenarioCount}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    return;
+  }
+  document.getElementById('homeStage').innerHTML=`${rail}
+    <div class="home-stage">
+      <div class="home-stage-head">
+        <span class="home-stage-kicker">${label} · ${catLabel(skill.category)}</span>
+        <h2 class="home-stage-title">${currentLang==='zh'?skill.title:skill.titleEn}</h2>
+        <div class="home-stage-subtitle">${summary}</div>
+        <div class="home-stage-meta">
+          <span class="home-chip">${levelLabel(skill.level)}</span>
+          <span class="home-chip">${skill.steps.length} ${t('stepsMetric')}</span>
+        </div>
+        <div class="home-stage-actions">
+          <button class="guided-btn primary" onclick="launchScenario('${skill.id}','home-stage-start')">${t('homeStartLabel')}</button>
+          ${hasDemoPreset(skill.id)?`<button class="guided-btn" onclick="launchDemoScenario('${skill.id}','home-stage-demo')">${t('homeDemoLabel')}</button>`:''}
+          <button class="guided-btn" onclick="copyScenarioLink('${skill.id}',this,'home-stage-share')">${t('sharePath')}</button>
+        </div>
       </div>
-      <div class="guided-actions">
-        ${alternates.map(skill=>`<button class="guided-btn" onclick="launchScenario('${skill.id}','guided-alt:${path.key}')">${currentLang==='zh'?skill.title:skill.titleEn}</button>`).join('')}
+      <div class="home-stage-foot">
+        <div class="home-output-panel">
+          <span class="home-panel-label">${t('homeOutputsLabel')}</span>
+          <div class="home-output-list">${outputs.map(item=>`<div class="home-output-item">${item}</div>`).join('')}</div>
+        </div>
+        <div class="home-side-panel">
+          <span class="home-panel-label">${t('homeContextLabel')}</span>
+          <div class="home-side-stack">
+            <div class="home-side-stat"><strong>${t('scenarioMetric')}</strong><span>${label}</span></div>
+            <div class="home-side-stat"><strong>${t('inputsMetric')}</strong><span>${inputCount}</span></div>
+            <div class="home-side-stat"><strong>${t('stepsMetric')}</strong><span>${skill.steps.length}</span></div>
+            <div class="home-side-stat"><strong>${t('workspaceSaved')}</strong><span>${items.length}</span></div>
+          </div>
+        </div>
       </div>
     </div>`;
-  }).join('');
 }
 
 function cloneData(value){
@@ -619,41 +635,7 @@ function getFilledInputsFromData(skill,data){
 }
 
 function renderWorkspaceHome(){
-  const items=getWorkspaceBriefs();
-  const section=document.getElementById('workspaceSection');
-  const latest=items[0];
-  const uniqueScenarios=new Set(items.map(item=>item.skillId));
-  section.classList.toggle('hidden',!items.length);
-  if(!items.length){
-    document.getElementById('workspaceStats').innerHTML='';
-    document.getElementById('workspaceList').innerHTML='';
-    return;
-  }
-  document.getElementById('workspaceStats').innerHTML=`
-    <div class="workspace-stat"><strong>${t('workspaceSaved')}</strong><span>${items.length}</span><small>${items.length?`Top ${Math.min(items.length,MAX_WORKSPACE_BRIEFS)} local briefs`:(currentLang==='zh'?'开始保存第一条判断。':'Save the first judgment object.')}</small></div>
-    <div class="workspace-stat"><strong>${t('workspaceScenarios')}</strong><span>${uniqueScenarios.size}</span><small>${currentLang==='zh'?'你已经在哪些场景上形成了可复用判断。':'How many scenario lanes already have reusable judgment.'}</small></div>
-    <div class="workspace-stat"><strong>${t('workspaceLatest')}</strong><span>${latest?formatTime(latest.updatedAt):'--'}</span><small>${latest?esc(latest.title):t('workspaceEmpty')}</small></div>`;
-  const container=document.getElementById('workspaceList');
-  container.innerHTML=`<div class="workspace-list">${items.slice(0,3).map(item=>{
-    const skill=getSkill(item.skillId);
-    const skillTitle=skill?(currentLang==='zh'?skill.title:skill.titleEn):item.skillId;
-    return`<div class="workspace-item">
-      <div class="workspace-item-main">
-        <strong>${esc(item.title)}</strong>
-        <span>${esc(item.summary||'')}</span>
-        <div class="workspace-item-meta">
-          <span class="workspace-badge primary">${esc(skillTitle)}</span>
-          <span class="workspace-badge">${item.isDemo?t('workspaceDemoStatus'):t('workspaceSavedStatus')}</span>
-          <span class="workspace-badge">${formatTime(item.updatedAt)}</span>
-        </div>
-      </div>
-      <div class="workspace-item-actions">
-        <button class="guided-btn primary" onclick="openWorkspaceBrief('${item.id}','home')">${t('openBrief')}</button>
-        <button class="guided-btn" onclick="duplicateWorkspaceBrief('${item.id}','home')">${t('duplicateBrief')}</button>
-        <button class="guided-btn" onclick="deleteWorkspaceBrief('${item.id}','home')">${t('deleteBrief')}</button>
-      </div>
-    </div>`;
-  }).join('')}</div>`;
+  renderHomeStage();
 }
 
 function setCat(c){activeCategory=c;trackEvent('category_filter',{category:c});document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===c));filterCards();}
@@ -686,9 +668,7 @@ function saveCurrentBrief(btn){
   items.unshift(entry);
   activeBriefId=entry.id;
   setWorkspaceBriefs(items.sort((a,b)=>new Date(b.updatedAt)-new Date(a.updatedAt)));
-  renderProofStrip();
-  renderRecentUsage();
-  renderWorkspaceHome();
+  renderHomeStage();
   renderResult();
   trackBriefSave(currentSkill.id,entry.id,existingIndex>=0?'update':'create');
   flashButton(btn,currentLang==='zh'?'已保存 ✓':'Saved ✓');
@@ -735,9 +715,7 @@ function duplicateWorkspaceBrief(id,source='workspace'){
   activeBriefId=entry.id;
   activeCompareId=sourceId&&sourceId!==entry.id?sourceId:null;
   setWorkspaceBriefs(items.sort((a,b)=>new Date(b.updatedAt)-new Date(a.updatedAt)));
-  renderProofStrip();
-  renderRecentUsage();
-  renderWorkspaceHome();
+  renderHomeStage();
   if(currentSkill){
     trackBriefDuplicate(currentSkill.id,entry.id,sourceId,source);
     show('result');hide('detail');hide('home');
@@ -752,9 +730,7 @@ function deleteWorkspaceBrief(id,source='workspace'){
   setWorkspaceBriefs(items);
   if(activeBriefId===id)activeBriefId=null;
   if(activeCompareId===id)activeCompareId=null;
-  renderProofStrip();
-  renderRecentUsage();
-  renderWorkspaceHome();
+  renderHomeStage();
   if(currentSkill&&!document.getElementById('result').classList.contains('hidden'))renderResult();
   trackBriefDelete(entry.skillId,id,source);
 }
@@ -1251,21 +1227,7 @@ function saveUsage(skill){
   renderRecentUsage();
 }
 function renderRecentUsage(){
-  const items=JSON.parse(localStorage.getItem(RECENT_USAGE_KEY)||'[]');
-  const section=document.getElementById('recentSection');
-  const container=document.getElementById('recentUsage');
-  if(!items.length||getWorkspaceBriefs().length){
-    section.classList.add('hidden');
-    container.innerHTML='';
-    return;
-  }
-  section.classList.remove('hidden');
-  container.innerHTML=`<div class="usage-list">${items.map(item=>{
-    const skill=skills.find(s=>s.id===item.id);
-    if(!skill)return'';
-    const title=currentLang==='zh'?skill.title:skill.titleEn;
-    return`<button class="usage-item" onclick="trackRecentOpen('${skill.id}');openSkill('${skill.id}')"><strong>${title}</strong><span>${formatTime(item.time)}</span></button>`;
-  }).join('')}</div>`;
+  renderHomeStage();
 }
 function setLibraryExpanded(expanded,source='manual'){
   libraryExpanded=expanded;
@@ -1281,9 +1243,7 @@ function toggleLibrary(nextValue=null,source='manual'){
   }
 }
 function scrollToWorkspace(){
-  const section=document.getElementById('workspaceSection');
-  if(!section||section.classList.contains('hidden'))return;
-  section.scrollIntoView({behavior:'smooth',block:'start'});
+  setHomeFocus('workspace','scroll');
 }
 function formatTime(iso){
   const date=new Date(iso);
@@ -1292,7 +1252,7 @@ function formatTime(iso){
 }
 
 function backToForm(){show('detail');hide('result');renderStep();}
-function goHome(){currentSkill=null;activeBriefId=null;activeCompareId=null;activeDemoMode=false;syncUrlState(null);show('home');hide('detail');hide('result');renderProofStrip();renderRecentUsage();renderWorkspaceHome();}
+function goHome(){currentSkill=null;activeBriefId=null;activeCompareId=null;activeDemoMode=false;syncUrlState(null);homeFocusId=getWorkspaceBriefs().length?'workspace':'pricing-strategy';show('home');hide('detail');hide('result');renderHomeStage();}
 function show(id){document.getElementById(id).classList.remove('hidden');}
 function hide(id){document.getElementById(id).classList.add('hidden');}
 
