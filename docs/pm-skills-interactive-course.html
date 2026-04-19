@@ -278,71 +278,71 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <script src="toolkit-skills.js"></script>
 <script>
 const i18n={
-  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'产品经理的 AI 技能库 · 选场景，答问题，形成结构化判断',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'📋 复制判断简报',copyCodex:'复制 Codex 启动稿',copyClaude:'复制 Claude Code 启动稿',copyCursor:'复制 Cursor 启动稿',shareScenario:'复制场景链接',shareDemo:'复制演示链接',viewDemo:'一键看演示',loadDemo:'载入演示案例',copyProof:'复制传播文案',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'✏️ 修改回答',regenerate:'🔄 重新生成',promptGenerated:'结构化判断已就绪',resultSubtitle:'先看判断视图，再决定是否交给 agent 继续执行。',tipsTitle:'💡 使用提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。先打开一个场景。',guidedTitle:'按目标开始',guidedSubtitle:'如果你只想先点对第一张卡，从这里开始。',flagshipTitle:'旗舰场景',flagshipSubtitle:'最适合对外演示、截图和验证差异的 3 条路径。',workspaceTitle:'Brief Workspace',workspaceSubtitle:'把判断保存成可复用对象。支持回看、复制、比较。',workspaceEmpty:'还没有保存的 brief。先生成一次判断，再存进 workspace。',workspaceSaved:'已保存 Brief',workspaceScenarios:'覆盖场景',workspaceLatest:'最近更新',workspaceSavedStatus:'已保存',workspaceDraftStatus:'未保存',workspaceDemoStatus:'演示',workspacePanelTitle:'当前 Brief',workspacePanelBody:'把一次性的结果变成可回看、可对比、可继续推进的工作对象。',saveBrief:'保存到 Workspace',updateBrief:'更新已保存 Brief',duplicateBrief:'复制为新 Brief',openBrief:'打开 Brief',deleteBrief:'删除',compareLatest:'对比最近版本',compareTitle:'版本比较',compareEmpty:'还没有可比较的同场景 brief。先保存两个版本。',compareCurrent:'当前',compareSaved:'已保存',noDiff:'当前输入与对比版本没有差异，差别可能在上下文细节或输出推演。',deleteConfirm:'删除这个已保存 brief？',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'它先帮你把问题拆开，形成判断，再把判断草案交给 Codex、Claude Code 或 Cursor 接着做。',briefIntent:'任务意图',inputSnapshot:'输入快照',outputContract:'输出契约',scenarioLens:'场景焦点',proofCard:'传播卡片',rawBrief:'查看原始判断简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'输出段落',contextLabel:'背景块',emptyInputs:'当前没有可展示的输入项。',emptySections:'当前没有解析到明确的输出段落，建议查看原始判断简报。',startNow:'立即试跑',alternatePaths:'替代路径',whyThisPath:'为什么先走这条路',sharePath:'分享路径',featuredReason:'为什么它是旗舰场景',proofStripTitle:'3 条可以直接外发的 demo 路线',proofStripBody:'不用先读仓库。直接打开演示结果页，看判断是怎么被拆出来的，再决定要不要交给 agent 接着做。',demoMode:'演示模式',demoModeBody:'当前结果来自预载入案例，适合截图、对外演示和快速理解这个场景会产出什么判断。',workflowTitle:'这个结果页不只是答案，它是一条工作流。',workflowInput:'输入已固定',workflowInputBody:'真实背景和约束已经收进判断草案。',workflowDecision:'判断已成型',workflowDecisionBody:'先看主判断、假设、风险和下一步。',workflowAgent:'再交给 agent',workflowAgentBody:'只在需要扩写、对比或执行时再复制启动稿。',workflowProof:'最后可传播',workflowProofBody:'复制案例链接或传播文案，对外证明这套系统的差异。',cardMeta:(n)=>`${n} 个问题 → 形成判断草案`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
-  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'AI-powered skills for Product Managers · Pick a scenario, answer questions, form structured judgment',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build Decision Brief →',copy:'📋 Copy decision brief',copyCodex:'Copy Codex kickoff',copyClaude:'Copy Claude Code kickoff',copyCursor:'Copy Cursor kickoff',shareScenario:'Copy scenario link',shareDemo:'Copy demo link',viewDemo:'View demo result',loadDemo:'Load demo case',copyProof:'Copy share note',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'✏️ Edit answers',regenerate:'🔄 Regenerate',promptGenerated:'Your decision brief is ready',resultSubtitle:'Review the decision view first, then hand it to an agent if needed.',tipsTitle:'💡 Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet. Open one scenario to get started.',guidedTitle:'Start By Goal',guidedSubtitle:'If you only want the right first click, start here.',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'The 3 strongest paths for demos, screenshots, and external proof.',workspaceTitle:'Brief Workspace',workspaceSubtitle:'Turn one-off judgment into a reusable object. Save, reopen, duplicate, and compare.',workspaceEmpty:'No saved briefs yet. Generate one result first, then save it into the workspace.',workspaceSaved:'Saved briefs',workspaceScenarios:'Active scenarios',workspaceLatest:'Latest update',workspaceSavedStatus:'Saved',workspaceDraftStatus:'Draft',workspaceDemoStatus:'Demo',workspacePanelTitle:'Current Brief',workspacePanelBody:'Turn a one-off result into a reusable work object you can revisit, compare, and continue.',saveBrief:'Save to Workspace',updateBrief:'Update saved brief',duplicateBrief:'Duplicate as new brief',openBrief:'Open brief',deleteBrief:'Delete',compareLatest:'Compare latest version',compareTitle:'Version Comparison',compareEmpty:'No comparable brief for this scenario yet. Save two versions first.',compareCurrent:'Current',compareSaved:'Saved',noDiff:'The current inputs match the compared version. Any difference is likely in context nuance or reasoning output.',deleteConfirm:'Delete this saved brief?',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'It helps you decompose the problem first, form judgment second, and hand a kickoff brief to Codex, Claude Code, or Cursor only after that.',briefIntent:'Brief Intent',inputSnapshot:'Input Snapshot',outputContract:'Output Contract',scenarioLens:'Scenario Lens',proofCard:'Proof Card',rawBrief:'Show raw decision brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context Block',emptyInputs:'No filled inputs to show yet.',emptySections:'No structured output sections were parsed. Open the raw brief instead.',startNow:'Start now',alternatePaths:'Alternate paths',whyThisPath:'Why start here',sharePath:'Share path',featuredReason:'Why this is a flagship scenario',proofStripTitle:'3 demo routes you can share immediately',proofStripBody:'You do not need to read the repo first. Open a demo result route, inspect how the judgment is formed, then decide whether to hand it to an agent.',demoMode:'Demo mode',demoModeBody:'This result comes from a preloaded case. It is designed for screenshots, external demos, and fast understanding of what the scenario actually produces.',workflowTitle:'This result view is not just an answer. It is a workflow.',workflowInput:'Inputs fixed',workflowInputBody:'The real context and constraints are already locked into the brief.',workflowDecision:'Judgment formed',workflowDecisionBody:'Read the decision, assumptions, risks, and next steps first.',workflowAgent:'Then use an agent',workflowAgentBody:'Copy a kickoff only when you want expansion, comparison, or execution.',workflowProof:'Finally, share proof',workflowProofBody:'Copy the case link or share note to make the difference visible outside the repo.',cardMeta:(n)=>`${n} questions → Build a decision brief`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
+  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'先选一个场景。',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'复制简报',copyCodex:'发给 Codex',copyClaude:'发给 Claude',copyCursor:'发给 Cursor',shareScenario:'复制链接',shareDemo:'复制演示',viewDemo:'看演示',loadDemo:'载入演示',copyProof:'复制传播文案',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'修改',regenerate:'重跑',promptGenerated:'判断已就绪',resultSubtitle:'先看判断。',tipsTitle:'提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。',guidedTitle:'起跑线',guidedSubtitle:'',flagshipTitle:'旗舰场景',flagshipSubtitle:'',workspaceTitle:'Workspace',workspaceSubtitle:'',workspaceEmpty:'还没有保存的 brief。',workspaceSaved:'已保存',workspaceScenarios:'场景数',workspaceLatest:'最近更新',workspaceSavedStatus:'已保存',workspaceDraftStatus:'草稿',workspaceDemoStatus:'演示',workspacePanelTitle:'当前 Brief',workspacePanelBody:'',saveBrief:'保存',updateBrief:'更新',duplicateBrief:'复制',openBrief:'打开',deleteBrief:'删除',compareLatest:'对比上一版',compareTitle:'版本比较',compareEmpty:'还没有可比较的版本。',compareCurrent:'当前',compareSaved:'已保存',noDiff:'当前输入与对比版本一致。',deleteConfirm:'删除这个已保存 brief？',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'',briefIntent:'任务意图',inputSnapshot:'输入',outputContract:'输出',scenarioLens:'焦点',proofCard:'传播',rawBrief:'原始简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'段落',contextLabel:'背景',emptyInputs:'当前没有可展示的输入项。',emptySections:'没有解析到明确输出。',startNow:'开始',alternatePaths:'替代路径',whyThisPath:'',sharePath:'分享',featuredReason:'',proofStripTitle:'判断先行',proofStripBody:'',demoMode:'演示',demoModeBody:'预载入案例。',workflowTitle:'流程',workflowInput:'输入',workflowInputBody:'',workflowDecision:'判断',workflowDecisionBody:'',workflowAgent:'Agent',workflowAgentBody:'',workflowProof:'分享',workflowProofBody:'',cardMeta:(n)=>`${n} 个问题`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
+  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'Pick one scenario.',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build brief →',copy:'Copy brief',copyCodex:'Send to Codex',copyClaude:'Send to Claude',copyCursor:'Send to Cursor',shareScenario:'Copy link',shareDemo:'Copy demo',viewDemo:'Demo',loadDemo:'Load demo',copyProof:'Copy share note',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'Edit',regenerate:'Run again',promptGenerated:'Decision ready',resultSubtitle:'Review first.',tipsTitle:'Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet.',guidedTitle:'Start',guidedSubtitle:'',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'',workspaceTitle:'Workspace',workspaceSubtitle:'',workspaceEmpty:'No saved briefs yet.',workspaceSaved:'Saved',workspaceScenarios:'Scenarios',workspaceLatest:'Updated',workspaceSavedStatus:'Saved',workspaceDraftStatus:'Draft',workspaceDemoStatus:'Demo',workspacePanelTitle:'Current Brief',workspacePanelBody:'',saveBrief:'Save',updateBrief:'Update',duplicateBrief:'Duplicate',openBrief:'Open',deleteBrief:'Delete',compareLatest:'Compare latest',compareTitle:'Compare',compareEmpty:'No comparable version yet.',compareCurrent:'Current',compareSaved:'Saved',noDiff:'Current inputs match the saved version.',deleteConfirm:'Delete this saved brief?',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'',briefIntent:'Intent',inputSnapshot:'Inputs',outputContract:'Output',scenarioLens:'Lens',proofCard:'Proof',rawBrief:'Raw brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context',emptyInputs:'No filled inputs yet.',emptySections:'No structured output was parsed.',startNow:'Start',alternatePaths:'Alternate paths',whyThisPath:'',sharePath:'Share',featuredReason:'',proofStripTitle:'Decision first',proofStripBody:'',demoMode:'Demo',demoModeBody:'Preloaded case.',workflowTitle:'Flow',workflowInput:'Input',workflowInputBody:'',workflowDecision:'Decision',workflowDecisionBody:'',workflowAgent:'Agent',workflowAgentBody:'',workflowProof:'Share',workflowProofBody:'',cardMeta:(n)=>`${n} questions`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
 };
 
 Object.assign(i18n.zh,{
-  pageSubtitle:'判断先行的 PM 工作台',
-  guidedSubtitle:'三条最值得先点的起跑线。',
+  pageSubtitle:'先选一个场景。',
+  guidedSubtitle:'',
   recentTitle:'继续刚才的工作',
-  recentSubtitle:'如果你已经打开过几个场景，直接从这里接着走。',
+  recentSubtitle:'',
   libraryTitle:'完整场景库',
-  librarySubtitle:'只有真的需要时，再展开全部场景。',
-  showLibrary:'展开完整场景库',
-  hideLibrary:'收起完整场景库',
+  librarySubtitle:'',
+  showLibrary:'展开',
+  hideLibrary:'收起',
   heroEyebrow:'PM Operating System',
   heroTitle:'先形成判断，再交给 agent。',
-  heroBody:'第一次进来，只需要选一条起跑线。第二次回来，直接回到你的 brief，不再重新上课。',
-  heroPrimary:'从定价开始',
-  heroSecondary:'打开 PRD',
-  heroDemo:'看完整演示',
-  heroWorkspace:'回到 Workspace',
-  heroBrowse:'浏览全部场景',
-  heroProofTitle:'默认输出不是长文，而是判断。',
-  heroLinksTitle:'如果你要看系统层：',
+  heroBody:'',
+  heroPrimary:'定价',
+  heroSecondary:'PRD',
+  heroDemo:'演示',
+  heroWorkspace:'Workspace',
+  heroBrowse:'全部场景',
+  heroProofTitle:'Decision / Evidence / Risks',
+  heroLinksTitle:'',
   appLabel:'Decision Workspace',
-  appLeadTitle:'当前判断',
-  appOutputTitle:'结构化输出',
-  appContextTitle:'背景与约束',
-  appOperateTitle:'继续推进',
-  appSourceTitle:'底层系统文件',
-  appInsightTitle:'场景焦点',
-  appProofTitle:'对外传播',
-  appNotesTitle:'原始简报与提示',
+  appLeadTitle:'判断',
+  appOutputTitle:'输出',
+  appContextTitle:'背景',
+  appOperateTitle:'操作',
+  appSourceTitle:'系统文件',
+  appInsightTitle:'焦点',
+  appProofTitle:'传播',
+  appNotesTitle:'原始简报',
   appLive:'实时',
-  openLibrary:'打开场景库'
+  openLibrary:'场景库'
 });
 Object.assign(i18n.en,{
-  pageSubtitle:'A judgment-first PM workspace',
-  guidedSubtitle:'Three starting routes worth clicking first.',
+  pageSubtitle:'Pick one scenario.',
+  guidedSubtitle:'',
   recentTitle:'Continue where you left off',
-  recentSubtitle:'If you already opened a few scenarios, jump back in here.',
+  recentSubtitle:'',
   libraryTitle:'Full scenario library',
-  librarySubtitle:'Only expand the full catalog when you actually need it.',
-  showLibrary:'Open full scenario library',
-  hideLibrary:'Hide full scenario library',
+  librarySubtitle:'',
+  showLibrary:'Open',
+  hideLibrary:'Hide',
   heroEyebrow:'PM Operating System',
   heroTitle:'Form judgment first. Use agents second.',
-  heroBody:'On the first visit, you only need one starting route. On the second visit, come straight back to your brief.',
-  heroPrimary:'Start with pricing',
-  heroSecondary:'Open PRD',
-  heroDemo:'See the demo',
-  heroWorkspace:'Return to Workspace',
-  heroBrowse:'Browse the full library',
-  heroProofTitle:'The default output is judgment, not a longer answer.',
-  heroLinksTitle:'If you want the system layer:',
+  heroBody:'',
+  heroPrimary:'Pricing',
+  heroSecondary:'PRD',
+  heroDemo:'Demo',
+  heroWorkspace:'Workspace',
+  heroBrowse:'Library',
+  heroProofTitle:'Decision / Evidence / Risks',
+  heroLinksTitle:'',
   appLabel:'Decision Workspace',
-  appLeadTitle:'Current read',
-  appOutputTitle:'Structured output',
+  appLeadTitle:'Decision',
+  appOutputTitle:'Output',
   appContextTitle:'Context',
-  appOperateTitle:'Continue',
+  appOperateTitle:'Actions',
   appSourceTitle:'System file',
-  appInsightTitle:'Scenario lens',
-  appProofTitle:'External proof',
-  appNotesTitle:'Raw brief and notes',
+  appInsightTitle:'Lens',
+  appProofTitle:'Proof',
+  appNotesTitle:'Raw brief',
   appLive:'Live',
-  openLibrary:'Open library'
+  openLibrary:'Library'
 });
 
 let currentLang=localStorage.getItem('lang')||(navigator.language.startsWith('zh')?'zh':'en');
@@ -354,9 +354,9 @@ const EVENT_LOG_KEY='pm-toolkit-event-log';
 const MAX_EVENT_LOG=300;
 const MAX_WORKSPACE_BRIEFS=24;
 const GUIDED_PATHS=[
-  {key:'revenue',titleZh:'先解决收入',titleEn:'Fix revenue first',descZh:'如果你最关心定价、付费边界和升级触发点，先走这条路。',descEn:'Start here if pricing, paywalls, and upgrade triggers matter most.',primary:'pricing-strategy',alternates:['monetization','retention-strategy']},
-  {key:'product',titleZh:'先把需求做清楚',titleEn:'Clarify the product first',descZh:'如果你在做新功能或要进评审，先走这条路。',descEn:'Start here if you are shaping a feature or preparing a review.',primary:'prd-draft',alternates:['req-review','req-priority']},
-  {key:'strategy',titleZh:'先看外部与增长',titleEn:'Start with strategy',descZh:'如果你要判断竞品、进入市场或验证增长实验，先走这条路。',descEn:'Start here for competitive moves, market entry, or growth experiments.',primary:'competitor-pricing',alternates:['growth-experiment','market-entry']}
+  {key:'revenue',titleZh:'收入',titleEn:'Revenue',descZh:'定价 / 付费 / 升级',descEn:'Pricing / paywall / upgrade',primary:'pricing-strategy',alternates:['monetization','retention-strategy']},
+  {key:'product',titleZh:'需求',titleEn:'Product',descZh:'PRD / review / scope',descEn:'PRD / review / scope',primary:'prd-draft',alternates:['req-review','req-priority']},
+  {key:'strategy',titleZh:'策略',titleEn:'Strategy',descZh:'竞品 / 增长 / 进入市场',descEn:'Competition / growth / GTM',primary:'competitor-pricing',alternates:['growth-experiment','market-entry']}
 ];
 const DEMO_PRESETS={
   'pricing-strategy':{
@@ -419,15 +419,13 @@ function homeLinks(){
 }
 function entryBullets(){
   return currentLang==='zh'?[
-    'Decision：先给出主判断，不先堆长文。',
-    'Evidence：把已知信息和信息缺口分开。',
-    'Assumptions：明确哪些地方是推断，不假装确定。',
-    'Risks / Next Steps：把风险和下一步动作写出来。'
+    'Decision first',
+    'Evidence visible',
+    'Risks explicit'
   ]:[
-    'Decision: lead with a clear judgment instead of a longer answer.',
-    'Evidence: separate known facts from information gaps.',
-    'Assumptions: name inference explicitly instead of pretending certainty.',
-    'Risks / Next Steps: make the tradeoffs and follow-up work visible.'
+    'Decision first',
+    'Evidence visible',
+    'Risks explicit'
   ];
 }
 function setLang(lang){
@@ -512,12 +510,14 @@ function init(){
 function renderProofStrip(){
   const workspaceCount=getWorkspaceBriefs().length;
   const links=homeLinks().slice(0,2);
+  const heroBody=t('heroBody');
+  const heroLinksTitle=t('heroLinksTitle');
   document.getElementById('proofStrip').innerHTML=`
     <div class="hero-shell">
       <div class="hero-copy">
         <span class="hero-kicker">${t('heroEyebrow')}</span>
         <h2 class="hero-title">${t('heroTitle')}</h2>
-        <p class="hero-body">${t('heroBody')}</p>
+        ${heroBody?`<p class="hero-body">${heroBody}</p>`:''}
         <div class="hero-actions">
           <button class="guided-btn primary" onclick="launchScenario('pricing-strategy','hero-primary')">${t('heroPrimary')}</button>
           <button class="guided-btn" onclick="launchScenario('prd-draft','hero-secondary')">${t('heroSecondary')}</button>
@@ -525,7 +525,7 @@ function renderProofStrip(){
           ${workspaceCount?`<button class="guided-btn" onclick="scrollToWorkspace()">${t('heroWorkspace')}</button>`:`<button class="guided-btn" onclick="toggleLibrary(true,'hero-browse')">${t('heroBrowse')}</button>`}
         </div>
         <div class="hero-links">
-          <span class="hero-link">${t('heroLinksTitle')}</span>
+          ${heroLinksTitle?`<span class="hero-link">${heroLinksTitle}</span>`:''}
           ${links.map(link=>`<a class="hero-link" href="${link.href}" onclick="trackQuickLink('${link.id}')">${link.title}</a>`).join('')}
         </div>
       </div>
@@ -547,9 +547,8 @@ function renderGuidedGrid(){
     const desc=currentLang==='zh'?path.descZh:path.descEn;
     return`<div class="guided-card">
       <strong>${title}</strong>
-      <p>${desc}</p>
+      ${desc?`<p>${desc}</p>`:''}
       <div class="flagship-meta"><span class="flagship-pill">${catLabel(primary.category)}</span><span class="flagship-pill">${levelLabel(primary.level)}</span></div>
-      <p><strong>${t('whyThisPath')}</strong><br>${currentLang==='zh'?primary.desc:primary.descEn}</p>
       <div class="guided-actions">
         <button class="guided-btn primary" onclick="launchScenario('${primary.id}','guided:${path.key}')">${t('startNow')}</button>
         <button class="guided-btn" onclick="copyScenarioLink('${primary.id}',this,'guided:${path.key}')">${t('sharePath')}</button>
@@ -866,6 +865,8 @@ function renderResult(){
   const briefModel=parseDecisionBrief(lastGeneratedPrompt);
   const scenarioLens=buildScenarioLens();
   const compareBrief=getCompareTargetBrief();
+  const appSubline=scenarioLens?.proof?.summary||t('resultSubtitle');
+  const demoBody=t('demoModeBody');
   document.getElementById('result').innerHTML=`
     <div class="app-shell">
       <div class="app-topbar">
@@ -880,8 +881,8 @@ function renderResult(){
         <div class="app-header-copy">
           <span class="app-kicker">${currentLang==='zh'?currentSkill.title:currentSkill.titleEn}</span>
           <h2 class="app-headline">${t('promptGenerated')}</h2>
-          <div class="app-subline">${scenarioLens?.proof?.summary||t('resultSubtitle')}</div>
-          ${activeDemoMode?`<div class="demo-banner"><div><strong>${t('demoMode')}</strong><p>${t('demoModeBody')}</p></div><span class="demo-badge">${t('demoMode')}</span></div>`:''}
+          ${appSubline?`<div class="app-subline">${appSubline}</div>`:''}
+          ${activeDemoMode?`<div class="demo-banner"><div><strong>${t('demoMode')}</strong>${demoBody?`<p>${demoBody}</p>`:''}</div><span class="demo-badge">${t('demoMode')}</span></div>`:''}
         </div>
         <div class="app-header-stats">
           <div class="stat-tile"><strong>${t('scenarioMetric')}</strong><span>${currentLang==='zh'?currentSkill.title:currentSkill.titleEn}</span></div>
@@ -919,7 +920,10 @@ function renderResult(){
               <summary>${t('rawBrief')}</summary>
               <div class="prompt-block"><pre>${esc(lastGeneratedPrompt)}</pre></div>
             </details>
-            <div class="tips" style="margin-top:14px"><h4>${t('tipsTitle')}</h4><ul>${currentSkill.tips.map(tip=>`<li>${tip}</li>`).join('')}</ul></div>
+            <details style="margin-top:14px">
+              <summary>${t('tipsTitle')}</summary>
+              <div class="tips" style="margin-top:12px"><ul>${currentSkill.tips.map(tip=>`<li>${tip}</li>`).join('')}</ul></div>
+            </details>
           </div>
         </div>
         <aside class="app-side">
@@ -1026,8 +1030,8 @@ function buildScenarioLens(){
       ],
       proof:{
         summary:currentLang==='zh'
-          ?'这条场景的价值，不在于替你报价格，而在于强迫你先把 value metric、免费层边界和升级触发点说清楚。'
-          :'The value here is not a price quote. It is forcing value metric, free boundary, and upgrade triggers into the open first.',
+          ?'先定 value metric、免费边界、升级点。'
+          :'Set value metric, free boundary, and upgrade trigger first.',
         bullets:currentLang==='zh'
           ?['先拆 value metric，再谈价格区间。','把 free / paid 边界和 upgrade trigger 明文写出来。','上线策略和 guardrails 会一起进入判断，不把定价当一次性拍板。']
           :['It decomposes value metric before price range.','It makes free / paid boundaries and upgrade triggers explicit.','It keeps rollout strategy and guardrails in scope instead of treating pricing as a one-shot guess.'],
@@ -1054,8 +1058,8 @@ function buildScenarioLens(){
       ],
       proof:{
         summary:currentLang==='zh'
-          ?'这条场景不是替你写长 PRD，而是先把问题、范围和 review gate 固定住。'
-          :'This scenario is not about writing a longer PRD. It fixes the problem, scope, and review gates first.',
+          ?'先定问题、范围、review gate。'
+          :'Lock the problem, scope, and review gate first.',
         bullets:currentLang==='zh'
           ?['先写 problem statement，再写 requirements。','Goals / Non-goals 和 scope 会被显式拆开。','风险、依赖和 review gate 默认进入初稿，不让 PRD 只剩功能清单。']
           :['It starts with the problem statement before requirements.','Goals / non-goals and scope are split explicitly.','Risks, dependencies, and review gates are included by default so the PRD is not just a feature list.'],
@@ -1084,8 +1088,8 @@ function buildScenarioLens(){
       ],
       proof:{
         summary:currentLang==='zh'
-          ?'这条场景不是平均发建议，而是先逼你选出当前最限制收入增长的那个杠杆。'
-          :'This scenario avoids average advice by forcing a choice on the main lever limiting revenue growth right now.',
+          ?'先抓主约束，再定动作。'
+          :'Find the main constraint first.',
         bullets:currentLang==='zh'
           ?['先判断收入主约束，再谈策略动作。','把证据和信息缺口分开，不把猜测当结论。','免费层、付费层和 guardrails 会一起进入商业化判断。']
           :['It identifies the main revenue constraint before strategy actions.','It separates evidence from information gaps instead of disguising guesses as conclusions.','Free tier, paid tier, and guardrails stay inside the commercialization judgment.'],
@@ -1109,7 +1113,7 @@ function renderWorkflowRail(){
     {title:t('workflowAgent'),body:t('workflowAgentBody')},
     {title:t('workflowProof'),body:t('workflowProofBody')}
   ];
-  return`<div class="workflow-rail">${steps.map((step,index)=>`<div class="rail-step ${index<2?'active':''}"><strong>${step.title}</strong><span>${step.body}</span></div>`).join('')}</div>`;
+  return`<div class="workflow-rail">${steps.map((step,index)=>`<div class="rail-step ${index<2?'active':''}"><strong>${step.title}</strong>${step.body?`<span>${step.body}</span>`:''}</div>`).join('')}</div>`;
 }
 
 function renderWorkspacePanel(compareBrief){
