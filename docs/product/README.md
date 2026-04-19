@@ -16,6 +16,7 @@ The goal is simple:
 - start in under 3 minutes
 - use the toolkit online
 - form a decision brief before touching an agent
+- save, reopen, duplicate, and compare briefs across sessions
 - hand a kickoff brief to Codex, Claude Code, or Cursor
 - preview the underlying skill or command
 - move into a reusable team workspace when needed
@@ -36,6 +37,9 @@ Pick a scenario, answer the questions, and form a structured decision brief.
 
 If you want the fastest external proof, open a `demo result` route first.
 Those routes preload a realistic case, render the judgment-first result view, and expose a shareable proof surface without requiring any setup.
+
+If you want repeat usage instead of a one-shot demo, save the result into the local `Brief Workspace`.
+That gives you a reusable object you can reopen, duplicate, compare, and continue editing later in the same browser.
 
 ### 2. Copy To Your Agent
 
@@ -65,6 +69,7 @@ Use that mapping to inspect the source and move from “web use” to “repo us
 - no Git knowledge required
 - guided questions instead of free-form prompting
 - decision briefs instead of loose prompt fragments
+- browser-local brief workspace for save / reopen / duplicate / compare
 
 ### Layer 2: Reusable System Files
 
@@ -91,6 +96,7 @@ This is a browser-local debug dashboard for:
 - brief generations
 - demo preset launches
 - proof note copies
+- brief saves, reopens, duplicates, and comparisons
 - copy actions into agents
 - quick-link clicks
 

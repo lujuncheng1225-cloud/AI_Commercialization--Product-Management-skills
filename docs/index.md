@@ -18,6 +18,7 @@ It is a judgment-first PM system that turns messy work into reusable decision br
 - What it is: a PM workflow and decision system
 - What it helps with: PRDs, AI feature shaping, commercialization reviews, and reusable PM workflows
 - What comes out: decision briefs with evidence, assumptions, risks, and next steps
+- What now persists: saved briefs you can reopen, duplicate, and compare inside the toolkit
 - What makes it different: it emphasizes routing, judgment, review gates, and reusable systems instead of prompt dumping
 
 ## Start Here
