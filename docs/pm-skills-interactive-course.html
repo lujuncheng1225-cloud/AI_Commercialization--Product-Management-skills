@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PM AI Skill 工具箱</title>
 <style>
-:root{--bg:#F4F6F8;--bg2:#EBEFF3;--card:#fff;--text:#111827;--text2:#5B6472;--text3:#8A93A1;--brand:#2563EB;--brand-light:#60A5FA;--brand-bg:rgba(37,99,235,.08);--border:#DCE3EA;--shadow:0 1px 3px rgba(15,23,42,.06);--shadow-lg:0 12px 32px rgba(15,23,42,.08);--radius:16px;--radius2:12px;--code-bg:#121826;--code-text:#D8E0F0}
-.dark{--bg:#090C12;--bg2:#111723;--card:#131A27;--text:#E5E7EB;--text2:#A7B0BE;--text3:#6B7481;--brand:#60A5FA;--brand-light:#93C5FD;--brand-bg:rgba(96,165,250,.12);--border:#1E293B;--shadow:0 1px 3px rgba(0,0,0,.28);--shadow-lg:0 20px 40px rgba(0,0,0,.34);--code-bg:#0D1320}
+:root{--bg:#F7F7F5;--bg2:#EFEEEB;--card:#FFFFFF;--text:#191919;--text2:#5A5A5A;--text3:#9B9B9B;--brand:#2D6BE4;--brand-light:#6B9FFF;--brand-bg:rgba(45,107,228,.08);--ok:#18A058;--border:rgba(0,0,0,0.07);--shadow:0 1px 4px rgba(0,0,0,0.06);--shadow-lg:0 6px 20px rgba(0,0,0,0.09);--radius:14px;--radius2:10px;--code-bg:#16161E;--code-text:#CDD6F4}
+.dark{--bg:#111113;--bg2:#1A1A1E;--card:#1E1E24;--text:#ECECEC;--text2:#9B9B9B;--text3:#666;--brand:#5B8DEF;--brand-light:#85AEFF;--brand-bg:rgba(91,141,239,.12);--border:rgba(255,255,255,0.07);--shadow:0 1px 4px rgba(0,0,0,0.3);--shadow-lg:0 6px 20px rgba(0,0,0,0.4);--code-bg:#0D0D14}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s;min-height:100vh}
 .container{max-width:1180px;margin:0 auto;padding:24px 20px 60px}
@@ -61,8 +61,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .guided-btn{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);color:var(--text);font-size:13px;cursor:pointer;transition:all .2s}
 .guided-btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
 .guided-btn:hover{transform:translateY(-1px);border-color:var(--brand-light)}
-.search-box{max-width:480px;margin:0 auto 20px;position:relative}
-.search-box input{width:100%;padding:12px 16px 12px 44px;border:1px solid var(--border);border-radius:var(--radius2);background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s}
+.search-box{max-width:520px;margin:0 auto 28px;position:relative}
+.search-box input{width:100%;padding:13px 16px 13px 46px;border:1.5px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s}
 .search-box input:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
 .search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3)}
 .categories{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px}
@@ -72,12 +72,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .dark .cat-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;transition:all .2s}
-.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--brand-light)}
-.card .cat-tag{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:.5px;margin-bottom:10px}
-.card h3{font-size:17px;font-weight:600;margin-bottom:6px}
-.card .desc{color:var(--text2);font-size:13px;margin-bottom:16px;line-height:1.5}
-.card .meta{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3)}
-.card .meta .level{padding:2px 8px;border-radius:6px;background:var(--brand-bg);color:var(--brand);font-weight:500}
+.card:hover{border-color:var(--brand);box-shadow:var(--shadow-lg);transform:none}
+.card .cat-tag{font-size:12px;color:var(--text3);font-weight:500;margin-bottom:10px}
+.card h3{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.2px}
+.card .desc{color:var(--text2);font-size:13px;margin-bottom:16px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .divider{height:1px;background:var(--border);margin:0 0 14px}
+.card .meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text3)}
+.card .meta-left{display:flex;align-items:center;gap:8px}
+.card .meta .level{padding:2px 8px;border-radius:6px;background:var(--brand-bg);color:var(--brand);font-weight:600;font-size:11px}
+.card .meta-arrow{color:var(--brand);font-size:16px;transition:transform .2s}
+.card:hover .meta-arrow{transform:translateX(4px)}
 .theme-toggle{position:fixed;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:100}
 .lang-toggle{position:fixed;top:16px;right:62px;padding:4px;border-radius:20px;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;font-size:12px;font-weight:600;z-index:100;color:var(--text2);gap:0;overflow:hidden}
 .lang-toggle button{border:none;background:none;padding:4px 10px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text3);transition:all .2s;border-radius:16px}
@@ -91,21 +95,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .system-ref code{color:var(--brand);font-size:12px;word-break:break-all}
 .system-ref a{color:var(--brand);text-decoration:none;font-weight:600}
 .system-ref a:hover{text-decoration:underline}
-.step-indicator{display:flex;align-items:center;gap:8px;margin-bottom:24px;font-size:14px;color:var(--text3)}
+.step-indicator{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text3);background:var(--bg2);padding:12px 16px;border-radius:var(--radius2);margin-bottom:28px}
 .step-indicator .current{color:var(--brand);font-weight:600}
-.step-bar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.step-bar{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
 .step-bar .fill{height:100%;background:var(--brand);border-radius:2px;transition:width .3s}
 .step-title{font-size:18px;font-weight:600;margin-bottom:20px}
 .field{margin-bottom:20px}
 .field label{display:block;font-size:14px;font-weight:500;margin-bottom:8px}
 .field input[type="text"],.field textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius2);background:var(--card);color:var(--text);font-size:15px;outline:none;transition:all .2s;font-family:inherit}
-.field input:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg)}
-.field textarea{min-height:100px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-bg);outline:none}
+.field textarea{min-height:120px;resize:vertical;line-height:1.6}
 .detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}
 .tag-group{display:flex;flex-wrap:wrap;gap:8px}
-.tag-option{padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:14px;cursor:pointer;transition:all .2s;user-select:none}
+.tag-option{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:14px;cursor:pointer;transition:all .15s;user-select:none}
 .tag-option:hover{border-color:var(--brand-light);color:var(--brand)}
-.tag-option.selected{background:var(--brand);color:#fff;border-color:var(--brand)}
+.tag-option.selected{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:600}
 .btn-row{display:flex;justify-content:space-between;margin-top:32px}
 .btn{padding:12px 24px;border-radius:var(--radius2);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none}
 .btn-primary{background:var(--brand);color:#fff}
@@ -175,7 +179,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .workspace-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .workspace-status{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .workspace-badge{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;background:var(--bg2);color:var(--text2);font-size:12px;font-weight:700;border:1px solid var(--border)}
-.workspace-badge.primary{background:var(--brand-bg);color:var(--brand);border-color:rgba(108,92,231,.18)}
+.workspace-badge.primary{background:var(--brand-bg);color:var(--brand);border-color:var(--brand-bg)}
 .compare-grid{display:grid;gap:10px}
 .compare-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:10px;align-items:start}
 .compare-label,.compare-cell{padding:12px 14px;border-radius:14px;border:1px solid var(--border)}
@@ -210,21 +214,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .proof-card p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:12px}
 .proof-card ul{margin:0 0 12px 18px;color:var(--text2)}
 .proof-card li{margin-bottom:6px;font-size:14px;line-height:1.6}
-.proof-note{padding:14px 16px;border-radius:16px;background:rgba(108,92,231,.08);border:1px dashed rgba(108,92,231,.24);font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px}
+.proof-note{padding:14px 16px;border-radius:16px;background:var(--brand-bg);border:1px dashed var(--border);font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px}
 .proof-actions{display:flex;gap:10px;flex-wrap:wrap}
 .raw-brief details{border:1px dashed var(--border);border-radius:12px;padding:14px;background:var(--bg2)}
 .raw-brief summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--text)}
 .raw-brief .prompt-block{margin:14px 0 0}
-.prompt-block{background:var(--code-bg);border-radius:var(--radius2);padding:24px;margin-bottom:20px;position:relative;overflow:hidden}
-.prompt-block::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand);border-radius:4px 0 0 4px}
-.prompt-block pre{color:var(--code-text);font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-word;font-family:'SF Mono','Fira Code',monospace;margin:0}
+.prompt-block{background:#16161E;border-radius:12px;padding:0;margin-bottom:20px;overflow:hidden}
+.prompt-block-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.prompt-label{font-size:11px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.3)}
+.prompt-copy-btn{font-size:12px;font-weight:600;color:var(--brand-light);background:none;border:none;cursor:pointer;transition:color .2s}
+.prompt-block pre{color:#CDD6F4;font-size:14px;line-height:1.8;white-space:pre-wrap;word-break:break-word;font-family:'SF Mono','Fira Code',monospace;margin:0;max-height:320px;overflow-y:auto;padding:20px}
 .result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
-.tips{background:var(--brand-bg);border-radius:var(--radius2);padding:20px}
-.tips h4{font-size:14px;margin-bottom:10px;color:var(--brand)}
-.tips li{font-size:13px;color:var(--text2);margin-bottom:4px;padding-left:4px}
-.empty{text-align:center;padding:60px 20px;color:var(--text3);font-size:15px}
+.hero-badge{display:inline-block;padding:4px 12px;border-radius:20px;background:var(--brand-bg);color:var(--brand);font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:16px}
+.header h1{font-size:32px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
+.header p{font-size:15px;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.hero-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.hero-pills span{font-size:13px;color:var(--text3);font-weight:500}
+.stats-bar{display:flex;justify-content:center;gap:8px;font-size:13px;color:var(--text3);margin-bottom:24px}
+.result-header{margin-bottom:24px}
+.result-badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ok);font-weight:600;margin-bottom:8px}
+.result-skill-name{font-size:22px;font-weight:700;color:var(--text)}
+.usage-hint{background:var(--brand-bg);border-radius:var(--radius2);padding:14px 18px;margin-bottom:20px;font-size:14px;color:var(--brand);display:flex;align-items:flex-start;gap:10px}
+.tips{background:var(--bg2);border-radius:var(--radius2);padding:16px 20px;margin-bottom:24px}
+.tips h4{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:10px}
+.tips li{font-size:13px;color:var(--text2);margin-bottom:6px;line-height:1.55}
+.empty{text-align:center;padding:80px 20px;color:var(--text3);font-size:15px}
+.empty::before{content:'🔍';display:block;font-size:32px;margin-bottom:12px}
 @media(max-width:980px){.home-app,.app-header,.app-layout,.home-stage-foot{grid-template-columns:1fr}.app-side{position:static}.action-dock{position:static}}
-@media(max-width:640px){.grid{grid-template-columns:1fr}.container{padding:16px 16px 40px}.home-bar{flex-direction:column;align-items:flex-start;margin-bottom:12px}.home-bar-actions{width:100%;justify-content:flex-start}.btn-row{flex-direction:column;gap:10px}.btn{width:100%;text-align:center}.result-actions{flex-direction:column}.home-stage{padding:22px;min-height:auto}.home-stage-title{font-size:30px}.home-stage-actions .guided-btn{width:100%}.home-output-list{grid-template-columns:1fr}.app-headline{font-size:28px}.app-header-stats{grid-template-columns:1fr}.action-row .btn,.action-row .btn-link{width:100%}.demo-banner{flex-direction:column}.workflow-rail{grid-template-columns:1fr}.compare-row{grid-template-columns:1fr}.workspace-toolbar{flex-direction:column}.section-header{flex-direction:column;align-items:flex-start}}
+@media(max-width:640px){.header h1{font-size:24px}.header p{font-size:14px}.hero-pills{display:none}.grid{grid-template-columns:1fr;gap:12px}.container{padding:16px 16px 48px}.result-actions{flex-direction:column}.result-actions .btn{width:100%;text-align:center}.prompt-block pre{font-size:13px;max-height:240px}.stats-bar{display:none}.home-bar{flex-direction:column;align-items:flex-start;margin-bottom:12px}.home-bar-actions{width:100%;justify-content:flex-start}.btn-row{flex-direction:column;gap:10px}.btn{width:100%;text-align:center}.home-stage{padding:22px;min-height:auto}.home-stage-title{font-size:30px}.home-stage-actions .guided-btn{width:100%}.home-output-list{grid-template-columns:1fr}.app-headline{font-size:28px}.app-header-stats{grid-template-columns:1fr}.action-row .btn,.action-row .btn-link{width:100%}.demo-banner{flex-direction:column}.workflow-rail{grid-template-columns:1fr}.compare-row{grid-template-columns:1fr}.workspace-toolbar{flex-direction:column}.section-header{flex-direction:column;align-items:flex-start}}
 .hidden{display:none!important}
 </style>
 </head>
@@ -240,6 +257,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <div id="libraryBody" class="library-body hidden">
 <div class="search-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" id="search" placeholder="搜索场景…" oninput="filterCards()"></div>
 <div class="categories" id="cats"></div>
+<div class="stats-bar" id="statsBar"></div>
 <div class="grid" id="grid"></div>
 </div>
 </div>
@@ -250,12 +268,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 <script src="toolkit-skills.js"></script>
 <script>
 const i18n={
-  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'先选一个场景。',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'复制简报',copyCodex:'发给 Codex',copyClaude:'发给 Claude',copyCursor:'发给 Cursor',shareScenario:'复制链接',shareDemo:'复制演示',viewDemo:'看演示',loadDemo:'载入演示',copyProof:'复制传播文案',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'修改',regenerate:'重跑',promptGenerated:'判断已就绪',resultSubtitle:'先看判断。',tipsTitle:'提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。',guidedTitle:'起跑线',guidedSubtitle:'',flagshipTitle:'旗舰场景',flagshipSubtitle:'',workspaceTitle:'Workspace',workspaceSubtitle:'',workspaceEmpty:'还没有保存的 brief。',workspaceSaved:'已保存',workspaceScenarios:'场景数',workspaceLatest:'最近更新',workspaceSavedStatus:'已保存',workspaceDraftStatus:'草稿',workspaceDemoStatus:'演示',workspacePanelTitle:'当前 Brief',workspacePanelBody:'',saveBrief:'保存',updateBrief:'更新',duplicateBrief:'复制',openBrief:'打开',deleteBrief:'删除',compareLatest:'对比上一版',compareTitle:'版本比较',compareEmpty:'还没有可比较的版本。',compareCurrent:'当前',compareSaved:'已保存',noDiff:'当前输入与对比版本一致。',deleteConfirm:'删除这个已保存 brief？',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'',briefIntent:'任务意图',inputSnapshot:'输入',outputContract:'输出',scenarioLens:'焦点',proofCard:'传播',rawBrief:'原始简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'段落',contextLabel:'背景',emptyInputs:'当前没有可展示的输入项。',emptySections:'没有解析到明确输出。',startNow:'开始',alternatePaths:'替代路径',whyThisPath:'',sharePath:'分享',featuredReason:'',proofStripTitle:'判断先行',proofStripBody:'',demoMode:'演示',demoModeBody:'预载入案例。',workflowTitle:'流程',workflowInput:'输入',workflowInputBody:'',workflowDecision:'判断',workflowDecisionBody:'',workflowAgent:'Agent',workflowAgentBody:'',workflowProof:'分享',workflowProofBody:'',cardMeta:(n)=>`${n} 个问题`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
-  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'Pick one scenario.',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build brief →',copy:'Copy brief',copyCodex:'Send to Codex',copyClaude:'Send to Claude',copyCursor:'Send to Cursor',shareScenario:'Copy link',shareDemo:'Copy demo',viewDemo:'Demo',loadDemo:'Load demo',copyProof:'Copy share note',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'Edit',regenerate:'Run again',promptGenerated:'Decision ready',resultSubtitle:'Review first.',tipsTitle:'Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet.',guidedTitle:'Start',guidedSubtitle:'',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'',workspaceTitle:'Workspace',workspaceSubtitle:'',workspaceEmpty:'No saved briefs yet.',workspaceSaved:'Saved',workspaceScenarios:'Scenarios',workspaceLatest:'Updated',workspaceSavedStatus:'Saved',workspaceDraftStatus:'Draft',workspaceDemoStatus:'Demo',workspacePanelTitle:'Current Brief',workspacePanelBody:'',saveBrief:'Save',updateBrief:'Update',duplicateBrief:'Duplicate',openBrief:'Open',deleteBrief:'Delete',compareLatest:'Compare latest',compareTitle:'Compare',compareEmpty:'No comparable version yet.',compareCurrent:'Current',compareSaved:'Saved',noDiff:'Current inputs match the saved version.',deleteConfirm:'Delete this saved brief?',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'',briefIntent:'Intent',inputSnapshot:'Inputs',outputContract:'Output',scenarioLens:'Lens',proofCard:'Proof',rawBrief:'Raw brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context',emptyInputs:'No filled inputs yet.',emptySections:'No structured output was parsed.',startNow:'Start',alternatePaths:'Alternate paths',whyThisPath:'',sharePath:'Share',featuredReason:'',proofStripTitle:'Decision first',proofStripBody:'',demoMode:'Demo',demoModeBody:'Preloaded case.',workflowTitle:'Flow',workflowInput:'Input',workflowInputBody:'',workflowDecision:'Decision',workflowDecisionBody:'',workflowAgent:'Agent',workflowAgentBody:'',workflowProof:'Share',workflowProofBody:'',cardMeta:(n)=>`${n} questions`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
+  zh:{pageTitle:'PM AI Skill 工具箱',pageSubtitle:'不是 Prompt 大全。是判断优先的 PM 工作系统。<br>选场景 → 回答问题 → 得到专属 Prompt',searchPlaceholder:'搜索场景…',all:'全部',empty:'没有找到匹配的场景',stepOf:(c,t)=>`第 ${c} 步，共 ${t} 步`,generate:'形成判断草案 →',copy:'复制简报',copyCodex:'发给 Codex',copyClaude:'发给 Claude',copyCursor:'发给 Cursor',shareScenario:'复制链接',shareDemo:'复制演示',viewDemo:'看演示',loadDemo:'载入演示',copyProof:'复制传播文案',copied:'已复制 ✓',back:'← 返回',prev:'← 上一步',next:'下一步 →',modify:'修改',regenerate:'重跑',promptGenerated:'判断已就绪',resultSubtitle:'先看判断。',tipsTitle:'提示',entryTitle:'默认输出结构',usageTitle:'最近使用',usageEmpty:'还没有使用记录。',guidedTitle:'起跑线',guidedSubtitle:'',flagshipTitle:'旗舰场景',flagshipSubtitle:'',workspaceTitle:'Workspace',workspaceSubtitle:'',workspaceEmpty:'还没有保存的 brief。',workspaceSaved:'已保存',workspaceScenarios:'场景数',workspaceLatest:'最近更新',workspaceSavedStatus:'已保存',workspaceDraftStatus:'草稿',workspaceDemoStatus:'演示',workspacePanelTitle:'当前 Brief',workspacePanelBody:'',saveBrief:'保存',updateBrief:'更新',duplicateBrief:'复制',openBrief:'打开',deleteBrief:'删除',compareLatest:'对比上一版',compareTitle:'版本比较',compareEmpty:'还没有可比较的版本。',compareCurrent:'当前',compareSaved:'已保存',noDiff:'当前输入与对比版本一致。',deleteConfirm:'删除这个已保存 brief？',previewSkill:'预览 skill',previewCommand:'预览 command',systemPath:'系统映射',fitDirect:'直接',fitAdjacent:'相邻',positioningTitle:'这不是提示词生成器。',positioningBody:'',briefIntent:'任务意图',inputSnapshot:'输入',outputContract:'输出',scenarioLens:'焦点',proofCard:'传播',rawBrief:'原始简报',scenarioMetric:'场景',inputsMetric:'输入项',sectionsMetric:'段落',contextLabel:'背景',emptyInputs:'当前没有可展示的输入项。',emptySections:'没有解析到明确输出。',startNow:'开始',alternatePaths:'替代路径',whyThisPath:'',sharePath:'分享',featuredReason:'',proofStripTitle:'判断先行',proofStripBody:'',demoMode:'演示',demoModeBody:'预载入案例。',workflowTitle:'流程',workflowInput:'输入',workflowInputBody:'',workflowDecision:'判断',workflowDecisionBody:'',workflowAgent:'Agent',workflowAgentBody:'',workflowProof:'分享',workflowProofBody:'',cardMeta:(n)=>`${n} 个问题`,categories:{'竞品分析':'竞品分析','用户研究':'用户研究','需求管理':'需求管理','定价策略':'定价策略','数据分析':'数据分析','商业化':'商业化','增长策略':'增长策略','项目沟通':'项目沟通'},levels:{'入门':'入门','进阶':'进阶','高级':'高级'}},
+  en:{pageTitle:'PM AI Skill Toolkit',pageSubtitle:'Not a prompt dump. A judgment-first PM operating system.<br>Pick a scenario → Answer questions → Get your custom Prompt',searchPlaceholder:'Search skills…',all:'All',empty:'No matching skills found',stepOf:(c,t)=>`Step ${c} of ${t}`,generate:'Build brief →',copy:'Copy brief',copyCodex:'Send to Codex',copyClaude:'Send to Claude',copyCursor:'Send to Cursor',shareScenario:'Copy link',shareDemo:'Copy demo',viewDemo:'Demo',loadDemo:'Load demo',copyProof:'Copy share note',copied:'Copied ✓',back:'← Back',prev:'← Previous',next:'Next →',modify:'Edit',regenerate:'Run again',promptGenerated:'Decision ready',resultSubtitle:'Review first.',tipsTitle:'Tips',entryTitle:'Default Output Shape',usageTitle:'Recent Usage',usageEmpty:'No usage yet.',guidedTitle:'Start',guidedSubtitle:'',flagshipTitle:'Flagship Scenarios',flagshipSubtitle:'',workspaceTitle:'Workspace',workspaceSubtitle:'',workspaceEmpty:'No saved briefs yet.',workspaceSaved:'Saved',workspaceScenarios:'Scenarios',workspaceLatest:'Updated',workspaceSavedStatus:'Saved',workspaceDraftStatus:'Draft',workspaceDemoStatus:'Demo',workspacePanelTitle:'Current Brief',workspacePanelBody:'',saveBrief:'Save',updateBrief:'Update',duplicateBrief:'Duplicate',openBrief:'Open',deleteBrief:'Delete',compareLatest:'Compare latest',compareTitle:'Compare',compareEmpty:'No comparable version yet.',compareCurrent:'Current',compareSaved:'Saved',noDiff:'Current inputs match the saved version.',deleteConfirm:'Delete this saved brief?',previewSkill:'Preview skill',previewCommand:'Preview command',systemPath:'System path',fitDirect:'direct',fitAdjacent:'adjacent',positioningTitle:'This is not a prompt builder.',positioningBody:'',briefIntent:'Intent',inputSnapshot:'Inputs',outputContract:'Output',scenarioLens:'Lens',proofCard:'Proof',rawBrief:'Raw brief',scenarioMetric:'Scenario',inputsMetric:'Inputs',sectionsMetric:'Sections',contextLabel:'Context',emptyInputs:'No filled inputs yet.',emptySections:'No structured output was parsed.',startNow:'Start',alternatePaths:'Alternate paths',whyThisPath:'',sharePath:'Share',featuredReason:'',proofStripTitle:'Decision first',proofStripBody:'',demoMode:'Demo',demoModeBody:'Preloaded case.',workflowTitle:'Flow',workflowInput:'Input',workflowInputBody:'',workflowDecision:'Decision',workflowDecisionBody:'',workflowAgent:'Agent',workflowAgentBody:'',workflowProof:'Share',workflowProofBody:'',cardMeta:(n)=>`${n} questions`,categories:{'竞品分析':'Competitor Analysis','用户研究':'User Research','需求管理':'Requirements','定价策略':'Pricing','数据分析':'Data Analysis','商业化':'Monetization','增长策略':'Growth','项目沟通':'Communication'},levels:{'入门':'Beginner','进阶':'Intermediate','高级':'Advanced'}}
 };
 
 Object.assign(i18n.zh,{
-  pageSubtitle:'先选一个场景。',
+  pageSubtitle:'不是 Prompt 大全。是判断优先的 PM 工作系统。<br>选场景 → 回答问题 → 得到专属 Prompt',
   guidedSubtitle:'',
   recentTitle:'继续刚才的工作',
   recentSubtitle:'',
@@ -296,7 +314,7 @@ Object.assign(i18n.zh,{
   stepsMetric:'步骤'
 });
 Object.assign(i18n.en,{
-  pageSubtitle:'Pick one scenario.',
+  pageSubtitle:'Not a prompt dump. A judgment-first PM operating system.<br>Pick a scenario → Answer questions → Get your custom Prompt',
   guidedSubtitle:'',
   recentTitle:'Continue where you left off',
   recentSubtitle:'',
@@ -413,6 +431,7 @@ document.getElementById('langEn').classList.toggle('active',currentLang==='en');
 document.documentElement.lang=currentLang==='zh'?'zh-CN':'en';
 
 // ── APP ──────────────────────────────────────────────
+const categoryEmoji={'竞品分析':'🔍','用户研究':'👥','需求管理':'📋','定价策略':'💰','数据分析':'📊','商业化':'🚀','增长策略':'📈','项目沟通':'💬'};
 let currentSkill=null, currentStep=0, formData={}, activeCategory='all', lastGeneratedPrompt='', activeDemoMode=false, activeBriefId=null, activeCompareId=null, libraryExpanded=false, homeFocusId='pricing-strategy';
 
 function getEventLog(){
@@ -450,7 +469,7 @@ if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark');d
 function init(){
   const allLabel=t('all');
   const catKeys=[...new Set(skills.map(s=>s.category))];
-  document.getElementById('cats').innerHTML=[allLabel,...catKeys.map(c=>catLabel(c))].map((label,i)=>`<button class="cat-btn${i===0?' active':''}" data-cat="${i===0?'all':catKeys[i-1]}" onclick="setCat('${i===0?'all':catKeys[i-1]}')">${label}</button>`).join('');
+  document.getElementById('cats').innerHTML=[allLabel,...catKeys.map(c=>`${categoryEmoji[c]||''} ${catLabel(c)}`)].map((label,i)=>`<button class="cat-btn${i===0?' active':''}" data-cat="${i===0?'all':catKeys[i-1]}" onclick="setCat('${i===0?'all':catKeys[i-1]}')">${label}</button>`).join('');
   document.getElementById('libraryTitle').textContent=t('libraryTitle');
   document.getElementById('librarySubtitle').textContent=t('librarySubtitle');
   homeFocusId=getWorkspaceBriefs().length?'workspace':'pricing-strategy';
@@ -461,6 +480,8 @@ function init(){
   document.title=t('pageTitle');
   trackEvent('toolkit_page_view',{surface:'home'});
   filterCards();
+  const categories=new Set(skills.map(s=>s.category));
+  document.getElementById('statsBar').innerHTML=`<span>共 ${skills.length} 个场景</span><span>·</span><span>${categories.size} 个分类</span><span>·</span><span>支持中 / EN</span>`;
   applyScenarioFromUrl();
 }
 
@@ -643,7 +664,7 @@ function filterCards(){
   const q=document.getElementById('search').value.toLowerCase();
   const filtered=skills.filter(s=>(activeCategory==='all'||s.category===activeCategory)&&(s.title.toLowerCase().includes(q)||s.desc.toLowerCase().includes(q)||(s.titleEn||'').toLowerCase().includes(q)||(s.descEn||'').toLowerCase().includes(q)||s.category.toLowerCase().includes(q)||catLabel(s.category).toLowerCase().includes(q)));
   const grid=document.getElementById('grid');
-  grid.innerHTML=filtered.length?filtered.map(s=>`<div class="card" onclick="openSkill('${s.id}')"><div class="cat-tag">${catLabel(s.category)}</div><h3>${currentLang==='zh'?s.title:s.titleEn}</h3><div class="desc">${currentLang==='zh'?s.desc:s.descEn}</div><div class="meta"><span class="level">${levelLabel(s.level)}</span><span>${t('cardMeta')(s.steps.length)}</span></div></div>`).join(''):`<div class="empty">${t('empty')}</div>`;
+  grid.innerHTML=filtered.length?filtered.map(s=>`<div class="card" onclick="openSkill('${s.id}')"><div class="cat-tag">${categoryEmoji[s.category]||''} ${catLabel(s.category)}</div><h3>${currentLang==='zh'?s.title:s.titleEn}</h3><div class="desc">${currentLang==='zh'?s.desc:s.descEn}</div><div class="divider"></div><div class="meta"><div class="meta-left"><span class="level">${levelLabel(s.level)}</span><span>${t('cardMeta')(s.steps.length)}</span></div><span class="meta-arrow">→</span></div></div>`).join(''):`<div class="empty">${t('empty')}</div>`;
 }
 
 function openSkill(id){
